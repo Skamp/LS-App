@@ -4,13 +4,20 @@
     <string name="app_name">LoadSensing App</string>
     <string name="app_team">Equip LSN</string>
     <string name="googleMaps_API_key_debug">0ddH1jyvjXmfm9XQKuERdr5XpTyvpjWOOA3K4Og</string>
-    
+    <string name="info_LoadSensing">Per més informació sobre LoadSensing, es pot consultar la següent direcció web:</string>
+    <string name="app_url">http://www.loadsensing.com</string>
+    <string name="about_content">LoadSensing App ......\n\n... <a href="http://www.worldsensing.com">WorldSensing</a></string>
+    <string name="infoTabAbout">Sobre...</string>
+    <string name="infoTabLicense">Llicència</string>
+        
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Login/Password incorrectes</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homConfig">Configuració</string>
 	    <string name="act_lbl_homAbout">Sobre...</string>
+	    <string name="act_lbl_homLicense">Llicència</string>
+	    <string name="act_lbl_homInfo">Informació</string>
 	    <string name="act_lbl_homHelp">Ajuda</string>
 	    <string name="act_lbl_homNetList">Xarxes en llistat</string> 
 	    <string name="act_lbl_homNetMaps">Xarxes en mapes</string>
@@ -21,6 +28,7 @@
 	    <string name="act_lbl_favNetwork">Xarxes favorites</string>
 	    <string name="act_lbl_favSensor">Sensors favorits</string>
 	    <string name="act_lbl_favImage">Imatges favorites</string>
+	    
     <!-- Activity Labels End -->
     
         

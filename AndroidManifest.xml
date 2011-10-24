@@ -6,7 +6,7 @@
 
     <uses-sdk android:minSdkVersion="7" />
     <uses-permission android:name="android.permission.INTERNET"/>
-
+	<uses-library android:name="com.google.android.maps"/>
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" 
@@ -62,7 +62,17 @@
             android:label="@string/act_lbl_homAbout"
             android:name=".LSAboutActivity">
         </activity>
-        <uses-library android:name="com.google.android.maps"/>
+        <activity 
+            android:label="@string/act_lbl_homInfo"
+            android:name=".LSInfoActivity">
+        </activity>
+        <activity 
+            android:label="@string/act_lbl_homLicense"
+            android:name=".LSLicenseActivity">
+        </activity>
+        
+            
+        
     </application>
 
 </manifest>

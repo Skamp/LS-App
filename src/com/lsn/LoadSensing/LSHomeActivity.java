@@ -53,7 +53,8 @@ public class LSHomeActivity extends GDActivity {
     		break;
     	case ABOUT:
     		Toast.makeText(getApplicationContext(), "Has pulsado el boton ABOUT", Toast.LENGTH_SHORT).show();
-    		i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
+    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
+    		i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
     		break;
     	case HELP:
     		Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();

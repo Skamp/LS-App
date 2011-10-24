@@ -4,6 +4,11 @@
     <string name="app_name">LoadSensing App</string>
     <string name="app_team">LSN Team</string>
     <string name="googleMaps_API_key_debug">0ddH1jyvjXmfm9XQKuERdr5XpTyvpjWOOA3K4Og</string>
+    <string name="info_LoadSensing">For more information about LoadSensing, you can follow next web address:</string>
+    <string name="app_url">http://www.loadsensing.com</string>
+    <string name="about_content">LoadSensing App ......\n\n... <a href="http://www.worldsensing.com">WorldSensing</a></string>
+    <string name="infoTabAbout">About</string>
+    <string name="infoTabLicense">License</string>
     
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Bad Login/Password</string>
@@ -11,6 +16,8 @@
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homConfig">Configuration</string>
     	<string name="act_lbl_homAbout">About</string>
+    	<string name="act_lbl_homLicense">License</string>
+    	<string name="act_lbl_homInfo">Information</string>
     	<string name="act_lbl_homHelp">Help</string>
     	<string name="act_lbl_homNetList">Networks list</string> 
     	<string name="act_lbl_homNetMaps">Networks in maps</string>
