@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ 	
+ 	
+    <com.lsn.LoadSensing.ui.DashboardLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+ 
+        <Button android:id="@+id/dsh_btn_netList"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homNetList"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_netMaps"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homNetMaps"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_QRCode"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homQRCode"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_Faves"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homFaves"
+            android:drawableTop="@drawable/dashboard_button_add" /> 
+        
+        <Button android:id="@+id/dsh_btn_AR"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homAugReal"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_netCloser"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_homNetCloser"
+            android:drawableTop="@drawable/dashboard_button_add" />     
+ 
+    </com.lsn.LoadSensing.ui.DashboardLayout>    
+</LinearLayout>

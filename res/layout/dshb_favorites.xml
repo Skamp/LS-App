@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ 	
+    <com.lsn.LoadSensing.ui.DashboardLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+ 
+        <Button android:id="@+id/dsh_btn_favNetwork"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_favNetwork"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_favSensor"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_favSensor"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+        <Button android:id="@+id/dsh_btn_favImage"
+            style="@style/DashboardButton"
+            android:text="@string/act_lbl_favImage"
+            android:drawableTop="@drawable/dashboard_button_add" />
+ 
+    </com.lsn.LoadSensing.ui.DashboardLayout>    
+</LinearLayout>

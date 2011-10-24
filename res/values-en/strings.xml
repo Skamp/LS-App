@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LoadSensingActivity!</string>
+    <string name="app_name">LoadSensing App</string>
+    <string name="app_team">LSN Team</string>
+    <string name="googleMaps_API_key_debug">0ddH1jyvjXmfm9XQKuERdr5XpTyvpjWOOA3K4Og</string>
+    
+    <!-- Messages Init -->
+    <string name="msg_BadLoginPass">Bad Login/Password</string>
+    <!-- Messages End -->
+    <!-- Activity Labels Init -->
+    	<string name="act_lbl_homConfig">Configuration</string>
+    	<string name="act_lbl_homAbout">About</string>
+    	<string name="act_lbl_homHelp">Help</string>
+    	<string name="act_lbl_homNetList">Networks list</string> 
+    	<string name="act_lbl_homNetMaps">Networks in maps</string>
+    	<string name="act_lbl_homQRCode">Read QR Code</string>
+    	<string name="act_lbl_homFaves">Favorites</string>
+    	<string name="act_lbl_homAugReal">Augmented Reality</string>
+    	<string name="act_lbl_homNetCloser">Closer networks</string>
+    	<string name="act_lbl_favNetwork">Favorite networks</string>
+	    <string name="act_lbl_favSensor">Favorite sensors</string>
+	    <string name="act_lbl_favImage">Favorite images</string>
+    <!-- Activity Labels End -->
+    
+        
+    <!-- Login Init -->
+    	<string name="strUser">User:</string>
+    	<string name="strPassword">Password:</string>
+    <!-- Login End -->    
+    
+   
+</resources>
