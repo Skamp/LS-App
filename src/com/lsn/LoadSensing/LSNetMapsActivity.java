@@ -1,6 +1,10 @@
 package com.lsn.LoadSensing;
 
+import java.util.List;
+
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+import com.lsn.LoadSensing.map.LSdrawNetworks;
 
 import greendroid.app.GDMapActivity;
 import greendroid.widget.ActionBarItem;
@@ -34,6 +38,12 @@ public class LSNetMapsActivity extends GDMapActivity {
         
         final MapView mapView = (MapView) findViewById(R.id.netmap);
         mapView.setBuiltInZoomControls(true);
+        
+        List<Overlay> capas = mapView.getOverlays();
+        LSdrawNetworks om = new LSdrawNetworks();
+        capas.add(om);
+        mapView.postInvalidate();
+        
     }
 	
 	private void initActionBar() {
