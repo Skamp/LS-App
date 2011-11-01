@@ -35,6 +35,13 @@
     	<string name="strUser">Usuario:</string>
     	<string name="strPassword">Contraseña:</string>
     <!-- Login End -->
-    
+    <!-- Faves Activity Init -->
+    	<string name="act_lbl_favNetworks">Redes Favoritas</string>
+    	<string name="act_lbl_favSensors">Sensores Favoritos</string>
+   		<string name="act_lbl_favImages">Imágenes Favoritas</string>
+   		<string name="tab_fav_networks">Redes</string>
+    	<string name="tab_fav_sensors">Sensores</string>
+   		<string name="tab_fav_images">Imágenes</string>
+    <!-- Faves Activity End -->
    
 </resources>

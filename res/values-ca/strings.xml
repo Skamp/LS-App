@@ -36,6 +36,12 @@
     	<string name="strUser">Usuari:</string>
     	<string name="strPassword">Contrasenya:</string>
     <!-- Login End -->
-   
-   
+  	<!-- Faves Activity Init -->
+  		<string name="act_lbl_favNetworks">Xarxes Favorites</string>
+    	<string name="act_lbl_favSensors">Sensors Favorits</string>
+   		<string name="act_lbl_favImages">Imatges Favorites</string>
+  		<string name="tab_fav_networks">Xarxes</string>
+    	<string name="tab_fav_sensors">Sensors</string>
+   		<string name="tab_fav_images">Imatges</string>
+    <!-- Faves Activity End -->
 </resources>

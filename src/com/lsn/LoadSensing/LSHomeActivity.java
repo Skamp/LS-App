@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LSHomeActivity extends GDActivity {
@@ -30,6 +31,12 @@ public class LSHomeActivity extends GDActivity {
         {
         	Toast.makeText(getApplicationContext(), "Bienvenido usuario "+ bundle.getString("USER") +" con password "+ bundle.getString("PASS"), Toast.LENGTH_LONG).show();
     	}       
+        
+        
+//        TextView txtMessage = (TextView)findViewById(R.id.txtHomeMessage);
+//        txtMessage.setText("Hello World");
+//        txtMessage.setVisibility(TextView.VISIBLE);
+        
         
         DashboardClickListener dbClickListener = new DashboardClickListener();
         findViewById(R.id.dsh_btn_netList).setOnClickListener(dbClickListener);

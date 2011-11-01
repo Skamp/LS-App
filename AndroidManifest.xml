@@ -70,7 +70,18 @@
             android:label="@string/act_lbl_homLicense"
             android:name=".LSLicenseActivity">
         </activity>
-        
+        <activity 
+            android:label="@string/act_lbl_favNetworks"
+            android:name=".faves.LSFavesNetworksActivity">
+        </activity>
+        <activity 
+            android:label="@string/act_lbl_favSensors"
+            android:name=".faves.LSFavesSensorsActivity">
+        </activity>
+        <activity 
+            android:label="@string/act_lbl_favImages"
+            android:name=".faves.LSFavesImagesActivity">
+        </activity>
             
         <uses-library android:name="com.google.android.maps"/>
     </application>

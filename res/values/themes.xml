@@ -23,7 +23,7 @@
 	
 		<item name="gdActionBarTitleColor">#FFF</item>
 		<item name="gdActionBarDividerWidth">2px</item>
-		<item name="gdActionBarBackground">@color/background</item>
+		<item name="gdActionBarBackground">@color/actionBarBackground</item>
 	</style>
 	
 	<style name="LSLogin">

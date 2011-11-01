@@ -22,7 +22,7 @@ public class LSHelpActivity extends GDActivity {
 		
     	addActionBarItem(getActionBar()
 				.newActionBarItem(NormalActionBarItem.class)
-				.setDrawable(R.drawable.ic_mnu_back)
+				.setDrawable(R.drawable.gd_action_bar_back)
 				.setContentDescription("Back"), BACK);
 	}
 	
