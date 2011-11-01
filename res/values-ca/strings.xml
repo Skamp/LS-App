@@ -9,6 +9,8 @@
     <string name="about_content">LoadSensing App ......\n\n... <a href="http://www.worldsensing.com">WorldSensing</a></string>
     <string name="infoTabAbout">Sobre...</string>
     <string name="infoTabLicense">Llicència</string>
+     
+    
         
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Login/Password incorrectes</string>
@@ -36,6 +38,17 @@
     	<string name="strUser">Usuari:</string>
     	<string name="strPassword">Contrasenya:</string>
     <!-- Login End -->
+    <!-- ActionBar Text Init -->
+    <string name="abtxtLogOut">Sortir</string>
+    <string name="abtxtConfiguration">Configuració</string>
+    <string name="abtxtInformation">Informació</string>
+    <!-- ActionBar Text End -->
+    <!-- Dialog Text Init -->
+    <string name="dialogLogOut">Desitja canviar d\'usuari?</string>
+    <string name="txtYes">Si</string>
+    <string name="txtNo">No</string>
+    <string name="txtExit">Sortir</string>
+    <!-- Dialog Text End --> 
   	<!-- Faves Activity Init -->
   		<string name="act_lbl_favNetworks">Xarxes Favorites</string>
     	<string name="act_lbl_favSensors">Sensors Favorits</string>

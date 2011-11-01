@@ -35,6 +35,17 @@
     	<string name="strUser">Usuario:</string>
     	<string name="strPassword">Contraseña:</string>
     <!-- Login End -->
+    <!-- ActionBar Text Init -->
+    <string name="abtxtLogOut">Salir</string>
+    <string name="abtxtConfiguration">Configuración</string>
+    <string name="abtxtInformation">Información</string>
+    <!-- ActionBar Text End -->
+    <!-- Dialog Text Init -->
+    <string name="dialogLogOut">¿Desea cambiar de usuario?</string>
+    <string name="txtYes">Si</string>
+    <string name="txtNo">No</string>
+    <string name="txtExit">Salida</string>
+    <!-- Dialog Text End -->
     <!-- Faves Activity Init -->
     	<string name="act_lbl_favNetworks">Redes Favoritas</string>
     	<string name="act_lbl_favSensors">Sensores Favoritos</string>

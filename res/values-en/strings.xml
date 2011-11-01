@@ -34,7 +34,18 @@
     <!-- Login Init -->
     	<string name="strUser">User:</string>
     	<string name="strPassword">Password:</string>
-    <!-- Login End -->    
+    <!-- Login End -->
+    <!-- ActionBar Text Init -->
+    <string name="abtxtLogOut">Log out</string>
+    <string name="abtxtConfiguration">Configuration</string>
+    <string name="abtxtInformation">Information</string>
+    <!-- ActionBar Text End -->   
+    <!-- Dialog Text Init -->
+    <string name="dialogLogOut">Do you want to change user?</string>
+    <string name="txtYes">Yes</string>
+    <string name="txtNo">No</string>
+    <string name="txtExit">Exit</string>
+    <!-- Dialog Text End --> 
     <!-- Faves Activity Init -->
     	<string name="act_lbl_favNetworks">Favorite Networks</string>
     	<string name="act_lbl_favSensors">Favorite Sensors</string>

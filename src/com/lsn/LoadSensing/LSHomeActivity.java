@@ -3,7 +3,14 @@ package com.lsn.LoadSensing;
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
 import greendroid.widget.ActionBarItem;
+import greendroid.widget.NormalActionBarItem;
 import greendroid.widget.ActionBarItem.Type;
+import greendroid.widget.QuickAction;
+import greendroid.widget.QuickActionBar;
+import greendroid.widget.QuickActionWidget;
+import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +20,10 @@ import android.widget.Toast;
 
 public class LSHomeActivity extends GDActivity {
     
-	private final int CONFIG = 0;
-	private final int ABOUT = 1;
-	private final int HELP = 2;
+	private final int MORE = 0;
+	private final int HELP = 1;
+	private final int LOG_OUT = 2;
+	private QuickActionWidget quickActions;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -23,7 +31,9 @@ public class LSHomeActivity extends GDActivity {
         super.onCreate(savedInstanceState);
         setActionBarContentView(R.layout.dshb_home);
         getActionBar().setType(ActionBar.Type.Empty);
+        
         initActionBar();
+        initQuickActionBar();
         
         Bundle bundle = getIntent().getExtras();
         
@@ -54,19 +64,22 @@ public class LSHomeActivity extends GDActivity {
     	
     	switch (item.getItemId()) {
     	
-    	case CONFIG:
-    		Toast.makeText(getApplicationContext(), "Has pulsado el boton CONFIG", Toast.LENGTH_SHORT).show();
-    		i = new Intent(LSHomeActivity.this,LSConfigActivity.class);
-    		break;
-    	case ABOUT:
-    		Toast.makeText(getApplicationContext(), "Has pulsado el boton ABOUT", Toast.LENGTH_SHORT).show();
-    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
-    		i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
+    	case MORE:
+    		quickActions.show(item.getItemView());
+    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton MORE", Toast.LENGTH_SHORT).show();
+    		//i = new Intent(LSHomeActivity.this,LSConfigActivity.class);
     		break;
     	case HELP:
     		Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();
     		i = new Intent(LSHomeActivity.this,LSHelpActivity.class);
     		break;
+    	case LOG_OUT:
+    		showLogOutDialog();
+    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton LOG_OUT", Toast.LENGTH_SHORT).show();
+    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
+    		//i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
+    		break;
+    	
     	default:
     		return super.onHandleActionBarItemClick(item, position);
     	}
@@ -78,11 +91,45 @@ public class LSHomeActivity extends GDActivity {
 
 	private void initActionBar() {
 		
-    	addActionBarItem(Type.Settings,CONFIG);
-    	addActionBarItem(Type.Info,ABOUT);
+		addActionBarItem(Type.Add,MORE);
     	addActionBarItem(Type.Help,HELP);
+    	addActionBarItem(getActionBar()
+                .newActionBarItem(NormalActionBarItem.class)
+                .setDrawable(R.drawable.gd_action_bar_exit)
+                .setContentDescription(R.string.abtxtLogOut), LOG_OUT);
 	}
 
+	private void initQuickActionBar()
+	{
+		quickActions = new QuickActionBar(this); 
+		quickActions.addQuickAction(new QuickAction(this,android.R.drawable.ic_menu_preferences,getString(R.string.abtxtConfiguration)));
+		quickActions.addQuickAction(new QuickAction(this,android.R.drawable.ic_menu_info_details,getString(R.string.abtxtInformation)));
+		quickActions.setOnQuickActionClickListener(new OnQuickActionClickListener() {
+
+			@Override
+			public void onQuickActionClicked(QuickActionWidget widget, int position) {
+				
+				Intent i = null;
+				
+				switch (position)
+				{
+				case 0:
+					i = new Intent(LSHomeActivity.this,LSConfigActivity.class);
+					break;
+				case 1:
+					i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
+					break;
+				}
+				
+				if (i!=null){
+					startActivity(i);
+				}
+			}
+		});
+	}
+	
+	
+	
 	private class DashboardClickListener implements OnClickListener {
 
 		@Override
@@ -115,4 +162,25 @@ public class LSHomeActivity extends GDActivity {
 			}
 		}
     }
+	
+	private void showLogOutDialog() {
+		
+		AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+		alt_bld.setMessage(R.string.dialogLogOut)
+		.setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int id) {
+			Intent i = new Intent(LSHomeActivity.this,LSLoginActivity.class);
+			startActivity(i);
+		}
+		})
+		.setNegativeButton(R.string.txtNo, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = alt_bld.create();
+		alert.setTitle(R.string.txtExit);
+		alert.show();
+	}
+	
 }
