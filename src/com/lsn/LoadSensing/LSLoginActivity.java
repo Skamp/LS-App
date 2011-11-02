@@ -1,5 +1,6 @@
 package com.lsn.LoadSensing;
 import com.lsn.LoadSensing.R;
+import com.lsn.LoadSensing.ui.CustomToast;
 
 import android.app.Activity;
 import android.content.Context;
@@ -62,7 +63,7 @@ public class LSLoginActivity extends Activity {
 				}
 				else
 				{
-					Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_BadLoginPass), Toast.LENGTH_SHORT).show();
+					CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_BadLoginPass,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
 				}
 			}
 		});
