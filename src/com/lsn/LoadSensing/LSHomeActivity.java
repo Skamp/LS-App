@@ -1,5 +1,7 @@
 package com.lsn.LoadSensing;
 
+import com.lsn.LoadSensing.ui.CustomToast;
+
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
 import greendroid.widget.ActionBarItem;
@@ -15,7 +17,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LSHomeActivity extends GDActivity {
@@ -39,7 +40,7 @@ public class LSHomeActivity extends GDActivity {
         
         if (bundle != null)
         {
-        	Toast.makeText(getApplicationContext(), "Bienvenido usuario "+ bundle.getString("USER") +" con password "+ bundle.getString("PASS"), Toast.LENGTH_LONG).show();
+        	CustomToast.showCustomToast(this,"Bienvenido usuario "+ bundle.getString("USER"),CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
     	}       
         
         
@@ -56,7 +57,13 @@ public class LSHomeActivity extends GDActivity {
         findViewById(R.id.dsh_btn_AR).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_netCloser).setOnClickListener(dbClickListener);
     }
-
+    
+    @Override
+	public void onBackPressed() {
+		
+		return;
+	}
+    
     @Override
 	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
 		
@@ -169,7 +176,8 @@ public class LSHomeActivity extends GDActivity {
 		alt_bld.setMessage(R.string.dialogLogOut)
 		.setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int id) {
-			Intent i = new Intent(LSHomeActivity.this,LSLoginActivity.class);
+			// Go to Login Activity erasing all other activities with FLAG_ACTIVITY_CLEAR_TOP
+			Intent i = new Intent(LSHomeActivity.this,LSLoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(i);
 		}
 		})

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class LSLoginActivity extends Activity {
@@ -64,11 +63,10 @@ public class LSLoginActivity extends Activity {
 				else
 				{
 					CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_BadLoginPass,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+					edtLogin.setText("");
+					edtPassword.setText("");
 				}
 			}
 		});
 	}
-
-	
-	
 }

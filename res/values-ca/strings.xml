@@ -37,6 +37,8 @@
     <!-- Login Init -->
     	<string name="strUser">Usuari:</string>
     	<string name="strPassword">Contrasenya:</string>
+    	<string name="strLogin">Accedir</string>
+    	<string name="strExit">Sortir</string>
     <!-- Login End -->
     <!-- ActionBar Text Init -->
     <string name="abtxtLogOut">Sortir</string>

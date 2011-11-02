@@ -34,6 +34,8 @@
     <!-- Login Init -->
     	<string name="strUser">User:</string>
     	<string name="strPassword">Password:</string>
+    	<string name="strLogin">Login</string>
+    	<string name="strExit">Exit</string>
     <!-- Login End -->
     <!-- ActionBar Text Init -->
     <string name="abtxtLogOut">Log out</string>
