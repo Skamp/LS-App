@@ -9,7 +9,74 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CustomToast  {
+public class CustomToast {
+//public class CustomToast extends Toast {
+
+//	//Length Definitions
+//	public static final int LENGTH_SHORT = 0;
+//	public static final int LENGTH_LONG  = 1;
+//
+//	//Image Resources
+//	public static final int IMG_AWARE       = R.drawable.ic_toast_aware;
+//	public static final int IMG_CORRECT     = R.drawable.ic_toast_correct;
+//	public static final int IMG_ERROR       = R.drawable.ic_toast_error;
+//	public static final int IMG_EXCLAMATION = R.drawable.ic_toast_exclamation;
+//	public static final int IMG_FAVORITE    = R.drawable.ic_toast_favorite;
+//	public static final int IMG_HELP        = R.drawable.ic_toast_help;
+//	public static final int IMG_INFORMATION = R.drawable.ic_toast_information;
+//	public static final int IMG_QUESTION    = R.drawable.ic_toast_question;
+//
+//	//Custom Toast elements
+//	private Context context;
+//	
+//	
+//	//private static TextView  txtToast;
+//	//private static ImageView imgToast;
+//	//private static Toast     curToast;
+//	//private static View      layout;
+//	
+//	
+//	
+//	public CustomToast(Context context) {
+//		super(context);
+//	}
+//	
+//	@Override
+//	public void setDuration(int duration) {
+//		
+//		super.setDuration(duration);
+//	}
+//	
+//	@Override
+//	public void setGravity(int gravity, int xOffset, int yOffset) {
+//		
+//		super.setGravity(gravity, xOffset, yOffset);
+//	}
+//	
+//	@Override
+//	public void setText(CharSequence s) {
+//		
+//		super.setText(s);
+//	}
+//	
+//	@Override
+//	public void setText(int resId) {
+//		
+//		super.setText(resId);
+//	}
+//	
+//	@Override
+//	public void setView(View view) {
+//		
+//		super.setView(view);
+//	}
+//	
+//	@Override
+//	public void show() {
+//		super.show();
+//	}
+
+
 
 	//Length Definitions
 	public static final int LENGTH_SHORT = 0;

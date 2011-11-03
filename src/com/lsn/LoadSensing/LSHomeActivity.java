@@ -1,5 +1,6 @@
 package com.lsn.LoadSensing;
 
+import com.lsn.LoadSensing.ui.CustomDialog;
 import com.lsn.LoadSensing.ui.CustomToast;
 
 import greendroid.app.GDActivity;
@@ -12,6 +13,7 @@ import greendroid.widget.QuickActionBar;
 import greendroid.widget.QuickActionWidget;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -172,8 +174,8 @@ public class LSHomeActivity extends GDActivity {
 	
 	private void showLogOutDialog() {
 		
-		AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
-		alt_bld.setMessage(R.string.dialogLogOut)
+		AlertDialog.Builder dialogLogOut = new AlertDialog.Builder(this);
+		dialogLogOut.setMessage(R.string.dialogLogOut)
 		.setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int id) {
 			// Go to Login Activity erasing all other activities with FLAG_ACTIVITY_CLEAR_TOP
@@ -186,9 +188,26 @@ public class LSHomeActivity extends GDActivity {
 				dialog.cancel();
 			}
 		});
-		AlertDialog alert = alt_bld.create();
-		alert.setTitle(R.string.txtExit);
-		alert.show();
+		AlertDialog alertLogOut = dialogLogOut.create();
+		alertLogOut.setTitle(R.string.txtExit);
+		alertLogOut.show();
+//		CustomDialog.Builder dialogLogOut = new CustomDialog.Builder(this);
+//		dialogLogOut.setTitle(R.string.txtExit)
+//			.setMessage(R.string.dialogLogOut)
+//			.setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int id) {
+//					// Go to Login Activity erasing all other activities with FLAG_ACTIVITY_CLEAR_TOP
+//					Intent i = new Intent(LSHomeActivity.this,LSLoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//					startActivity(i);
+//				}
+//			})
+//			.setNegativeButton(R.string.txtNo, new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int id) {
+//					dialog.cancel();
+//				}
+//			});
+//		Dialog alertLogOut = dialogLogOut.create();
+//		alertLogOut.show();
 	}
 	
 }
