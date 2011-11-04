@@ -15,7 +15,7 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.Projection;
 
-public class LSdrawNetworks extends Overlay {
+public class LSDrawNetworks extends Overlay {
 
 	private Double latitud = 41.37*1E6;
 	private Double longitud = 2.17*1E6;

@@ -1,6 +1,6 @@
 package com.lsn.LoadSensing;
 
-import com.lsn.LoadSensing.ui.CustomDialog;
+//import com.lsn.LoadSensing.ui.CustomDialog;
 import com.lsn.LoadSensing.ui.CustomToast;
 
 import greendroid.app.GDActivity;
@@ -13,7 +13,7 @@ import greendroid.widget.QuickActionBar;
 import greendroid.widget.QuickActionWidget;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.app.AlertDialog;
-import android.app.Dialog;
+//import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,7 +63,7 @@ public class LSHomeActivity extends GDActivity {
     @Override
 	public void onBackPressed() {
 		
-		return;
+    	showLogOutDialog();
 	}
     
     @Override
