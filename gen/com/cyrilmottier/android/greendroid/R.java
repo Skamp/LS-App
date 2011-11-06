@@ -867,9 +867,9 @@ containing a value of this type.
         public static final int other=0x7f03002e;
     }
     public static final class string {
-        public static final int about_content=0x7f050022;
-        public static final int abtxtConfiguration=0x7f050039;
-        public static final int abtxtInformation=0x7f05003a;
+        public static final int about_content=0x7f090022;
+        public static final int abtxtConfiguration=0x7f090039;
+        public static final int abtxtInformation=0x7f09003a;
         /**  Login End 
  ActionBar Text Init 
  Login End 
@@ -877,10 +877,10 @@ containing a value of this type.
  Login End 
  ActionBar Text Init 
          */
-        public static final int abtxtLogOut=0x7f050038;
-        public static final int act_lbl_favImage=0x7f050033;
-        public static final int act_lbl_favImages=0x7f050041;
-        public static final int act_lbl_favNetwork=0x7f050031;
+        public static final int abtxtLogOut=0x7f090038;
+        public static final int act_lbl_favImage=0x7f090033;
+        public static final int act_lbl_favImages=0x7f090041;
+        public static final int act_lbl_favNetwork=0x7f090031;
         /**  Dialog Text End 
  Faves Activity Init 
  Dialog Text End 
@@ -888,11 +888,11 @@ containing a value of this type.
  Dialog Text End 
  Faves Activity Init 
          */
-        public static final int act_lbl_favNetworks=0x7f05003f;
-        public static final int act_lbl_favSensor=0x7f050032;
-        public static final int act_lbl_favSensors=0x7f050040;
-        public static final int act_lbl_homAbout=0x7f050027;
-        public static final int act_lbl_homAugReal=0x7f05002f;
+        public static final int act_lbl_favNetworks=0x7f09003f;
+        public static final int act_lbl_favSensor=0x7f090032;
+        public static final int act_lbl_favSensors=0x7f090040;
+        public static final int act_lbl_homAbout=0x7f090027;
+        public static final int act_lbl_homAugReal=0x7f09002f;
         /**  Messages End 
  Activity Labels Init 
  Messages End 
@@ -900,18 +900,18 @@ containing a value of this type.
  Messages End 
  Activity Labels Init 
          */
-        public static final int act_lbl_homConfig=0x7f050026;
-        public static final int act_lbl_homFaves=0x7f05002e;
-        public static final int act_lbl_homHelp=0x7f05002a;
-        public static final int act_lbl_homInfo=0x7f050029;
-        public static final int act_lbl_homLicense=0x7f050028;
-        public static final int act_lbl_homNetCloser=0x7f050030;
-        public static final int act_lbl_homNetList=0x7f05002b;
-        public static final int act_lbl_homNetMaps=0x7f05002c;
-        public static final int act_lbl_homQRCode=0x7f05002d;
-        public static final int app_name=0x7f050000;
-        public static final int app_team=0x7f05001e;
-        public static final int app_url=0x7f050021;
+        public static final int act_lbl_homConfig=0x7f090026;
+        public static final int act_lbl_homFaves=0x7f09002e;
+        public static final int act_lbl_homHelp=0x7f09002a;
+        public static final int act_lbl_homInfo=0x7f090029;
+        public static final int act_lbl_homLicense=0x7f090028;
+        public static final int act_lbl_homNetCloser=0x7f090030;
+        public static final int act_lbl_homNetList=0x7f09002b;
+        public static final int act_lbl_homNetMaps=0x7f09002c;
+        public static final int act_lbl_homQRCode=0x7f09002d;
+        public static final int app_name=0x7f09001c;
+        public static final int app_team=0x7f09001e;
+        public static final int app_url=0x7f090021;
         /**  ActionBar Text End 
  Dialog Text Init 
  ActionBar Text End 
@@ -919,48 +919,48 @@ containing a value of this type.
  ActionBar Text End 
  Dialog Text Init 
          */
-        public static final int dialogLogOut=0x7f05003b;
-        public static final int gd_add=0x7f05000c;
-        public static final int gd_all_friends=0x7f050018;
-        public static final int gd_compass=0x7f050011;
-        public static final int gd_compose=0x7f050004;
-        public static final int gd_edit=0x7f05000b;
-        public static final int gd_export=0x7f050005;
-        public static final int gd_eye=0x7f050017;
-        public static final int gd_gallery=0x7f05001a;
-        public static final int gd_go_home=0x7f050001;
-        public static final int gd_group=0x7f050019;
-        public static final int gd_help=0x7f050012;
-        public static final int gd_info=0x7f050013;
-        public static final int gd_list=0x7f050015;
-        public static final int gd_locate=0x7f05000a;
-        public static final int gd_locate_myself=0x7f050010;
-        public static final int gd_mail=0x7f05001c;
-        public static final int gd_pick_photo=0x7f050009;
-        public static final int gd_refresh=0x7f050007;
-        public static final int gd_search=0x7f050002;
-        public static final int gd_settings=0x7f050014;
-        public static final int gd_share=0x7f050006;
-        public static final int gd_slideshow=0x7f05001b;
-        public static final int gd_sort_alpha=0x7f05000f;
-        public static final int gd_sort_by_size=0x7f05000e;
-        public static final int gd_star=0x7f05000d;
-        public static final int gd_take_photo=0x7f050008;
-        public static final int gd_talk=0x7f050003;
-        public static final int gd_trashcan=0x7f050016;
-        public static final int googleMaps_API_key_debug=0x7f05001f;
-        public static final int hello=0x7f05001d;
-        public static final int infoTabAbout=0x7f050023;
-        public static final int infoTabLicense=0x7f050024;
-        public static final int info_LoadSensing=0x7f050020;
+        public static final int dialogLogOut=0x7f09003b;
+        public static final int gd_add=0x7f09000b;
+        public static final int gd_all_friends=0x7f090017;
+        public static final int gd_compass=0x7f090010;
+        public static final int gd_compose=0x7f090003;
+        public static final int gd_edit=0x7f09000a;
+        public static final int gd_export=0x7f090004;
+        public static final int gd_eye=0x7f090016;
+        public static final int gd_gallery=0x7f090019;
+        public static final int gd_go_home=0x7f090000;
+        public static final int gd_group=0x7f090018;
+        public static final int gd_help=0x7f090011;
+        public static final int gd_info=0x7f090012;
+        public static final int gd_list=0x7f090014;
+        public static final int gd_locate=0x7f090009;
+        public static final int gd_locate_myself=0x7f09000f;
+        public static final int gd_mail=0x7f09001b;
+        public static final int gd_pick_photo=0x7f090008;
+        public static final int gd_refresh=0x7f090006;
+        public static final int gd_search=0x7f090001;
+        public static final int gd_settings=0x7f090013;
+        public static final int gd_share=0x7f090005;
+        public static final int gd_slideshow=0x7f09001a;
+        public static final int gd_sort_alpha=0x7f09000e;
+        public static final int gd_sort_by_size=0x7f09000d;
+        public static final int gd_star=0x7f09000c;
+        public static final int gd_take_photo=0x7f090007;
+        public static final int gd_talk=0x7f090002;
+        public static final int gd_trashcan=0x7f090015;
+        public static final int googleMaps_API_key_debug=0x7f09001f;
+        public static final int hello=0x7f09001d;
+        public static final int infoTabAbout=0x7f090023;
+        public static final int infoTabLicense=0x7f090024;
+        public static final int info_LoadSensing=0x7f090020;
         /**  Messages Init 
  Messages Init 
  Messages Init 
          */
-        public static final int msg_BadLoginPass=0x7f050025;
-        public static final int strExit=0x7f050037;
-        public static final int strLogin=0x7f050036;
-        public static final int strPassword=0x7f050035;
+        public static final int msg_BadLoginPass=0x7f090025;
+        public static final int strExit=0x7f090037;
+        public static final int strLogin=0x7f090036;
+        public static final int strPassword=0x7f090035;
         /**  Activity Labels End 
  Login Init 
  Activity Labels End 
@@ -968,107 +968,107 @@ containing a value of this type.
  Activity Labels End 
  Login Init 
          */
-        public static final int strUser=0x7f050034;
-        public static final int tab_fav_images=0x7f050044;
-        public static final int tab_fav_networks=0x7f050042;
-        public static final int tab_fav_sensors=0x7f050043;
-        public static final int txtExit=0x7f05003e;
-        public static final int txtNo=0x7f05003d;
-        public static final int txtYes=0x7f05003c;
+        public static final int strUser=0x7f090034;
+        public static final int tab_fav_images=0x7f090044;
+        public static final int tab_fav_networks=0x7f090042;
+        public static final int tab_fav_sensors=0x7f090043;
+        public static final int txtExit=0x7f09003e;
+        public static final int txtNo=0x7f09003d;
+        public static final int txtYes=0x7f09003c;
     }
     public static final class style {
         /**  DashboardButton Init 
          */
-        public static final int DashboardButton=0x7f090039;
+        public static final int DashboardButton=0x7f0a0039;
         /**  Custom Dialog Init 
          */
-        public static final int Dialog=0x7f09003e;
+        public static final int Dialog=0x7f0a003e;
         /**  DashboardButton End 
  Custom Dialog Init 
          */
-        public static final int DialogText=0x7f09003a;
-        public static final int DialogText_Title=0x7f09003b;
-        public static final int GreenDroid=0x7f090006;
+        public static final int DialogText=0x7f0a003a;
+        public static final int DialogText_Title=0x7f0a003b;
+        public static final int GreenDroid=0x7f0a0006;
         /**  PopDownMenu 
          */
-        public static final int GreenDroid_Animation=0x7f09002c;
-        public static final int GreenDroid_Animation_PopDown=0x7f09002d;
-        public static final int GreenDroid_Animation_PopDown_Center=0x7f090030;
-        public static final int GreenDroid_Animation_PopDown_Left=0x7f09002e;
-        public static final int GreenDroid_Animation_PopDown_Right=0x7f09002f;
-        public static final int GreenDroid_Animation_PopUp=0x7f090031;
-        public static final int GreenDroid_Animation_PopUp_Center=0x7f090034;
-        public static final int GreenDroid_Animation_PopUp_Left=0x7f090032;
-        public static final int GreenDroid_Animation_PopUp_Right=0x7f090033;
-        public static final int GreenDroid_Widget=0x7f090007;
+        public static final int GreenDroid_Animation=0x7f0a002c;
+        public static final int GreenDroid_Animation_PopDown=0x7f0a002d;
+        public static final int GreenDroid_Animation_PopDown_Center=0x7f0a0030;
+        public static final int GreenDroid_Animation_PopDown_Left=0x7f0a002e;
+        public static final int GreenDroid_Animation_PopDown_Right=0x7f0a002f;
+        public static final int GreenDroid_Animation_PopUp=0x7f0a0031;
+        public static final int GreenDroid_Animation_PopUp_Center=0x7f0a0034;
+        public static final int GreenDroid_Animation_PopUp_Left=0x7f0a0032;
+        public static final int GreenDroid_Animation_PopUp_Right=0x7f0a0033;
+        public static final int GreenDroid_Widget=0x7f0a0007;
         /**  ActionBar related styles 
          */
-        public static final int GreenDroid_Widget_ActionBar=0x7f09001f;
-        public static final int GreenDroid_Widget_ActionBar_Dashboard=0x7f090020;
-        public static final int GreenDroid_Widget_ActionBar_Empty=0x7f090021;
-        public static final int GreenDroid_Widget_ActionBar_Item=0x7f090022;
-        public static final int GreenDroid_Widget_ActionBar_Title=0x7f090023;
-        public static final int GreenDroid_Widget_ItemView=0x7f090008;
+        public static final int GreenDroid_Widget_ActionBar=0x7f0a001f;
+        public static final int GreenDroid_Widget_ActionBar_Dashboard=0x7f0a0020;
+        public static final int GreenDroid_Widget_ActionBar_Empty=0x7f0a0021;
+        public static final int GreenDroid_Widget_ActionBar_Item=0x7f0a0022;
+        public static final int GreenDroid_Widget_ActionBar_Title=0x7f0a0023;
+        public static final int GreenDroid_Widget_ItemView=0x7f0a0008;
         /**  Styles for the DescriptionItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_DescriptionItemView=0x7f09000b;
+        public static final int GreenDroid_Widget_ItemView_DescriptionItemView=0x7f0a000b;
         /**  Styles for the DrawableItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_DrawableItemView=0x7f09000d;
-        public static final int GreenDroid_Widget_ItemView_DrawableItemView_Drawable=0x7f09000e;
-        public static final int GreenDroid_Widget_ItemView_DrawableItemView_Text=0x7f09000f;
+        public static final int GreenDroid_Widget_ItemView_DrawableItemView=0x7f0a000d;
+        public static final int GreenDroid_Widget_ItemView_DrawableItemView_Drawable=0x7f0a000e;
+        public static final int GreenDroid_Widget_ItemView_DrawableItemView_Text=0x7f0a000f;
         /**  Styles for the LongTextItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_LongTextItemView=0x7f09000a;
+        public static final int GreenDroid_Widget_ItemView_LongTextItemView=0x7f0a000a;
         /**  Styles for the ProgressItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_ProgressItemView=0x7f090010;
-        public static final int GreenDroid_Widget_ItemView_ProgressItemView_ProgressBar=0x7f090011;
-        public static final int GreenDroid_Widget_ItemView_ProgressItemView_Text=0x7f090012;
+        public static final int GreenDroid_Widget_ItemView_ProgressItemView=0x7f0a0010;
+        public static final int GreenDroid_Widget_ItemView_ProgressItemView_ProgressBar=0x7f0a0011;
+        public static final int GreenDroid_Widget_ItemView_ProgressItemView_Text=0x7f0a0012;
         /**  Styles for the SeparatorItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_SeparatorItemView=0x7f09000c;
+        public static final int GreenDroid_Widget_ItemView_SeparatorItemView=0x7f0a000c;
         /**  Styles for the SubtextItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_SubtextItemView=0x7f090016;
-        public static final int GreenDroid_Widget_ItemView_SubtextItemView_Subtext=0x7f090018;
-        public static final int GreenDroid_Widget_ItemView_SubtextItemView_Text=0x7f090017;
+        public static final int GreenDroid_Widget_ItemView_SubtextItemView=0x7f0a0016;
+        public static final int GreenDroid_Widget_ItemView_SubtextItemView_Subtext=0x7f0a0018;
+        public static final int GreenDroid_Widget_ItemView_SubtextItemView_Text=0x7f0a0017;
         /**  Styles for the SubtitleItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_SubtitleItemView=0x7f090013;
-        public static final int GreenDroid_Widget_ItemView_SubtitleItemView_Subtitle=0x7f090015;
-        public static final int GreenDroid_Widget_ItemView_SubtitleItemView_Text=0x7f090014;
+        public static final int GreenDroid_Widget_ItemView_SubtitleItemView=0x7f0a0013;
+        public static final int GreenDroid_Widget_ItemView_SubtitleItemView_Subtitle=0x7f0a0015;
+        public static final int GreenDroid_Widget_ItemView_SubtitleItemView_Text=0x7f0a0014;
         /**  Styles for the TextItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_TextItemView=0x7f090009;
+        public static final int GreenDroid_Widget_ItemView_TextItemView=0x7f0a0009;
         /**  Styles for the ThumbnailItemView 
          */
-        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView=0x7f090019;
-        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Subtitle=0x7f09001b;
-        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Text=0x7f09001a;
-        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Thumbnail=0x7f09001c;
-        public static final int GreenDroid_Widget_PageIndicator=0x7f09002b;
-        public static final int GreenDroid_Widget_QuickAction=0x7f090025;
-        public static final int GreenDroid_Widget_QuickAction_Bar=0x7f090026;
-        public static final int GreenDroid_Widget_QuickAction_Bar_Item=0x7f090029;
+        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView=0x7f0a0019;
+        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Subtitle=0x7f0a001b;
+        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Text=0x7f0a001a;
+        public static final int GreenDroid_Widget_ItemView_ThumbnailItemView_Thumbnail=0x7f0a001c;
+        public static final int GreenDroid_Widget_PageIndicator=0x7f0a002b;
+        public static final int GreenDroid_Widget_QuickAction=0x7f0a0025;
+        public static final int GreenDroid_Widget_QuickAction_Bar=0x7f0a0026;
+        public static final int GreenDroid_Widget_QuickAction_Bar_Item=0x7f0a0029;
         /**  QuickAction related styles 
          */
-        public static final int GreenDroid_Widget_QuickAction_Grid=0x7f090027;
-        public static final int GreenDroid_Widget_QuickAction_Grid_Item=0x7f09002a;
-        public static final int GreenDroid_Widget_QuickAction_Item=0x7f090028;
-        public static final int GreenDroid_Widget_SegmentedBar=0x7f09001d;
-        public static final int GreenDroid_Widget_SegmentedHost=0x7f09001e;
-        public static final int GreenDroid_Widget_TabIndicator=0x7f090024;
+        public static final int GreenDroid_Widget_QuickAction_Grid=0x7f0a0027;
+        public static final int GreenDroid_Widget_QuickAction_Grid_Item=0x7f0a002a;
+        public static final int GreenDroid_Widget_QuickAction_Item=0x7f0a0028;
+        public static final int GreenDroid_Widget_SegmentedBar=0x7f0a001d;
+        public static final int GreenDroid_Widget_SegmentedHost=0x7f0a001e;
+        public static final int GreenDroid_Widget_TabIndicator=0x7f0a0024;
         /**  Action Bar GreenDroid End 
          */
-        public static final int LSLogin=0x7f09003d;
-        public static final int TextAppearance=0x7f090000;
-        public static final int TextAppearance_Large=0x7f090001;
-        public static final int TextAppearance_Medium=0x7f090002;
-        public static final int TextAppearance_Separator=0x7f090004;
-        public static final int TextAppearance_Small=0x7f090003;
-        public static final int TextAppearance_TabIndicator=0x7f090005;
-        public static final int Theme_GreenDroid=0x7f090035;
+        public static final int LSLogin=0x7f0a003d;
+        public static final int TextAppearance=0x7f0a0000;
+        public static final int TextAppearance_Large=0x7f0a0001;
+        public static final int TextAppearance_Medium=0x7f0a0002;
+        public static final int TextAppearance_Separator=0x7f0a0004;
+        public static final int TextAppearance_Small=0x7f0a0003;
+        public static final int TextAppearance_TabIndicator=0x7f0a0005;
+        public static final int Theme_GreenDroid=0x7f0a0035;
         /**  
 	   The following themes inherits from the Theme.Light Android base theme. 
 	   They are strict copies of the previous themes which a large source of errors
@@ -1076,12 +1076,15 @@ containing a value of this type.
 	   is not permitted).
 	
          */
-        public static final int Theme_GreenDroid_Light=0x7f090037;
-        public static final int Theme_GreenDroid_Light_NoTitleBar=0x7f090038;
-        public static final int Theme_GreenDroid_NoTitleBar=0x7f090036;
+        public static final int Theme_GreenDroid_Light=0x7f0a0037;
+        public static final int Theme_GreenDroid_Light_NoTitleBar=0x7f0a0038;
+        public static final int Theme_GreenDroid_NoTitleBar=0x7f0a0036;
         /**  Action Bar GreenDroid Init 
          */
-        public static final int Theme_LSTheme=0x7f09003c;
+        public static final int Theme_LSTheme=0x7f0a003c;
+    }
+    public static final class xml {
+        public static final int settings=0x7f050000;
     }
     public static final class styleable {
         /**  ActionBar related attributes 

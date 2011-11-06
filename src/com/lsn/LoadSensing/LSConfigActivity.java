@@ -1,23 +1,13 @@
 package com.lsn.LoadSensing;
 
 import android.os.Bundle;
-import greendroid.app.GDActivity;
-import greendroid.widget.ActionBarItem.Type;
+import android.preference.PreferenceActivity;
 
-public class LSConfigActivity extends GDActivity {
-
-private final int HELP = 1;
-	
-	@Override
+public class LSConfigActivity extends PreferenceActivity {
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setActionBarContentView(R.layout.main);
-        
-        initActionBar();
+
+        addPreferencesFromResource(R.xml.settings);
     }
-	 private void initActionBar() {
-		
-    	addActionBarItem(Type.Help,HELP);
-	}
-	
 }
