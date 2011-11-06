@@ -1,6 +1,9 @@
 package com.lsn.LoadSensing;
+import java.security.spec.EncodedKeySpec;
+
 import com.lsn.LoadSensing.R;
 import com.lsn.LoadSensing.ui.CustomToast;
+import com.lsn.LoadSensing.encript.LSSecurity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,8 +34,8 @@ public class LSLoginActivity extends Activity {
 		EditText edtLogin = (EditText)findViewById(R.id.edtLogin);
 		EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
 		
-		edtLogin.setText(prefs.getString("user", ""));
-		edtPassword.setText(prefs.getString("pass", ""));
+		edtLogin.setText(LSSecurity.rot13Decode(prefs.getString("user", "")));
+		edtPassword.setText(LSSecurity.rot13Decode(prefs.getString("pass", "")));
 		
 		btnLogin.setOnClickListener(new OnClickListener(){
 
@@ -54,8 +57,8 @@ public class LSLoginActivity extends Activity {
 					intent.putExtras(bundle);
 					
 					SharedPreferences.Editor editor = prefs.edit();
-					editor.putString("user", strUser);
-					editor.putString("pass", strPass);
+					editor.putString("user", LSSecurity.rot13Encode(strUser));
+					editor.putString("pass", LSSecurity.rot13Encode(strPass));
 					editor.commit();
 					
 					startActivity(intent);
