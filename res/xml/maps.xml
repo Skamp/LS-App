@@ -1,5 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Maps">
+        <ListPreference
+            android:key="maps"
+            android:title="@string/settings_title_1"
+            android:summary="@string/settings_summary_1"
+            android:dialogTitle="@string/settings_title_1"
+            android:entries="@array/maps1"
+            android:entryValues="@array/maps2" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="Categoría 1">
         <CheckBoxPreference
             android:key="opcion1"
@@ -10,11 +20,5 @@
             android:title="Preferencia 2"
             android:summary="Descripción de la preferencia 2"
             android:dialogTitle="Introduce valor" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Categoría 2">
-  		<CheckBoxPreference
-            android:key="opcion3"
-            android:title="Preferencia 3"
-            android:summary="Descripción de la preferencia 3" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+   <string-array name="maps1">
+      <item>Google</item>
+      <item>Open Street Map</item>
+   </string-array>
+   <string-array name="maps2">
+      <item>google</item>
+      <item>openstreetmap</item>
+   </string-array>
+</resources>

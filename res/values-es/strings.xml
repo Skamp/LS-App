@@ -55,6 +55,12 @@
    		<string name="tab_fav_networks">Redes</string>
     	<string name="tab_fav_sensors">Sensores</string>
    		<string name="tab_fav_images">Imágenes</string>
-    <!-- Faves Activity End -->
+    <!-- Faves Activity End --> 
+    
+    <!-- Settings Activity Init -->
+  		<string name="settings_title_1">Tipo de mapa</string>
+  		<string name="settings_summary_1">Selecciona el tipo de mapa</string>
+  		<string name="settings_maps">Open Street Map no implementado</string>
+    <!-- Settings Activity End -->
    
 </resources>

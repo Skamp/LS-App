@@ -8,6 +8,6 @@ public class LSConfigActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.settings);
+        addPreferencesFromResource(R.xml.maps); 
     }
 }

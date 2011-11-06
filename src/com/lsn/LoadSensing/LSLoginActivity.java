@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,6 +29,9 @@ public class LSLoginActivity extends Activity {
 		setContentView(R.layout.login);
 		
 		prefs = getSharedPreferences("LSLogin",Context.MODE_PRIVATE);
+		
+		PreferenceManager.setDefaultValues(this, R.xml.maps, false);
+
 		
 		Button btnLogin = (Button)findViewById(R.id.btnLogin);
 		EditText edtLogin = (EditText)findViewById(R.id.edtLogin);
@@ -72,4 +76,16 @@ public class LSLoginActivity extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = settings.edit();          
+ 
+        // default: google maps
+        editor.putString("maps", "google");
+        editor.commit();
+
+	}  
 }

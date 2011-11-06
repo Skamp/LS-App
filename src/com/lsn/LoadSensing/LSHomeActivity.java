@@ -16,7 +16,9 @@ import android.app.AlertDialog;
 //import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ public class LSHomeActivity extends GDActivity {
 	private final int HELP = 1;
 	private final int LOG_OUT = 2;
 	private QuickActionWidget quickActions;
+	private String typeMaps = null;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -58,7 +61,17 @@ public class LSHomeActivity extends GDActivity {
         findViewById(R.id.dsh_btn_Faves).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_AR).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_netCloser).setOnClickListener(dbClickListener);
+        
+        PreferenceManager.setDefaultValues(this, R.xml.maps, false);
+        
     }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        typeMaps=settings.getString("maps", "");
+    }    
     
     @Override
 	public void onBackPressed() {
@@ -149,8 +162,15 @@ public class LSHomeActivity extends GDActivity {
 				i = new Intent(LSHomeActivity.this,LSNetListActivity.class);
 				break;
 			case R.id.dsh_btn_netMaps:
-				i = new Intent(LSHomeActivity.this,LSNetMapsActivity.class);
-				break;
+				 if (typeMaps.equals("google"))
+				 {
+					 i = new Intent(LSHomeActivity.this,LSNetMapsActivity.class);
+				 }
+				 else   
+				 {
+					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settings_maps,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+				 }
+				 break;
 			case R.id.dsh_btn_QRCode:
 				i = new Intent(LSHomeActivity.this,LSQRCodeActivity.class);
 				break;
