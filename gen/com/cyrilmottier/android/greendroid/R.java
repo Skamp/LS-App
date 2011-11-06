@@ -593,26 +593,26 @@ containing a value of this type.
         public static final int url=0x7f010051;
     }
     public static final class color {
-        public static final int actionBarBackground=0x7f070002;
-        public static final int gd_action_bar_divider_tint=0x7f070001;
-        public static final int gd_action_bar_tint=0x7f070000;
-        public static final int gray=0x7f070003;
-        public static final int white=0x7f070004;
+        public static final int actionBarBackground=0x7f060002;
+        public static final int gd_action_bar_divider_tint=0x7f060001;
+        public static final int gd_action_bar_tint=0x7f060000;
+        public static final int gray=0x7f060003;
+        public static final int white=0x7f060004;
     }
     public static final class dimen {
-        public static final int gd_action_bar_height=0x7f08000b;
-        public static final int gd_arrow_offset=0x7f08000c;
-        public static final int gd_drawable_height=0x7f080006;
-        public static final int gd_drawable_margin=0x7f080007;
-        public static final int gd_drawable_width=0x7f080005;
-        public static final int gd_item_view_half_height=0x7f080003;
-        public static final int gd_item_view_height=0x7f080002;
-        public static final int gd_item_view_padding_left=0x7f080004;
-        public static final int gd_progress_bar_height=0x7f080009;
-        public static final int gd_progress_bar_margin=0x7f08000a;
-        public static final int gd_progress_bar_width=0x7f080008;
-        public static final int gd_separator_item_view_height=0x7f080000;
-        public static final int gd_separator_item_view_padding_left=0x7f080001;
+        public static final int gd_action_bar_height=0x7f07000b;
+        public static final int gd_arrow_offset=0x7f07000c;
+        public static final int gd_drawable_height=0x7f070006;
+        public static final int gd_drawable_margin=0x7f070007;
+        public static final int gd_drawable_width=0x7f070005;
+        public static final int gd_item_view_half_height=0x7f070003;
+        public static final int gd_item_view_height=0x7f070002;
+        public static final int gd_item_view_padding_left=0x7f070004;
+        public static final int gd_progress_bar_height=0x7f070009;
+        public static final int gd_progress_bar_margin=0x7f07000a;
+        public static final int gd_progress_bar_width=0x7f070008;
+        public static final int gd_separator_item_view_height=0x7f070000;
+        public static final int gd_separator_item_view_padding_left=0x7f070001;
     }
     public static final class drawable {
         public static final int add_button_default=0x7f020000;
@@ -740,82 +740,82 @@ containing a value of this type.
         public static final int title=0x7f02007a;
     }
     public static final class id {
-        public static final int about=0x7f060015;
-        public static final int balloon_inner_layout=0x7f060019;
-        public static final int balloon_item_snippet=0x7f06001b;
-        public static final int balloon_item_title=0x7f06001a;
-        public static final int balloon_main_layout=0x7f060018;
-        public static final int bottom=0x7f060008;
-        public static final int btnLogin=0x7f060047;
-        public static final int center=0x7f06000d;
-        public static final int center_horizontal=0x7f06000c;
-        public static final int center_vertical=0x7f06000b;
-        public static final int close_img_button=0x7f06001c;
-        public static final int content=0x7f060024;
-        public static final int dashboard=0x7f060001;
-        public static final int dsh_btn_AR=0x7f060021;
-        public static final int dsh_btn_Faves=0x7f060020;
-        public static final int dsh_btn_QRCode=0x7f06001f;
-        public static final int dsh_btn_favImage=0x7f06002d;
-        public static final int dsh_btn_favNetwork=0x7f06002b;
-        public static final int dsh_btn_favSensor=0x7f06002c;
-        public static final int dsh_btn_netCloser=0x7f060022;
-        public static final int dsh_btn_netList=0x7f06001d;
-        public static final int dsh_btn_netMaps=0x7f06001e;
-        public static final int edtLogin=0x7f060045;
-        public static final int edtPassword=0x7f060046;
-        public static final int empty=0x7f060002;
-        public static final int gd_action_bar=0x7f060012;
-        public static final int gd_action_bar_content_view=0x7f060014;
-        public static final int gd_action_bar_home_item=0x7f06002f;
-        public static final int gd_action_bar_host=0x7f060013;
-        public static final int gd_action_bar_item=0x7f060031;
-        public static final int gd_action_bar_item_progress_bar=0x7f060032;
-        public static final int gd_action_bar_title=0x7f060030;
-        public static final int gd_description=0x7f060033;
-        public static final int gd_drawable=0x7f060034;
-        public static final int gd_progress_bar=0x7f060036;
-        public static final int gd_segmented_bar=0x7f060010;
-        public static final int gd_segmented_content_view=0x7f060011;
-        public static final int gd_separator_text=0x7f06003f;
-        public static final int gd_subtext=0x7f060040;
-        public static final int gd_subtitle=0x7f060041;
-        public static final int gd_text=0x7f060035;
-        public static final int gd_thumbnail=0x7f060042;
-        public static final int gdi_arrow_down=0x7f06003d;
-        public static final int gdi_arrow_up=0x7f060038;
-        public static final int gdi_footer=0x7f06003c;
-        public static final int gdi_grid=0x7f06003e;
-        public static final int gdi_header=0x7f060037;
-        public static final int gdi_quick_action_items=0x7f06003b;
-        public static final int gdi_rack=0x7f06003a;
-        public static final int gdi_scroll=0x7f060039;
-        public static final int hdpi=0x7f060005;
-        public static final int header=0x7f060044;
-        public static final int imgToast=0x7f060029;
-        public static final int layoutToast=0x7f060028;
-        public static final int ldpi=0x7f060003;
-        public static final int left=0x7f060009;
-        public static final int license=0x7f060043;
-        public static final int listView1=0x7f06004a;
-        public static final int mdpi=0x7f060004;
-        public static final int message=0x7f060025;
-        public static final int multiple=0x7f06000f;
-        public static final int negativeButton=0x7f060027;
-        public static final int netmap=0x7f06004b;
-        public static final int normal=0x7f060000;
-        public static final int positiveButton=0x7f060026;
-        public static final int right=0x7f06000a;
-        public static final int single=0x7f06000e;
-        public static final int title=0x7f060023;
-        public static final int top=0x7f060007;
-        public static final int txtAppName=0x7f060048;
-        public static final int txtHomeMessage=0x7f06002e;
-        public static final int txtResultFormat=0x7f060017;
-        public static final int txtResultValue=0x7f060016;
-        public static final int txtTeamName=0x7f060049;
-        public static final int txtToast=0x7f06002a;
-        public static final int xhdpi=0x7f060006;
+        public static final int about=0x7f050015;
+        public static final int balloon_inner_layout=0x7f050019;
+        public static final int balloon_item_snippet=0x7f05001b;
+        public static final int balloon_item_title=0x7f05001a;
+        public static final int balloon_main_layout=0x7f050018;
+        public static final int bottom=0x7f050008;
+        public static final int btnLogin=0x7f050047;
+        public static final int center=0x7f05000d;
+        public static final int center_horizontal=0x7f05000c;
+        public static final int center_vertical=0x7f05000b;
+        public static final int close_img_button=0x7f05001c;
+        public static final int content=0x7f050024;
+        public static final int dashboard=0x7f050001;
+        public static final int dsh_btn_AR=0x7f050021;
+        public static final int dsh_btn_Faves=0x7f050020;
+        public static final int dsh_btn_QRCode=0x7f05001f;
+        public static final int dsh_btn_favImage=0x7f05002d;
+        public static final int dsh_btn_favNetwork=0x7f05002b;
+        public static final int dsh_btn_favSensor=0x7f05002c;
+        public static final int dsh_btn_netCloser=0x7f050022;
+        public static final int dsh_btn_netList=0x7f05001d;
+        public static final int dsh_btn_netMaps=0x7f05001e;
+        public static final int edtLogin=0x7f050045;
+        public static final int edtPassword=0x7f050046;
+        public static final int empty=0x7f050002;
+        public static final int gd_action_bar=0x7f050012;
+        public static final int gd_action_bar_content_view=0x7f050014;
+        public static final int gd_action_bar_home_item=0x7f05002f;
+        public static final int gd_action_bar_host=0x7f050013;
+        public static final int gd_action_bar_item=0x7f050031;
+        public static final int gd_action_bar_item_progress_bar=0x7f050032;
+        public static final int gd_action_bar_title=0x7f050030;
+        public static final int gd_description=0x7f050033;
+        public static final int gd_drawable=0x7f050034;
+        public static final int gd_progress_bar=0x7f050036;
+        public static final int gd_segmented_bar=0x7f050010;
+        public static final int gd_segmented_content_view=0x7f050011;
+        public static final int gd_separator_text=0x7f05003f;
+        public static final int gd_subtext=0x7f050040;
+        public static final int gd_subtitle=0x7f050041;
+        public static final int gd_text=0x7f050035;
+        public static final int gd_thumbnail=0x7f050042;
+        public static final int gdi_arrow_down=0x7f05003d;
+        public static final int gdi_arrow_up=0x7f050038;
+        public static final int gdi_footer=0x7f05003c;
+        public static final int gdi_grid=0x7f05003e;
+        public static final int gdi_header=0x7f050037;
+        public static final int gdi_quick_action_items=0x7f05003b;
+        public static final int gdi_rack=0x7f05003a;
+        public static final int gdi_scroll=0x7f050039;
+        public static final int hdpi=0x7f050005;
+        public static final int header=0x7f050044;
+        public static final int imgToast=0x7f050029;
+        public static final int layoutToast=0x7f050028;
+        public static final int ldpi=0x7f050003;
+        public static final int left=0x7f050009;
+        public static final int license=0x7f050043;
+        public static final int listView1=0x7f05004a;
+        public static final int mdpi=0x7f050004;
+        public static final int message=0x7f050025;
+        public static final int multiple=0x7f05000f;
+        public static final int negativeButton=0x7f050027;
+        public static final int netmap=0x7f05004b;
+        public static final int normal=0x7f050000;
+        public static final int positiveButton=0x7f050026;
+        public static final int right=0x7f05000a;
+        public static final int single=0x7f05000e;
+        public static final int title=0x7f050023;
+        public static final int top=0x7f050007;
+        public static final int txtAppName=0x7f050048;
+        public static final int txtHomeMessage=0x7f05002e;
+        public static final int txtResultFormat=0x7f050017;
+        public static final int txtResultValue=0x7f050016;
+        public static final int txtTeamName=0x7f050049;
+        public static final int txtToast=0x7f05002a;
+        public static final int xhdpi=0x7f050006;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -867,9 +867,9 @@ containing a value of this type.
         public static final int other=0x7f03002e;
     }
     public static final class string {
-        public static final int about_content=0x7f050022;
-        public static final int abtxtConfiguration=0x7f050039;
-        public static final int abtxtInformation=0x7f05003a;
+        public static final int about_content=0x7f080022;
+        public static final int abtxtConfiguration=0x7f080039;
+        public static final int abtxtInformation=0x7f08003a;
         /**  Login End 
  ActionBar Text Init 
  Login End 
@@ -877,10 +877,10 @@ containing a value of this type.
  Login End 
  ActionBar Text Init 
          */
-        public static final int abtxtLogOut=0x7f050038;
-        public static final int act_lbl_favImage=0x7f050033;
-        public static final int act_lbl_favImages=0x7f050041;
-        public static final int act_lbl_favNetwork=0x7f050031;
+        public static final int abtxtLogOut=0x7f080038;
+        public static final int act_lbl_favImage=0x7f080033;
+        public static final int act_lbl_favImages=0x7f080041;
+        public static final int act_lbl_favNetwork=0x7f080031;
         /**  Dialog Text End 
  Faves Activity Init 
  Dialog Text End 
@@ -888,11 +888,11 @@ containing a value of this type.
  Dialog Text End 
  Faves Activity Init 
          */
-        public static final int act_lbl_favNetworks=0x7f05003f;
-        public static final int act_lbl_favSensor=0x7f050032;
-        public static final int act_lbl_favSensors=0x7f050040;
-        public static final int act_lbl_homAbout=0x7f050027;
-        public static final int act_lbl_homAugReal=0x7f05002f;
+        public static final int act_lbl_favNetworks=0x7f08003f;
+        public static final int act_lbl_favSensor=0x7f080032;
+        public static final int act_lbl_favSensors=0x7f080040;
+        public static final int act_lbl_homAbout=0x7f080027;
+        public static final int act_lbl_homAugReal=0x7f08002f;
         /**  Messages End 
  Activity Labels Init 
  Messages End 
@@ -900,18 +900,18 @@ containing a value of this type.
  Messages End 
  Activity Labels Init 
          */
-        public static final int act_lbl_homConfig=0x7f050026;
-        public static final int act_lbl_homFaves=0x7f05002e;
-        public static final int act_lbl_homHelp=0x7f05002a;
-        public static final int act_lbl_homInfo=0x7f050029;
-        public static final int act_lbl_homLicense=0x7f050028;
-        public static final int act_lbl_homNetCloser=0x7f050030;
-        public static final int act_lbl_homNetList=0x7f05002b;
-        public static final int act_lbl_homNetMaps=0x7f05002c;
-        public static final int act_lbl_homQRCode=0x7f05002d;
-        public static final int app_name=0x7f050000;
-        public static final int app_team=0x7f05001e;
-        public static final int app_url=0x7f050021;
+        public static final int act_lbl_homConfig=0x7f080026;
+        public static final int act_lbl_homFaves=0x7f08002e;
+        public static final int act_lbl_homHelp=0x7f08002a;
+        public static final int act_lbl_homInfo=0x7f080029;
+        public static final int act_lbl_homLicense=0x7f080028;
+        public static final int act_lbl_homNetCloser=0x7f080030;
+        public static final int act_lbl_homNetList=0x7f08002b;
+        public static final int act_lbl_homNetMaps=0x7f08002c;
+        public static final int act_lbl_homQRCode=0x7f08002d;
+        public static final int app_name=0x7f08001c;
+        public static final int app_team=0x7f08001e;
+        public static final int app_url=0x7f080021;
         /**  ActionBar Text End 
  Dialog Text Init 
  ActionBar Text End 
@@ -919,48 +919,48 @@ containing a value of this type.
  ActionBar Text End 
  Dialog Text Init 
          */
-        public static final int dialogLogOut=0x7f05003b;
-        public static final int gd_add=0x7f05000c;
-        public static final int gd_all_friends=0x7f050018;
-        public static final int gd_compass=0x7f050011;
-        public static final int gd_compose=0x7f050004;
-        public static final int gd_edit=0x7f05000b;
-        public static final int gd_export=0x7f050005;
-        public static final int gd_eye=0x7f050017;
-        public static final int gd_gallery=0x7f05001a;
-        public static final int gd_go_home=0x7f050001;
-        public static final int gd_group=0x7f050019;
-        public static final int gd_help=0x7f050012;
-        public static final int gd_info=0x7f050013;
-        public static final int gd_list=0x7f050015;
-        public static final int gd_locate=0x7f05000a;
-        public static final int gd_locate_myself=0x7f050010;
-        public static final int gd_mail=0x7f05001c;
-        public static final int gd_pick_photo=0x7f050009;
-        public static final int gd_refresh=0x7f050007;
-        public static final int gd_search=0x7f050002;
-        public static final int gd_settings=0x7f050014;
-        public static final int gd_share=0x7f050006;
-        public static final int gd_slideshow=0x7f05001b;
-        public static final int gd_sort_alpha=0x7f05000f;
-        public static final int gd_sort_by_size=0x7f05000e;
-        public static final int gd_star=0x7f05000d;
-        public static final int gd_take_photo=0x7f050008;
-        public static final int gd_talk=0x7f050003;
-        public static final int gd_trashcan=0x7f050016;
-        public static final int googleMaps_API_key_debug=0x7f05001f;
-        public static final int hello=0x7f05001d;
-        public static final int infoTabAbout=0x7f050023;
-        public static final int infoTabLicense=0x7f050024;
-        public static final int info_LoadSensing=0x7f050020;
+        public static final int dialogLogOut=0x7f08003b;
+        public static final int gd_add=0x7f08000b;
+        public static final int gd_all_friends=0x7f080017;
+        public static final int gd_compass=0x7f080010;
+        public static final int gd_compose=0x7f080003;
+        public static final int gd_edit=0x7f08000a;
+        public static final int gd_export=0x7f080004;
+        public static final int gd_eye=0x7f080016;
+        public static final int gd_gallery=0x7f080019;
+        public static final int gd_go_home=0x7f080000;
+        public static final int gd_group=0x7f080018;
+        public static final int gd_help=0x7f080011;
+        public static final int gd_info=0x7f080012;
+        public static final int gd_list=0x7f080014;
+        public static final int gd_locate=0x7f080009;
+        public static final int gd_locate_myself=0x7f08000f;
+        public static final int gd_mail=0x7f08001b;
+        public static final int gd_pick_photo=0x7f080008;
+        public static final int gd_refresh=0x7f080006;
+        public static final int gd_search=0x7f080001;
+        public static final int gd_settings=0x7f080013;
+        public static final int gd_share=0x7f080005;
+        public static final int gd_slideshow=0x7f08001a;
+        public static final int gd_sort_alpha=0x7f08000e;
+        public static final int gd_sort_by_size=0x7f08000d;
+        public static final int gd_star=0x7f08000c;
+        public static final int gd_take_photo=0x7f080007;
+        public static final int gd_talk=0x7f080002;
+        public static final int gd_trashcan=0x7f080015;
+        public static final int googleMaps_API_key_debug=0x7f08001f;
+        public static final int hello=0x7f08001d;
+        public static final int infoTabAbout=0x7f080023;
+        public static final int infoTabLicense=0x7f080024;
+        public static final int info_LoadSensing=0x7f080020;
         /**  Messages Init 
  Messages Init 
  Messages Init 
          */
-        public static final int msg_BadLoginPass=0x7f050025;
-        public static final int strExit=0x7f050037;
-        public static final int strLogin=0x7f050036;
-        public static final int strPassword=0x7f050035;
+        public static final int msg_BadLoginPass=0x7f080025;
+        public static final int strExit=0x7f080037;
+        public static final int strLogin=0x7f080036;
+        public static final int strPassword=0x7f080035;
         /**  Activity Labels End 
  Login Init 
  Activity Labels End 
@@ -968,13 +968,13 @@ containing a value of this type.
  Activity Labels End 
  Login Init 
          */
-        public static final int strUser=0x7f050034;
-        public static final int tab_fav_images=0x7f050044;
-        public static final int tab_fav_networks=0x7f050042;
-        public static final int tab_fav_sensors=0x7f050043;
-        public static final int txtExit=0x7f05003e;
-        public static final int txtNo=0x7f05003d;
-        public static final int txtYes=0x7f05003c;
+        public static final int strUser=0x7f080034;
+        public static final int tab_fav_images=0x7f080044;
+        public static final int tab_fav_networks=0x7f080042;
+        public static final int tab_fav_sensors=0x7f080043;
+        public static final int txtExit=0x7f08003e;
+        public static final int txtNo=0x7f08003d;
+        public static final int txtYes=0x7f08003c;
     }
     public static final class style {
         /**  DashboardButton Init 
