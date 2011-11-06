@@ -17,8 +17,9 @@ import android.widget.EditText;
 
 
 public class LSLoginActivity extends Activity {
-
+	// user
 	private String strUser;
+	// pass
 	private String strPass;
 	private SharedPreferences prefs;
 	
@@ -47,6 +48,7 @@ public class LSLoginActivity extends Activity {
 				strUser = edtLogin.getText().toString();
 				strPass = edtPassword.getText().toString();
 				
+				// valid user
 				if ((strUser.equals("sergio")) && (strPass.equals("1234"))) {
 					
 					Intent intent = new Intent(LSLoginActivity.this,LSHomeActivity.class);
@@ -64,7 +66,7 @@ public class LSLoginActivity extends Activity {
 					startActivity(intent);
 				}
 				else
-				{
+				{ // user don't exist
 					CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_BadLoginPass,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
 					edtLogin.setText("");
 					edtPassword.setText("");
