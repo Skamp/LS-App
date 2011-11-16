@@ -72,8 +72,8 @@ public class LSFavesSensorsActivity extends GDListActivity{
 		quickActions = new QuickActionBar(this);
 		//quickActions.addQuickAction(new QuickAction(this,R.drawable.find,getString(R.string.find)));
 		//quickActions.addQuickAction(new QuickAction(this,R.drawable.filter,getString(R.string.filter)));
-		quickActions.addQuickAction(new QuickAction(this,R.drawable.find,"XXX"));
-		quickActions.addQuickAction(new QuickAction(this,R.drawable.filter,"YYY"));
+		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_search,R.string.strSearch));
+		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_filter,R.string.strFilter));
 		quickActions.setOnQuickActionClickListener(new OnQuickActionClickListener() {
 
 			@Override

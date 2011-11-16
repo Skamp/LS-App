@@ -125,8 +125,8 @@ public class LSNetMapsActivity extends GDMapActivity {
 	private void initQuickActionBar()
 	{
 		quickActions = new QuickActionBar(this);
-		quickActions.addQuickAction(new QuickAction(this,R.drawable.find,"Cercar"));
-		quickActions.addQuickAction(new QuickAction(this,R.drawable.filter,"Filtrar"));
+		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_search,R.string.strSearch));
+		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_filter,R.string.strFilter));
 		quickActions.setOnQuickActionClickListener(new OnQuickActionClickListener() {
 
 			@Override

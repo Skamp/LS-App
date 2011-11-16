@@ -9,10 +9,9 @@
 *.class
 
 # generated files
-bin/classes/com/lsn/LoadSensing/*.class
 bin/
 gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
-/project.properties
+project.properties

@@ -45,7 +45,7 @@ public class LSHomeActivity extends GDActivity {
         
         if (bundle != null)
         {
-        	CustomToast.showCustomToast(this,"Bienvenido usuario "+ bundle.getString("USER"),CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
+        	CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER"),CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
     	}       
         
         

@@ -13,6 +13,7 @@
         
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Login/Password incorrectes</string>
+    <string name="msg_Welcome">Benvingut usuari</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homConfig">Configuració</string>
@@ -64,4 +65,9 @@
   		<string name="settings_summary_1">Selecciona el tipus de mapa</string>
   		<string name="settings_maps">Open Street Map no implementat</string>
     <!-- Settings Activity End -->
+    <!-- Menu Init -->
+   		<string name="strSearch">Cercar</string>
+    	<string name="strFilter">Filtrar</string>
+   
+   	<!-- Menu End -->
 </resources>

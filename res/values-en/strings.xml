@@ -11,6 +11,7 @@
     
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Bad Login/Password</string>
+    <string name="msg_Welcome">Welcome user</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homConfig">Configuration</string>
@@ -61,5 +62,9 @@
   		<string name="settings_summary_1">Select the type of map</string>
   		<string name="settings_maps">Open Street Map don t implemented</string>
     <!-- Settings Activity End -->
+   	<!-- Menu Init -->
+   		<string name="strSearch">Find</string>
+    	<string name="strFilter">Filter</string>
    
+   	<!-- Menu End -->
 </resources>
