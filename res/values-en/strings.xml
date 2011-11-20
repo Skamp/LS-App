@@ -14,6 +14,7 @@
     <string name="msg_Welcome">Welcome user</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
+    	<string name="act_lbl_homHome">LoadSensing App</string>
     	<string name="act_lbl_homConfig">Configuration</string>
     	<string name="act_lbl_homAbout">About</string>
     	<string name="act_lbl_homLicense">License</string>
@@ -56,7 +57,21 @@
     	<string name="tab_fav_sensors">Sensors</string>
    		<string name="tab_fav_images">Images</string>
     <!-- Faves Activity End -->
-    
+    <!-- NetList Activity Init -->   
+   		<string name="strSituation">Situation:</string>
+  		<string name="strNumSensors">Number of sensors:</string>
+   	<!-- NetList Activity End -->
+   	<!-- NetCloser Activity Init -->  
+   		<string name="strGetLocation">Getting location...</string> 
+   		<string name="strYourLocation">Your location - (lat: %1$s,lon: %2$s)</string>
+   		<string name="strErrorLocation">Your location cannot be obtained</string>
+  		
+   	<!-- NetCloser Activity End -->
+   	<!-- FavesSensors Activity Init -->   
+   		<string name="strNetName">Network:</string>
+   		
+  		
+   	<!-- FavesSensors Activity End -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Type of map</string>
   		<string name="settings_summary_1">Select the type of map</string>
@@ -65,6 +80,7 @@
    	<!-- Menu Init -->
    		<string name="strSearch">Find</string>
     	<string name="strFilter">Filter</string>
-   
+   		<string name="strMapMode">Switch view</string>
    	<!-- Menu End -->
+   	
 </resources>

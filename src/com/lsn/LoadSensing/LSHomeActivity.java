@@ -1,6 +1,7 @@
 package com.lsn.LoadSensing;
 
 //import com.lsn.LoadSensing.ui.CustomDialog;
+
 import com.lsn.LoadSensing.ui.CustomToast;
 
 import greendroid.app.GDActivity;
@@ -13,7 +14,6 @@ import greendroid.widget.QuickActionBar;
 import greendroid.widget.QuickActionWidget;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.app.AlertDialog;
-//import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,6 +37,7 @@ public class LSHomeActivity extends GDActivity {
         super.onCreate(savedInstanceState);
         setActionBarContentView(R.layout.dshb_home);
         getActionBar().setType(ActionBar.Type.Empty);
+        setTitle(R.string.act_lbl_homHome);
         
         initActionBar();
         initQuickActionBar();

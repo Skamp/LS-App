@@ -45,9 +45,9 @@
 		            android:layout_width="400dip"
 		            android:layout_height="wrap_content"
 		            android:text="@string/strUser"
-		            android:textColor="#372c24" />
-	
-	
+		            android:textColor="#372c24" 
+		            android:textAppearance="?android:attr/textAppearanceLarge"
+		            />
 		        <EditText
 		            android:id="@+id/edtLogin"
 		            android:layout_width="400dip"
@@ -62,7 +62,9 @@
 		            android:layout_width="400dip"
 		            android:layout_height="wrap_content"
 		            android:text="@string/strPassword"
-		            android:textColor="#372c24" />
+		            android:textColor="#372c24" 
+		            android:textAppearance="?android:attr/textAppearanceLarge"
+		            />
 	
 	
 		        <EditText
@@ -77,10 +79,12 @@
 	
 		        <Button
 		            android:id="@+id/btnLogin"
-		            android:layout_width="wrap_content"
+		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
 		            android:layout_marginTop="10dip"
-		            android:text="@string/strLogin" />
+		            android:text="@string/strLogin" 
+		            android:textAppearance="?android:attr/textAppearanceLarge"
+		            />
 	
 		          <!-- Link to Registration Screen -->
 		        <TextView 

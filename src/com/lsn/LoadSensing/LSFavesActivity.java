@@ -18,8 +18,8 @@ public class LSFavesActivity extends GDTabActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_04_faves);
 
-        
         //initQuickActionBar();
         
         final String listText =  getString(R.string.tab_fav_networks);

@@ -14,6 +14,7 @@
     <string name="msg_Welcome">Bienvenido usuario</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
+    	<string name="act_lbl_homHome">LoadSensing App</string>
     	<string name="act_lbl_homConfig">Configuración</string>
     	<string name="act_lbl_homAbout">Sobre...</string>
     	<string name="act_lbl_homLicense">Licencia</string>
@@ -56,7 +57,23 @@
     	<string name="tab_fav_sensors">Sensores</string>
    		<string name="tab_fav_images">Imágenes</string>
     <!-- Faves Activity End --> 
-    
+    <!-- NetList Activity Init -->   
+   		<string name="strSituation">Situación:</string>
+  		<string name="strNumSensors">Número de sensores:</string>
+   	<!-- NetList Activity End -->
+   	<!-- NetCloser Activity Init -->   
+   		<string name="strGetLocation">Obteniendo ubicación...</string>
+   		<string name="strYourLocation">Tu ubicación - (lat: %1$s,lon: %2$s)</string>
+  		<string name="strErrorLocation">Tu ubicación no puede ser obtenida</string>
+  		
+   	<!-- NetCloser Activity End -->
+   	<!-- FavesSensors Activity Init -->   
+   		<string name="strNetName">Red:</string>
+   		
+  		
+   	<!-- FavesSensors Activity End -->
+   	
+   	
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipo de mapa</string>
   		<string name="settings_summary_1">Selecciona el tipo de mapa</string>
@@ -65,6 +82,9 @@
     <!-- Menu Init -->
    		<string name="strSearch">Buscar</string>
     	<string name="strFilter">Filtrar</string>
-   
+   		<string name="strMapMode">Cambiar vista</string>
    	<!-- Menu End -->
+   	
+   	
+   	
 </resources>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <greendroid.widget.ActionBarHost
 	xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/gd_action_bar_host"
@@ -6,7 +7,7 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-	<greendroid.widget.ActionBar
+	 <greendroid.widget.ActionBar
 		android:id="@id/gd_action_bar"
         android:layout_height="@dimen/gd_action_bar_height"
         android:layout_width="fill_parent"
@@ -17,18 +18,20 @@
 		android:layout_height="0dp"
 		android:layout_width="fill_parent"
 		android:layout_weight="1">
+
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		   android:orientation="vertical"
 		   android:layout_width="fill_parent"
 		   android:layout_height="fill_parent"
 		   android:background="#FFF"
 		   >
-			<ListView
+		  
+		   <ListView
 			    android:id="@+id/android:list"
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:cacheColorHint="#FFF"
 			    />
 		</LinearLayout>
-	</FrameLayout>
+	 </FrameLayout>
 </greendroid.widget.ActionBarHost>

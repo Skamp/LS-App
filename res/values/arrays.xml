@@ -8,4 +8,9 @@
       <item>google</item>
       <item>openstreetmap</item>
    </string-array>
+
+	<string-array name="lsnetmaps_options">
+	    <item name="lsnetmaps_opt_mapStreet" type="string">Street View</item>
+	    <item name="lsnetmaps_opt_mapSat" type="string">Satellite View</item>
+	</string-array>
 </resources>

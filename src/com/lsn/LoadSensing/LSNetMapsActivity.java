@@ -7,7 +7,6 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
-//import com.lsn.LoadSensing.map.LSdrawNetworks;
 import com.lsn.LoadSensing.map.LSNetworksOverlay;
 
 import greendroid.app.GDMapActivity;
@@ -23,15 +22,17 @@ import android.widget.Toast;
 
 public class LSNetMapsActivity extends GDMapActivity {
 
-	MapView         mapView;
-	List<Overlay>   mapOverlays;
-	Drawable        drawable;
-	Drawable        drawable2;
+	MapView           mapView;
+	List<Overlay>     mapOverlays;
+	Drawable          drawable;
+	Drawable          drawable2;
 	LSNetworksOverlay itemizedOverlay;
 	LSNetworksOverlay itemizedOverlay2;
+	boolean           modeStreeView;
 	
 	private final int OPTIONS = 0;
 	private final int HELP = 1;
+	
 	private QuickActionWidget quickActions;
 
 
@@ -43,13 +44,15 @@ public class LSNetMapsActivity extends GDMapActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setActionBarContentView(R.layout.netmap);
+        setActionBarContentView(R.layout.act_02_netmap);
         
         initActionBar();
         initQuickActionBar();
         
         final MapView mapView = (MapView) findViewById(R.id.netmap);
         mapView.setBuiltInZoomControls(true);
+        setStreetView();
+        
         
         //List<Overlay> capas = mapView.getOverlays();
         //LSdrawNetworks om = new LSdrawNetworks();
@@ -96,10 +99,40 @@ public class LSNetMapsActivity extends GDMapActivity {
         
     }
 	
+	private void setStreetView(){
+		
+		final MapView mapView = (MapView) findViewById(R.id.netmap);
+		mapView.setSatellite(false);
+		mapView.setStreetView(true);
+		modeStreeView=true;
+	}
+	
+	private void setSatelliteView(){
+		
+		final MapView mapView = (MapView) findViewById(R.id.netmap);
+		mapView.setSatellite(true);
+		mapView.setStreetView(false);
+		modeStreeView=false;
+	}
+	
+	/**
+	 * @return the modeStreeView
+	 */
+	public boolean isModeStreeView() {
+		return modeStreeView;
+	}
+	/**
+	 * @param modeStreeView the modeStreeView to set
+	 */
+	public void setModeStreeView(boolean modeStreeView) {
+		this.modeStreeView = modeStreeView;
+	}
+	
 	private void initActionBar() {
 		
     	addActionBarItem(Type.Add,OPTIONS);
     	addActionBarItem(Type.Help,HELP);
+    	
 	}
 	
 	@Override
@@ -122,18 +155,68 @@ public class LSNetMapsActivity extends GDMapActivity {
 		return true;
 	} 
  
+	
+	////@Override
+	////public boolean onCreateOptionsMenu(Menu menu) {
+
+	////	MenuInflater inflater = getMenuInflater();
+	////	inflater.inflate(R.menu.lsnetmaps_gmapsmode, menu);
+		
+	////	return true;
+	////}
+	
+	////@Override
+	////public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+	////	final MapView mapView = (MapView) findViewById(R.id.netmap);
+		
+	////	switch (item.getItemId()) {
+		
+	////	case R.id.lsnetmaps_mnu_mapSat:
+	////		mapView.setSatellite(true);
+	////		mapView.setStreetView(false);
+	////		break;
+	////	case R.id.lsnetmaps_mnu_mapStreet:
+	////		mapView.setStreetView(true);
+	////		mapView.setSatellite(false);
+	////		break;			
+	////	}
+	////	
+	////	return true;
+	////}
+	
+	
+	
 	private void initQuickActionBar()
 	{
 		quickActions = new QuickActionBar(this);
 		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_search,R.string.strSearch));
 		quickActions.addQuickAction(new QuickAction(this,R.drawable.ic_menu_filter,R.string.strFilter));
+		quickActions.addQuickAction(new QuickAction(this,android.R.drawable.ic_menu_mapmode,R.string.strMapMode));
 		quickActions.setOnQuickActionClickListener(new OnQuickActionClickListener() {
 
 			@Override
 			public void onQuickActionClicked(QuickActionWidget widget, int position) {
 				Toast.makeText(LSNetMapsActivity.this, "Item " + position + " pulsado", Toast.LENGTH_SHORT).show();
+				switch(position) {
 				
+				case 0:
+					break;
+				case 1:
+					break;
+				case 2:
+					//Switch map mode
+					if (isModeStreeView()) {
+						
+						setSatelliteView();
+					}
+					else {
+						setStreetView();
+					}
+					break;
+				}
 			}
 		});
 	}
+	
 }

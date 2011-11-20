@@ -4,9 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import android.text.Editable;
-import android.text.SpannableStringBuilder;
-
 
 public class LSSecurity {
 

@@ -16,6 +16,7 @@
     <string name="msg_Welcome">Benvingut usuari</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
+    	<string name="act_lbl_homHome">LoadSensing App</string>
     	<string name="act_lbl_homConfig">Configuració</string>
 	    <string name="act_lbl_homAbout">Sobre...</string>
 	    <string name="act_lbl_homLicense">Llicència</string>
@@ -59,7 +60,21 @@
     	<string name="tab_fav_sensors">Sensors</string>
    		<string name="tab_fav_images">Imatges</string>
     <!-- Faves Activity End -->
-   
+	<!-- NetList Activity Init -->   
+   		<string name="strSituation">Situació:</string>
+  		<string name="strNumSensors">Nombre de sensors:</string>
+   	<!-- NetList Activity End -->
+   	<!-- NetCloser Activity Init -->   
+   		<string name="strGetLocation">Obtenint ubicació...</string>
+   		<string name="strYourLocation">La teva ubicació - (lat: %1$s,lon: %2$s)</string>
+   		<string name="strErrorLocation">No es pot obtenir la teva ubicació</string>
+  		
+   	<!-- NetCloser Activity End -->
+   	<!-- FavesSensors Activity Init -->   
+   		<string name="strNetName">Xarxa:</string>
+   		
+  		
+   	<!-- FavesSensors Activity End -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipus de mapes</string>
   		<string name="settings_summary_1">Selecciona el tipus de mapa</string>
@@ -68,6 +83,8 @@
     <!-- Menu Init -->
    		<string name="strSearch">Cercar</string>
     	<string name="strFilter">Filtrar</string>
-   
+    	<string name="strMapMode">Canviar vista</string>
+   		
    	<!-- Menu End -->
+   	
 </resources>
