@@ -800,8 +800,8 @@ containing a value of this type.
         public static final int header=0x7f060046;
         public static final int imageBitmap=0x7f06004c;
         public static final int imageName=0x7f06004d;
-        public static final int imageNetwork=0x7f06004f;
-        public static final int imageSituation=0x7f06004e;
+        public static final int imageNetwork=0x7f06004e;
+        public static final int imageSituation=0x7f06004f;
         public static final int imgToast=0x7f06002b;
         public static final int layoutToast=0x7f06002a;
         public static final int ldpi=0x7f060003;
