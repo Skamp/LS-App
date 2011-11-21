@@ -23,7 +23,7 @@
     	<string name="act_lbl_homNetList">Redes en lista</string> 
     	<string name="act_lbl_homNetMaps">Redes en mapa</string>
     	<string name="act_lbl_homQRCode">Leer QR Code</string>
-    	<string name="act_lbl_homFaves">Favorites</string>
+    	<string name="act_lbl_homFaves">Favoritos</string>
     	<string name="act_lbl_homAugReal">Realidad Augmentada</string>
     	<string name="act_lbl_homNetCloser">Redes cercanas</string>
     	<string name="act_lbl_favNetwork">Redes favoritas</string>
@@ -85,6 +85,13 @@
    		<string name="strMapMode">Cambiar vista</string>
    	<!-- Menu End -->
    	
-   	
-   	
+   	<!-- Help Init -->
+   		<string name="help_homNetList">Redes en lista: Da la posibilidad de mostrar el listado de todas las redes registradas en el sistema a les que el usuario tiene acceso.</string> 
+	    <string name="help_homNetMaps">Redes en mapa: Da la posibilidad de visualizar todas las redes registradas en el sistema a las que el usuario tiene acceso.</string>
+	    <string name="help_homQRCode">Leer QR Code: Se puede acceder directamente al dispositivo leyendo el bidicode/QR Code y acceder a la información del nodo.</string>
+	    <string name="help_homFaves">Favoritos: Muestra las redes, sensores e imágenes que el usuario tiene como favoritas para poder tenerlas accesibles más rapidamente.</string>
+	    <string name="help_homAugReal">Realidad Augmentada: Estando in situ en la misma zona donde se encuentra la red a analizar, se puede geoposicionar cada nodo de la red observando en tiempo real la posición del nodo.</string>
+	    <string name="help_homNetCloser">Redes cercanas: Permite, mediante el GPS del dispositivo, detectar las redes cercanas a la ubicación en la que se encuentra.</string>
+	<!-- Help End -->
+
 </resources>

@@ -83,4 +83,13 @@
    		<string name="strMapMode">Switch view</string>
    	<!-- Menu End -->
    	
+   	
+   	<!-- Help Init -->
+   		<string name="help_homNetList">Networks list: Provides the ability to display the list of all networks registered in the system that the user will have access.</string> 
+	    <string name="help_homNetMaps">Networks in maps: Provides the ability to display all registered in the system network to which the user has access.</string>
+	    <string name="help_homQRCode">Read QR Code:You can go directly to the device reading the bidicode / QR Code and access to information of the node.</string>
+	    <string name="help_homFaves">Favorites: Sample networks, sensors and images that the user has to have them as favorites for quicker access.</string>
+	    <string name="help_homAugReal">Augmented Reality: While in situ in the same area where the network is analyzed, each node can be managed on the network in real time by observing the position of the node.</string>
+	    <string name="help_homNetCloser">Closer networks: It allows, through the GPS device to detect nearby networks to the location where you are.</string>
+	<!-- Help End -->
 </resources>

@@ -87,4 +87,14 @@
    		
    	<!-- Menu End -->
    	
+   	
+   	<!-- Help Init -->
+   		<string name="help_homNetList">Xarxes en llistat: Dona la possibilitat de mostrar el llistat de totes les xarxes registrades al sistema a les que l\'usuari té accés.</string> 
+	    <string name="help_homNetMaps">Xarxes en mapes: Dona la possibilitat de visualitzar totes les xarxes registrades al sistema on l\'usuari té accés.</string>
+	    <string name="help_homQRCode">Llegir QR Code: Es pot accedir directament al dispositiu llegint el bidicode/QR Code i accedir la informació del node.</string>
+	    <string name="help_homFaves">Favorits: Mostra les xarxes, sensors i imatges que l\'usuari té com a preferides per poder tenir-les accessible més ràpidament.</string>
+	    <string name="help_homAugReal">Realitat Augmentada: Estant in situ en la mateixa zona on es troba la xarxa a analitzar, es pot geoposicionar cada node de la xarxa observant en temps real la posició dels nodes.</string>
+	    <string name="help_homNetCloser">Xarxes properes: Permet, mitjan�ant el GPS del dispositiu, detectar les xarxes properes a la ubicació en la que es troba.</string>
+	<!-- Help End -->
+   		
 </resources>

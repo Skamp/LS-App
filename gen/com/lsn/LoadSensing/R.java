@@ -975,6 +975,19 @@ containing a value of this type.
         public static final int gd_trashcan=0x7f090015;
         public static final int googleMaps_API_key_debug=0x7f09001d;
         public static final int hello=0x7f09001e;
+        public static final int help_homAugReal=0x7f090057;
+        public static final int help_homFaves=0x7f090056;
+        public static final int help_homNetCloser=0x7f090058;
+        /**  Menu End 
+ Help Init 
+ Menu End 
+ Help Init 
+ Menu End 
+ Help Init 
+         */
+        public static final int help_homNetList=0x7f090053;
+        public static final int help_homNetMaps=0x7f090054;
+        public static final int help_homQRCode=0x7f090055;
         public static final int infoTabAbout=0x7f090023;
         public static final int infoTabLicense=0x7f090024;
         public static final int info_LoadSensing=0x7f090020;
