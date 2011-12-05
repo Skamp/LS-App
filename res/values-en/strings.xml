@@ -12,6 +12,12 @@
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Bad Login/Password</string>
     <string name="msg_Welcome">Welcome user</string>
+    <string name="msg_QRIntentError">QRCode reader Intent not found, install Google Googles on device</string>
+    <string name="msg_NOLocServ">There are no active location services</string>
+    <string name="msg_PleaseWait">Please wait...</string>
+    <string name="msg_retrievNetworks">Retrieving networks...</string>
+    <string name="msg_retrievImages">Retrieveing images...</string>
+    <string name="msg_retrievSensors">Retrieveing sensors...</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>

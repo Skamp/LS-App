@@ -30,6 +30,7 @@
         </activity>
         <activity 
             android:label="@string/act_lbl_homNetList"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".LSNetListActivity">
         </activity>
         <activity 
@@ -42,6 +43,7 @@
         </activity>
         <activity
             android:label="@string/act_lbl_homFaves" 
+            android:configChanges="orientation|keyboardHidden"
             android:name=".LSFavesActivity">
         </activity>
         <activity 
@@ -50,6 +52,7 @@
         </activity>
         <activity 
             android:label="@string/act_lbl_homNetCloser"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".LSNetCloserActivity">
         </activity>
         <activity 
@@ -74,14 +77,17 @@
         </activity>
         <activity 
             android:label="@string/act_lbl_favNetworks"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".faves.LSFavesNetworksActivity">
         </activity>
         <activity 
             android:label="@string/act_lbl_favSensors"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".faves.LSFavesSensorsActivity">
         </activity>
         <activity 
             android:label="@string/act_lbl_favImages"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".faves.LSFavesImagesActivity">
         </activity>
             

@@ -1,5 +1,8 @@
 package com.lsn.LoadSensing;
 
+import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
+
 import greendroid.app.GDActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +10,29 @@ import android.widget.TextView;
 
 
 public class LSQRCodeActivity extends GDActivity {
+	
+	private String intentQRCode = "com.google.zxing.client.android.SCAN";
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActionBarContentView(R.layout.act_03_qrcode);
         
-        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-		intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-		startActivityForResult(intent,0);
+        //Check if QRCode reader intent is available
+        if (LSFunctions.isIntentAvailable(this, intentQRCode))
+        {
+	        Intent intent = new Intent(intentQRCode);
+			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+			startActivityForResult(intent,0);
+        }
+        else
+        {
+        	CustomToast.showCustomToast(this,
+        			                    R.string.msg_QRIntentError,
+        			                    CustomToast.IMG_ERROR,
+        			                    CustomToast.LENGTH_LONG);
+        	this.finish();
+        }
     }
 	
 	

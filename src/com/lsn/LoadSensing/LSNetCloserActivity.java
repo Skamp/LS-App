@@ -4,14 +4,18 @@ import java.util.ArrayList;
 
 import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
 import com.lsn.LoadSensing.element.LSNetwork;
+import com.lsn.LoadSensing.ui.CustomToast;
+import com.lsn.LoadSensing.element.Position;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -21,16 +25,19 @@ import greendroid.app.GDListActivity;
 
 public class LSNetCloserActivity extends GDListActivity{
 	
-	private double curLat;
-	private double curLon;
-	private LocationManager locManager;
-	private LocationListener locListener;
-	private boolean providerStatus;
+	
+	private LocationManager  locManager;
+	private LocationListener locationListenerGPS;
+	private LocationListener locationListenerNetwork;
+	private GetLocation      getLocation;
+	private boolean gpsStatus;
+	private boolean netStatus;
 	
 	private ProgressDialog       m_ProgressDialog = null;
 	private ArrayList<LSNetwork> m_networks = null;
-	private LSNetworkAdapter       m_adapter;
+	private LSNetworkAdapter     m_adapter;
 	private Runnable             viewNetworks;
+	
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,117 +49,89 @@ public class LSNetCloserActivity extends GDListActivity{
         setListAdapter(this.m_adapter);
         
         
-        viewNetworks = new Runnable()
-        {
-
-			@Override
-			public void run() {
-				
-				//getLocation();
-				getNetworks();
-			}
-        };
-        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
-        thread.start();
+        if (locManager == null)
+		{
+        	//Obtain reference to LocationManager
+        	locManager = 
+        			(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		}
+        //Check status of location services
+        checkGPSStatus();
+        checkNETStatus();
         
-        m_ProgressDialog = ProgressDialog.show(LSNetCloserActivity.this, "Please wait...", "Retrieving location and networks...", true);
+        
+        if (!gpsStatus && !netStatus)
+        {
+        	//Show error message if there are no active services
+        	CustomToast.showCustomToast(this,
+                    R.string.msg_NOLocServ,
+                    CustomToast.IMG_ERROR,
+                    CustomToast.LENGTH_LONG);
+        	
+        	TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
+        	txtLocation.setBackgroundColor(Color.RED);
+        	txtLocation.setText(R.string.msg_NOLocServ);
+        }
+        else
+        {
+            //Obtain location using Async Task
+        	getLocation = new GetLocation();
+        	getLocation.execute();
+        
+        	//Feed list with closer networks
+	        viewNetworks = new Runnable()
+	        {
+	
+	        	@Override
+	        	public void run() {
+	        		
+	        		getNetworks();
+	        	}
+	        };
+	        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
+	        thread.start();
+	        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
+        }
     }
+	
+	
+	private void checkNETStatus() {
+		
+		try
+		{
+			gpsStatus = locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		}
+		catch(Exception ex) {}
+		
+	}
+
+
+	private void checkGPSStatus() {
+		
+		try
+		{
+			netStatus = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+		}
+		catch(Exception ex) {}
+	}
 	
 	
 	private Runnable returnRes = new Runnable() {
 
     	@Override
     	public void run() {
+
     		if(m_networks != null && m_networks.size() > 0){
     			
-                m_adapter.notifyDataSetChanged();
-                for(int i=0;i<m_networks.size();i++)
-                m_adapter.add(m_networks.get(i));
-            }
+    		   m_adapter.notifyDataSetChanged();
+    		   for(int i=0;i<m_networks.size();i++)
+    		   m_adapter.add(m_networks.get(i));
+    		}
     		
-    		m_ProgressDialog.hide();
-            m_adapter.notifyDataSetChanged();
-            
-    		showLocation();
-    		Log.i("LOCATION",String.valueOf(providerStatus));
+    		m_ProgressDialog.dismiss();
+    		m_adapter.notifyDataSetChanged();
     	}
     };
-	
-    private void getLocation() {
-    	try{
-	    	//Obtenemos una referencia al LocationManager
-	    	locManager = 
-	    		(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-	    	
-	    	//Obtenemos la última posición conocida
-	    	//Location loc = 
-	    	//	locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-	    	
-	    	//Mostramos la última posición conocida
-	    	//curLat=loc.getLatitude();
-    		//curLon=loc.getLongitude();
-	    	
-	    	//Nos registramos para recibir actualizaciones de la posición
-	    	locListener = new LocationListener() {
-		    	public void onLocationChanged(Location location) {
-		    		
-		    		setProviderStatus(true);
-		    		curLat= location.getLatitude();
-		    		curLon= location.getLongitude();
-		    		//Log.i("LOCATION","onLocationChanged");
-		    	}
-		    	public void onProviderDisabled(String provider){
-		    		
-		    		setProviderStatus(false);
-		    		//Log.i("LOCATION","onProviderDisabled");
-		    	}
-		    	public void onProviderEnabled(String provider){
-		    		
-		    		setProviderStatus(true);
-		    		//Log.i("LOCATION","onProviderEnabled");
-		    	}
-		    	public void onStatusChanged(String provider, int status, Bundle extras){
-		    		
-		    		switch (status)
-		    		{
-		    			case LocationProvider.AVAILABLE:
-		    				setProviderStatus(true);
-		    				break;
-		    			case LocationProvider.OUT_OF_SERVICE:
-		    				setProviderStatus(false);
-		    				break;
-		    			case LocationProvider.TEMPORARILY_UNAVAILABLE:
-		    				setProviderStatus(false);
-		    				break;
-		    		}
-		    		//Log.i("LOCATION","onStatusChanged");
-		    	}
-	    	};
-	    	
-	    	locManager.requestLocationUpdates(
-	    			LocationManager.GPS_PROVIDER, 15000, 0, locListener);
-    	} catch (Exception e) { 
-            Log.e("BACKGROUND_PROC", e.getMessage());
-	    }
-	    runOnUiThread(returnRes);		
-	}
-    
-	protected void showLocation() {
-		
-		TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
-//		if (providerStatus)
-//        {
-	        String strYourLocationFormat = getResources().getString(R.string.strYourLocation);
-	        String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curLat), String.valueOf(curLon));  
-	        
-	        txtLocation.setText(strYourLocation);
-//        }     
-//        else
-//        {
-//        	txtLocation.setText(R.string.strErrorLocation);
-//        }
-		
-	}
 
 	private void getNetworks() {
 
@@ -210,7 +189,7 @@ public class LSNetCloserActivity extends GDListActivity{
           m_networks.add(o9);
           m_networks.add(o10);
 
-          Thread.sleep(1000);
+          Thread.sleep(500);
           Log.i("ARRAY", ""+ m_networks.size());
         } catch (Exception e) { 
           Log.e("BACKGROUND_PROC", e.getMessage());
@@ -218,18 +197,176 @@ public class LSNetCloserActivity extends GDListActivity{
         runOnUiThread(returnRes);		
 	}
 	
-    @Override
+	@Override
+	public void onBackPressed() {
+		
+		if (gpsStatus || netStatus)
+		{
+			if (gpsStatus) {
+				locManager.removeUpdates(locationListenerGPS);
+			}
+	
+			if (netStatus) {
+				locManager.removeUpdates(locationListenerNetwork);
+			}
+			
+			getLocation.cancel(true);
+		}
+		super.onBackPressed();
+	}
+
+
+	@Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
         Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
     }
-
-	public boolean isProviderEnabled() {
-		return providerStatus;
-	}
-
-	public void setProviderStatus(boolean providerStatus) {
-		this.providerStatus = providerStatus;
-	}
 	
+	public class GetLocation extends AsyncTask<Void,Position,Void>
+	{
+		private Position curPosition;
+		private boolean running = true;
+		
+		@Override
+		protected Void doInBackground(Void... arg0) {
+		
+			while (running)
+			{
+					getCurrentLocation();
+					publishProgress(curPosition);
+					SystemClock.sleep(5000);
+			}
+			return null;
+		}
+
+		
+		@Override
+		protected void onCancelled() {
+			
+			running=false;
+			super.onCancelled();
+		}
+
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			
+			locManager.requestLocationUpdates(
+					LocationManager.GPS_PROVIDER, 15000, 0, locationListenerGPS);
+			locManager.requestLocationUpdates(
+					LocationManager.GPS_PROVIDER, 15000, 0, locationListenerNetwork);
+			
+			TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
+			
+			String strYourLocationFormat = getResources().getString(R.string.strYourLocation);
+		    String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
+		        
+		    txtLocation.setText(strYourLocation);
+		}
+
+		
+		@Override
+		protected void onPreExecute() {
+			
+			curPosition = new Position();
+			
+			super.onPreExecute();
+			locationListenerGPS = new LocationListener()
+    		{
+
+    			@Override
+    			public void onLocationChanged(Location location) {
+    				curPosition = new Position(location);
+    			}
+
+    			@Override
+    			public void onProviderDisabled(String provider) {}
+
+    			@Override
+    			public void onProviderEnabled(String provider) {}
+
+    			@Override
+    			public void onStatusChanged(String provider, int status, Bundle extras) {}
+    			
+    		};
+    		
+    		locationListenerNetwork = new LocationListener()
+    		{
+    			@Override
+    			public void onLocationChanged(Location location) {
+    				
+    				curPosition = new Position(location);
+    			}
+
+    			@Override
+    			public void onProviderDisabled(String provider) {}
+
+    			@Override
+    			public void onProviderEnabled(String provider) {}
+
+    			@Override
+    			public void onStatusChanged(String provider, int status, Bundle extras) {}
+    		};
+    		
+        	if (gpsStatus)     locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
+			if (netStatus) locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListenerNetwork);
+			
+		}
+
+		
+		@Override
+		protected void onProgressUpdate(Position... values) {
+			
+			
+			
+			locManager.requestLocationUpdates(
+					LocationManager.GPS_PROVIDER, 15000, 0, locationListenerGPS);
+			locManager.requestLocationUpdates(
+					LocationManager.GPS_PROVIDER, 15000, 0, locationListenerNetwork);
+
+			
+			TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
+
+			String strYourLocationFormat = getResources().getString(R.string.strYourLocation);
+		    String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
+		        
+		    txtLocation.setText(strYourLocation);
+		}
+		
+		public void getCurrentLocation()
+		{
+			locManager.removeUpdates(locationListenerGPS);
+			locManager.removeUpdates(locationListenerNetwork);
+
+			Location gpsLocation=null;
+			Location netLocation=null;
+			
+			if (gpsStatus) gpsLocation = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			if (netStatus) netLocation = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+			
+			if (gpsLocation!=null && netLocation != null)
+			{
+				if (gpsLocation.getTime() > netLocation.getTime())
+				{
+					curPosition.setPosition(gpsLocation);
+				}
+				else
+				{
+					curPosition.setPosition(netLocation);
+				}
+			}
+			else if (gpsLocation !=  null)
+			{
+				curPosition.setPosition(gpsLocation);			
+			}
+			else if (netLocation !=  null)
+			{
+				curPosition.setPosition(netLocation);			
+			}
+			else
+			{
+				return;
+			}
+		}
+	}
 }

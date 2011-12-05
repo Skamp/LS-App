@@ -896,8 +896,8 @@ containing a value of this type.
     }
     public static final class string {
         public static final int about_content=0x7f090022;
-        public static final int abtxtConfiguration=0x7f09003b;
-        public static final int abtxtInformation=0x7f09003c;
+        public static final int abtxtConfiguration=0x7f090041;
+        public static final int abtxtInformation=0x7f090042;
         /**  Login End 
  ActionBar Text Init 
  Login End 
@@ -905,10 +905,10 @@ containing a value of this type.
  Login End 
  ActionBar Text Init 
          */
-        public static final int abtxtLogOut=0x7f09003a;
-        public static final int act_lbl_favImage=0x7f090035;
-        public static final int act_lbl_favImages=0x7f090043;
-        public static final int act_lbl_favNetwork=0x7f090033;
+        public static final int abtxtLogOut=0x7f090040;
+        public static final int act_lbl_favImage=0x7f09003b;
+        public static final int act_lbl_favImages=0x7f090049;
+        public static final int act_lbl_favNetwork=0x7f090039;
         /**  Dialog Text End 
  Faves Activity Init 
  Dialog Text End 
@@ -916,14 +916,14 @@ containing a value of this type.
  Dialog Text End 
  Faves Activity Init 
          */
-        public static final int act_lbl_favNetworks=0x7f090041;
-        public static final int act_lbl_favSensor=0x7f090034;
-        public static final int act_lbl_favSensors=0x7f090042;
-        public static final int act_lbl_homAbout=0x7f090029;
-        public static final int act_lbl_homAugReal=0x7f090031;
-        public static final int act_lbl_homConfig=0x7f090028;
-        public static final int act_lbl_homFaves=0x7f090030;
-        public static final int act_lbl_homHelp=0x7f09002c;
+        public static final int act_lbl_favNetworks=0x7f090047;
+        public static final int act_lbl_favSensor=0x7f09003a;
+        public static final int act_lbl_favSensors=0x7f090048;
+        public static final int act_lbl_homAbout=0x7f09002f;
+        public static final int act_lbl_homAugReal=0x7f090037;
+        public static final int act_lbl_homConfig=0x7f09002e;
+        public static final int act_lbl_homFaves=0x7f090036;
+        public static final int act_lbl_homHelp=0x7f090032;
         /**  Messages End 
  Activity Labels Init 
  Messages End 
@@ -931,13 +931,13 @@ containing a value of this type.
  Messages End 
  Activity Labels Init 
          */
-        public static final int act_lbl_homHome=0x7f090027;
-        public static final int act_lbl_homInfo=0x7f09002b;
-        public static final int act_lbl_homLicense=0x7f09002a;
-        public static final int act_lbl_homNetCloser=0x7f090032;
-        public static final int act_lbl_homNetList=0x7f09002d;
-        public static final int act_lbl_homNetMaps=0x7f09002e;
-        public static final int act_lbl_homQRCode=0x7f09002f;
+        public static final int act_lbl_homHome=0x7f09002d;
+        public static final int act_lbl_homInfo=0x7f090031;
+        public static final int act_lbl_homLicense=0x7f090030;
+        public static final int act_lbl_homNetCloser=0x7f090038;
+        public static final int act_lbl_homNetList=0x7f090033;
+        public static final int act_lbl_homNetMaps=0x7f090034;
+        public static final int act_lbl_homQRCode=0x7f090035;
         public static final int app_name=0x7f09001c;
         public static final int app_team=0x7f09001f;
         public static final int app_url=0x7f090021;
@@ -948,7 +948,7 @@ containing a value of this type.
  ActionBar Text End 
  Dialog Text Init 
          */
-        public static final int dialogLogOut=0x7f09003d;
+        public static final int dialogLogOut=0x7f090043;
         public static final int gd_add=0x7f09000b;
         public static final int gd_all_friends=0x7f090017;
         public static final int gd_compass=0x7f090010;
@@ -979,9 +979,9 @@ containing a value of this type.
         public static final int gd_trashcan=0x7f090015;
         public static final int googleMaps_API_key_debug=0x7f09001d;
         public static final int hello=0x7f09001e;
-        public static final int help_homAugReal=0x7f090057;
-        public static final int help_homFaves=0x7f090056;
-        public static final int help_homNetCloser=0x7f090058;
+        public static final int help_homAugReal=0x7f09005d;
+        public static final int help_homFaves=0x7f09005c;
+        public static final int help_homNetCloser=0x7f09005e;
         /**  Menu End 
  Help Init 
  Menu End 
@@ -989,9 +989,9 @@ containing a value of this type.
  Menu End 
  Help Init 
          */
-        public static final int help_homNetList=0x7f090053;
-        public static final int help_homNetMaps=0x7f090054;
-        public static final int help_homQRCode=0x7f090055;
+        public static final int help_homNetList=0x7f090059;
+        public static final int help_homNetMaps=0x7f09005a;
+        public static final int help_homQRCode=0x7f09005b;
         public static final int infoTabAbout=0x7f090023;
         public static final int infoTabLicense=0x7f090024;
         public static final int info_LoadSensing=0x7f090020;
@@ -1000,9 +1000,15 @@ containing a value of this type.
  Messages Init 
          */
         public static final int msg_BadLoginPass=0x7f090025;
+        public static final int msg_NOLocServ=0x7f090028;
+        public static final int msg_PleaseWait=0x7f090029;
+        public static final int msg_QRIntentError=0x7f090027;
         public static final int msg_Welcome=0x7f090026;
-        public static final int settings_maps=0x7f09004f;
-        public static final int settings_summary_1=0x7f09004e;
+        public static final int msg_retrievImages=0x7f09002b;
+        public static final int msg_retrievNetworks=0x7f09002a;
+        public static final int msg_retrievSensors=0x7f09002c;
+        public static final int settings_maps=0x7f090055;
+        public static final int settings_summary_1=0x7f090054;
         /**  FavesSensors Activity End 
  Settings Activity Init 
  FavesSensors Activity End 
@@ -1010,10 +1016,10 @@ containing a value of this type.
  FavesSensors Activity End 
  Settings Activity Init 
          */
-        public static final int settings_title_1=0x7f09004d;
-        public static final int strErrorLocation=0x7f09004b;
-        public static final int strExit=0x7f090039;
-        public static final int strFilter=0x7f090051;
+        public static final int settings_title_1=0x7f090053;
+        public static final int strErrorLocation=0x7f090051;
+        public static final int strExit=0x7f09003f;
+        public static final int strFilter=0x7f090057;
         /**  NetList Activity End 
  NetCloser Activity Init 
  NetList Activity End 
@@ -1021,9 +1027,9 @@ containing a value of this type.
  NetList Activity End 
  NetCloser Activity Init 
          */
-        public static final int strGetLocation=0x7f090049;
-        public static final int strLogin=0x7f090038;
-        public static final int strMapMode=0x7f090052;
+        public static final int strGetLocation=0x7f09004f;
+        public static final int strLogin=0x7f09003e;
+        public static final int strMapMode=0x7f090058;
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1031,9 +1037,9 @@ containing a value of this type.
  NetCloser Activity End 
  FavesSensors Activity Init 
          */
-        public static final int strNetName=0x7f09004c;
-        public static final int strNumSensors=0x7f090048;
-        public static final int strPassword=0x7f090037;
+        public static final int strNetName=0x7f090052;
+        public static final int strNumSensors=0x7f09004e;
+        public static final int strPassword=0x7f09003d;
         /**  Settings Activity End 
  Menu Init 
  Settings Activity End 
@@ -1041,7 +1047,7 @@ containing a value of this type.
  Settings Activity End 
  Menu Init 
          */
-        public static final int strSearch=0x7f090050;
+        public static final int strSearch=0x7f090056;
         /**  Faves Activity End 
  NetList Activity Init 
  Faves Activity End 
@@ -1049,7 +1055,7 @@ containing a value of this type.
  Faves Activity End 
  NetList Activity Init 
          */
-        public static final int strSituation=0x7f090047;
+        public static final int strSituation=0x7f09004d;
         /**  Activity Labels End 
  Login Init 
  Activity Labels End 
@@ -1057,14 +1063,14 @@ containing a value of this type.
  Activity Labels End 
  Login Init 
          */
-        public static final int strUser=0x7f090036;
-        public static final int strYourLocation=0x7f09004a;
-        public static final int tab_fav_images=0x7f090046;
-        public static final int tab_fav_networks=0x7f090044;
-        public static final int tab_fav_sensors=0x7f090045;
-        public static final int txtExit=0x7f090040;
-        public static final int txtNo=0x7f09003f;
-        public static final int txtYes=0x7f09003e;
+        public static final int strUser=0x7f09003c;
+        public static final int strYourLocation=0x7f090050;
+        public static final int tab_fav_images=0x7f09004c;
+        public static final int tab_fav_networks=0x7f09004a;
+        public static final int tab_fav_sensors=0x7f09004b;
+        public static final int txtExit=0x7f090046;
+        public static final int txtNo=0x7f090045;
+        public static final int txtYes=0x7f090044;
     }
     public static final class style {
         /**  DashboardButton Init 

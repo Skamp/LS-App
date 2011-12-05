@@ -39,7 +39,7 @@ public class LSFavesImagesActivity extends GDListActivity{
         };
         Thread thread = new Thread(null,viewImages,"ViewImages");
         thread.start();
-        m_ProgressDialog = ProgressDialog.show(LSFavesImagesActivity.this, "Please wait...", "Retrieving data...", true);
+        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievImages), true);
         
 //		ItemAdapter adapter = new ItemAdapter(this);
 //		adapter.add(createTextItem(0,"Imatge 1"));
@@ -64,7 +64,7 @@ public class LSFavesImagesActivity extends GDListActivity{
                 for(int i=0;i<m_images.size();i++)
                 m_adapter.add(m_images.get(i));
             }
-            m_ProgressDialog.hide();
+            m_ProgressDialog.dismiss();
             m_adapter.notifyDataSetChanged();
     	}
     };

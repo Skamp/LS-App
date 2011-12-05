@@ -43,7 +43,7 @@ public class LSFavesNetworksActivity extends GDListActivity{
         };
         Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
         thread.start();
-        m_ProgressDialog = ProgressDialog.show(LSFavesNetworksActivity.this, "Please wait...", "Retrieving data...", true);
+        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
 		
 //		ItemAdapter adapter = new ItemAdapter(this);
 //		adapter.add(createTextItem(0,"Xarxa 1"));
@@ -63,7 +63,7 @@ public class LSFavesNetworksActivity extends GDListActivity{
                 for(int i=0;i<m_networks.size();i++)
                 m_adapter.add(m_networks.get(i));
             }
-            m_ProgressDialog.hide();
+            m_ProgressDialog.dismiss();
             m_adapter.notifyDataSetChanged();
     	}
     };

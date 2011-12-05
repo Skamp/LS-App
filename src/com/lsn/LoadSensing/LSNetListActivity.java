@@ -28,7 +28,7 @@ public class LSNetListActivity extends GDListActivity {
 	
 	private ProgressDialog       m_ProgressDialog = null;
 	private ArrayList<LSNetwork> m_networks = null;
-	private LSNetworkAdapter       m_adapter;
+	private LSNetworkAdapter     m_adapter;
 	private Runnable             viewNetworks;
 	
 	@Override
@@ -53,7 +53,7 @@ public class LSNetListActivity extends GDListActivity {
         };
         Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
         thread.start();
-        m_ProgressDialog = ProgressDialog.show(LSNetListActivity.this, "Please wait...", "Retrieving data...", true);
+        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
     }
 	
 	private Runnable returnRes = new Runnable() {
@@ -65,7 +65,7 @@ public class LSNetListActivity extends GDListActivity {
                 for(int i=0;i<m_networks.size();i++)
                 m_adapter.add(m_networks.get(i));
             }
-            m_ProgressDialog.hide();
+            m_ProgressDialog.dismiss();
             m_adapter.notifyDataSetChanged();
     	}
     };

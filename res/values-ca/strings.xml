@@ -14,6 +14,12 @@
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Login/Password incorrectes</string>
     <string name="msg_Welcome">Benvingut usuari</string>
+    <string name="msg_QRIntentError">No s\'ha trobat Intent per llegir codis QR, instal·la Google Googles al dispositiu</string>
+    <string name="msg_NOLocServ">No s\'han trobat serveis de localització actius</string>
+    <string name="msg_PleaseWait">Processant...</string>
+    <string name="msg_retrievNetworks">Recuperant xarxes...</string>
+    <string name="msg_retrievImages">Recuperant imatges...</string>
+    <string name="msg_retrievSensors">Recuperant sensors...</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>

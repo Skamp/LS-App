@@ -12,6 +12,12 @@
 	<!-- Messages Init -->        
     <string name="msg_BadLoginPass">Login/Password incorrectos</string>
     <string name="msg_Welcome">Bienvenido usuario</string>
+    <string name="msg_QRIntentError">No se ha encontrado Intent para leer códigos QR, instala Google Googles en el dispositivo</string>
+    <string name="msg_NOLocServ">No se han encontrado servicios de localización activos</string>
+    <string name="msg_PleaseWait">Procesando...</string>
+    <string name="msg_retrievNetworks">Recuperando redes...</string>
+    <string name="msg_retrievImages">Recuperando imágenes...</string>
+        <string name="msg_retrievSensors">Recuperando sensores...</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>
