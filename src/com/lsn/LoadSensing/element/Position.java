@@ -7,23 +7,34 @@ public class Position
 {
 	private Double latitude;
 	private Double longitude;
+	private Double altitude;
 	
 	public Position() {
 		super();
 		this.latitude = 0.0;
 		this.longitude = 0.0;
+		this.altitude = 0.0;
 	}
 	
 	public Position(Double latitude, Double longitude) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.altitude = 0.0;
+	}
+	
+	public Position(Double latitude, Double longitude, Double altitude) {
+		super();
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.altitude = altitude;
 	}
 	
 	public Position(Location location) {
 		super();
 		this.latitude = location.getLatitude();
 		this.longitude = location.getLongitude();
+		this.altitude = location.getAltitude();
 	}
 	
 	public Double getLatitude() {
@@ -38,11 +49,18 @@ public class Position
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	
+	public Double getAltitude() {
+		return altitude;
+	}
+
+	public void setAltitude(Double altitude) {
+		this.altitude = altitude;
+	}
 	public void setPosition(Location location)
 	{
 		this.latitude = location.getLatitude();
 		this.longitude = location.getLongitude();
+		this.altitude = location.getAltitude();
 	}
 	
 	public float milesDistanceTo(Position position)
@@ -67,4 +85,6 @@ public class Position
 
 		return new Float(dist*meterConversion).floatValue();
 	}
+
+	
 }

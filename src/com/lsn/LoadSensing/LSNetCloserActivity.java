@@ -272,43 +272,43 @@ public class LSNetCloserActivity extends GDListActivity{
 			
 			super.onPreExecute();
 			locationListenerGPS = new LocationListener()
-    		{
+			{
 
-    			@Override
-    			public void onLocationChanged(Location location) {
-    				curPosition = new Position(location);
-    			}
+				@Override
+				public void onLocationChanged(Location location) {
+					curPosition = new Position(location);
+				}
 
-    			@Override
-    			public void onProviderDisabled(String provider) {}
+				@Override
+				public void onProviderDisabled(String provider) {}
 
-    			@Override
-    			public void onProviderEnabled(String provider) {}
+				@Override
+				public void onProviderEnabled(String provider) {}
 
-    			@Override
-    			public void onStatusChanged(String provider, int status, Bundle extras) {}
-    			
-    		};
-    		
-    		locationListenerNetwork = new LocationListener()
-    		{
-    			@Override
-    			public void onLocationChanged(Location location) {
-    				
-    				curPosition = new Position(location);
-    			}
+				@Override
+				public void onStatusChanged(String provider, int status, Bundle extras) {}
+				
+			};
+			
+			locationListenerNetwork = new LocationListener()
+			{
+				@Override
+				public void onLocationChanged(Location location) {
+					
+					curPosition = new Position(location);
+				}
 
-    			@Override
-    			public void onProviderDisabled(String provider) {}
+				@Override
+				public void onProviderDisabled(String provider) {}
 
-    			@Override
-    			public void onProviderEnabled(String provider) {}
+				@Override
+				public void onProviderEnabled(String provider) {}
 
-    			@Override
-    			public void onStatusChanged(String provider, int status, Bundle extras) {}
-    		};
-    		
-        	if (gpsStatus)     locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
+				@Override
+				public void onStatusChanged(String provider, int status, Bundle extras) {}
+			};
+			
+	    	if (gpsStatus)     locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
 			if (netStatus) locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListenerNetwork);
 			
 		}
