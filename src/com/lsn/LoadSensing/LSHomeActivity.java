@@ -169,7 +169,8 @@ public class LSHomeActivity extends GDActivity {
 				 }
 				 else   
 				 {
-					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settings_maps,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+					 //CustomToast.showCustomToast(LSHomeActivity.this,R.string.settings_maps,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+					 i = new Intent(LSHomeActivity.this,LSNetMapsForgeActivity.class);
 				 }
 				 break;
 			case R.id.dsh_btn_QRCode:
