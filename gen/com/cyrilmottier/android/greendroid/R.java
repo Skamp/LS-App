@@ -988,22 +988,35 @@ containing a value of this type.
         public static final int gd_trashcan=0x7f090015;
         public static final int googleMaps_API_key_debug=0x7f09001d;
         public static final int hello=0x7f09001e;
-        public static final int help_homAugReal=0x7f09005d;
-        public static final int help_homFaves=0x7f09005c;
-        public static final int help_homNetCloser=0x7f09005e;
-        /**  Menu End 
+        public static final int help_homAugReal=0x7f090063;
+        public static final int help_homFaves=0x7f090062;
+        public static final int help_homNetCloser=0x7f090064;
+        /**  SD Error Messages End
  Help Init 
- Menu End 
+ SD Error Messages End
  Help Init 
- Menu End 
+ SD Error Messages End
  Help Init 
          */
-        public static final int help_homNetList=0x7f090059;
-        public static final int help_homNetMaps=0x7f09005a;
-        public static final int help_homQRCode=0x7f09005b;
+        public static final int help_homNetList=0x7f09005f;
+        public static final int help_homNetMaps=0x7f090060;
+        public static final int help_homQRCode=0x7f090061;
         public static final int infoTabAbout=0x7f090023;
         public static final int infoTabLicense=0x7f090024;
         public static final int info_LoadSensing=0x7f090020;
+        public static final int msgSDBadFormat=0x7f09005a;
+        public static final int msgSDNotFound=0x7f09005b;
+        /**  Menu End 
+ SD Error Messages Init
+ Menu End 
+ SD Error Messages Init
+ Menu End 
+ SD Error Messages Init
+         */
+        public static final int msgSDReadOnly=0x7f090059;
+        public static final int msgSDShared=0x7f09005c;
+        public static final int msgSDUnmountable=0x7f09005d;
+        public static final int msgSDUnmounted=0x7f09005e;
         /**  Messages Init 
  Messages Init 
  Messages Init 

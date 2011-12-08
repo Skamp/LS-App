@@ -1,6 +1,16 @@
 package com.lsn.LoadSensing;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.lsn.LoadSensing.element.Position;
+import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.ui.CustomToast;
 
 import android.content.Context;
@@ -13,6 +23,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +42,7 @@ public class LSAugRealActivity extends GDActivity{
 	private boolean netStatus;
 	
 	private static String mapServer = "http://www.mixare.org/geotest.php";
+	JSONObject mixareInfo;
 	boolean isMixareInstalled = false;
 	
 	
@@ -104,6 +116,7 @@ public class LSAugRealActivity extends GDActivity{
         	getLocation = new GetLocation();
         	getLocation.execute();
         	curPosition = getLocation.getPosition();
+        	SystemClock.sleep(5000);
         	
         	if (isMixareInstalled)
         	{
@@ -114,9 +127,20 @@ public class LSAugRealActivity extends GDActivity{
 
 					@Override
 					public void onClick(View v) {
+						
+						generateJSONFile();
+						
 						Intent i = new Intent();
 						i.setAction(Intent.ACTION_VIEW);
-						i.setDataAndType(Uri.parse(mapServer + "?"+ getGets(curPosition.getLatitude(),curPosition.getLongitude(),curPosition.getAltitude())),"application/mixare-json");
+						//i.setDataAndType(Uri.parse(mapServer + "?"+ getGets(curPosition.getLatitude(),curPosition.getLongitude(),curPosition.getAltitude())),"application/mixare-json");
+						//i.setDataAndType(mixareInfo,"application/mixare-json");
+						try{
+						i.setDataAndType(Uri.parse("file:///sdcard/LSApp_mixare.json"), "application/mixare-json");
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 						startActivity(i);
 					}
         			
@@ -126,8 +150,8 @@ public class LSAugRealActivity extends GDActivity{
 					}
         			
         		});
-        		final TextView tv = (TextView)findViewById(R.id.urlText);
-        		tv.setText("This is the URL that will be called:\n" + mapServer+"?latitude="+Double.toString(curPosition.getLatitude())+ "&longitude=" + Double.toString(curPosition.getLongitude()) + "&altitude=" + Double.toString(curPosition.getAltitude()));
+        		//final TextView tv = (TextView)findViewById(R.id.urlText);
+        		//tv.setText("This is the URL that will be called:\n" + mapServer+"?latitude="+Double.toString(curPosition.getLatitude())+ "&longitude=" + Double.toString(curPosition.getLongitude()) + "&altitude=" + Double.toString(curPosition.getAltitude()));
         	}
         	else
         	{
@@ -153,6 +177,90 @@ public class LSAugRealActivity extends GDActivity{
 		
 	}
 
+
+	protected void generateJSONFile() {
+		
+		try {
+			
+			//mixareInfo = new JSONObject("{\"status\": \"OK\",\"num_results\": 4,\"results\": [{\"id\": \"1\",\"lat\": \"42.11\",\"lng\": \"2.71\",\"elevation\": \"0\",\"title\": \"North\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"2\",\"lat\": \"42.1\",\"lng\": \"2.72\",\"elevation\": \"0\",\"title\": \"East\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"3\",\"lat\": \"42.09\",\"lng\": \"2.71\",\"elevation\": \"0\",\"title\": \"South\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"4\",\"lat\": \"42.1\",\"lng\": \"2.7\",\"elevation\": \"0\",\"title\": \"West\",\"has_detail_page\": \"0\"}]}");
+			//mixareInfo = new JSONObject(Uri.parse("file:///sdcard/LSApp_mixare.json").toString());
+			
+			mixareInfo = new JSONObject();
+		
+			
+			JSONObject obj1 = new JSONObject();
+			obj1.put("id", "1");
+			obj1.put("lat", "42.11");
+			obj1.put("lng", "2.71");
+			obj1.put("elevation", "0");
+			obj1.put("title", "Network 1");
+			obj1.put("has_detail_page", "0");
+			obj1.put("webpage", "");
+			
+			JSONObject obj2 = new JSONObject();
+			obj2.put("id", "2");
+			obj2.put("lat", "42.1");
+			obj2.put("lng", "2.72");
+			obj2.put("elevation", "0");
+			obj2.put("title", "Network 2");
+			obj2.put("has_detail_page", "0");
+			obj2.put("webpage", "");
+			
+			JSONObject obj3 = new JSONObject();
+			obj3.put("id", "3");
+			obj3.put("lat", "42.09");
+			obj3.put("lng", "2.71");
+			obj3.put("elevation", "0");
+			obj3.put("title", "Network 3");
+			obj3.put("has_detail_page", "0");
+			obj3.put("webpage", "");
+			
+			JSONObject obj4 = new JSONObject();
+			obj4.put("id", "4");
+			obj4.put("lat", "42.1");
+			obj4.put("lng", "2.7");
+			obj4.put("elevation", "0");
+			obj4.put("title", "Network 4");
+			obj4.put("has_detail_page", "0");
+			obj4.put("webpage", "");
+			
+			
+			JSONArray arrayObj= new JSONArray();
+			arrayObj.put(obj1);
+			arrayObj.put(obj2);
+			arrayObj.put(obj3);
+			arrayObj.put(obj4);
+			
+			mixareInfo.put("results",arrayObj);
+			mixareInfo.put("num_results", new Integer(4));
+			mixareInfo.put("status", "OK");
+			
+			if (LSFunctions.checkSDCard(this))
+			{
+				String filename = "LSApp_mixare.json";
+				File file = new File(Environment.getExternalStorageDirectory(), filename);
+				FileOutputStream fos;
+				byte[] data = mixareInfo.toString().getBytes();
+				try {
+				    fos = new FileOutputStream(file);
+				    fos.write(data);
+				    fos.flush();
+				    fos.close();
+				} catch (FileNotFoundException e) {
+				    // handle exception
+				} catch (IOException e) {
+				    // handle exception
+				}
+				
+			}
+		
+		}
+		catch (JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void checkNETStatus() {
 	
@@ -277,7 +385,7 @@ public class LSAugRealActivity extends GDActivity{
 				public void onStatusChanged(String provider, int status, Bundle extras) {}
 			};
 			
-	    	if (gpsStatus)     locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
+	    	if (gpsStatus) locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
 			if (netStatus) locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListenerNetwork);
 			
 		}
