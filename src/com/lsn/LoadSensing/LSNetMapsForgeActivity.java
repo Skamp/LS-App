@@ -17,7 +17,8 @@ import org.mapsforge.android.maps.OverlayItem;
 import org.mapsforge.android.maps.OverlayWay;
 
 import com.lsn.LoadSensing.map.LSNetworksOverlay;
-import com.lsn.LoadSensing.map.LSNetworksOverlayForge;
+import com.lsn.LoadSensing.mapsforge.LSNetworksOverlayForge;
+import com.readystatesoftware.mapviewballoons.R;
 
 
 import android.app.AlertDialog;
@@ -29,9 +30,17 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.FrameLayout.LayoutParams;
 
 
 public class LSNetMapsForgeActivity extends MapActivity {
@@ -63,10 +72,10 @@ public class LSNetMapsForgeActivity extends MapActivity {
 		mapView.setMapViewMode(MapViewMode.MAPNIK_TILE_DOWNLOAD);
 		
 		// create some points to be used in the different overlays
-        GeoPoint geoPoint1 = new GeoPoint(52.514446, 13.350150); // Berlin Victory Column
-        GeoPoint geoPoint2 = new GeoPoint(52.516272, 13.377722); // Brandenburg Gate
-        GeoPoint geoPoint3 = new GeoPoint(52.525, 13.369444); // Berlin Central Station
-        GeoPoint geoPoint4 = new GeoPoint(52.52, 13.369444); // German Chancellery
+        GeoPoint geoPoint1 = new GeoPoint(51.5174723, -0.0899537); 
+        GeoPoint geoPoint2 = new GeoPoint(51.515259, -0.086623); 
+        GeoPoint geoPoint3 = new GeoPoint(51.513329, -0.08896); 
+        GeoPoint geoPoint4 = new GeoPoint(51.51738, -0.08186); 
 		
      // create the default paint objects for overlay circles
 //        Paint circleDefaultPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -125,36 +134,44 @@ public class LSNetMapsForgeActivity extends MapActivity {
 //        wayOverlay.addWay(way1);
 //        wayOverlay.addWay(way2);
 
-//        // create the default marker for overlay items
-//        Drawable itemDefaultMarker = getResources().getDrawable(R.drawable.marker);
-//
-//        // create an individual marker for an overlay item
-//        Drawable itemMarker = getResources().getDrawable(R.drawable.marker2);
-//
-//        // create the ItemizedOverlay and add the items
-//        ArrayItemizedOverlay itemizedOverlay = new MyItemizedOverlay(itemDefaultMarker, this);
-//        OverlayItem item1 = new OverlayItem(geoPoint1, "Berlin Victory Column",
-//                        "The Victory Column is a monument in Berlin, Germany.");
-//        OverlayItem item2 = new OverlayItem(geoPoint2, "Brandenburg Gate",
-//                        "The Brandenburg Gate is one of the main symbols of Berlin and Germany.",
-//                        ItemizedOverlay.boundCenterBottom(itemMarker));
-//        itemizedOverlay.addItem(item1);
-//        itemizedOverlay.addItem(item2);
+        // create the default marker for overlay items
+        Drawable itemDefaultMarker = getResources().getDrawable(R.drawable.marker);
 
+        // create an individual marker for an overlay item
+        Drawable itemMarker = getResources().getDrawable(R.drawable.marker2);
+
+        // create the ItemizedOverlay and add the items
+        //ArrayItemizedOverlay itemizedOverlay = new MyItemizedOverlay(mapView,itemDefaultMarker, this);
+        LSNetworksOverlayForge itemizedOverlay = new LSNetworksOverlayForge(itemDefaultMarker, mapView);
+        
+        OverlayItem item1 = new OverlayItem(geoPoint1, "Network 1",
+        		"(Network 1 description)");
+        OverlayItem item2 = new OverlayItem(geoPoint2, "Network 2",
+        		"(Network 2 description)");
+        OverlayItem item3 = new OverlayItem(geoPoint3, "Network 3",
+        		"(Network 3 description)",
+                ItemizedOverlay.boundCenterBottom(itemMarker));
+        OverlayItem item4 = new OverlayItem(geoPoint4, "Network 4",
+        		"(Network 4 description)",
+                ItemizedOverlay.boundCenterBottom(itemMarker));
+        itemizedOverlay.addOverlay(item1);
+        itemizedOverlay.addOverlay(item2);
+        itemizedOverlay.addOverlay(item3);
+        itemizedOverlay.addOverlay(item4);
         
         
         
-        Drawable drawable = getResources().getDrawable(R.drawable.marker);
-        LSNetworksOverlayForge itemizedOverlay = new LSNetworksOverlayForge(drawable, mapView);
-		
-		
-		OverlayItem overlayItem = new OverlayItem(geoPoint1, "Network 1", 
-				"(Network 1 description)");
-		itemizedOverlay.addOverlay(overlayItem);
-		
-		OverlayItem overlayItem2 = new OverlayItem(geoPoint2, "Network 2", 
-				"(Network 2 description)");		
-		itemizedOverlay.addOverlay(overlayItem2);
+//        Drawable drawable = getResources().getDrawable(R.drawable.marker);
+//        LSNetworksOverlayForge itemizedOverlay = new LSNetworksOverlayForge(drawable, mapView);
+//		
+//		
+//		OverlayItem overlayItem = new OverlayItem(geoPoint1, "Network 1", 
+//				"(Network 1 description)");
+//		itemizedOverlay.addOverlay(overlayItem);
+//		
+//		OverlayItem overlayItem2 = new OverlayItem(geoPoint2, "Network 2", 
+//				"(Network 2 description)");		
+//		itemizedOverlay.addOverlay(overlayItem2);
 		
         
         
@@ -175,7 +192,13 @@ public class LSNetMapsForgeActivity extends MapActivity {
 
 	private class MyItemizedOverlay extends ArrayItemizedOverlay {
         private final Context context;
+        private final MapView mapView;
 
+        
+        private LinearLayout layout;
+        private TextView title;
+        private TextView snippet;
+        
         /**
          * Constructs a new MyItemizedOverlay.
          * 
@@ -184,9 +207,10 @@ public class LSNetMapsForgeActivity extends MapActivity {
          * @param context
          *            the reference to the application context.
          */
-        MyItemizedOverlay(Drawable defaultMarker, Context context) {
+        MyItemizedOverlay(MapView mapView, Drawable defaultMarker, Context context) {
                 super(defaultMarker,context);
                 this.context = context;
+                this.mapView = mapView;
         }
 
         /**
@@ -196,15 +220,56 @@ public class LSNetMapsForgeActivity extends MapActivity {
         protected boolean onTap(int index) {
                 OverlayItem item = createItem(index);
                 if (item != null) {
-                        Builder builder = new AlertDialog.Builder(this.context);
-                        builder.setIcon(android.R.drawable.ic_menu_info_details);
-                        builder.setTitle(item.getTitle());
-                        builder.setMessage(item.getSnippet());
-                        builder.setPositiveButton("OK", null);
-                        builder.show();
+//                        Builder builder = new AlertDialog.Builder(this.context);
+//                        builder.setIcon(android.R.drawable.ic_menu_info_details);
+//                        builder.setTitle(item.getTitle());
+//                        builder.setMessage(item.getSnippet());
+//                        builder.setPositiveButton("OK", null);
+//                        builder.show();
+                        MapController mMapController = mapView.getController();
+                        mMapController.setCenter(item.getPoint());
+                        
+                        layout = new LinearLayout(context);
+                		layout.setVisibility(View.VISIBLE);
+
+                		LayoutInflater inflater = (LayoutInflater) context
+                				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                		View v = inflater.inflate(R.layout.balloon_overlay, layout);
+                		title = (TextView) v.findViewById(R.id.balloon_item_title);
+                		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
+
+                		layout.setVisibility(View.VISIBLE);
+                		if (item.getTitle() != null) {
+                			title.setVisibility(View.VISIBLE);
+                			title.setText(item.getTitle());
+                		} else {
+                			title.setVisibility(View.GONE);
+                		}
+                		if (item.getSnippet() != null) {
+                			snippet.setVisibility(View.VISIBLE);
+                			snippet.setText(item.getSnippet());
+                		} else {
+                			snippet.setVisibility(View.GONE);
+                		}
+                		                		
+                		ImageView close = (ImageView) v.findViewById(R.id.close_img_button);
+                		close.setOnClickListener(new OnClickListener() {
+                			public void onClick(View v) {
+                				layout.setVisibility(View.GONE);
+                			}
+                		});
+
+                		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                		params.gravity = Gravity.NO_GRAVITY;
+                		params.topMargin = mapView.getHeight()/2-layout.getHeight();
+                		
+                		((ViewGroup) mapView.getParent()).addView(layout, params);
+                        
                 }
                 return true;
         }
+        
 }
 	
 	
