@@ -3,6 +3,7 @@ package com.lsn.LoadSensing;
 //import com.lsn.LoadSensing.ui.CustomDialog;
 
 import com.lsn.LoadSensing.ui.CustomToast;
+import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
@@ -21,13 +22,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class LSHomeActivity extends GDActivity {
     
 	private final int MORE = 0;
 	private final int HELP = 1;
-	private final int LOG_OUT = 2;
+//	private final int LOG_OUT = 2;
 	private QuickActionWidget quickActions;
 	private String typeMaps = null;
 	
@@ -36,8 +38,19 @@ public class LSHomeActivity extends GDActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActionBarContentView(R.layout.dshb_home);
-        getActionBar().setType(ActionBar.Type.Empty);
+        getActionBar().setType(ActionBar.Type.Normal);
         setTitle(R.string.act_lbl_homHome);
+        
+        ImageButton	mHomeButton = (ImageButton) findViewById(R.id.gd_action_bar_home_item);
+		
+        mHomeButton.setImageDrawable(getResources().getDrawable(R.drawable.gd_action_bar_exit));
+		mHomeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				showLogOutDialog();
+			}
+		});
         
         initActionBar();
         initQuickActionBar();
@@ -96,12 +109,12 @@ public class LSHomeActivity extends GDActivity {
     		Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();
     		i = new Intent(LSHomeActivity.this,LSHelpActivity.class);
     		break;
-    	case LOG_OUT:
-    		showLogOutDialog();
-    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton LOG_OUT", Toast.LENGTH_SHORT).show();
-    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
-    		//i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
-    		break;
+//    	case LOG_OUT:
+//    		showLogOutDialog();
+//    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton LOG_OUT", Toast.LENGTH_SHORT).show();
+//    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
+//    		//i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
+//    		break;
     	
     	default:
     		return super.onHandleActionBarItemClick(item, position);
@@ -116,10 +129,10 @@ public class LSHomeActivity extends GDActivity {
 		
 		addActionBarItem(Type.Add,MORE);
     	addActionBarItem(Type.Help,HELP);
-    	addActionBarItem(getActionBar()
-                .newActionBarItem(NormalActionBarItem.class)
-                .setDrawable(R.drawable.gd_action_bar_exit)
-                .setContentDescription(R.string.abtxtLogOut), LOG_OUT);
+    	//addActionBarItem(getActionBar()
+    	//        .newActionBarItem(NormalActionBarItem.class)
+    	//        .setDrawable(R.drawable.gd_action_bar_exit)
+    	//        .setContentDescription(R.string.abtxtLogOut), LOG_OUT);
 	}
 
 	private void initQuickActionBar()
