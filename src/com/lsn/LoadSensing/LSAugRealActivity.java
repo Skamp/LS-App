@@ -210,15 +210,26 @@ public class LSAugRealActivity extends Activity{
 			obj5.put("webpage", "");
 			obj5.put("netid", "EEEEEEEEE");
 			
+			JSONObject obj6 = new JSONObject();
+			obj5.put("id", "5");
+			obj5.put("lat", "41.340784");
+			obj5.put("lng", "2.154187");
+			obj5.put("elevation", "0");
+			obj5.put("title", "LSN Network 6");
+			obj5.put("has_detail_page", "0");
+			obj5.put("webpage", "");
+			obj5.put("netid", "FFFFFFFFF");
+			
 			JSONArray arrayObj= new JSONArray();
 			arrayObj.put(obj1);
 			arrayObj.put(obj2);
 			arrayObj.put(obj3);
 			arrayObj.put(obj4);
 			arrayObj.put(obj5);
+			arrayObj.put(obj6);
 			
 			mixareInfo.put("results",arrayObj);
-			mixareInfo.put("num_results", new Integer(5));
+			mixareInfo.put("num_results", new Integer(6));
 			mixareInfo.put("status", "OK");
 			
 			if (LSFunctions.checkSDCard(this))
