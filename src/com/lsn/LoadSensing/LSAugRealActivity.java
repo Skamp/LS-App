@@ -13,6 +13,7 @@ import com.lsn.LoadSensing.element.Position;
 import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.ui.CustomToast;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -25,13 +26,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import greendroid.app.GDActivity;
 
-public class LSAugRealActivity extends GDActivity{
+public class LSAugRealActivity extends Activity{
 	
 	private LocationManager  locManager;
 	private LocationListener locationListenerGPS;
@@ -41,14 +37,9 @@ public class LSAugRealActivity extends GDActivity{
 	private boolean gpsStatus;
 	private boolean netStatus;
 	
-	private static String mapServer = "http://www.mixare.org/geotest.php";
 	JSONObject mixareInfo;
 	boolean isMixareInstalled = false;
-	
-	
-	
-	
-	
+	static boolean fromMixare = false;
 	
 	@Override
 	protected void onPause() {
@@ -116,42 +107,26 @@ public class LSAugRealActivity extends GDActivity{
         	getLocation = new GetLocation();
         	getLocation.execute();
         	curPosition = getLocation.getPosition();
-        	SystemClock.sleep(5000);
         	
         	if (isMixareInstalled)
         	{
-        		setActionBarContentView(R.layout.act_05_augreal);
-        		
-        		final Button berge = (Button)findViewById(R.id.Button);
-        		berge.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						
+        		if (!fromMixare)
+        		{
 						generateJSONFile();
 						
 						Intent i = new Intent();
 						i.setAction(Intent.ACTION_VIEW);
-						//i.setDataAndType(Uri.parse(mapServer + "?"+ getGets(curPosition.getLatitude(),curPosition.getLongitude(),curPosition.getAltitude())),"application/mixare-json");
-						//i.setDataAndType(mixareInfo,"application/mixare-json");
-						try{
-						i.setDataAndType(Uri.parse("file:///sdcard/LSApp_mixare.json"), "application/mixare-json");
-						}
-						catch (Exception e)
-						{
-							e.printStackTrace();
-						}
+						i.setDataAndType(Uri.parse("file:///sdcard/LSN/LSApp_mixare.json"), "application/mixare-lsn-json");
+						
+						fromMixare= true;
 						startActivity(i);
-					}
-        			
-					private String getGets(Double lat, Double lon, Double alt)
-					{
-						return "latitude="+Double.toString(lat)+ "&longitude=" + Double.toString(lon) + "&altitude=" + Double.toString(alt);
-					}
-        			
-        		});
-        		//final TextView tv = (TextView)findViewById(R.id.urlText);
-        		//tv.setText("This is the URL that will be called:\n" + mapServer+"?latitude="+Double.toString(curPosition.getLatitude())+ "&longitude=" + Double.toString(curPosition.getLongitude()) + "&altitude=" + Double.toString(curPosition.getAltitude()));
+        		}
+        		else
+        		{
+        			fromMixare=false;
+        			onBackPressed();
+        		}
+				
         	}
         	else
         	{
@@ -182,65 +157,86 @@ public class LSAugRealActivity extends GDActivity{
 		
 		try {
 			
-			//mixareInfo = new JSONObject("{\"status\": \"OK\",\"num_results\": 4,\"results\": [{\"id\": \"1\",\"lat\": \"42.11\",\"lng\": \"2.71\",\"elevation\": \"0\",\"title\": \"North\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"2\",\"lat\": \"42.1\",\"lng\": \"2.72\",\"elevation\": \"0\",\"title\": \"East\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"3\",\"lat\": \"42.09\",\"lng\": \"2.71\",\"elevation\": \"0\",\"title\": \"South\",\"has_detail_page\": \"0\",\"webpage\": \"\"},{\"id\": \"4\",\"lat\": \"42.1\",\"lng\": \"2.7\",\"elevation\": \"0\",\"title\": \"West\",\"has_detail_page\": \"0\"}]}");
-			//mixareInfo = new JSONObject(Uri.parse("file:///sdcard/LSApp_mixare.json").toString());
-			
 			mixareInfo = new JSONObject();
 		
 			
 			JSONObject obj1 = new JSONObject();
 			obj1.put("id", "1");
-			obj1.put("lat", "42.11");
-			obj1.put("lng", "2.71");
+			obj1.put("lat", "41.416556");
+			obj1.put("lng", "2.152194");
 			obj1.put("elevation", "0");
-			obj1.put("title", "Network 1");
+			obj1.put("title", "LSN Network 1");
 			obj1.put("has_detail_page", "0");
 			obj1.put("webpage", "");
+			obj1.put("netid", "AAAAAAAAA");
 			
 			JSONObject obj2 = new JSONObject();
 			obj2.put("id", "2");
-			obj2.put("lat", "42.1");
-			obj2.put("lng", "2.72");
+			obj2.put("lat", "41.379183");
+			obj2.put("lng", "2.174445");
 			obj2.put("elevation", "0");
-			obj2.put("title", "Network 2");
+			obj2.put("title", "LSN Network 2");
 			obj2.put("has_detail_page", "0");
 			obj2.put("webpage", "");
+			obj2.put("netid", "BBBBBBBBB");
 			
 			JSONObject obj3 = new JSONObject();
 			obj3.put("id", "3");
-			obj3.put("lat", "42.09");
-			obj3.put("lng", "2.71");
+			obj3.put("lat", "41.397583");
+			obj3.put("lng", "2.163028");
 			obj3.put("elevation", "0");
-			obj3.put("title", "Network 3");
+			obj3.put("title", "LSN Network 3");
 			obj3.put("has_detail_page", "0");
 			obj3.put("webpage", "");
+			obj3.put("netid", "CCCCCCCCC");
 			
 			JSONObject obj4 = new JSONObject();
 			obj4.put("id", "4");
-			obj4.put("lat", "42.1");
-			obj4.put("lng", "2.7");
+			obj4.put("lat", "41.380694");
+			obj4.put("lng", "2.175167");
 			obj4.put("elevation", "0");
-			obj4.put("title", "Network 4");
+			obj4.put("title", "LSN Network 4");
 			obj4.put("has_detail_page", "0");
 			obj4.put("webpage", "");
+			obj4.put("netid", "DDDDDDDDD");
 			
+			JSONObject obj5 = new JSONObject();
+			obj5.put("id", "5");
+			obj5.put("lat", "41.340784");
+			obj5.put("lng", "2.154187");
+			obj5.put("elevation", "0");
+			obj5.put("title", "LSN Network 5");
+			obj5.put("has_detail_page", "0");
+			obj5.put("webpage", "");
+			obj5.put("netid", "EEEEEEEEE");
 			
 			JSONArray arrayObj= new JSONArray();
 			arrayObj.put(obj1);
 			arrayObj.put(obj2);
 			arrayObj.put(obj3);
 			arrayObj.put(obj4);
+			arrayObj.put(obj5);
 			
 			mixareInfo.put("results",arrayObj);
-			mixareInfo.put("num_results", new Integer(4));
+			mixareInfo.put("num_results", new Integer(5));
 			mixareInfo.put("status", "OK");
 			
 			if (LSFunctions.checkSDCard(this))
 			{
-				String filename = "LSApp_mixare.json";
+				String folder   = "LSN";
+				String filename = "LSN/LSApp_mixare.json";
+				
+				File LSNFolder = new File(Environment.getExternalStorageDirectory(),folder);
+				
+				if (!LSNFolder.exists())
+				{
+					LSNFolder.mkdir();
+				}
+				
 				File file = new File(Environment.getExternalStorageDirectory(), filename);
 				FileOutputStream fos;
 				byte[] data = mixareInfo.toString().getBytes();
+				
 				try {
 				    fos = new FileOutputStream(file);
 				    fos.write(data);
@@ -308,7 +304,7 @@ public class LSAugRealActivity extends GDActivity{
 	
 	public class GetLocation extends AsyncTask<Void,Position,Void>
 	{
-		private Position curPosition;
+		//private Position curPosition;
 		private boolean running = true;
 		
 		@Override

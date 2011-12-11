@@ -37,6 +37,8 @@
 	    <string name="act_lbl_favNetwork">Xarxes favorites</string>
 	    <string name="act_lbl_favSensor">Sensors favorits</string>
 	    <string name="act_lbl_favImage">Imatges favorites</string>
+	    <string name="act_lbl_netinfo">Informació de xarxa</string>
+	        
 	    
     <!-- Activity Labels End -->
     

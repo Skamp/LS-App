@@ -35,6 +35,7 @@
     	<string name="act_lbl_favNetwork">Redes favoritas</string>
 	    <string name="act_lbl_favSensor">Sensores favoritos</string>
 	    <string name="act_lbl_favImage">Imagenes favoritas</string>
+	    <string name="act_lbl_netinfo">Información de red</string>
     <!-- Activity Labels End -->
    
    
