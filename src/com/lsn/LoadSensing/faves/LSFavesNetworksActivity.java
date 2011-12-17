@@ -75,15 +75,15 @@ public class LSFavesNetworksActivity extends GDListActivity{
           LSNetwork o1 = new LSNetwork();
           o1.setNetworkName("Network 1");
           o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o1.setNetworkNumber("XX");
+          o1.setNetworkNumSensors(2);
           LSNetwork o2 = new LSNetwork();
           o2.setNetworkName("Network 2");
           o2.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o2.setNetworkNumber("YY");
+          o2.setNetworkNumSensors(3);
           LSNetwork o3 = new LSNetwork();
           o3.setNetworkName("Network 3");
           o3.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o3.setNetworkNumber("YY");
+          o3.setNetworkNumSensors(4);
           m_networks.add(o1);
           m_networks.add(o2);
           m_networks.add(o3);

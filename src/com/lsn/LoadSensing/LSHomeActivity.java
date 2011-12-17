@@ -32,6 +32,7 @@ public class LSHomeActivity extends GDActivity {
 //	private final int LOG_OUT = 2;
 	private QuickActionWidget quickActions;
 	private String typeMaps = null;
+	private String idSession;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -59,7 +60,8 @@ public class LSHomeActivity extends GDActivity {
         
         if (bundle != null)
         {
-        	CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER"),CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
+        	idSession = bundle.getString("SESSION");
+        	CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER")+" " + idSession,CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
     	}       
         
         
@@ -171,6 +173,7 @@ public class LSHomeActivity extends GDActivity {
 		@Override
 		public void onClick(View v) {
 			Intent i = null;
+			
 			switch (v.getId()) {
 			case R.id.dsh_btn_netList:
 				i = new Intent(LSHomeActivity.this,LSNetListActivity.class);
@@ -201,6 +204,9 @@ public class LSHomeActivity extends GDActivity {
 				break;
 			}
 			if (i!=null){
+				Bundle bundle = new Bundle();
+				bundle.putString("SESSION", idSession);
+				i.putExtras(bundle);
 				startActivity(i);
 			}
 		}

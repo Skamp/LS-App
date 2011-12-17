@@ -1,9 +1,20 @@
 package com.lsn.LoadSensing;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
 import com.lsn.LoadSensing.element.LSNetwork;
+import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
+import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDListActivity;
 import greendroid.widget.ActionBarItem.Type;
@@ -30,6 +41,7 @@ public class LSNetListActivity extends GDListActivity {
 	private ArrayList<LSNetwork> m_networks = null;
 	private LSNetworkAdapter     m_adapter;
 	private Runnable             viewNetworks;
+	private String idSession;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +50,14 @@ public class LSNetListActivity extends GDListActivity {
         
         initActionBar();
         initQuickActionBar();
-                
+        
+        Bundle bundle = getIntent().getExtras();
+        
+        if (bundle != null)
+        {
+        	idSession = bundle.getString("SESSION");
+    	}  
+        
         m_networks = new ArrayList<LSNetwork>();
         this.m_adapter = new LSNetworkAdapter(this,R.layout.row_list_network,m_networks);
         setListAdapter(this.m_adapter);
@@ -73,26 +92,56 @@ public class LSNetListActivity extends GDListActivity {
 	private void getNetworks() {
 
 		try{
-          m_networks = new ArrayList<LSNetwork>();
-          LSNetwork o1 = new LSNetwork();
-          o1.setNetworkName("Network 1");
-          o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o1.setNetworkNumber("XX");
-          LSNetwork o2 = new LSNetwork();
-          o2.setNetworkName("Network 2");
-          o2.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o2.setNetworkNumber("YY");
-          LSNetwork o3 = new LSNetwork();
-          o3.setNetworkName("Network 3");
-          o3.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o3.setNetworkNumber("YY");
-          m_networks.add(o1);
-          m_networks.add(o2);
-          m_networks.add(o3);
-          Thread.sleep(1000);
-          Log.i("ARRAY", ""+ m_networks.size());
+			m_networks = new ArrayList<LSNetwork>();
+          
+			// Server Request Ini
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("session", idSession);
+			JSONArray jArray = LSFunctions.urlRequestArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+
+			//JSONArray jArray = new JSONArray(response.toString());
+			
+			for (int i = 0; i<jArray.length(); i++)
+			{
+				JSONObject jsonData = jArray.getJSONObject(i);
+				LSNetwork o1 = new LSNetwork();
+				o1.setNetworkName(jsonData.getString("Nom"));
+		        o1.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+		        o1.setNetworkNumSensors(jsonData.getString("Sensors"));
+				o1.setNetworkId(jsonData.getString("IdXarxa"));
+				o1.setNetworkSituation(jsonData.getString("Poblacio"));
+				m_networks.add(o1);
+			}
+			
+			// Server Request End  
+          
+          
+          
+          
+          
+          
+          
+          
+          
+	        //LSNetwork o1 = new LSNetwork();
+			//o1.setNetworkName("Network 1");
+			//o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
+			//o1.setNetworkNumSensors(3);
+			//LSNetwork o2 = new LSNetwork();
+			//o2.setNetworkName("Network 2");
+			//o2.setNetworkSituation("lat. XX.XX lon. YY.YY");
+			//o2.setNetworkNumSensors(2);
+			//LSNetwork o3 = new LSNetwork();
+			//o3.setNetworkName("Network 3");
+			//o3.setNetworkSituation("lat. XX.XX lon. YY.YY");
+			//o3.setNetworkNumSensors(4);
+			//m_networks.add(o1);
+			//m_networks.add(o2);
+			//m_networks.add(o3);
+			//Thread.sleep(1000);
+	        Log.i("ARRAY", ""+ m_networks.size());
         } catch (Exception e) { 
-          Log.e("BACKGROUND_PROC", e.getMessage());
+        	Log.e("BACKGROUND_PROC", e.getMessage());
         }
         runOnUiThread(returnRes);		
 	}

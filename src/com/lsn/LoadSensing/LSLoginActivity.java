@@ -1,7 +1,14 @@
 package com.lsn.LoadSensing;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.lsn.LoadSensing.R;
 import com.lsn.LoadSensing.ui.CustomToast;
 import com.lsn.LoadSensing.encript.LSSecurity;
+import com.lsn.LoadSensing.func.LSFunctions;
 
 import android.app.Activity;
 import android.content.Context;
@@ -50,14 +57,34 @@ public class LSLoginActivity extends Activity {
 				strUser = edtLogin.getText().toString();
 				strPass = edtPassword.getText().toString();
 				
+				// Server Request Ini
+				Map<String, String> params = new HashMap<String, String>();
+				params.put("user", "sergio");
+				params.put("pass", "sergio");
+				JSONObject response = LSFunctions.urlRequest("http://viuterrassa.com/Android/login.php",params);
+				Boolean loginValue = null;
+				String sessionValue = null;
+				try {
+					loginValue = (Boolean) response.get("login");
+					sessionValue = response.get("session").toString();
+					
+				} catch (JSONException e) {
+					
+					e.printStackTrace();
+				}
+				// Server Request End
+				
+				
 				// valid user
-				if ((strUser.equals("sergio")) && (strPass.equals("1234"))) {
+				//if ((strUser.equals("sergio")) && (strPass.equals("1234"))) {
+				if (loginValue) {
 					
 					Intent intent = new Intent(LSLoginActivity.this,LSHomeActivity.class);
 					
 					Bundle bundle = new Bundle();
 					bundle.putString("USER", strUser);
-					bundle.putString("PASS", strPass);
+					//bundle.putString("PASS", strPass);
+					bundle.putString("SESSION", sessionValue);
 					intent.putExtras(bundle);
 					
 					SharedPreferences.Editor editor = prefs.edit();
