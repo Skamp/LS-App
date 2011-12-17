@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-   <string-array name="maps1">
-      <item>Google</item>
+   <string-array name="mapTypeEntries">
+      <item>Google Maps</item>
       <item>Open Street Map</item>
    </string-array>
-   <string-array name="maps2">
+   <string-array name="mapTypeValues">
       <item>google</item>
       <item>openstreetmap</item>
    </string-array>

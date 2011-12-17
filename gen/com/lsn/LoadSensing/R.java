@@ -25,8 +25,8 @@ public final class R {
     }
     public static final class array {
         public static final int lsnetmaps_options=0x7f0b0002;
-        public static final int maps1=0x7f0b0000;
-        public static final int maps2=0x7f0b0001;
+        public static final int mapTypeEntries=0x7f0b0000;
+        public static final int mapTypeValues=0x7f0b0001;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -981,9 +981,9 @@ containing a value of this type.
         public static final int gd_trashcan=0x7f090015;
         public static final int googleMaps_API_key_debug=0x7f09001d;
         public static final int hello=0x7f09001e;
-        public static final int help_homAugReal=0x7f09005d;
-        public static final int help_homFaves=0x7f09005c;
-        public static final int help_homNetCloser=0x7f09005e;
+        public static final int help_homAugReal=0x7f09005a;
+        public static final int help_homFaves=0x7f090059;
+        public static final int help_homNetCloser=0x7f09005b;
         /**  Menu End 
  Help Init 
  Menu End 
@@ -991,9 +991,9 @@ containing a value of this type.
  Menu End 
  Help Init 
          */
-        public static final int help_homNetList=0x7f090059;
-        public static final int help_homNetMaps=0x7f09005a;
-        public static final int help_homQRCode=0x7f09005b;
+        public static final int help_homNetList=0x7f090056;
+        public static final int help_homNetMaps=0x7f090057;
+        public static final int help_homQRCode=0x7f090058;
         public static final int infoTabAbout=0x7f090023;
         public static final int infoTabLicense=0x7f090024;
         public static final int info_LoadSensing=0x7f090020;
@@ -1009,19 +1009,20 @@ containing a value of this type.
         public static final int msg_retrievImages=0x7f09002b;
         public static final int msg_retrievNetworks=0x7f09002a;
         public static final int msg_retrievSensors=0x7f09002c;
-        public static final int settings_maps=0x7f090055;
-        public static final int settings_summary_1=0x7f090054;
-        /**  FavesSensors Activity End 
- Settings Activity Init 
- FavesSensors Activity End 
- Settings Activity Init 
- FavesSensors Activity End 
- Settings Activity Init 
+        public static final int settingMapType=0x7f09005d;
+        public static final int settingSelectMap=0x7f09005e;
+        public static final int settingSelectMapDialog=0x7f09005f;
+        /**  Help End 
+ Settings Init 
+ Help End 
+ Settings Init 
+ Help End 
+ Settings Init 
          */
-        public static final int settings_title_1=0x7f090053;
+        public static final int settingTitle=0x7f09005c;
         public static final int strErrorLocation=0x7f090051;
         public static final int strExit=0x7f09003f;
-        public static final int strFilter=0x7f090057;
+        public static final int strFilter=0x7f090054;
         /**  NetList Activity End 
  NetCloser Activity Init 
  NetList Activity End 
@@ -1031,7 +1032,7 @@ containing a value of this type.
          */
         public static final int strGetLocation=0x7f09004f;
         public static final int strLogin=0x7f09003e;
-        public static final int strMapMode=0x7f090058;
+        public static final int strMapMode=0x7f090055;
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1042,14 +1043,14 @@ containing a value of this type.
         public static final int strNetName=0x7f090052;
         public static final int strNumSensors=0x7f09004e;
         public static final int strPassword=0x7f09003d;
-        /**  Settings Activity End 
+        /**  FavesSensors Activity End 
  Menu Init 
- Settings Activity End 
+ FavesSensors Activity End 
  Menu Init 
- Settings Activity End 
+ FavesSensors Activity End 
  Menu Init 
          */
-        public static final int strSearch=0x7f090056;
+        public static final int strSearch=0x7f090053;
         /**  Faves Activity End 
  NetList Activity Init 
  Faves Activity End 
@@ -1182,7 +1183,7 @@ containing a value of this type.
         public static final int Theme_LSTheme=0x7f0a003c;
     }
     public static final class xml {
-        public static final int maps=0x7f050000;
+        public static final int config=0x7f050000;
     }
     public static final class styleable {
         /**  ActionBar related attributes 

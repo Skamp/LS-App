@@ -9,6 +9,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
@@ -24,13 +26,13 @@ import org.mapsforge.android.maps.ItemizedOverlay;
 import org.mapsforge.android.maps.MapController;
 import org.mapsforge.android.maps.MapView;
 import org.mapsforge.android.maps.Overlay;
+//import org.mapsforge.android.maps.Overlay.EventType;
 import org.mapsforge.android.maps.OverlayItem;
 
-import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlayForge;
-import com.readystatesoftware.mapviewballoons.BalloonOverlayViewForge;
 import com.readystatesoftware.mapviewballoons.R;
 
 public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
+//public class LSNetworksOverlayForge<Item extends OverlayItem> extends ItemizedOverlay<Item> {
 
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
 	private Context c;
@@ -52,6 +54,38 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		this.mapView = mapView;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.mapsforge.android.maps.ItemizedOverlay#onTap(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView)
+	 */
+//	@Override
+//	public boolean onTap(GeoPoint geoPoint, MapView mapView) {
+//		// TODO Auto-generated method stub
+//		
+//		return super.onTap(geoPoint, mapView);
+//	}
+//
+//	
+//	
+//	/* (non-Javadoc)
+//	 * @see org.mapsforge.android.maps.ItemizedOverlay#onLongPress(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView)
+//	 */
+//	@Override
+//	public boolean onLongPress(GeoPoint geoPoint, MapView mapView) {
+//		// TODO Auto-generated method stub
+//		return super.onLongPress(geoPoint, mapView);
+//	}
+
+	/* (non-Javadoc)
+	 * @see org.mapsforge.android.maps.ItemizedOverlay#checkItemHit(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView, org.mapsforge.android.maps.Overlay.EventType)
+	 */
+	@Override
+	protected boolean checkItemHit(GeoPoint geoPoint, MapView mapView,
+			EventType eventType) {
+		// TODO Auto-generated method stub
+		((ViewGroup) mapView.getParent()).removeView(layout);
+		return super.checkItemHit(geoPoint, mapView, eventType);
+	}
+
 	public void addOverlay(OverlayItem overlay) {
 	    m_overlays.add(overlay);
 	    populate();
@@ -61,7 +95,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 	protected OverlayItem createItem(int i) {
 		return m_overlays.get(i);
 	}
-
+	
 	@Override
 	public int size() {
 		return m_overlays.size();
@@ -70,10 +104,21 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 	@Override
 	protected final boolean onTap(int index) {
 		
-		OverlayItem item = createItem(index);
+		
+		currentFocussedIndex = index;
+		currentFocussedItem = createItem(index);
+		//OverlayItem item = createItem(index);
+		
+		List<Overlay> mapOverlays = mapView.getOverlays();
+		if (mapOverlays.size() >= 1) {
+			hideOtherBalloons(mapOverlays);
+		}
+		
+		((ViewGroup) mapView.getParent()).removeView(layout);
 		
 		MapController mMapController = mapView.getController();
-        mMapController.setCenter(item.getPoint());
+        //mMapController.setCenter(item.getPoint());
+        mMapController.setCenter(currentFocussedItem.getPoint());
         
         layout = new LinearLayout(c);
 		layout.setVisibility(View.VISIBLE);
@@ -81,40 +126,86 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		LayoutInflater inflater = (LayoutInflater) c
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflater.inflate(R.layout.balloon_overlay, layout);
+		
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
 
 		layout.setVisibility(View.VISIBLE);
-		if (item.getTitle() != null) {
+		//if (item.getTitle() != null) {
+		if (currentFocussedItem.getTitle() != null) {
 			title.setVisibility(View.VISIBLE);
-			title.setText(item.getTitle());
+			//title.setText(item.getTitle());
+			title.setText(currentFocussedItem.getTitle());
 		} else {
 			title.setVisibility(View.GONE);
 		}
-		if (item.getSnippet() != null) {
+		//if (item.getSnippet() != null) {
+		if (currentFocussedItem.getSnippet() != null) {
 			snippet.setVisibility(View.VISIBLE);
-			snippet.setText(item.getSnippet());
+			//snippet.setText(item.getSnippet());
+			snippet.setText(currentFocussedItem.getSnippet());
 		} else {
 			snippet.setVisibility(View.GONE);
 		}
 		                		
-		ImageView close = (ImageView) v.findViewById(R.id.close_img_button);
-		close.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				layout.setVisibility(View.GONE);
-			}
-		});
-
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		params.gravity = Gravity.NO_GRAVITY;
-		params.topMargin = mapView.getHeight()/2-layout.getHeight();
+		//params.gravity = Gravity.NO_GRAVITY;
+		params.gravity = Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL;
+		
+		////Point screenPoint = new Point();
+		////mapView.getProjection().toPixels(geoPoint, screenPoint);
+		
+		//WindowManager wm = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+		//Display display = wm.getDefaultDisplay();
+		//params.topMargin -= 150;
+		
+		//params.topMargin = display.getHeight()/2;
+		layout.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+		params.topMargin -= layout.getMeasuredHeight();
+		//params.topMargin = mapView.getHeight()/2-layout.getMeasuredHeight();
+		//params.leftMargin = (mapView.getWidth()/2)-(layout.getMeasuredWidth()/2);
+		
+		ImageView imgClose = (ImageView)layout.findViewById(R.id.close_img_button);
+		imgClose.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				layout.setVisibility(View.GONE);
+				//List<Overlay> mapOverlays = mapView.getOverlays();
+				//if (mapOverlays.size() >= 1) {
+				//	hideOtherBalloons(mapOverlays);
+				//}
+				((ViewGroup) mapView.getParent()).removeView(layout);
+			}
+			
+		});
+		
+		clickRegion = layout.findViewById(R.id.balloon_inner_layout);
+		clickRegion.setOnTouchListener(createBalloonTouchListener());
 		
 		((ViewGroup) mapView.getParent()).addView(layout, params);
+		
+		//mapOverlays.add(item);
 		
 		return true;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.mapsforge.android.maps.ItemizedOverlay#onTap(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView)
+	 */
+	
+//	@Override
+//	public boolean onTap(GeoPoint geoPoint, MapView mapView) {
+//		
+//		//super.onTap(geoPoint, mapView);
+//		Point screenPoint = new Point();
+//		mapView.getProjection().toPixels(geoPoint, screenPoint);
+//				
+//		return true;
+//	}
+
 	protected boolean onBalloonTap(int index, OverlayItem item) {
 		Toast.makeText(c, "onBalloonTap for overlay index " + index + "item is " + item.getTitle(),
 				Toast.LENGTH_LONG).show();
@@ -132,6 +223,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		for (Overlay overlay : overlays) {
 			if (overlay instanceof LSNetworksOverlayForge && overlay != this) {
 				((LSNetworksOverlayForge) overlay).hideBalloon();
+				
 			}
 		}
 		
@@ -153,6 +245,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		if (mapOverlays.size() > 1) {
 			hideOtherBalloons(mapOverlays);
+			
 		}
 		
 		if (currentFocussedItem != null)
@@ -201,6 +294,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 			public boolean onTouch(View v, MotionEvent event) {
 				
 				View l =  ((View) v.getParent()).findViewById(R.id.balloon_main_layout);
+				//View l =  v.findViewById(R.id.balloon_main_layout);
 				Drawable d = l.getBackground();
 				
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -279,7 +373,6 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 			params.gravity = Gravity.NO_GRAVITY;
 
 			addView(layout, params);
-
 		}
 		
 		/**
@@ -307,9 +400,6 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		}
 
 	}
-
-	
-	
 }
 
 

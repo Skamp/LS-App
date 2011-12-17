@@ -81,11 +81,6 @@
    		
   		
    	<!-- FavesSensors Activity End -->
-    <!-- Settings Activity Init -->
-  		<string name="settings_title_1">Tipus de mapes</string>
-  		<string name="settings_summary_1">Selecciona el tipus de mapa</string>
-  		<string name="settings_maps">Open Street Map no implementat</string>
-    <!-- Settings Activity End -->
     <!-- Menu Init -->
    		<string name="strSearch">Cercar</string>
     	<string name="strFilter">Filtrar</string>
@@ -102,5 +97,12 @@
 	    <string name="help_homAugReal">Realitat Augmentada: Estant in situ en la mateixa zona on es troba la xarxa a analitzar, es pot geoposicionar cada node de la xarxa observant en temps real la posició dels nodes.</string>
 	    <string name="help_homNetCloser">Xarxes properes: Permet, mitjan�ant el GPS del dispositiu, detectar les xarxes properes a la ubicació en la que es troba.</string>
 	<!-- Help End -->
-   		
+   	
+   	<!-- Settings Init -->
+   	
+   		<string name="settingTitle">Configuració</string>
+   		<string name="settingMapType">Tipus de mapa</string>
+   		<string name="settingSelectMap">Selecciona el tipus de mapa</string>
+   		<string name="settingSelectMapDialog">Selecciona:</string>
+   	<!-- Settings End -->
 </resources>

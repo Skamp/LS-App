@@ -28,7 +28,7 @@ public class LSHomeActivity extends GDActivity {
     
 	private final int MORE = 0;
 	private final int HELP = 1;
-//	private final int LOG_OUT = 2;
+
 	private QuickActionWidget quickActions;
 	private String typeMaps = null;
 	
@@ -75,7 +75,7 @@ public class LSHomeActivity extends GDActivity {
         findViewById(R.id.dsh_btn_AR).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_netCloser).setOnClickListener(dbClickListener);
         
-        PreferenceManager.setDefaultValues(this, R.xml.maps, false);
+        PreferenceManager.setDefaultValues(this, R.xml.config, false);
         
     }
     
@@ -83,7 +83,7 @@ public class LSHomeActivity extends GDActivity {
     public void onResume() {
         super.onResume();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        typeMaps=settings.getString("maps", "");
+        typeMaps=settings.getString("maps", "google");
     }    
     
     @Override
@@ -108,12 +108,6 @@ public class LSHomeActivity extends GDActivity {
     		Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();
     		i = new Intent(LSHomeActivity.this,LSHelpActivity.class);
     		break;
-//    	case LOG_OUT:
-//    		showLogOutDialog();
-//    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton LOG_OUT", Toast.LENGTH_SHORT).show();
-//    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
-//    		//i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
-//    		break;
     	
     	default:
     		return super.onHandleActionBarItemClick(item, position);
@@ -128,10 +122,7 @@ public class LSHomeActivity extends GDActivity {
 		
 		addActionBarItem(Type.Add,MORE);
     	addActionBarItem(Type.Help,HELP);
-    	//addActionBarItem(getActionBar()
-    	//        .newActionBarItem(NormalActionBarItem.class)
-    	//        .setDrawable(R.drawable.gd_action_bar_exit)
-    	//        .setContentDescription(R.string.abtxtLogOut), LOG_OUT);
+
 	}
 
 	private void initQuickActionBar()
@@ -181,7 +172,7 @@ public class LSHomeActivity extends GDActivity {
 				 }
 				 else   
 				 {
-					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settings_maps,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+					 i = new Intent(LSHomeActivity.this,LSNetMapsForgeActivity.class);
 				 }
 				 break;
 			case R.id.dsh_btn_QRCode:
