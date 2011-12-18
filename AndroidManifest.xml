@@ -90,6 +90,16 @@
             android:configChanges="orientation|keyboardHidden"
             android:name=".faves.LSFavesImagesActivity">
         </activity>
+        
+        <activity 
+            android:label="@string/act_lbl_netinfo"
+            android:name=".LSNetInfoActivity">
+        </activity>
+        
+        <activity 
+            android:label="@string/act_lbl_SensorList"
+            android:name=".LSSensorListActivity">
+        </activity>
             
         <uses-library android:name="com.google.android.maps"/>
     </application>

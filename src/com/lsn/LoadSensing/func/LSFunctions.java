@@ -41,50 +41,17 @@ public class LSFunctions {
 		return (list.size() > 0);
 	}
 	
-	//@SuppressWarnings("rawtypes")
-	public static JSONObject urlRequest(String url, Map<?,?> params)
+	public static JSONObject urlRequestJSONObject(String url, Map<?,?> params)
 	{
-		HttpClient client = new DefaultHttpClient();
-		//Set timeout connection
-		HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
-		HttpPost post = null;
-		HttpResponse response = null;
 		HttpEntity entity;
+		HttpResponse response = null;
 		
-		try
-		{
-			post = new HttpPost(url);
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(params.size());
-			Iterator<?> it = params.entrySet().iterator();
-			while (it.hasNext())
-			{
-				
-				Map.Entry<?,?> element = (Map.Entry<?,?>)it.next();
-				nameValuePairs.add(new BasicNameValuePair(element.getKey().toString(),element.getValue().toString()));
-			}
-			
-			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		
-		try {
-			response = client.execute(post);
-		} catch (ClientProtocolException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		response=urlRequest(url,params);
 		entity = response.getEntity();
 		
 		JSONObject retJSON = null;
 		try {
-			retJSON = new JSONObject(EntityUtils.toString(entity));
-			//retJSON = new JSONObject(EntityUtils.toString(entity,HTTP.UTF_8));
+			retJSON = new JSONObject(EntityUtils.toString(entity,HTTP.UTF_8));
 		} catch (ParseException e) {
 
 			e.printStackTrace();
@@ -101,50 +68,17 @@ public class LSFunctions {
 	}
 	
 	
-	public static JSONArray urlRequestArray(String url, Map<?,?> params)
+	public static JSONArray urlRequestJSONArray(String url, Map<?,?> params)
 	{
-		HttpClient client = new DefaultHttpClient();
-		//Set timeout connection
-		HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
-		
-		HttpPost post = null;
-		HttpResponse response = null;
 		HttpEntity entity;
+		HttpResponse response = null;
 		
+		response=urlRequest(url,params);
 		
-		try
-		{
-			post = new HttpPost(url);
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(params.size());
-			Iterator<?> it = params.entrySet().iterator();
-			while (it.hasNext())
-			{
-				
-				Map.Entry<?,?> element = (Map.Entry<?,?>)it.next();
-				nameValuePairs.add(new BasicNameValuePair(element.getKey().toString(),element.getValue().toString()));
-			}
-			
-			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		
-		try {
-			response = client.execute(post);
-		} catch (ClientProtocolException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
 		entity = response.getEntity();
 		
 		JSONArray retJSONArray = null;
 		try {
-			//retJSONArray = new JSONArray(EntityUtils.toString(entity));
 			retJSONArray = new JSONArray(EntityUtils.toString(entity,HTTP.UTF_8));
 			
 		} catch (ParseException e) {
@@ -162,7 +96,46 @@ public class LSFunctions {
 		
 	}
 	
-	
+	@SuppressWarnings("rawtypes")
+	private static HttpResponse urlRequest(String url, Map<?,?> params)
+	{
+		HttpClient client = new DefaultHttpClient();
+		//Set timeout connection
+		HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
+		
+		HttpPost post = null;
+		HttpResponse response = null;
+				
+		try
+		{
+			post = new HttpPost(url);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(params.size());
+			Iterator<?> it = params.entrySet().iterator();
+			while (it.hasNext())
+			{
+				
+				Map.Entry element = (Map.Entry)it.next();
+				nameValuePairs.add(new BasicNameValuePair(element.getKey().toString(),element.getValue().toString()));
+			}
+			
+			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
+		try {
+			response = client.execute(post);
+		} catch (ClientProtocolException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		return response;
+	}
 	
 	
 }

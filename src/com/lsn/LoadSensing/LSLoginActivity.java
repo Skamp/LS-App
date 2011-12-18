@@ -61,7 +61,7 @@ public class LSLoginActivity extends Activity {
 				Map<String, String> params = new HashMap<String, String>();
 				params.put("user", "sergio");
 				params.put("pass", "sergio");
-				JSONObject response = LSFunctions.urlRequest("http://viuterrassa.com/Android/login.php",params);
+				JSONObject response = LSFunctions.urlRequestJSONObject("http://viuterrassa.com/Android/login.php",params);
 				Boolean loginValue = null;
 				String sessionValue = null;
 				try {

@@ -35,6 +35,8 @@
     	<string name="act_lbl_favNetwork">Favorite networks</string>
 	    <string name="act_lbl_favSensor">Favorite sensors</string>
 	    <string name="act_lbl_favImage">Favorite images</string>
+	    <string name="act_lbl_netinfo">Net information</string>
+	    <string name="act_lbl_SensorList">Sensors list</string>
     <!-- Activity Labels End -->
     
         
@@ -78,6 +80,16 @@
    		
   		
    	<!-- FavesSensors Activity End -->
+   	<!-- NetInfo Activity Init  -->
+    	<string name="lblnetSituation">Situation:</string>
+    	<string name="lblnetPosition">Position:</string>
+    	<string name="lblnetPosLatitude">Latitude</string>
+    	<string name="lblnetPosLongitude">Longitude</string>
+    	<string name="lblnetPosAltitude">Altitude</string>
+    	<string name="lblnetNumSensors">Sensors:</string>
+    	<string name="lblnetLoadSensors">Access to sensors</string>
+   	
+    <!-- NetInfo Activity End  -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Type of map</string>
   		<string name="settings_summary_1">Select the type of map</string>

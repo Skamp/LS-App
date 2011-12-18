@@ -2,18 +2,16 @@ package com.lsn.LoadSensing;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 
-import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
-import com.lsn.LoadSensing.element.LSNetwork;
+
+import com.lsn.LoadSensing.adapter.LSSensorAdapter;
+import com.lsn.LoadSensing.element.LSSensor;
 import com.lsn.LoadSensing.func.LSFunctions;
-import com.lsn.LoadSensing.ui.CustomToast;
 import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDListActivity;
@@ -27,23 +25,23 @@ import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class LSNetListActivity extends GDListActivity {
+public class LSSensorListActivity extends GDListActivity {
 	
 	private final int OPTIONS = 0;
 	private final int HELP = 1;
 	private QuickActionWidget quickActions;
 	
 	private ProgressDialog       m_ProgressDialog = null;
-	private ArrayList<LSNetwork> m_networks = null;
-	private LSNetworkAdapter     m_adapter;
-	private Runnable             viewNetworks;
-	private static String idSession;
+	private ArrayList<LSSensor>  m_sensors = null;
+	private LSSensorAdapter      m_adapter;
+	private Runnable             viewSensors;
+	private String idSession;
+	private String idXarxa;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,61 +56,65 @@ public class LSNetListActivity extends GDListActivity {
         if (bundle != null)
         {
         	idSession = bundle.getString("SESSION");
+        	idXarxa = bundle.getString("ID_XARXA");
     	}  
         
-        m_networks = new ArrayList<LSNetwork>();
-        this.m_adapter = new LSNetworkAdapter(this,R.layout.row_list_network,m_networks);
+        m_sensors = new ArrayList<LSSensor>();
+        this.m_adapter = new LSSensorAdapter(this,R.layout.row_list_sensor,m_sensors);
         setListAdapter(this.m_adapter);
         
-        viewNetworks = new Runnable()
+        viewSensors = new Runnable()
         {
 
 			@Override
 			public void run() {
-				getNetworks();
+				getSensors();
 			}
         };
-        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
+        Thread thread = new Thread(null,viewSensors,"ViewSensors");
         thread.start();
-        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
+        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievSensors), true);
     }
 	
 	private Runnable returnRes = new Runnable() {
 
     	@Override
     	public void run() {
-    		if(m_networks != null && m_networks.size() > 0){
+    		if(m_sensors != null && m_sensors.size() > 0){
                 m_adapter.notifyDataSetChanged();
-                for(int i=0;i<m_networks.size();i++)
-                m_adapter.add(m_networks.get(i));
+                for(int i=0;i<m_sensors.size();i++)
+                m_adapter.add(m_sensors.get(i));
             }
             m_ProgressDialog.dismiss();
             m_adapter.notifyDataSetChanged();
     	}
     };
 	
-	private void getNetworks() {
+	private void getSensors() {
 
 		try{
-			m_networks = new ArrayList<LSNetwork>();
+			m_sensors = new ArrayList<LSSensor>();
           
 			// Server Request Ini
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("session", idSession);
-			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+			params.put("IdXarxa", idXarxa);
+			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistaSensors.php",params);
 
 			//JSONArray jArray = new JSONArray(response.toString());
 			
 			for (int i = 0; i<jArray.length(); i++)
 			{
 				JSONObject jsonData = jArray.getJSONObject(i);
-				LSNetwork o1 = new LSNetwork();
-				o1.setNetworkName(jsonData.getString("Nom"));
-		        o1.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
-		        o1.setNetworkNumSensors(jsonData.getString("Sensors"));
-				o1.setNetworkId(jsonData.getString("IdXarxa"));
-				o1.setNetworkSituation(jsonData.getString("Poblacio"));
-				m_networks.add(o1);
+				LSSensor s1 = new LSSensor();
+				s1.setSensorId(jsonData.getString("id"));
+				s1.setSensorName(jsonData.getString("sensor"));
+				s1.setSensorChannel(jsonData.getString("canal"));
+				s1.setSensorType(jsonData.getString("tipus"));
+				s1.setSensorDesc(jsonData.getString("Descripcio"));
+				s1.setSensorSituation(jsonData.getString("Poblacio"));
+				s1.setSensorNetwork(jsonData.getString("Nom"));
+		        m_sensors.add(s1);
 			}
 			
 			// Server Request End  
@@ -141,7 +143,7 @@ public class LSNetListActivity extends GDListActivity {
 			//m_networks.add(o2);
 			//m_networks.add(o3);
 			//Thread.sleep(1000);
-	        Log.i("ARRAY", ""+ m_networks.size());
+	        Log.i("ARRAY", ""+ m_sensors.size());
         } catch (Exception e) { 
         	Log.e("BACKGROUND_PROC", e.getMessage());
         }
@@ -151,18 +153,17 @@ public class LSNetListActivity extends GDListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
-        Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getSensorName(position), Toast.LENGTH_LONG).show();
         Intent i = null;
-        i = new Intent(LSNetListActivity.this,LSNetInfoActivity.class);
+        i = new Intent(LSSensorListActivity.this,LSNetInfoActivity.class);
         
         if (i!=null){
 			Bundle bundle = new Bundle();
 			
-			bundle.putString("SESSION", idSession);
-			bundle.putParcelable("NETWORK_OBJ", m_networks.get(position));
+			bundle.putParcelable("SENSOR_OBJ", m_sensors.get(position));
 			
 			i.putExtras(bundle);
-        	//i.putExtra("NETWORK_OBJ", m_networks.get(position));
+
 			startActivity(i);
 		}
         
@@ -203,7 +204,7 @@ public class LSNetListActivity extends GDListActivity {
 
 			@Override
 			public void onQuickActionClicked(QuickActionWidget widget, int position) {
-				Toast.makeText(LSNetListActivity.this, "Item " + position + " pulsado", Toast.LENGTH_SHORT).show();
+				Toast.makeText(LSSensorListActivity.this, "Item " + position + " pulsado", Toast.LENGTH_SHORT).show();
 				
 			}
 		});
