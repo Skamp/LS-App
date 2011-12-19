@@ -67,8 +67,7 @@ public class LSNetInfoActivity extends GDActivity {
 					Bundle bundle = new Bundle();
 					
 					bundle.putString("SESSION", idSession);
-					bundle.putString("ID_XARXA", networkObj.getNetworkId());
-					
+					bundle.putParcelable("NETWORK_OBJ", networkObj);
 					i.putExtras(bundle);
 		        	
 					startActivity(i);

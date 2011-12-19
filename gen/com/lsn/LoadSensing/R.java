@@ -747,72 +747,72 @@ containing a value of this type.
     }
     public static final class id {
         public static final int about=0x7f060015;
-        public static final int balloon_inner_layout=0x7f060022;
-        public static final int balloon_item_snippet=0x7f060024;
-        public static final int balloon_item_title=0x7f060023;
-        public static final int balloon_main_layout=0x7f060021;
+        public static final int balloon_inner_layout=0x7f060023;
+        public static final int balloon_item_snippet=0x7f060025;
+        public static final int balloon_item_title=0x7f060024;
+        public static final int balloon_main_layout=0x7f060022;
         public static final int bottom=0x7f060008;
-        public static final int botton1=0x7f06004d;
+        public static final int botton1=0x7f06004e;
         public static final int btnLoadSensors=0x7f060020;
-        public static final int btnLogin=0x7f060052;
+        public static final int btnLogin=0x7f060053;
         public static final int center=0x7f06000d;
         public static final int center_horizontal=0x7f06000c;
         public static final int center_vertical=0x7f06000b;
-        public static final int close_img_button=0x7f060025;
-        public static final int content=0x7f06002d;
+        public static final int close_img_button=0x7f060026;
+        public static final int content=0x7f06002e;
         public static final int dashboard=0x7f060001;
-        public static final int dsh_btn_AR=0x7f06002a;
-        public static final int dsh_btn_Faves=0x7f060029;
-        public static final int dsh_btn_QRCode=0x7f060028;
-        public static final int dsh_btn_favImage=0x7f060036;
-        public static final int dsh_btn_favNetwork=0x7f060034;
-        public static final int dsh_btn_favSensor=0x7f060035;
-        public static final int dsh_btn_netCloser=0x7f06002b;
-        public static final int dsh_btn_netList=0x7f060026;
-        public static final int dsh_btn_netMaps=0x7f060027;
-        public static final int edtLogin=0x7f060050;
-        public static final int edtPassword=0x7f060051;
+        public static final int dsh_btn_AR=0x7f06002b;
+        public static final int dsh_btn_Faves=0x7f06002a;
+        public static final int dsh_btn_QRCode=0x7f060029;
+        public static final int dsh_btn_favImage=0x7f060037;
+        public static final int dsh_btn_favNetwork=0x7f060035;
+        public static final int dsh_btn_favSensor=0x7f060036;
+        public static final int dsh_btn_netCloser=0x7f06002c;
+        public static final int dsh_btn_netList=0x7f060027;
+        public static final int dsh_btn_netMaps=0x7f060028;
+        public static final int edtLogin=0x7f060051;
+        public static final int edtPassword=0x7f060052;
         public static final int empty=0x7f060002;
         public static final int gd_action_bar=0x7f060012;
         public static final int gd_action_bar_content_view=0x7f060014;
-        public static final int gd_action_bar_home_item=0x7f060038;
+        public static final int gd_action_bar_home_item=0x7f060039;
         public static final int gd_action_bar_host=0x7f060013;
-        public static final int gd_action_bar_item=0x7f06003a;
-        public static final int gd_action_bar_item_progress_bar=0x7f06003b;
-        public static final int gd_action_bar_title=0x7f060039;
-        public static final int gd_description=0x7f06003c;
-        public static final int gd_drawable=0x7f06003d;
-        public static final int gd_progress_bar=0x7f06003f;
+        public static final int gd_action_bar_item=0x7f06003b;
+        public static final int gd_action_bar_item_progress_bar=0x7f06003c;
+        public static final int gd_action_bar_title=0x7f06003a;
+        public static final int gd_description=0x7f06003d;
+        public static final int gd_drawable=0x7f06003e;
+        public static final int gd_progress_bar=0x7f060040;
         public static final int gd_segmented_bar=0x7f060010;
         public static final int gd_segmented_content_view=0x7f060011;
-        public static final int gd_separator_text=0x7f060048;
-        public static final int gd_subtext=0x7f060049;
-        public static final int gd_subtitle=0x7f06004a;
-        public static final int gd_text=0x7f06003e;
-        public static final int gd_thumbnail=0x7f06004b;
-        public static final int gdi_arrow_down=0x7f060046;
-        public static final int gdi_arrow_up=0x7f060041;
-        public static final int gdi_footer=0x7f060045;
-        public static final int gdi_grid=0x7f060047;
-        public static final int gdi_header=0x7f060040;
-        public static final int gdi_quick_action_items=0x7f060044;
-        public static final int gdi_rack=0x7f060043;
-        public static final int gdi_scroll=0x7f060042;
+        public static final int gd_separator_text=0x7f060049;
+        public static final int gd_subtext=0x7f06004a;
+        public static final int gd_subtitle=0x7f06004b;
+        public static final int gd_text=0x7f06003f;
+        public static final int gd_thumbnail=0x7f06004c;
+        public static final int gdi_arrow_down=0x7f060047;
+        public static final int gdi_arrow_up=0x7f060042;
+        public static final int gdi_footer=0x7f060046;
+        public static final int gdi_grid=0x7f060048;
+        public static final int gdi_header=0x7f060041;
+        public static final int gdi_quick_action_items=0x7f060045;
+        public static final int gdi_rack=0x7f060044;
+        public static final int gdi_scroll=0x7f060043;
         public static final int hdpi=0x7f060005;
-        public static final int header=0x7f06004f;
-        public static final int imageBitmap=0x7f060055;
-        public static final int imageName=0x7f060056;
-        public static final int imageNetwork=0x7f060057;
-        public static final int imageSituation=0x7f060058;
-        public static final int imgToast=0x7f060032;
-        public static final int layoutToast=0x7f060031;
+        public static final int header=0x7f060050;
+        public static final int imageBitmap=0x7f060056;
+        public static final int imageName=0x7f060057;
+        public static final int imageNetwork=0x7f060058;
+        public static final int imageSituation=0x7f060059;
+        public static final int imgToast=0x7f060033;
+        public static final int layoutToast=0x7f060032;
         public static final int ldpi=0x7f060003;
         public static final int left=0x7f060009;
-        public static final int license=0x7f06004e;
+        public static final int license=0x7f06004f;
         public static final int mdpi=0x7f060004;
-        public static final int message=0x7f06002e;
+        public static final int message=0x7f06002f;
         public static final int multiple=0x7f06000f;
-        public static final int negativeButton=0x7f060030;
+        public static final int negativeButton=0x7f060031;
         public static final int netName=0x7f06001a;
         public static final int netNumSensors=0x7f06001f;
         public static final int netPosAltitude=0x7f06001e;
@@ -820,26 +820,27 @@ containing a value of this type.
         public static final int netPosLongitude=0x7f06001d;
         public static final int netSituation=0x7f06001b;
         public static final int netmap=0x7f060016;
-        public static final int networkName=0x7f060059;
-        public static final int networkSensors=0x7f06005b;
-        public static final int networkSituation=0x7f06005a;
+        public static final int networkName=0x7f06005a;
+        public static final int networkSensors=0x7f06005c;
+        public static final int networkSituation=0x7f06005b;
         public static final int normal=0x7f060000;
-        public static final int positiveButton=0x7f06002f;
+        public static final int positiveButton=0x7f060030;
         public static final int right=0x7f06000a;
-        public static final int sensorName=0x7f06005c;
-        public static final int sensorNetwork=0x7f06005e;
-        public static final int sensorSituation=0x7f06005d;
+        public static final int sensorChannel=0x7f06005f;
+        public static final int sensorName=0x7f06005d;
+        public static final int sensorType=0x7f06005e;
         public static final int single=0x7f06000e;
-        public static final int textView=0x7f06004c;
-        public static final int title=0x7f06002c;
+        public static final int textView=0x7f06004d;
+        public static final int title=0x7f06002d;
         public static final int top=0x7f060007;
-        public static final int txtAppName=0x7f060053;
-        public static final int txtHomeMessage=0x7f060037;
+        public static final int txtAppName=0x7f060054;
+        public static final int txtHomeMessage=0x7f060038;
         public static final int txtLocation=0x7f060019;
+        public static final int txtNetwork=0x7f060021;
         public static final int txtResultFormat=0x7f060018;
         public static final int txtResultValue=0x7f060017;
-        public static final int txtTeamName=0x7f060054;
-        public static final int txtToast=0x7f060033;
+        public static final int txtTeamName=0x7f060055;
+        public static final int txtToast=0x7f060034;
         public static final int xhdpi=0x7f060006;
     }
     public static final class layout {
@@ -853,54 +854,55 @@ containing a value of this type.
         public static final int act_04_favessensors=0x7f030007;
         public static final int act_06_netcloser=0x7f030008;
         public static final int act_netinfo=0x7f030009;
-        public static final int balloon_overlay=0x7f03000a;
-        public static final int bkp_dshb_home=0x7f03000b;
-        public static final int customdialog=0x7f03000c;
-        public static final int customtoast=0x7f03000d;
-        public static final int dshb_favorites=0x7f03000e;
-        public static final int dshb_home=0x7f03000f;
-        public static final int footer_repeat=0x7f030010;
-        public static final int gd_action_bar_dashboard=0x7f030011;
-        public static final int gd_action_bar_empty=0x7f030012;
-        public static final int gd_action_bar_item_base=0x7f030013;
-        public static final int gd_action_bar_item_loader=0x7f030014;
-        public static final int gd_action_bar_normal=0x7f030015;
-        public static final int gd_content_dashboard=0x7f030016;
-        public static final int gd_content_empty=0x7f030017;
-        public static final int gd_content_normal=0x7f030018;
-        public static final int gd_description_item_view=0x7f030019;
-        public static final int gd_drawable_item_view=0x7f03001a;
-        public static final int gd_expandable_list_content_dashboard=0x7f03001b;
-        public static final int gd_expandable_list_content_empty=0x7f03001c;
-        public static final int gd_expandable_list_content_normal=0x7f03001d;
-        public static final int gd_list_content_dashboard=0x7f03001e;
-        public static final int gd_list_content_empty=0x7f03001f;
-        public static final int gd_list_content_normal=0x7f030020;
-        public static final int gd_long_text_item_view=0x7f030021;
-        public static final int gd_progress_item_view=0x7f030022;
-        public static final int gd_quick_action_bar=0x7f030023;
-        public static final int gd_quick_action_bar_item=0x7f030024;
-        public static final int gd_quick_action_grid=0x7f030025;
-        public static final int gd_quick_action_grid_item=0x7f030026;
-        public static final int gd_segment=0x7f030027;
-        public static final int gd_separator_item_view=0x7f030028;
-        public static final int gd_subtext_item_view=0x7f030029;
-        public static final int gd_subtitle_item_view=0x7f03002a;
-        public static final int gd_tab_content=0x7f03002b;
-        public static final int gd_tab_indicator=0x7f03002c;
-        public static final int gd_text_item_view=0x7f03002d;
-        public static final int gd_thumbnail_item_view=0x7f03002e;
-        public static final int header_gradient=0x7f03002f;
-        public static final int help_menu=0x7f030030;
-        public static final int help_menu_2=0x7f030031;
-        public static final int info=0x7f030032;
-        public static final int license=0x7f030033;
-        public static final int login=0x7f030034;
-        public static final int main=0x7f030035;
-        public static final int other=0x7f030036;
-        public static final int row_list_image=0x7f030037;
-        public static final int row_list_network=0x7f030038;
-        public static final int row_list_sensor=0x7f030039;
+        public static final int act_sensorlist=0x7f03000a;
+        public static final int balloon_overlay=0x7f03000b;
+        public static final int bkp_dshb_home=0x7f03000c;
+        public static final int customdialog=0x7f03000d;
+        public static final int customtoast=0x7f03000e;
+        public static final int dshb_favorites=0x7f03000f;
+        public static final int dshb_home=0x7f030010;
+        public static final int footer_repeat=0x7f030011;
+        public static final int gd_action_bar_dashboard=0x7f030012;
+        public static final int gd_action_bar_empty=0x7f030013;
+        public static final int gd_action_bar_item_base=0x7f030014;
+        public static final int gd_action_bar_item_loader=0x7f030015;
+        public static final int gd_action_bar_normal=0x7f030016;
+        public static final int gd_content_dashboard=0x7f030017;
+        public static final int gd_content_empty=0x7f030018;
+        public static final int gd_content_normal=0x7f030019;
+        public static final int gd_description_item_view=0x7f03001a;
+        public static final int gd_drawable_item_view=0x7f03001b;
+        public static final int gd_expandable_list_content_dashboard=0x7f03001c;
+        public static final int gd_expandable_list_content_empty=0x7f03001d;
+        public static final int gd_expandable_list_content_normal=0x7f03001e;
+        public static final int gd_list_content_dashboard=0x7f03001f;
+        public static final int gd_list_content_empty=0x7f030020;
+        public static final int gd_list_content_normal=0x7f030021;
+        public static final int gd_long_text_item_view=0x7f030022;
+        public static final int gd_progress_item_view=0x7f030023;
+        public static final int gd_quick_action_bar=0x7f030024;
+        public static final int gd_quick_action_bar_item=0x7f030025;
+        public static final int gd_quick_action_grid=0x7f030026;
+        public static final int gd_quick_action_grid_item=0x7f030027;
+        public static final int gd_segment=0x7f030028;
+        public static final int gd_separator_item_view=0x7f030029;
+        public static final int gd_subtext_item_view=0x7f03002a;
+        public static final int gd_subtitle_item_view=0x7f03002b;
+        public static final int gd_tab_content=0x7f03002c;
+        public static final int gd_tab_indicator=0x7f03002d;
+        public static final int gd_text_item_view=0x7f03002e;
+        public static final int gd_thumbnail_item_view=0x7f03002f;
+        public static final int header_gradient=0x7f030030;
+        public static final int help_menu=0x7f030031;
+        public static final int help_menu_2=0x7f030032;
+        public static final int info=0x7f030033;
+        public static final int license=0x7f030034;
+        public static final int login=0x7f030035;
+        public static final int main=0x7f030036;
+        public static final int other=0x7f030037;
+        public static final int row_list_image=0x7f030038;
+        public static final int row_list_network=0x7f030039;
+        public static final int row_list_sensor=0x7f03003a;
     }
     public static final class string {
         public static final int about_content=0x7f090022;
@@ -989,9 +991,9 @@ containing a value of this type.
         public static final int gd_trashcan=0x7f090015;
         public static final int googleMaps_API_key_debug=0x7f09001d;
         public static final int hello=0x7f09001e;
-        public static final int help_homAugReal=0x7f090066;
-        public static final int help_homFaves=0x7f090065;
-        public static final int help_homNetCloser=0x7f090067;
+        public static final int help_homAugReal=0x7f090068;
+        public static final int help_homFaves=0x7f090067;
+        public static final int help_homNetCloser=0x7f090069;
         /**  Menu End 
  Help Init 
  Menu End 
@@ -999,18 +1001,18 @@ containing a value of this type.
  Menu End 
  Help Init 
          */
-        public static final int help_homNetList=0x7f090062;
-        public static final int help_homNetMaps=0x7f090063;
-        public static final int help_homQRCode=0x7f090064;
+        public static final int help_homNetList=0x7f090064;
+        public static final int help_homNetMaps=0x7f090065;
+        public static final int help_homQRCode=0x7f090066;
         public static final int infoTabAbout=0x7f090023;
         public static final int infoTabLicense=0x7f090024;
         public static final int info_LoadSensing=0x7f090020;
-        public static final int lblnetLoadSensors=0x7f09005b;
-        public static final int lblnetNumSensors=0x7f09005a;
-        public static final int lblnetPosAltitude=0x7f090059;
-        public static final int lblnetPosLatitude=0x7f090057;
-        public static final int lblnetPosLongitude=0x7f090058;
-        public static final int lblnetPosition=0x7f090056;
+        public static final int lblnetLoadSensors=0x7f09005d;
+        public static final int lblnetNumSensors=0x7f09005c;
+        public static final int lblnetPosAltitude=0x7f09005b;
+        public static final int lblnetPosLatitude=0x7f090059;
+        public static final int lblnetPosLongitude=0x7f09005a;
+        public static final int lblnetPosition=0x7f090058;
         /**  FavesSensors Activity End 
  NetInfo Activity Init  
  FavesSensors Activity End 
@@ -1018,7 +1020,7 @@ containing a value of this type.
  FavesSensors Activity End 
  NetInfo Activity Init  
          */
-        public static final int lblnetSituation=0x7f090055;
+        public static final int lblnetSituation=0x7f090057;
         /**  Messages Init 
  Messages Init 
  Messages Init 
@@ -1031,8 +1033,8 @@ containing a value of this type.
         public static final int msg_retrievImages=0x7f09002b;
         public static final int msg_retrievNetworks=0x7f09002a;
         public static final int msg_retrievSensors=0x7f09002c;
-        public static final int settings_maps=0x7f09005e;
-        public static final int settings_summary_1=0x7f09005d;
+        public static final int settings_maps=0x7f090060;
+        public static final int settings_summary_1=0x7f09005f;
         /**  NetInfo Activity End  
  Settings Activity Init 
  NetInfo Activity End  
@@ -1040,20 +1042,20 @@ containing a value of this type.
  NetInfo Activity End  
  Settings Activity Init 
          */
-        public static final int settings_title_1=0x7f09005c;
-        public static final int strErrorLocation=0x7f090053;
+        public static final int settings_title_1=0x7f09005e;
+        public static final int strErrorLocation=0x7f090055;
         public static final int strExit=0x7f090041;
-        public static final int strFilter=0x7f090060;
-        /**  NetList Activity End 
+        public static final int strFilter=0x7f090062;
+        /**  SensorList Activity End 
  NetCloser Activity Init 
- NetList Activity End 
+ SensorList Activity End 
  NetCloser Activity Init 
- NetList Activity End 
+ SensorList Activity End 
  NetCloser Activity Init 
          */
-        public static final int strGetLocation=0x7f090051;
+        public static final int strGetLocation=0x7f090053;
         public static final int strLogin=0x7f090040;
-        public static final int strMapMode=0x7f090061;
+        public static final int strMapMode=0x7f090063;
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1061,7 +1063,7 @@ containing a value of this type.
  NetCloser Activity End 
  FavesSensors Activity Init 
          */
-        public static final int strNetName=0x7f090054;
+        public static final int strNetName=0x7f090056;
         public static final int strNumSensors=0x7f090050;
         public static final int strPassword=0x7f09003f;
         /**  Settings Activity End 
@@ -1071,7 +1073,16 @@ containing a value of this type.
  Settings Activity End 
  Menu Init 
          */
-        public static final int strSearch=0x7f09005f;
+        public static final int strSearch=0x7f090061;
+        public static final int strSensorChannel=0x7f090052;
+        /**  NetList Activity End 
+ SensorList Activity Init 
+ NetList Activity End 
+ SensorList Activity Init 
+ NetList Activity End 
+ SensorList Activity Init 
+         */
+        public static final int strSensorType=0x7f090051;
         /**  Faves Activity End 
  NetList Activity Init 
  Faves Activity End 
@@ -1088,7 +1099,7 @@ containing a value of this type.
  Login Init 
          */
         public static final int strUser=0x7f09003e;
-        public static final int strYourLocation=0x7f090052;
+        public static final int strYourLocation=0x7f090054;
         public static final int tab_fav_images=0x7f09004e;
         public static final int tab_fav_networks=0x7f09004c;
         public static final int tab_fav_sensors=0x7f09004d;

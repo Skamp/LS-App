@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lsn.LoadSensing.R;
@@ -36,13 +37,15 @@ public class LSSensorAdapter extends ArrayAdapter<LSSensor>{
 		LSSensor o = items.get(position);
 		if (o != null)
 		{
+			ImageView imgSensor = (ImageView) v.findViewById(R.id.imageBitmap);
 			TextView txtSenName = (TextView) v.findViewById(R.id.sensorName);
-			TextView txtSenSituation = (TextView) v.findViewById(R.id.sensorSituation);
-            TextView txtSenNetwork = (TextView) v.findViewById(R.id.sensorNetwork);
+			TextView txtSenType = (TextView) v.findViewById(R.id.sensorType);
+            TextView txtSenChannel = (TextView) v.findViewById(R.id.sensorChannel);
             
+            imgSensor.setImageBitmap(o.getSensorImage());
             txtSenName.setText(o.getSensorName()); 
-            txtSenSituation.setText(o.getSensorSituation());
-            txtSenNetwork.setText(o.getSensorNetwork());
+            txtSenType.setText(o.getSensorType());
+            txtSenChannel.setText(o.getSensorChannel());
     
 		}
 		return v;

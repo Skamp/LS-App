@@ -98,6 +98,7 @@
         
         <activity 
             android:label="@string/act_lbl_SensorList"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".LSSensorListActivity">
         </activity>
             

@@ -69,6 +69,10 @@
    		<string name="strSituation">Situación:</string>
   		<string name="strNumSensors">Número de sensores:</string>
    	<!-- NetList Activity End -->
+   	<!-- SensorList Activity Init -->   
+   		<string name="strSensorType">Tipo:</string>
+  		<string name="strSensorChannel">Canal:</string>
+   	<!-- SensorList Activity End -->
    	<!-- NetCloser Activity Init -->   
    		<string name="strGetLocation">Obteniendo ubicación...</string>
    		<string name="strYourLocation">Tu ubicación - (lat: %1$s,lon: %2$s)</string>

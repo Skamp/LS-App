@@ -1,6 +1,9 @@
 package com.lsn.LoadSensing.func;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +30,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
 public class LSFunctions {
 
@@ -137,5 +143,17 @@ public class LSFunctions {
 		return response;
 	}
 	
-	
+	public static Bitmap getRemoteImage(final URL aURL) {
+	    try {
+	        final URLConnection conn = aURL.openConnection();
+	        conn.connect();
+	        final BufferedInputStream bis = new BufferedInputStream(conn.getInputStream());
+	        final Bitmap bm = BitmapFactory.decodeStream(bis);
+	        bis.close();
+	        return bm;
+	    } catch (IOException e) {
+	        Log.d("DEBUGTAG", "Error detected...");
+	    }
+	    return null;
+	}
 }

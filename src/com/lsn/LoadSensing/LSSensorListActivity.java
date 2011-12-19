@@ -1,5 +1,6 @@
 package com.lsn.LoadSensing;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.json.JSONObject;
 
 
 import com.lsn.LoadSensing.adapter.LSSensorAdapter;
+import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.element.LSSensor;
 import com.lsn.LoadSensing.func.LSFunctions;
 import com.readystatesoftware.mapviewballoons.R;
@@ -24,10 +26,14 @@ import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LSSensorListActivity extends GDListActivity {
@@ -41,12 +47,12 @@ public class LSSensorListActivity extends GDListActivity {
 	private LSSensorAdapter      m_adapter;
 	private Runnable             viewSensors;
 	private String idSession;
-	private String idXarxa;
+	private LSNetwork networkObj;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_01_netlist);
+        setContentView(R.layout.act_sensorlist);
         
         initActionBar();
         initQuickActionBar();
@@ -56,8 +62,13 @@ public class LSSensorListActivity extends GDListActivity {
         if (bundle != null)
         {
         	idSession = bundle.getString("SESSION");
-        	idXarxa = bundle.getString("ID_XARXA");
+        	
+        	networkObj = new LSNetwork();
+        	networkObj = bundle.getParcelable("NETWORK_OBJ");
     	}  
+        
+        TextView txtNetwork = (TextView)findViewById(R.id.txtNetwork);
+        txtNetwork.setText(networkObj.getNetworkName());
         
         m_sensors = new ArrayList<LSSensor>();
         this.m_adapter = new LSSensorAdapter(this,R.layout.row_list_sensor,m_sensors);
@@ -98,7 +109,7 @@ public class LSSensorListActivity extends GDListActivity {
 			// Server Request Ini
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("session", idSession);
-			params.put("IdXarxa", idXarxa);
+			params.put("IdXarxa", networkObj.getNetworkId());
 			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistaSensors.php",params);
 
 			//JSONArray jArray = new JSONArray(response.toString());
@@ -111,6 +122,9 @@ public class LSSensorListActivity extends GDListActivity {
 				s1.setSensorName(jsonData.getString("sensor"));
 				s1.setSensorChannel(jsonData.getString("canal"));
 				s1.setSensorType(jsonData.getString("tipus"));
+				String image = jsonData.getString("imatge");
+				Bitmap bitmap = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+				s1.setSensorImage(bitmap);
 				s1.setSensorDesc(jsonData.getString("Descripcio"));
 				s1.setSensorSituation(jsonData.getString("Poblacio"));
 				s1.setSensorNetwork(jsonData.getString("Nom"));
@@ -154,18 +168,18 @@ public class LSSensorListActivity extends GDListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
         Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getSensorName(position), Toast.LENGTH_LONG).show();
-        Intent i = null;
-        i = new Intent(LSSensorListActivity.this,LSNetInfoActivity.class);
-        
-        if (i!=null){
-			Bundle bundle = new Bundle();
-			
-			bundle.putParcelable("SENSOR_OBJ", m_sensors.get(position));
-			
-			i.putExtras(bundle);
-
-			startActivity(i);
-		}
+//        Intent i = null;
+//        i = new Intent(LSSensorListActivity.this,LSNetInfoActivity.class);
+//        
+//        if (i!=null){
+//			Bundle bundle = new Bundle();
+//			
+//			bundle.putParcelable("SENSOR_OBJ", m_sensors.get(position));
+//			
+//			i.putExtras(bundle);
+//
+//			startActivity(i);
+//		}
         
     }
 	
