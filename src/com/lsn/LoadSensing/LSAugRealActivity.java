@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.element.Position;
 import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.ui.CustomToast;
@@ -158,75 +161,125 @@ public class LSAugRealActivity extends Activity{
 		try {
 			
 			mixareInfo = new JSONObject();
-		
-			
-			JSONObject obj1 = new JSONObject();
-			obj1.put("id", "1");
-			obj1.put("lat", "41.416556");
-			obj1.put("lng", "2.152194");
-			obj1.put("elevation", "0");
-			obj1.put("title", "LSN Network 1");
-			obj1.put("has_detail_page", "0");
-			obj1.put("webpage", "");
-			obj1.put("netid", "AAAAAAAAA");
-			
-			JSONObject obj2 = new JSONObject();
-			obj2.put("id", "2");
-			obj2.put("lat", "41.379183");
-			obj2.put("lng", "2.174445");
-			obj2.put("elevation", "0");
-			obj2.put("title", "LSN Network 2");
-			obj2.put("has_detail_page", "0");
-			obj2.put("webpage", "");
-			obj2.put("netid", "BBBBBBBBB");
-			
-			JSONObject obj3 = new JSONObject();
-			obj3.put("id", "3");
-			obj3.put("lat", "41.397583");
-			obj3.put("lng", "2.163028");
-			obj3.put("elevation", "0");
-			obj3.put("title", "LSN Network 3");
-			obj3.put("has_detail_page", "0");
-			obj3.put("webpage", "");
-			obj3.put("netid", "CCCCCCCCC");
-			
-			JSONObject obj4 = new JSONObject();
-			obj4.put("id", "4");
-			obj4.put("lat", "41.380694");
-			obj4.put("lng", "2.175167");
-			obj4.put("elevation", "0");
-			obj4.put("title", "LSN Network 4");
-			obj4.put("has_detail_page", "0");
-			obj4.put("webpage", "");
-			obj4.put("netid", "DDDDDDDDD");
-			
-			JSONObject obj5 = new JSONObject();
-			obj5.put("id", "5");
-			obj5.put("lat", "41.340784");
-			obj5.put("lng", "2.154187");
-			obj5.put("elevation", "0");
-			obj5.put("title", "LSN Network 5");
-			obj5.put("has_detail_page", "0");
-			obj5.put("webpage", "");
-			obj5.put("netid", "EEEEEEEEE");
-			
-			JSONObject obj6 = new JSONObject();
-			obj5.put("id", "5");
-			obj5.put("lat", "41.340784");
-			obj5.put("lng", "2.154187");
-			obj5.put("elevation", "0");
-			obj5.put("title", "LSN Network 6");
-			obj5.put("has_detail_page", "0");
-			obj5.put("webpage", "");
-			obj5.put("netid", "FFFFFFFFF");
-			
 			JSONArray arrayObj= new JSONArray();
-			arrayObj.put(obj1);
-			arrayObj.put(obj2);
-			arrayObj.put(obj3);
-			arrayObj.put(obj4);
-			arrayObj.put(obj5);
-			arrayObj.put(obj6);
+			
+			// Server Request Ini
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("session", LSHomeActivity.idSession);
+			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+
+			try {
+				for (int i = 0; i<jArray.length(); i++)
+				{
+					JSONObject jsonData = jArray.getJSONObject(i);
+	//				LSNetwork network = new LSNetwork();
+	//				network.setNetworkName(jsonData.getString("Nom"));
+	//				network.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+	//				network.setNetworkNumSensors(jsonData.getString("Sensors"));
+	//				network.setNetworkId(jsonData.getString("IdXarxa"));
+	//				network.setNetworkSituation(jsonData.getString("Poblacio"));
+					
+					JSONObject obj = new JSONObject();
+					
+					obj.put("id", String.valueOf(i+1));
+					obj.put("lat", jsonData.getString("Lat"));
+					obj.put("lng", jsonData.getString("Lon"));
+					obj.put("elevation", "0");
+					obj.put("title", jsonData.getString("Nom"));
+					obj.put("has_detail_page", "0");
+					obj.put("webpage", "");
+					obj.put("netid", jsonData.getString("IdXarxa"));
+					arrayObj.put(obj);
+				}
+				
+				// Server Request End  
+			} catch (JSONException e) {
+				
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+//			JSONObject obj1 = new JSONObject();
+//			obj1.put("id", "1");
+//			obj1.put("lat", "41.416556");
+//			obj1.put("lng", "2.152194");
+//			obj1.put("elevation", "0");
+//			obj1.put("title", "LSN Network 1");
+//			obj1.put("has_detail_page", "0");
+//			obj1.put("webpage", "");
+//			obj1.put("netid", "AAAAAAAAA");
+//			
+//			JSONObject obj2 = new JSONObject();
+//			obj2.put("id", "2");
+//			obj2.put("lat", "41.379183");
+//			obj2.put("lng", "2.174445");
+//			obj2.put("elevation", "0");
+//			obj2.put("title", "LSN Network 2");
+//			obj2.put("has_detail_page", "0");
+//			obj2.put("webpage", "");
+//			obj2.put("netid", "BBBBBBBBB");
+//			
+//			JSONObject obj3 = new JSONObject();
+//			obj3.put("id", "3");
+//			obj3.put("lat", "41.397583");
+//			obj3.put("lng", "2.163028");
+//			obj3.put("elevation", "0");
+//			obj3.put("title", "LSN Network 3");
+//			obj3.put("has_detail_page", "0");
+//			obj3.put("webpage", "");
+//			obj3.put("netid", "CCCCCCCCC");
+//			
+//			JSONObject obj4 = new JSONObject();
+//			obj4.put("id", "4");
+//			obj4.put("lat", "41.380694");
+//			obj4.put("lng", "2.175167");
+//			obj4.put("elevation", "0");
+//			obj4.put("title", "LSN Network 4");
+//			obj4.put("has_detail_page", "0");
+//			obj4.put("webpage", "");
+//			obj4.put("netid", "DDDDDDDDD");
+//			
+//			JSONObject obj5 = new JSONObject();
+//			obj5.put("id", "5");
+//			obj5.put("lat", "41.340784");
+//			obj5.put("lng", "2.154187");
+//			obj5.put("elevation", "0");
+//			obj5.put("title", "LSN Network 5");
+//			obj5.put("has_detail_page", "0");
+//			obj5.put("webpage", "");
+//			obj5.put("netid", "EEEEEEEEE");
+//			
+//			JSONObject obj6 = new JSONObject();
+//			obj5.put("id", "5");
+//			obj5.put("lat", "41.340784");
+//			obj5.put("lng", "2.154187");
+//			obj5.put("elevation", "0");
+//			obj5.put("title", "LSN Network 6");
+//			obj5.put("has_detail_page", "0");
+//			obj5.put("webpage", "");
+//			obj5.put("netid", "FFFFFFFFF");
+//			
+//			
+//			arrayObj.put(obj1);
+//			arrayObj.put(obj2);
+//			arrayObj.put(obj3);
+//			arrayObj.put(obj4);
+//			arrayObj.put(obj5);
+//			arrayObj.put(obj6);
 			
 			mixareInfo.put("results",arrayObj);
 			mixareInfo.put("num_results", new Integer(6));

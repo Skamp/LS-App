@@ -1,7 +1,16 @@
 package com.lsn.LoadSensing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.element.Position;
+import com.lsn.LoadSensing.func.LSFunctions;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +22,9 @@ import greendroid.app.GDActivity;
 
 public class LSNetInfoActivity extends GDActivity {
 
-	private String netID;
-	private LSNetwork networkObj;
-	//private static String idSession;
+	private String netID = null;
+	private LSNetwork networkObj = null;
+	private ArrayList<LSNetwork> m_networks = null;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,12 +42,47 @@ public class LSNetInfoActivity extends GDActivity {
         {
         	//idSession = bundle.getString("SESSION");
         	netID = bundle.getString("NETID");
-        	networkObj = new LSNetwork();
+        	//networkObj = new LSNetwork();
         	networkObj = bundle.getParcelable("NETWORK_OBJ");
     	}
-        else
+        
+        if ((netID != null) && (networkObj == null))
         {
-        	netID = "Network not found";
+        	m_networks = new ArrayList<LSNetwork>();
+            
+        	JSONObject jsonData;
+			try {
+				// Server Request Ini
+				Map<String, String> params = new HashMap<String, String>();
+				params.put("session", LSHomeActivity.idSession);
+				JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+	
+				for (int i = 0; i<jArray.length(); i++)
+				{
+					
+						jsonData = jArray.getJSONObject(i);
+					
+					LSNetwork o1 = new LSNetwork();
+					o1.setNetworkName(jsonData.getString("Nom"));
+			        o1.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+			        o1.setNetworkNumSensors(jsonData.getString("Sensors"));
+					o1.setNetworkId(jsonData.getString("IdXarxa"));
+					o1.setNetworkSituation(jsonData.getString("Poblacio"));
+					m_networks.add(o1);
+				}
+				// Server Request End 
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+			for (int i = 0; i<m_networks.size(); i++)
+			{
+				if (netID.equals(m_networks.get(i).getNetworkId()))
+				{
+					networkObj = m_networks.get(i);
+				}
+			}
         }
         
         TextView txtNetName = (TextView) findViewById(R.id.netName);
