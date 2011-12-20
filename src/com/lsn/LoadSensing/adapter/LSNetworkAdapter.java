@@ -42,7 +42,7 @@ public class LSNetworkAdapter extends ArrayAdapter<LSNetwork>{
             
             txtNetName.setText(o.getNetworkName()); 
             txtNetSituation.setText(o.getNetworkSituation());
-            txtNetSensons.setText(o.getNetworkNumber());
+            txtNetSensons.setText(o.getNetworkNumSensors().toString());
     
 		}
 		return v;

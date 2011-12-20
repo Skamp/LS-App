@@ -35,6 +35,12 @@
     	<string name="act_lbl_favNetwork">Redes favoritas</string>
 	    <string name="act_lbl_favSensor">Sensores favoritos</string>
 	    <string name="act_lbl_favImage">Imagenes favoritas</string>
+	    <string name="act_lbl_netinfo">Información de red</string>
+	    <string name="act_lbl_SensorList">Listado de sensores</string>
+	    <string name="act_lbl_NetImages">Imagenes de red</string>
+	    <string name="act_lbl_BigImage">Imagen %1$d</string>
+	    <string name="act_lbl_sensorinfo">Información del sensor</string>
+	    <string name="act_lbl_sensorchart">Gráfico del sensor</string>
     <!-- Activity Labels End -->
    
    
@@ -67,6 +73,10 @@
    		<string name="strSituation">Situación:</string>
   		<string name="strNumSensors">Número de sensores:</string>
    	<!-- NetList Activity End -->
+   	<!-- SensorList Activity Init -->   
+   		<string name="strSensorType">Tipo:</string>
+  		<string name="strSensorChannel">Canal:</string>
+   	<!-- SensorList Activity End -->
    	<!-- NetCloser Activity Init -->   
    		<string name="strGetLocation">Obteniendo ubicación...</string>
    		<string name="strYourLocation">Tu ubicación - (lat: %1$s,lon: %2$s)</string>
@@ -78,13 +88,40 @@
    		
   		
    	<!-- FavesSensors Activity End -->
+   	<!-- NetInfo Activity Init  -->
+   		<string name="lblNetName">Red:</string>
+    	<string name="lblnetSituation">Situación:</string>
+    	<string name="lblnetPosition">Posición:</string>
+    	<string name="lblnetPosLatitude">Latitud</string>
+    	<string name="lblnetPosLongitude">Longitud</string>
+    	<string name="lblnetPosAltitude">Altitud</string>
+    	<string name="lblnetNumSensors">Sensores:</string>
+    	<string name="lblnetLoadSensors">Ver sensores</string>
+    	<string name="lblnetLoadImages">Ver imágenes</string>
    	
-   	
+    <!-- NetInfo Activity End  -->
+   	<!-- SensorInfo Activity Init  -->
+    	<string name="lblSensorSituation">Situación:</string>
+    	<string name="lblSensorType">Tipo:</string>
+    	<string name="lblSensorChannel">Canal:</string>
+    	<string name="lblSensorName">Sensor:</string>
+    	<string name="lblSensorDescription">Descripción:</string>
+    	<string name="lblSensorValues">Valores:</string>
+    	<string name="lblSensorMaxLoad">Máximo:</string>
+    	<string name="lblSensorSensitivity">Sensitividad:</string>
+   		<string name="lblSensorOffset">Compensación:</string>
+    	<string name="lblSensorAlarmAt">Alarma a:</string>
+    	<string name="lblSensorLastTare">Última avería:</string>
+    	<string name="lblSensorLoadChart">Cargar gráfico</string>
+    <!-- SensorInfo Activity End  -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipo de mapa</string>
   		<string name="settings_summary_1">Selecciona el tipo de mapa</string>
   		<string name="settings_maps">Open Street Map no implementado</string>
     <!-- Settings Activity End -->
+    <!-- Maps Activity Init -->
+    	<string name="strNetDescrip">Situada en %1$s con %2$d sensores</string>
+    <!-- Maps Activity End -->
     <!-- Menu Init -->
    		<string name="strSearch">Buscar</string>
     	<string name="strFilter">Filtrar</string>

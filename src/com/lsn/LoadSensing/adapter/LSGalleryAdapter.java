@@ -13,14 +13,14 @@ import android.widget.TextView;
 import com.lsn.LoadSensing.R;
 import com.lsn.LoadSensing.element.LSImage;
 
-
-public class LSImageAdapter extends ArrayAdapter<LSImage>{
+public class LSGalleryAdapter extends ArrayAdapter<LSImage> {
 
 	private ArrayList<LSImage> items;
 	Context mContext;
 	
-	public LSImageAdapter(Context context, int textViewResourceId, ArrayList<LSImage> items) {
+	public LSGalleryAdapter(Context context, int textViewResourceId, ArrayList<LSImage> items) {
 		super(context, textViewResourceId, items);
+		
 		this.items = items;
 		this.mContext = context;
 	}
@@ -32,29 +32,18 @@ public class LSImageAdapter extends ArrayAdapter<LSImage>{
 		if (v == null)
 		{
 			LayoutInflater vi = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.row_list_image,null);
+			v = vi.inflate(R.layout.image_gallery,null);
 		}
 		
 		LSImage o = items.get(position);
 		if (o != null)
 		{
-			ImageView imgView = (ImageView) v.findViewById(R.id.imageBitmap);
-			TextView txtImgName = (TextView) v.findViewById(R.id.imageName);
-			TextView txtImgSituation = (TextView) v.findViewById(R.id.imageSituation);
-            TextView txtImgNetwork = (TextView) v.findViewById(R.id.imageNetwork);
-            
-            imgView.setImageBitmap(o.getImageBitmap());
-            txtImgName.setText(o.getImageName()); 
-            txtImgSituation.setText(o.getImageSituation());
-            txtImgNetwork.setText(o.getImageNetwork());
-    
+			ImageView imgView = (ImageView) v.findViewById(R.id.thumbImage);
+			TextView txtName = (TextView) v.findViewById(R.id.thumbName);
+			
+            imgView.setImageBitmap(o.getImageThumb(200));
+            txtName.setText(o.getImageName()); 
 		}
 		return v;
-	}
-	
-	public String getImageName(int position){
-		
-		LSImage net = items.get(position);
-		return net.getImageName();
 	}
 }

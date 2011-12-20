@@ -7,6 +7,7 @@ import com.lsn.LoadSensing.adapter.LSImageAdapter;
 import com.lsn.LoadSensing.element.LSImage;
 import greendroid.app.GDListActivity;
 import android.app.ProgressDialog;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,17 +75,17 @@ public class LSFavesImagesActivity extends GDListActivity{
 		try{
           m_images = new ArrayList<LSImage>();
           LSImage o1 = new LSImage();
-          o1.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+          o1.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
           o1.setImageName("Image 1");
           o1.setImageSituation("lat. XX.XX lon. YY.YY");
           o1.setImageNetwork("Network 1");
           LSImage o2 = new LSImage();
-          o2.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+          o2.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
           o2.setImageName("Image 2");
           o2.setImageSituation("lat. XX.XX lon. YY.YY");
           o2.setImageNetwork("Network 2");
           LSImage o3 = new LSImage();
-          o3.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+          o3.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
           o3.setImageName("Image 3");
           o3.setImageSituation("lat. XX.XX lon. YY.YY");
           o3.setImageNetwork("Network 3");

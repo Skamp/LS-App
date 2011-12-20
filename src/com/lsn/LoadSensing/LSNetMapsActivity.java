@@ -1,12 +1,21 @@
 package com.lsn.LoadSensing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.lsn.LoadSensing.element.LSNetwork;
+import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.map.LSNetworksOverlay;
 
 import greendroid.app.GDMapActivity;
@@ -18,6 +27,7 @@ import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LSNetMapsActivity extends GDMapActivity {
@@ -35,7 +45,17 @@ public class LSNetMapsActivity extends GDMapActivity {
 	
 	private QuickActionWidget quickActions;
 
+	//private static String idSession;
+	private ArrayList<LSNetwork> m_networks = null;
 
+	
+	@Override
+	protected void onResume() {
+		
+		super.onResume();
+		
+	}
+	
 	@Override
 	protected boolean isRouteDisplayed() {
 		
@@ -49,53 +69,103 @@ public class LSNetMapsActivity extends GDMapActivity {
         initActionBar();
         initQuickActionBar();
         
+        Bundle bundle = getIntent().getExtras();
+        
+        if (bundle != null)
+        {
+        	//idSession = bundle.getString("SESSION");
+    	}  
+        m_networks = new ArrayList<LSNetwork>();
+        
+        
         final MapView mapView = (MapView) findViewById(R.id.netmap);
         mapView.setBuiltInZoomControls(true);
         setStreetView();
         
-        
-        //List<Overlay> capas = mapView.getOverlays();
-        //LSdrawNetworks om = new LSdrawNetworks();
-        //capas.add(om);
-        //mapView.postInvalidate();
-        
+        JSONObject jsonData;
+		try {
+	        // Server Request Ini
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("session", LSHomeActivity.idSession);
+			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+		
+			for (int i = 0; i<jArray.length(); i++)
+			{
+				
+				jsonData = jArray.getJSONObject(i);
+				LSNetwork o1 = new LSNetwork();
+				o1.setNetworkName(jsonData.getString("Nom"));
+		        o1.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+		        o1.setNetworkNumSensors(jsonData.getString("Sensors"));
+				o1.setNetworkId(jsonData.getString("IdXarxa"));
+				o1.setNetworkSituation(jsonData.getString("Poblacio"));
+				m_networks.add(o1);
+			}
+			
+			// Server Request End  
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		
         mapOverlays = mapView.getOverlays();
 		
 		// first overlay
 		drawable = getResources().getDrawable(R.drawable.marker);
-		itemizedOverlay = new LSNetworksOverlay(drawable, mapView);
+		itemizedOverlay = new LSNetworksOverlay(drawable, mapView,m_networks);
 		
-		GeoPoint point = new GeoPoint((int)(51.5174723*1E6),(int)(-0.0899537*1E6));
-		OverlayItem overlayItem = new OverlayItem(point, "Network 1", 
-				"(Network 1 description)");
-		itemizedOverlay.addOverlay(overlayItem);
+		GeoPoint point = null;
+		for (int i = 0; i<m_networks.size(); i++)
+		{
+			Integer intLat = (int) (m_networks.get(i).getNetworkPosition().getLatitude()*1e6);
+			Integer intLon = (int) (m_networks.get(i).getNetworkPosition().getLongitude()*1e6);
+			String strName = m_networks.get(i).getNetworkName();
+			String strSituation = m_networks.get(i).getNetworkSituation();
+			Integer strNumSensor = m_networks.get(i).getNetworkNumSensors();
+			String strNetDescripFormat = getResources().getString(R.string.strNetDescrip);
+		    String strNetDescrip = String.format(strNetDescripFormat, strSituation, strNumSensor);
+			
+			
+			point = new GeoPoint(intLat,intLon);
+			OverlayItem overlayItem = new OverlayItem(point, strName, strNetDescrip);
+			itemizedOverlay.addOverlay(overlayItem);
+			
+			mapOverlays.add(itemizedOverlay);
+		}
 		
-		GeoPoint point2 = new GeoPoint((int)(51.515259*1E6),(int)(-0.086623*1E6));
-		OverlayItem overlayItem2 = new OverlayItem(point2, "Network 2", 
-				"(Network 2 description)");		
-		itemizedOverlay.addOverlay(overlayItem2);
 		
-		mapOverlays.add(itemizedOverlay);
+//		GeoPoint point = new GeoPoint((int)(51.5174723*1E6),(int)(-0.0899537*1E6));
+//		OverlayItem overlayItem = new OverlayItem(point, "Network 1", 
+//				"(Network 1 description)");
+//		itemizedOverlay.addOverlay(overlayItem);
+//		
+//		GeoPoint point2 = new GeoPoint((int)(51.515259*1E6),(int)(-0.086623*1E6));
+//		OverlayItem overlayItem2 = new OverlayItem(point2, "Network 2", 
+//				"(Network 2 description)");		
+//		itemizedOverlay.addOverlay(overlayItem2);
+		
+//		mapOverlays.add(itemizedOverlay);
 		
 		// second overlay
-		drawable2 = getResources().getDrawable(R.drawable.marker2);
-		itemizedOverlay2 = new LSNetworksOverlay(drawable2, mapView);
+//		drawable2 = getResources().getDrawable(R.drawable.marker2);
+//		itemizedOverlay2 = new LSNetworksOverlay(drawable2, mapView);
+//		
+//		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
+//		OverlayItem overlayItem3 = new OverlayItem(point3, "Network 3", 
+//				"Network 3 description");
+//		itemizedOverlay2.addOverlay(overlayItem3);
+//		
+//		GeoPoint point4 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
+//		OverlayItem overlayItem4 = new OverlayItem(point4, "Network 4", 
+//				"Network 4 description");		
+//		itemizedOverlay2.addOverlay(overlayItem4);
+//		
+//		mapOverlays.add(itemizedOverlay2);
 		
-		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
-		OverlayItem overlayItem3 = new OverlayItem(point3, "Network 3", 
-				"Network 3 description");
-		itemizedOverlay2.addOverlay(overlayItem3);
-		
-		GeoPoint point4 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
-		OverlayItem overlayItem4 = new OverlayItem(point4, "Network 4", 
-				"Network 4 description");		
-		itemizedOverlay2.addOverlay(overlayItem4);
-		
-		mapOverlays.add(itemizedOverlay2);
-		
+		point = new GeoPoint((int)(40.416369*1E6),(int)(-3.702992*1E6));
 		final MapController mc = mapView.getController();
-		mc.animateTo(point2);
-		mc.setZoom(16);
+		mc.animateTo(point);
+		mc.setZoom(6);
         
     }
 	

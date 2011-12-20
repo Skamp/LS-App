@@ -1,12 +1,45 @@
 package com.lsn.LoadSensing.element;
 
-public class LSSensor {
-	
-	private String sensorName;
-	private String sensorNetwork;
-	private String sensorSituation;
-	private String sensorNumber;
+import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class LSSensor implements Parcelable {
+	
+	private String sensorSituation;
+	private String sensorName;
+	private String sensorId;
+	private String sensorSerial;
+	private String sensorNetwork;
+	private Position sensorPosition;
+	private Measure sensorMeasure;
+	private String sensorChannel;
+	private String sensorType;
+	private Bitmap sensorImage;
+	private String sensorDesc;
+
+	public LSSensor() {
+
+		sensorSituation = "";
+		sensorName = "";
+		sensorId = "";
+		sensorSerial = "";
+		sensorNetwork = "";
+		sensorPosition = new Position();
+		sensorMeasure = new Measure();
+		sensorChannel = "";
+		sensorType = "";
+		sensorImage = null;
+		sensorDesc = "";
+	}
+	
+	public LSSensor(Parcel in) {
+
+		sensorPosition = new Position();
+		sensorMeasure = new Measure();
+		readFromParcel(in);
+	}
+	
 	public String getSensorName() {
 		return sensorName;
 	}
@@ -23,12 +56,12 @@ public class LSSensor {
 		this.sensorSituation = sensorSituation;
 	}
 	
-	public String getSensorNumber() {
-		return sensorNumber;
+	public String getSensorId() {
+		return sensorId;
 	}
 	
-	public void setSensorNumber(String sensorNumber) {
-		this.sensorNumber = sensorNumber;
+	public void setSensorId(String sensorId) {
+		this.sensorId = sensorId;
 	}
 
 	public String getSensorNetwork() {
@@ -38,5 +71,200 @@ public class LSSensor {
 	public void setSensorNetwork(String sensorNetwork) {
 		this.sensorNetwork = sensorNetwork;
 	}
+	
+	public Position getSensorPosition() {
+		return sensorPosition;
+	}
 
+	public void setSensorPosition(Position sensorPosition) {
+		this.sensorPosition = sensorPosition;
+	}
+
+	public String getSensorChannel() {
+		return sensorChannel;
+	}
+
+	public void setSensorChannel(String sensorChannel) {
+		this.sensorChannel = sensorChannel;
+	}
+
+	public String getSensorType() {
+		return sensorType;
+	}
+
+	public void setSensorType(String sensorType) {
+		this.sensorType = sensorType;
+	}
+	
+	public Double getSensorMeasure() {
+		return sensorMeasure.getMeasure();
+	}
+	
+	public String getSensorMeasureUnit() {
+		return sensorMeasure.getMeasureUnit();
+	}
+
+	public void setSensorMeasure(Double measure,String unit) {
+		this.sensorMeasure.setMeasure(measure);
+		this.sensorMeasure.setMeasureUnit(unit);
+	}
+
+	public void setSensorMeasure(String measure,String unit) {
+		this.sensorMeasure.setMeasure(Double.parseDouble(measure));
+		this.sensorMeasure.setMeasureUnit(unit);
+	}
+	
+	public Double getSensorMaxLoad() {
+		return sensorMeasure.getMaxLoad();
+	}
+	
+	public String getSensorMaxLoadUnit() {
+		return sensorMeasure.getMaxLoadUnit();
+	}
+
+	public void setSensorMaxLoad(Double maxLoad,String unit) {
+		this.sensorMeasure.setMaxLoad(maxLoad);
+		this.sensorMeasure.setMaxLoadUnit(unit);
+	}
+	
+	public void setSensorMaxLoad(String maxLoad,String unit) {
+		this.sensorMeasure.setMaxLoad(Double.parseDouble(maxLoad));
+		this.sensorMeasure.setMaxLoadUnit(unit);
+	}
+	
+	public Double getSensorSensitivity() {
+		return sensorMeasure.getSensitivity();
+	}
+	
+	public String getSensorSensitivityUnit() {
+		return sensorMeasure.getSensitivityUnit();
+	}
+
+	public void setSensorSensitivity(Double sensitivity,String unit) {
+		this.sensorMeasure.setSensitivity(sensitivity);
+		this.sensorMeasure.setSensitivityUnit(unit);
+	}
+	
+	public void setSensorSensitivity(String sensitivity,String unit) {
+		this.sensorMeasure.setSensitivity(Double.parseDouble(sensitivity));
+		this.sensorMeasure.setSensitivityUnit(unit);
+	}
+	
+	public Double getSensorOffset() {
+		return sensorMeasure.getOffset();
+	}
+	
+	public String getSensorOffsetUnit() {
+		return sensorMeasure.getOffsetUnit();
+	}
+
+	public void setSensorOffset(Double offset,String unit) {
+		this.sensorMeasure.setOffset(offset);
+		this.sensorMeasure.setOffsetUnit(unit);
+	}
+	
+	public void setSensorOffset(String offset,String unit) {
+		this.sensorMeasure.setOffset(Double.parseDouble(offset));
+		this.sensorMeasure.setOffsetUnit(unit);
+	}
+	
+	public Double getSensorAlarmAt() {
+		return sensorMeasure.getAlarmAt();
+	}
+	
+	public String getSensorAlarmAtUnit() {
+		return sensorMeasure.getAlarmAtUnit();
+	}
+
+	public void setSensorAlarmAt(Double alarmAt,String unit) {
+		this.sensorMeasure.setAlarmAt(alarmAt);
+		this.sensorMeasure.setAlarmAtUnit(unit);
+	}
+	
+	public void setSensorAlarmAt(String alarmAt,String unit) {
+		this.sensorMeasure.setAlarmAt(Double.parseDouble(alarmAt));
+		this.sensorMeasure.setAlarmAtUnit(unit);
+	}
+	
+	public String getSensorLastTare() {
+		return sensorMeasure.getLastTare();
+	}
+
+	public void setSensorLastTare(String lastTare) {
+		this.sensorMeasure.setLastTare(lastTare);
+	}
+	
+	public Bitmap getSensorImage() {
+		return sensorImage;
+	}
+
+	public void setSensorImage(Bitmap sensorImage) {
+		this.sensorImage = sensorImage;
+	}
+
+	public String getSensorDesc() {
+		return sensorDesc;
+	}
+
+	public void setSensorDesc(String sensorDesc) {
+		this.sensorDesc = sensorDesc;
+	}
+
+	public String getSensorSerial() {
+		return sensorSerial;
+	}
+
+	public void setSensorSerial(String sensorSerial) {
+		this.sensorSerial = sensorSerial;
+	}
+	
+	@Override
+	public int describeContents() {
+
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeString(sensorSituation);
+		dest.writeString(sensorName);
+		dest.writeString(sensorId);
+		dest.writeString(sensorSerial);
+		dest.writeString(sensorNetwork);
+		dest.writeParcelable(sensorPosition, flags);
+		dest.writeParcelable(sensorMeasure, flags);
+		dest.writeString(sensorChannel);
+		dest.writeString(sensorType);
+		dest.writeParcelable(sensorImage,flags);
+		dest.writeString(sensorDesc);
+	}
+
+	private void readFromParcel(Parcel in) {
+		
+		sensorSituation = in.readString();
+		sensorName = in.readString();
+		sensorId = in.readString();
+		sensorSerial = in.readString();
+		sensorNetwork = in.readString();
+		sensorPosition = in.readParcelable(Position.class.getClassLoader());
+		sensorMeasure =  in.readParcelable(Measure.class.getClassLoader());
+		sensorChannel = in.readString();
+		sensorType = in.readString();
+		sensorImage = in.readParcelable(Bitmap.class.getClassLoader());
+		sensorDesc = in.readString();
+	}
+	
+	
+
+	public static final Parcelable.Creator<LSSensor> CREATOR =
+	    	new Parcelable.Creator<LSSensor>() {
+	            public LSSensor createFromParcel(Parcel in) {
+	                return new LSSensor(in);
+	            }
+	 
+	            public LSSensor[] newArray(int size) {
+	                return new LSSensor[size];
+	            }
+	        };
 }
