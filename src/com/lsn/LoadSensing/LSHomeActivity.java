@@ -32,7 +32,7 @@ public class LSHomeActivity extends GDActivity {
 //	private final int LOG_OUT = 2;
 	private QuickActionWidget quickActions;
 	private String typeMaps = null;
-	private static String idSession;
+	public static String idSession;
 	
 	/** Called when the activity is first created. */
     @Override

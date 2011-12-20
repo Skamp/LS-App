@@ -81,7 +81,11 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:layout_marginTop="10dip"
-	            android:text="@string/strLogin"/>
+	            android:text="@string/strLogin"
+	            android:textStyle="bold"
+	            android:textSize="25dip"
+	            android:textColor="#FFF"
+	            android:background="@drawable/custom_button"/>
 	          <!-- Link to Registration Screen -->
 	        <TextView 
 	            android:id="@+id/txtAppName"

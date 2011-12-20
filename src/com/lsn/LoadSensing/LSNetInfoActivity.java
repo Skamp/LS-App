@@ -15,7 +15,7 @@ public class LSNetInfoActivity extends GDActivity {
 
 	private String netID;
 	private LSNetwork networkObj;
-	private static String idSession;
+	//private static String idSession;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class LSNetInfoActivity extends GDActivity {
         
         if (bundle != null)
         {
-        	idSession = bundle.getString("SESSION");
+        	//idSession = bundle.getString("SESSION");
         	netID = bundle.getString("NETID");
         	networkObj = new LSNetwork();
         	networkObj = bundle.getParcelable("NETWORK_OBJ");
@@ -66,7 +66,7 @@ public class LSNetInfoActivity extends GDActivity {
 		        if (i!=null){
 					Bundle bundle = new Bundle();
 					
-					bundle.putString("SESSION", idSession);
+					bundle.putString("SESSION", LSHomeActivity.idSession);
 					bundle.putParcelable("NETWORK_OBJ", networkObj);
 					i.putExtras(bundle);
 		        	
@@ -77,6 +77,28 @@ public class LSNetInfoActivity extends GDActivity {
         	
         });
         
+        Button btnImages = (Button) findViewById(R.id.btnLoadImages);
+        btnImages.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				
+				Intent i = null;
+		        i = new Intent(LSNetInfoActivity.this,LSNetImagesActivity.class);
+		        
+		        if (i!=null){
+					Bundle bundle = new Bundle();
+					
+					bundle.putString("SESSION", LSHomeActivity.idSession);
+					bundle.putParcelable("NETWORK_OBJ", networkObj);
+					i.putExtras(bundle);
+		        	
+					startActivity(i);
+				}
+			}
+        
+        	
+        });
     }
 
 }

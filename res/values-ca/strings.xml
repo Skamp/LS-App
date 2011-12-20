@@ -39,8 +39,14 @@
 	    <string name="act_lbl_favImage">Imatges favorites</string>
 	    <string name="act_lbl_netinfo">Informació de xarxa</string>
 	    <string name="act_lbl_SensorList">Llistat de sensors</string>
-	    
-	    
+	    <string name="act_lbl_NetImages">Imatges de xarxa</string>
+	    <string name="act_lbl_BigImage">Imatge %1$d</string>
+		<string name="act_lbl_sensorinfo">Informació de sensor</string>
+		<string name="act_lbl_sensorchart">Gràfic de sensor</string>
+	        
+	        
+	        
+	        	    
     <!-- Activity Labels End -->
     
         
@@ -89,21 +95,47 @@
   		
    	<!-- FavesSensors Activity End -->
     <!-- NetInfo Activity Init  -->
+    
+	    <string name="lblNetName">Xarxa:</string>
     	<string name="lblnetSituation">Situació:</string>
     	<string name="lblnetPosition">Posició:</string>
     	<string name="lblnetPosLatitude">Latitud</string>
     	<string name="lblnetPosLongitude">Longitud</string>
     	<string name="lblnetPosAltitude">Altitud</string>
     	<string name="lblnetNumSensors">Sensors:</string>
-    	<string name="lblnetLoadSensors">Accedir a sensors</string>
+    	<string name="lblnetLoadSensors">Veure sensors</string>
+    	<string name="lblnetLoadImages">Veure imatges</string>
     	
    	
     <!-- NetInfo Activity End  -->
+    <!-- SensorInfo Activity Init  -->
+    	<string name="lblSensorSituation">Situació:</string>
+    	<string name="lblSensorType">Tipus:</string>
+    	<string name="lblSensorChannel">Canal:</string>
+    	<string name="lblSensorName">Sensor:</string>
+    	<string name="lblSensorDescription">Descripció:</string>
+    	<string name="lblSensorValues">Valors:</string>
+    	<string name="lblSensorMeasure">Mesura:</string>
+    	<string name="lblSensorMaxLoad">Màxim:</string>
+    	<string name="lblSensorSensitivity">Sensitivitat:</string>
+    	<string name="lblSensorOffset">Compensació:</string>
+    	<string name="lblSensorAlarmAt">Alarma a:</string>
+    	<string name="lblSensorLastTare">Última avaria:</string>
+ 		<string name="lblSensorLoadChart">Carregar gràfic</string>
+    	    
+    	    
+    <!-- SensorInfo Activity End  -->
+    
+    
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipus de mapes</string>
   		<string name="settings_summary_1">Selecciona el tipus de mapa</string>
   		<string name="settings_maps">Open Street Map no implementat</string>
     <!-- Settings Activity End -->
+    <!-- Maps Activity Init -->
+    	<string name="strNetDescrip">Situada a %1$s amb %2$d sensors</string>
+    <!-- Maps Activity End -->
+    
     <!-- Menu Init -->
    		<string name="strSearch">Cercar</string>
     	<string name="strFilter">Filtrar</string>

@@ -101,7 +101,29 @@
             android:configChanges="orientation|keyboardHidden"
             android:name=".LSSensorListActivity">
         </activity>
-            
+        
+        <activity 
+            android:label="@string/act_lbl_NetImages"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".LSNetImagesActivity">
+        </activity>
+        
+        <activity 
+
+            android:name=".LSBigImageActivity">
+        </activity>
+        
+        <activity 
+            android:label="@string/act_lbl_sensorinfo"
+            android:name=".LSSensorInfoActivity">
+        </activity>
+        
+        <activity 
+            android:label="@string/act_lbl_sensorchart"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".LSSensorChartActivity">
+        </activity>
+        
         <uses-library android:name="com.google.android.maps"/>
     </application>
 

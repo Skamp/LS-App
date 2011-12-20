@@ -27,8 +27,6 @@ import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,8 +44,10 @@ public class LSSensorListActivity extends GDListActivity {
 	private ArrayList<LSSensor>  m_sensors = null;
 	private LSSensorAdapter      m_adapter;
 	private Runnable             viewSensors;
-	private String idSession;
+	//private String idSession;
 	private LSNetwork networkObj;
+	private static HashMap<String,Bitmap> hashImages = new HashMap<String,Bitmap>();
+	private Bitmap imgSensor;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,14 +61,14 @@ public class LSSensorListActivity extends GDListActivity {
         
         if (bundle != null)
         {
-        	idSession = bundle.getString("SESSION");
+        	//idSession = bundle.getString("SESSION");
         	
         	networkObj = new LSNetwork();
         	networkObj = bundle.getParcelable("NETWORK_OBJ");
     	}  
         
-        TextView txtNetwork = (TextView)findViewById(R.id.txtNetwork);
-        txtNetwork.setText(networkObj.getNetworkName());
+        TextView txtNetName = (TextView)findViewById(R.id.netName);
+        txtNetName.setText(networkObj.getNetworkName());
         
         m_sensors = new ArrayList<LSSensor>();
         this.m_adapter = new LSSensorAdapter(this,R.layout.row_list_sensor,m_sensors);
@@ -108,7 +108,7 @@ public class LSSensorListActivity extends GDListActivity {
           
 			// Server Request Ini
 			Map<String, String> params = new HashMap<String, String>();
-			params.put("session", idSession);
+			params.put("session", LSHomeActivity.idSession);
 			params.put("IdXarxa", networkObj.getNetworkId());
 			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistaSensors.php",params);
 
@@ -123,8 +123,16 @@ public class LSSensorListActivity extends GDListActivity {
 				s1.setSensorChannel(jsonData.getString("canal"));
 				s1.setSensorType(jsonData.getString("tipus"));
 				String image = jsonData.getString("imatge");
-				Bitmap bitmap = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
-				s1.setSensorImage(bitmap);
+				if (hashImages.containsKey(image))
+				{
+					imgSensor = hashImages.get(image);
+				}
+				else
+				{
+					imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+					hashImages.put(image, imgSensor);
+				}
+				s1.setSensorImage(imgSensor);
 				s1.setSensorDesc(jsonData.getString("Descripcio"));
 				s1.setSensorSituation(jsonData.getString("Poblacio"));
 				s1.setSensorNetwork(jsonData.getString("Nom"));
@@ -168,18 +176,18 @@ public class LSSensorListActivity extends GDListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
         Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getSensorName(position), Toast.LENGTH_LONG).show();
-//        Intent i = null;
-//        i = new Intent(LSSensorListActivity.this,LSNetInfoActivity.class);
-//        
-//        if (i!=null){
-//			Bundle bundle = new Bundle();
-//			
-//			bundle.putParcelable("SENSOR_OBJ", m_sensors.get(position));
-//			
-//			i.putExtras(bundle);
-//
-//			startActivity(i);
-//		}
+        Intent i = null;
+        i = new Intent(LSSensorListActivity.this,LSSensorInfoActivity.class);
+        
+        if (i!=null){
+			Bundle bundle = new Bundle();
+			
+			bundle.putParcelable("SENSOR_OBJ", m_sensors.get(position));
+			
+			i.putExtras(bundle);
+
+			startActivity(i);
+		}
         
     }
 	

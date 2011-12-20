@@ -46,10 +46,24 @@ public class LSQRCodeActivity extends GDActivity {
 				//Handle successful scan
 				String contents = intent.getStringExtra("SCAN_RESULT");
 				String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-				TextView txtResult = (TextView) findViewById(R.id.txtResultValue);
-				TextView txtResultFormat = (TextView) findViewById(R.id.txtResultFormat);
-				txtResult.setText(contents);
-				txtResultFormat.setText(format);
+//				TextView txtResult = (TextView) findViewById(R.id.txtResultValue);
+//				TextView txtResultFormat = (TextView) findViewById(R.id.txtResultFormat);
+//				txtResult.setText(contents);
+//				txtResultFormat.setText(format);
+				Intent i = null;
+		        i = new Intent(LSQRCodeActivity.this,LSSensorInfoActivity.class);
+		        
+		        if (i!=null){
+					Bundle bundle = new Bundle();
+					
+					bundle.putString("SENSOR_SERIAL", contents);
+					
+					i.putExtras(bundle);
+
+					startActivity(i);
+				}
+				
+				
 			}
 			else if (resultCode == RESULT_CANCELED)
 			{

@@ -35,8 +35,12 @@
     	<string name="act_lbl_favNetwork">Favorite networks</string>
 	    <string name="act_lbl_favSensor">Favorite sensors</string>
 	    <string name="act_lbl_favImage">Favorite images</string>
-	    <string name="act_lbl_netinfo">Net information</string>
+	    <string name="act_lbl_netinfo">Network information</string>
 	    <string name="act_lbl_SensorList">Sensors list</string>
+	    <string name="act_lbl_NetImages">Network images</string>
+	    <string name="act_lbl_BigImage">Image %1$d</string>
+	    <string name="act_lbl_sensorinfo">Sensor information</string>
+	    <string name="act_lbl_sensorchart">Sensor chart</string>
     <!-- Activity Labels End -->
     
         
@@ -85,20 +89,39 @@
   		
    	<!-- FavesSensors Activity End -->
    	<!-- NetInfo Activity Init  -->
+   		<string name="lblNetName">Network:</string>
     	<string name="lblnetSituation">Situation:</string>
     	<string name="lblnetPosition">Position:</string>
     	<string name="lblnetPosLatitude">Latitude</string>
     	<string name="lblnetPosLongitude">Longitude</string>
     	<string name="lblnetPosAltitude">Altitude</string>
     	<string name="lblnetNumSensors">Sensors:</string>
-    	<string name="lblnetLoadSensors">Access to sensors</string>
+    	<string name="lblnetLoadSensors">View sensors</string>
+    	<string name="lblnetLoadImages">View images</string>
    	
     <!-- NetInfo Activity End  -->
+    <!-- SensorInfo Activity Init  -->
+    	<string name="lblSensorSituation">Situation:</string>
+    	<string name="lblSensorType">Type:</string>
+    	<string name="lblSensorChannel">Channel:</string>
+    	<string name="lblSensorName">Sensor:</string>
+    	<string name="lblSensorDescription">Description:</string>
+    	<string name="lblSensorValues">Values:</string>
+    	<string name="lblSensorMaxLoad">Max load:</string>
+    	<string name="lblSensorSensitivity">Sensitivity:</string>
+    	<string name="lblSensorOffset">Offset:</string>
+    	<string name="lblSensorAlarmAt">Alarm at:</string>
+   		<string name="lblSensorLastTare">Last tare:</string>
+   		<string name="lblSensorLoadChart">Load chart</string>
+    <!-- SensorInfo Activity End  -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Type of map</string>
   		<string name="settings_summary_1">Select the type of map</string>
   		<string name="settings_maps">Open Street Map don t implemented</string>
     <!-- Settings Activity End -->
+    <!-- Maps Activity Init -->
+    	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>
+    <!-- Maps Activity End -->
    	<!-- Menu Init -->
    		<string name="strSearch">Find</string>
     	<string name="strFilter">Filter</string>

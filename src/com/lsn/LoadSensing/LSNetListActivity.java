@@ -43,7 +43,7 @@ public class LSNetListActivity extends GDListActivity {
 	private ArrayList<LSNetwork> m_networks = null;
 	private LSNetworkAdapter     m_adapter;
 	private Runnable             viewNetworks;
-	private static String idSession;
+	//private static String idSession;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class LSNetListActivity extends GDListActivity {
         
         if (bundle != null)
         {
-        	idSession = bundle.getString("SESSION");
+        	//idSession = bundle.getString("SESSION");
     	}  
         
         m_networks = new ArrayList<LSNetwork>();
@@ -98,11 +98,9 @@ public class LSNetListActivity extends GDListActivity {
           
 			// Server Request Ini
 			Map<String, String> params = new HashMap<String, String>();
-			params.put("session", idSession);
+			params.put("session", LSHomeActivity.idSession);
 			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
 
-			//JSONArray jArray = new JSONArray(response.toString());
-			
 			for (int i = 0; i<jArray.length(); i++)
 			{
 				JSONObject jsonData = jArray.getJSONObject(i);
@@ -158,7 +156,7 @@ public class LSNetListActivity extends GDListActivity {
         if (i!=null){
 			Bundle bundle = new Bundle();
 			
-			bundle.putString("SESSION", idSession);
+			//bundle.putString("SESSION", idSession);
 			bundle.putParcelable("NETWORK_OBJ", m_networks.get(position));
 			
 			i.putExtras(bundle);
