@@ -142,7 +142,14 @@
     	<string name="strMapMode">Canviar vista</string>
    		
    	<!-- Menu End -->
-   	
+   	<!-- SD Error Messages Init-->
+   		<string name="msgSDReadOnly">La targeta SDCard només pot ser llegida. Això impedirà el correcte funcionament de l\'aplicació d\'escritura.</string>
+   		<string name="msgSDBadFormat">La targeta SDCard no pot ser utilitzada, no té un format acceptat o no està correctament formatada.</string>
+   		<string name="msgSDNotFound">La targeta SDCard no es troba, per utilitzar el lector necessita insertar una targeta SD Card al mòbil.</string>
+   		<string name="msgSDShared">La targeta SDCard no està muntada perque s\'està utilitzant connectada mitjaçant USB. Desconnecti-la i torni a intentar-ho.</string>
+   		<string name="msgSDUnmountable">La targeta SDCard no pot muntarse. Això pot estar provocat per que es trobi corrupta o danyada."</string>
+   		<string name="msgSDUnmounted">La targeta SDCard està present al mòbil pero no està muntada. Munti-la abans d\'utilitzar el programa.</string>
+   	<!-- SD Error Messages End-->
    	
    	<!-- Help Init -->
    		<string name="help_homNetList">Xarxes en llistat: Dona la possibilitat de mostrar el llistat de totes les xarxes registrades al sistema a les que l\'usuari té accés.</string> 

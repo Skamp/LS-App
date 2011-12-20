@@ -127,6 +127,14 @@
     	<string name="strFilter">Filter</string>
    		<string name="strMapMode">Switch view</string>
    	<!-- Menu End -->
+   	<!-- SD Error Messages Init-->
+   		<string name="msgSDReadOnly">SD Card is in read only mode. This will prevent the proper functioning of the writing functionality</string>
+   		<string name="msgSDBadFormat">SD Card cannot be used, it does not have an acceptable format or it has been incorrectly formatted.</string>
+   		<string name="msgSDNotFound">SD Card not found, to use reader you need to insert a SD Card in device.</string>
+   		<string name="msgSDShared">SD Card not mounted because it is USB connected. Unplug and try again.</string>
+   		<string name="msgSDUnmountable">SD Card cannot be mounted. This may be because it is corrupt or damaged."</string>
+   		<string name="msgSDUnmounted">SD Card is detected in the device but it is unmounted. Mount it before using the program.</string>
+   	<!-- SD Error Messages End-->
    	
    	
    	<!-- Help Init -->

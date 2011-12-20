@@ -3,7 +3,7 @@ package com.lsn.LoadSensing;
 //import com.lsn.LoadSensing.ui.CustomDialog;
 
 import com.lsn.LoadSensing.ui.CustomToast;
-import com.readystatesoftware.mapviewballoons.R;
+//import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;

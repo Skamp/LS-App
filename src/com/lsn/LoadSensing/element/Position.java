@@ -25,6 +25,13 @@ public class Position implements Parcelable
 		this.altitude = 0.0;
 	}
 	
+	public Position(Double latitude, Double longitude, Double altitude) {
+		super();
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.altitude = altitude;
+	}
+	
 	public Position(Location location) {
 		super();
 		this.latitude = location.getLatitude();
@@ -49,7 +56,10 @@ public class Position implements Parcelable
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	
+	public Double getAltitude() {
+		return altitude;
+	}
+
 	public Double getAltitude() {
 		return altitude;
 	}

@@ -127,6 +127,14 @@
     	<string name="strFilter">Filtrar</string>
    		<string name="strMapMode">Cambiar vista</string>
    	<!-- Menu End -->
+   	<!-- SD Error Messages Init-->
+   		<string name="msgSDReadOnly">La tarjeta SDCard sólo se puede leer. Esto impedirá el buen funcionamiento de la aplicación de escritura.</string>
+   		<string name="msgSDBadFormat">La tarjeta SDCard no se puede usar, no tiene un formato aceptado o no está correctamente formateada.</string>
+   		<string name="msgSDNotFound">La tarjeta SDCard no se encuentra, para utilizar el lector necesita insertar una tarjeta SD Card en el móvil.</string>
+   		<string name="msgSDShared">La tarjeta SDCard no está montada porque se está utilizando conectada mediante USB. Desconectela y vuelva a intentarlo.</string>
+   		<string name="msgSDUnmountable">La tarjeta SDCard no puede montarse. Esto puede deberse a que se encuentra corrupta o dañada."</string>
+   		<string name="msgSDUnmounted">La tarjeta SDCard está presente en el móvil pero no está montada. Móntela antes de usar el programa.</string>
+   	<!-- SD Error Messages End-->
    	
    	<!-- Help Init -->
    		<string name="help_homNetList">Redes en lista: Da la posibilidad de mostrar el listado de todas las redes registradas en el sistema a les que el usuario tiene acceso.</string> 

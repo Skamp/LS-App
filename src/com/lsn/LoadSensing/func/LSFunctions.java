@@ -26,6 +26,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.lsn.LoadSensing.R;
+import com.lsn.LoadSensing.ui.CustomToast;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -88,6 +92,15 @@ public class LSFunctions {
 			retJSONArray = new JSONArray(EntityUtils.toString(entity,HTTP.UTF_8));
 			
 		} catch (ParseException e) {
+		}		
+		
+		CustomToast.showCustomToast(context,
+				strCustomMessage,
+                imgCustomImage,
+                CustomToast.LENGTH_LONG);
+		
+		return false;
+	}
 
 			e.printStackTrace();
 		} catch (JSONException e) {
