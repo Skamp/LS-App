@@ -60,10 +60,6 @@ public class Position implements Parcelable
 		return altitude;
 	}
 
-	public Double getAltitude() {
-		return altitude;
-	}
-
 	public void setAltitude(Double altitude) {
 		this.altitude = altitude;
 	}

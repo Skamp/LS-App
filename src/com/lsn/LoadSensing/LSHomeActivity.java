@@ -8,7 +8,6 @@ import com.lsn.LoadSensing.ui.CustomToast;
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
 import greendroid.widget.ActionBarItem;
-import greendroid.widget.NormalActionBarItem;
 import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.QuickAction;
 import greendroid.widget.QuickActionBar;

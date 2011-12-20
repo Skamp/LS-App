@@ -36,6 +36,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Log;
 
 public class LSFunctions {
@@ -49,6 +50,56 @@ public class LSFunctions {
 				                                    PackageManager.MATCH_DEFAULT_ONLY);
 		
 		return (list.size() > 0);
+	}
+	
+	public static boolean checkSDCard(Activity context)
+	{
+		String auxSDCardStatus = Environment.getExternalStorageState();
+		Integer strCustomMessage=0;
+		Integer imgCustomImage=0;
+		
+		if      (auxSDCardStatus.equals(Environment.MEDIA_MOUNTED))
+		{
+			return true;
+		}
+		else if (auxSDCardStatus.equals(Environment.MEDIA_MOUNTED_READ_ONLY))
+		{
+			imgCustomImage = CustomToast.IMG_EXCLAMATION;
+			strCustomMessage = R.string.msgSDReadOnly;
+		}
+		else if (auxSDCardStatus.equals(Environment.MEDIA_NOFS))
+		{
+			imgCustomImage = CustomToast.IMG_ERROR;
+			strCustomMessage = R.string.msgSDBadFormat;
+		}
+		else if (auxSDCardStatus.equals(Environment.MEDIA_REMOVED))
+		{
+			imgCustomImage = CustomToast.IMG_ERROR;
+			strCustomMessage = R.string.msgSDNotFound;
+		}		
+		else if (auxSDCardStatus.equals(Environment.MEDIA_SHARED))
+		{
+			imgCustomImage = CustomToast.IMG_ERROR;
+			strCustomMessage = R.string.msgSDShared;
+		}		
+		else if (auxSDCardStatus.equals(Environment.MEDIA_UNMOUNTABLE))
+		{
+			imgCustomImage = CustomToast.IMG_ERROR;
+			strCustomMessage = R.string.msgSDUnmountable;
+
+		}		
+		else if (auxSDCardStatus.equals(Environment.MEDIA_UNMOUNTED))
+		{
+			imgCustomImage = CustomToast.IMG_ERROR;
+			strCustomMessage = R.string.msgSDUnmounted;
+		}		
+		
+		CustomToast.showCustomToast(context,
+				strCustomMessage,
+                imgCustomImage,
+                CustomToast.LENGTH_LONG);
+		
+		return false;
 	}
 	
 	public static JSONObject urlRequestJSONObject(String url, Map<?,?> params)
@@ -92,15 +143,6 @@ public class LSFunctions {
 			retJSONArray = new JSONArray(EntityUtils.toString(entity,HTTP.UTF_8));
 			
 		} catch (ParseException e) {
-		}		
-		
-		CustomToast.showCustomToast(context,
-				strCustomMessage,
-                imgCustomImage,
-                CustomToast.LENGTH_LONG);
-		
-		return false;
-	}
 
 			e.printStackTrace();
 		} catch (JSONException e) {
