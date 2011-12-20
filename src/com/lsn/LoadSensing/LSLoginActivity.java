@@ -33,7 +33,7 @@ public class LSLoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
+		setContentView(R.layout.act_login);
 		
 		prefs = getSharedPreferences("LSLogin",Context.MODE_PRIVATE);
 		

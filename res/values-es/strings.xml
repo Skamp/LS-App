@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, LoadSensingActivity!</string>
     <string name="app_name">LoadSensing App</string>
-    <string name="app_team">Equipo LSN</string>
+    <string name="app_team">EQUIPO LSN</string>
     <string name="info_LoadSensing">Para más información sobre LoadSensing, se puede consultar la siguiente dirección web:</string>
     <string name="app_url">http://www.loadsensing.com</string>
     <string name="about_content">LoadSensing App ......\n\n... <a href="http://www.worldsensing.com">WorldSensing</a></string>
