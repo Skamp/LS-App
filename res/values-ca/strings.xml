@@ -5,6 +5,7 @@
     <string name="app_team">EQUIP LSN</string>
     <string name="info_LoadSensing">Per més informació sobre LoadSensing, es pot consultar la següent direcció web:</string>
     <string name="app_url">http://www.loadsensing.com</string>
+<!--     <string name="about_content">LoadSensing App permet accedir a la informació de monitorització de l\'aplicació <a href="http://www.loadsensing.com/app">LoadSensing</a> utilitzant dispositius mobils amb sistema operatiu Android.\n\nLoadSensing és un sistema d\'aquisició d'informació remota mitjançant comunicació sense fils, utilitzat per monitoritzar estructures en temps real, permetent monitoritzar la pressió, la tensió i torsió en ponts, edificis, xarxes de seguretat i diferentes estructures més.\n\nL\'aplicació ha estat desenvolupada com a projecte final del Master Universitari en Programari Lliure de la <a href="http://www.uoc.edu">UOC</a>.\n\nAutors:\n\nSergi Gonzàlez Díez\nSergi Postigo\n</string> -->
     <string name="about_content">LoadSensing App ......\n\n... <a href="http://www.worldsensing.com">WorldSensing</a></string>
     <string name="infoTabAbout">Sobre...</string>
     <string name="infoTabLicense">Llicència</string>
@@ -133,11 +134,20 @@
     	    
     	    
     <!-- QRCode Activity End -->
-    <!-- Settings Activity Init -->
-  		<string name="settings_title_1">Tipus de mapes</string>
-  		<string name="settings_summary_1">Selecciona el tipus de mapa</string>
-  		<string name="settings_maps">Open Street Map no implementat</string>
-    <!-- Settings Activity End -->
+    <!-- Settings Init -->
+    	<string name="settingOSMnotDeveloped">Open Street Map no implementat</string>
+   		<string name="settingMapTitle">Configuració de mapes</string>
+   		<string name="settingMapType">Tipus de mapa</string>
+   		<string name="settingSelectMap">Selecciona el tipus de mapa</string>
+   		<string name="settingSelectMapDialog">Selecciona mapa:</string>
+   		<string name="settingNetCloserTitle">Configuració de xarxes properes</string>
+   		<string name="settingDistanceUnit">Unitat de distància</string>
+   		<string name="settingSelectDistanceUnit">Selecciona la unitat de distància</string>
+   		<string name="settingDistanceUnitDialog">Selecciona unitat:</string>
+   		    
+   		    
+   		    
+   	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Situada a %1$s amb %2$d sensors</string>
     <!-- Maps Activity End -->

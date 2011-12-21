@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:loadsensing="http://loadsensing.com">
+    <PreferenceCategory android:title="@string/settingMapTitle">
+        <ListPreference
+            android:key="maps"
+            android:title="@string/settingMapType"
+            android:summary="@string/settingSelectMap"
+            android:dialogTitle="@string/settingSelectMapDialog"
+            android:entries="@array/mapTypeEntries"
+            android:entryValues="@array/mapTypeValues" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settingNetCloserTitle">
+        <ListPreference
+            android:key="netcloserunit"
+            android:title="@string/settingDistanceUnit"
+            android:summary="@string/settingSelectDistanceUnit"
+            android:dialogTitle="@string/settingDistanceUnitDialog"
+            android:entries="@array/DistanceUnitEntries"
+            android:entryValues="@array/DistanceUnitValues" />
+        <com.lsn.LoadSensing.ui.SeekBarPreference
+            android:key="netcloserdist"
+            android:title="Speech speed"
+            android:summary="Adjust reading speed"
+            android:defaultValue="4000"
+            android:max="5000"
+            loadsensing:min="1"
+
+            />
+        <!--                 loadsensing:min="1" -->
+<!--             	loadsensing:unitsLeft="" -->
+<!--                 loadsensing:unitsRight="%" -->
+<!--         <CheckBoxPreference -->
+<!--             android:key="opcion1" -->
+<!--             android:title="Preferencia 1" -->
+<!--             android:summary="Descripción de la preferencia 1" /> -->
+<!--         <EditTextPreference -->
+<!--             android:key="opcion2" -->
+<!--             android:title="Preferencia 2" -->
+<!--             android:summary="Descripción de la preferencia 2" -->
+<!--             android:dialogTitle="Introduce valor" /> -->
+    </PreferenceCategory>
+</PreferenceScreen>

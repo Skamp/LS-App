@@ -120,11 +120,17 @@
     	<string name="msg_QRCorrect">Detected %1$s sensor</string>
     <!-- QRCode Activity End -->
     
-    <!-- Settings Activity Init -->
-  		<string name="settings_title_1">Type of map</string>
-  		<string name="settings_summary_1">Select the type of map</string>
-  		<string name="settings_maps">Open Street Map don t implemented</string>
-    <!-- Settings Activity End -->
+   	<!-- Settings Init -->
+   		<string name="settingOSMnotDeveloped">Open Street Map not implemented</string>
+		<string name="settingMapTitle">Map configuration</string>
+   		<string name="settingMapType">Map type</string>
+   		<string name="settingSelectMap">Select the map type</string>
+   		<string name="settingSelectMapDialog">Select map:</string>
+   		<string name="settingNetCloserTitle">Closer networks configuration</string>
+   		<string name="settingDistanceUnit">Distance unit</string>
+   		<string name="settingSelectDistanceUnit">Select distance unit</string>
+   		<string name="settingDistanceUnitDialog">Select unit:</string>
+   	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>
     <!-- Maps Activity End -->

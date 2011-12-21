@@ -24,11 +24,13 @@ public final class R {
         public static final int gd_shrink_from_topright_to_bottomleft=0x7f04000c;
     }
     public static final class array {
+        public static final int DistanceUnitEntries=0x7f0b0005;
+        public static final int DistanceUnitValues=0x7f0b0006;
         public static final int datasourcetypelist=0x7f0b0003;
         public static final int displaytypelist=0x7f0b0004;
         public static final int lsnetmaps_options=0x7f0b0002;
-        public static final int maps1=0x7f0b0000;
-        public static final int maps2=0x7f0b0001;
+        public static final int mapTypeEntries=0x7f0b0000;
+        public static final int mapTypeValues=0x7f0b0001;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -858,6 +860,10 @@ containing a value of this type.
         public static final int positiveButton=0x7f070050;
         public static final int right=0x7f07000a;
         public static final int row_layout=0x7f07005e;
+        public static final int seekBarPrefBarContainer=0x7f070089;
+        public static final int seekBarPrefUnitsLeft=0x7f070088;
+        public static final int seekBarPrefUnitsRight=0x7f070086;
+        public static final int seekBarPrefValue=0x7f070087;
         public static final int selectorsLayout=0x7f070017;
         public static final int selectorsRow01=0x7f07001a;
         public static final int selectorsTable=0x7f070019;
@@ -963,6 +969,7 @@ containing a value of this type.
         public static final int row_list_image=0x7f03003f;
         public static final int row_list_network=0x7f030040;
         public static final int row_list_sensor=0x7f030041;
+        public static final int seek_bar_preference=0x7f030042;
     }
     public static final class string {
         public static final int CIRCLE_MARKER=0x7f06002a;
@@ -977,6 +984,8 @@ containing a value of this type.
         public static final int SE=0x7f060023;
         public static final int SW=0x7f060025;
         public static final int W=0x7f060026;
+        /**      <string name="about_content">LoadSensing App permet accedir a la informació de monitorització de l\'aplicació <a href="http://www.loadsensing.com/app">LoadSensing</a> utilitzant dispositius mobils amb sistema operatiu Android.\n\nLoadSensing és un sistema d\'aquisició d'informació remota mitjançant comunicació sense fils, utilitzat per monitoritzar estructures en temps real, permetent monitoritzar la pressió, la tensió i torsió en ponts, edificis, xarxes de seguretat i diferentes estructures més.\n\nL\'aplicació ha estat desenvolupada com a projecte final del Master Universitari en Programari Lliure de la <a href="http://www.uoc.edu">UOC</a>.\n\nAutors:\n\nSergi Gonzàlez Díez\nSergi Postigo\n</string> 
+         */
         public static final int about_content=0x7f060063;
         public static final int abtxtConfiguration=0x7f060088;
         public static final int abtxtInformation=0x7f060089;
@@ -1093,9 +1102,9 @@ containing a value of this type.
         public static final int googleMaps_API_key_debug=0x7f06001e;
         public static final int gps_last_fix=0x7f06004a;
         public static final int hello=0x7f060000;
-        public static final int help_homAugReal=0x7f0600c6;
-        public static final int help_homFaves=0x7f0600c5;
-        public static final int help_homNetCloser=0x7f0600c7;
+        public static final int help_homAugReal=0x7f0600cc;
+        public static final int help_homFaves=0x7f0600cb;
+        public static final int help_homNetCloser=0x7f0600cd;
         /**  SD Error Messages End
  Help Init 
  SD Error Messages End
@@ -1103,9 +1112,9 @@ containing a value of this type.
  SD Error Messages End
  Help Init 
          */
-        public static final int help_homNetList=0x7f0600c2;
-        public static final int help_homNetMaps=0x7f0600c3;
-        public static final int help_homQRCode=0x7f0600c4;
+        public static final int help_homNetList=0x7f0600c8;
+        public static final int help_homNetMaps=0x7f0600c9;
+        public static final int help_homQRCode=0x7f0600ca;
         public static final int infoTabAbout=0x7f060064;
         public static final int infoTabLicense=0x7f060065;
         public static final int info_LoadSensing=0x7f060061;
@@ -1162,8 +1171,8 @@ containing a value of this type.
         public static final int menu_item_5=0x7f060033;
         public static final int menu_item_6=0x7f060034;
         public static final int menu_item_7=0x7f060035;
-        public static final int msgSDBadFormat=0x7f0600bd;
-        public static final int msgSDNotFound=0x7f0600be;
+        public static final int msgSDBadFormat=0x7f0600c3;
+        public static final int msgSDNotFound=0x7f0600c4;
         /**  Menu End 
  SD Error Messages Init
  Menu End 
@@ -1171,10 +1180,10 @@ containing a value of this type.
  Menu End 
  SD Error Messages Init
          */
-        public static final int msgSDReadOnly=0x7f0600bc;
-        public static final int msgSDShared=0x7f0600bf;
-        public static final int msgSDUnmountable=0x7f0600c0;
-        public static final int msgSDUnmounted=0x7f0600c1;
+        public static final int msgSDReadOnly=0x7f0600c2;
+        public static final int msgSDShared=0x7f0600c5;
+        public static final int msgSDUnmountable=0x7f0600c6;
+        public static final int msgSDUnmounted=0x7f0600c7;
         /**  Messages Init 
  Messages Init 
  Messages Init 
@@ -1205,21 +1214,27 @@ containing a value of this type.
         public static final int search_failed_notification=0x7f060056;
         public static final int search_hint=0x7f06001f;
         public static final int set_osm_max_object=0x7f06005f;
-        public static final int settings_maps=0x7f0600b7;
-        public static final int settings_summary_1=0x7f0600b6;
+        public static final int settingDistanceUnit=0x7f0600bb;
+        public static final int settingDistanceUnitDialog=0x7f0600bd;
+        public static final int settingMapTitle=0x7f0600b6;
+        public static final int settingMapType=0x7f0600b7;
+        public static final int settingNetCloserTitle=0x7f0600ba;
         /**  QRCode Activity End 
- Settings Activity Init 
+ Settings Init 
  QRCode Activity End 
- Settings Activity Init 
+ Settings Init 
  QRCode Activity End 
- Settings Activity Init 
+ Settings Init 
          */
-        public static final int settings_title_1=0x7f0600b5;
+        public static final int settingOSMnotDeveloped=0x7f0600b5;
+        public static final int settingSelectDistanceUnit=0x7f0600bc;
+        public static final int settingSelectMap=0x7f0600b8;
+        public static final int settingSelectMapDialog=0x7f0600b9;
         public static final int source_openstreetmap=0x7f060057;
         public static final int speed=0x7f060048;
         public static final int strErrorLocation=0x7f06009a;
         public static final int strExit=0x7f060086;
-        public static final int strFilter=0x7f0600ba;
+        public static final int strFilter=0x7f0600c0;
         /**  SensorList Activity End 
  NetCloser Activity Init 
  SensorList Activity End 
@@ -1229,15 +1244,15 @@ containing a value of this type.
          */
         public static final int strGetLocation=0x7f060098;
         public static final int strLogin=0x7f060085;
-        public static final int strMapMode=0x7f0600bb;
-        /**  Settings Activity End 
+        public static final int strMapMode=0x7f0600c1;
+        /**  Settings End 
  Maps Activity Init 
- Settings Activity End 
+ Settings End 
  Maps Activity Init 
- Settings Activity End 
+ Settings End 
  Maps Activity Init 
          */
-        public static final int strNetDescrip=0x7f0600b8;
+        public static final int strNetDescrip=0x7f0600be;
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1255,7 +1270,7 @@ containing a value of this type.
  Maps Activity End 
  Menu Init 
          */
-        public static final int strSearch=0x7f0600b9;
+        public static final int strSearch=0x7f0600bf;
         public static final int strSensorChannel=0x7f060097;
         /**  NetList Activity End 
  SensorList Activity Init 
@@ -1397,7 +1412,7 @@ containing a value of this type.
         public static final int Theme_LSTheme=0x7f0a003c;
     }
     public static final class xml {
-        public static final int maps=0x7f050000;
+        public static final int config=0x7f050000;
         public static final int searchable=0x7f050001;
     }
     public static final class styleable {

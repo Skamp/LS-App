@@ -37,8 +37,7 @@ public class LSLoginActivity extends Activity {
 		
 		prefs = getSharedPreferences("LSLogin",Context.MODE_PRIVATE);
 		
-		PreferenceManager.setDefaultValues(this, R.xml.maps, false);
-
+		//PreferenceManager.setDefaultValues(this, R.xml.config, false);
 		
 		Button btnLogin = (Button)findViewById(R.id.btnLogin);
 		EditText edtLogin = (EditText)findViewById(R.id.edtLogin);
@@ -104,15 +103,15 @@ public class LSLoginActivity extends Activity {
 		});
 	}
 	
-	@Override
-	public void onResume() {
-		super.onResume();
-		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = settings.edit();          
- 
-        // default: google maps
-        editor.putString("maps", "google");
-        editor.commit();
-
-	}  
+//	@Override
+//	public void onResume() {
+//		super.onResume();
+//		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences.Editor editor = settings.edit();          
+// 
+//        // default: google maps
+//        editor.putString("maps", "google");
+//        editor.commit();
+//
+//	}  
 }

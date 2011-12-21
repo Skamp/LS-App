@@ -1,9 +1,6 @@
 package com.lsn.LoadSensing;
 
-//import com.lsn.LoadSensing.ui.CustomDialog;
-
 import com.lsn.LoadSensing.ui.CustomToast;
-//import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
@@ -22,13 +19,12 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class LSHomeActivity extends GDActivity {
     
 	private final int MORE = 0;
 	private final int HELP = 1;
-//	private final int LOG_OUT = 2;
 	private QuickActionWidget quickActions;
 	private String typeMaps = null;
 	public static String idSession;
@@ -38,9 +34,15 @@ public class LSHomeActivity extends GDActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActionBarContentView(R.layout.dshb_home);
+
+        //Set type of ActionBar to Normal
         getActionBar().setType(ActionBar.Type.Normal);
-        setTitle(R.string.act_lbl_homHome);
-        
+        //Set ActionBar title
+        //Not used setTitle function because of an issue with x-large devices with this activity
+        TextView tv = (TextView) findViewById(R.id.gd_action_bar_title);
+        tv.setText(R.string.act_lbl_homHome);
+
+        //Change image and action of Home Button of Action Bar	
         ImageButton	mHomeButton = (ImageButton) findViewById(R.id.gd_action_bar_home_item);
 		
         mHomeButton.setImageDrawable(getResources().getDrawable(R.drawable.gd_action_bar_exit));
@@ -52,9 +54,11 @@ public class LSHomeActivity extends GDActivity {
 			}
 		});
         
+		//Initialize ActionBar and QuickActionBar
         initActionBar();
         initQuickActionBar();
         
+        //Retrieve intent information
         Bundle bundle = getIntent().getExtras();
         
         if (bundle != null)
@@ -63,12 +67,7 @@ public class LSHomeActivity extends GDActivity {
         	CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER")+" " + idSession,CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
     	}       
         
-        
-//        TextView txtMessage = (TextView)findViewById(R.id.txtHomeMessage);
-//        txtMessage.setText("Hello World");
-//        txtMessage.setVisibility(TextView.VISIBLE);
-        
-        
+        //Set click Listener on dashboard buttons
         DashboardClickListener dbClickListener = new DashboardClickListener();
         findViewById(R.id.dsh_btn_netList).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_netMaps).setOnClickListener(dbClickListener);
@@ -77,8 +76,7 @@ public class LSHomeActivity extends GDActivity {
         findViewById(R.id.dsh_btn_AR).setOnClickListener(dbClickListener);
         findViewById(R.id.dsh_btn_netCloser).setOnClickListener(dbClickListener);
         
-        PreferenceManager.setDefaultValues(this, R.xml.maps, false);
-        
+        //PreferenceManager.setDefaultValues(this, R.xml.config, false);
     }
     
     @Override
@@ -107,15 +105,9 @@ public class LSHomeActivity extends GDActivity {
     		//i = new Intent(LSHomeActivity.this,LSConfigActivity.class);
     		break;
     	case HELP:
-    		Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();
+
     		i = new Intent(LSHomeActivity.this,LSHelpActivity.class);
     		break;
-//    	case LOG_OUT:
-//    		showLogOutDialog();
-//    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton LOG_OUT", Toast.LENGTH_SHORT).show();
-//    		//i = new Intent(LSHomeActivity.this,LSAboutActivity.class);
-//    		//i = new Intent(LSHomeActivity.this,LSInfoActivity.class);
-//    		break;
     	
     	default:
     		return super.onHandleActionBarItemClick(item, position);
@@ -127,17 +119,15 @@ public class LSHomeActivity extends GDActivity {
 	}
 
 	private void initActionBar() {
-		
+
+		//Define ActionBar items
 		addActionBarItem(Type.Add,MORE);
     	addActionBarItem(Type.Help,HELP);
-    	//addActionBarItem(getActionBar()
-    	//        .newActionBarItem(NormalActionBarItem.class)
-    	//        .setDrawable(R.drawable.gd_action_bar_exit)
-    	//        .setContentDescription(R.string.abtxtLogOut), LOG_OUT);
 	}
 
 	private void initQuickActionBar()
 	{
+		//Define Quick Actions
 		quickActions = new QuickActionBar(this); 
 		quickActions.addQuickAction(new QuickAction(this,android.R.drawable.ic_menu_preferences,getString(R.string.abtxtConfiguration)));
 		quickActions.addQuickAction(new QuickAction(this,android.R.drawable.ic_menu_info_details,getString(R.string.abtxtInformation)));
@@ -184,7 +174,7 @@ public class LSHomeActivity extends GDActivity {
 				 }
 				 else   
 				 {
-					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settings_maps,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settingOSMnotDeveloped,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
 				 }
 				 break;
 			case R.id.dsh_btn_QRCode:

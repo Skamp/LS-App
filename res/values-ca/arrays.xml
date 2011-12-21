@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+   <string-array name="DistanceUnitEntries">
+      <item>quilòmetres</item>
+      <item>Milles</item>
+   </string-array>
+   <string-array name="DistanceUnitValues">
+      <item>km</item>
+      <item>mi</item>
+   </string-array>
+</resources>

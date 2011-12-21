@@ -1,14 +1,22 @@
 package com.lsn.LoadSensing;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.ui.CustomToast;
 import com.lsn.LoadSensing.element.Position;
+import com.lsn.LoadSensing.func.LSFunctions;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -16,6 +24,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -38,6 +47,9 @@ public class LSNetCloserActivity extends GDListActivity{
 	private LSNetworkAdapter     m_adapter;
 	private Runnable             viewNetworks;
 	
+	private Position currentPosition;
+	private String typeUnit = null;
+	private Integer maxDistance = 0;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,6 +106,14 @@ public class LSNetCloserActivity extends GDListActivity{
         }
     }
 	
+	@Override
+    public void onResume() {
+        super.onResume();
+        //Retrieve configuration preferences
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        typeUnit=settings.getString("netcloserunit", "");
+        maxDistance=settings.getInt("netcloserdist", 4000);
+    }    
 	
 	private void checkNETStatus() {
 		
@@ -137,59 +157,96 @@ public class LSNetCloserActivity extends GDListActivity{
 
 		try{
           m_networks = new ArrayList<LSNetwork>();
-          LSNetwork o1 = new LSNetwork();
-          o1.setNetworkName("Network 1");
-          o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o1.setNetworkNumSensors(3);
-          LSNetwork o2 = new LSNetwork();
-          o2.setNetworkName("Network 2");
-          o2.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o2.setNetworkNumSensors(2);
-          LSNetwork o3 = new LSNetwork();
-          o3.setNetworkName("Network 3");
-          o3.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o3.setNetworkNumSensors(4);
-          LSNetwork o4 = new LSNetwork();
-          o4.setNetworkName("Network 4");
-          o4.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o4.setNetworkNumSensors(5);
-          LSNetwork o5 = new LSNetwork();
-          o5.setNetworkName("Network 5");
-          o5.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o5.setNetworkNumSensors(6);
-          LSNetwork o6 = new LSNetwork();
-          o6.setNetworkName("Network 6");
-          o6.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o6.setNetworkNumSensors(7);
-          LSNetwork o7 = new LSNetwork();
-          o7.setNetworkName("Network 7");
-          o7.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o7.setNetworkNumSensors(5);
-          LSNetwork o8 = new LSNetwork();
-          o8.setNetworkName("Network 8");
-          o8.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o8.setNetworkNumSensors(6);
-          LSNetwork o9 = new LSNetwork();
-          o9.setNetworkName("Network 9");
-          o9.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o9.setNetworkNumSensors(4);
-          LSNetwork o10 = new LSNetwork();
-          o10.setNetworkName("Network 10");
-          o10.setNetworkSituation("lat. XX.XX lon. YY.YY");
-          o10.setNetworkNumSensors(3);
           
-          m_networks.add(o1);
-          m_networks.add(o2);
-          m_networks.add(o3);
-          m_networks.add(o4);
-          m_networks.add(o5);
-          m_networks.add(o6);
-          m_networks.add(o7);
-          m_networks.add(o8);
-          m_networks.add(o9);
-          m_networks.add(o10);
+          // Server Request Ini
+          Map<String, String> params = new HashMap<String, String>();
+          params.put("session", LSHomeActivity.idSession);
+          JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
 
-          Thread.sleep(500);
+          for (int i = 0; i<jArray.length(); i++)
+          {
+        	  JSONObject jsonData = jArray.getJSONObject(i);
+        	  LSNetwork network = new LSNetwork();
+        	  network.setNetworkName(jsonData.getString("Nom"));
+        	  network.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+        	  network.setNetworkNumSensors(jsonData.getString("Sensors"));
+        	  network.setNetworkId(jsonData.getString("IdXarxa"));
+        	  network.setNetworkSituation(jsonData.getString("Poblacio"));
+        	  
+        	  //Check distance unit configured
+        	  if (typeUnit.equals("mi")) //miles
+        	  {
+        		  //Check if current network is closer than maxDistance configured in miles
+	        	  if (network.getNetworkPosition().milesDistanceTo(currentPosition) < maxDistance)
+	        	  {
+	        		  m_networks.add(network);
+	        	  }
+        	  }
+        	  else //kilometers or not configured
+        	  {
+        		  //Check if current network is closer than maxDistance configured in kilometers
+        		  if (network.getNetworkPosition().metersDistanceTo(currentPosition) < maxDistance)
+	        	  {
+	        		  m_networks.add(network);
+	        	  }
+        	  }
+          }
+		
+          // Server Request End  
+          
+//          LSNetwork o1 = new LSNetwork();
+//          o1.setNetworkName("Network 1");
+//          o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o1.setNetworkNumSensors(3);
+//          LSNetwork o2 = new LSNetwork();
+//          o2.setNetworkName("Network 2");
+//          o2.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o2.setNetworkNumSensors(2);
+//          LSNetwork o3 = new LSNetwork();
+//          o3.setNetworkName("Network 3");
+//          o3.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o3.setNetworkNumSensors(4);
+//          LSNetwork o4 = new LSNetwork();
+//          o4.setNetworkName("Network 4");
+//          o4.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o4.setNetworkNumSensors(5);
+//          LSNetwork o5 = new LSNetwork();
+//          o5.setNetworkName("Network 5");
+//          o5.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o5.setNetworkNumSensors(6);
+//          LSNetwork o6 = new LSNetwork();
+//          o6.setNetworkName("Network 6");
+//          o6.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o6.setNetworkNumSensors(7);
+//          LSNetwork o7 = new LSNetwork();
+//          o7.setNetworkName("Network 7");
+//          o7.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o7.setNetworkNumSensors(5);
+//          LSNetwork o8 = new LSNetwork();
+//          o8.setNetworkName("Network 8");
+//          o8.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o8.setNetworkNumSensors(6);
+//          LSNetwork o9 = new LSNetwork();
+//          o9.setNetworkName("Network 9");
+//          o9.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o9.setNetworkNumSensors(4);
+//          LSNetwork o10 = new LSNetwork();
+//          o10.setNetworkName("Network 10");
+//          o10.setNetworkSituation("lat. XX.XX lon. YY.YY");
+//          o10.setNetworkNumSensors(3);
+//          
+//          m_networks.add(o1);
+//          m_networks.add(o2);
+//          m_networks.add(o3);
+//          m_networks.add(o4);
+//          m_networks.add(o5);
+//          m_networks.add(o6);
+//          m_networks.add(o7);
+//          m_networks.add(o8);
+//          m_networks.add(o9);
+//          m_networks.add(o10);
+//
+//          Thread.sleep(500);
           Log.i("ARRAY", ""+ m_networks.size());
         } catch (Exception e) { 
           Log.e("BACKGROUND_PROC", e.getMessage());
@@ -200,6 +257,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	@Override
 	public void onBackPressed() {
 		
+		//Disable updates of location when user goes out of the activity
 		if (gpsStatus || netStatus)
 		{
 			if (gpsStatus) {
@@ -219,7 +277,20 @@ public class LSNetCloserActivity extends GDListActivity{
 	@Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
-        Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
+        Intent i = null;
+        i = new Intent(LSNetCloserActivity.this,LSNetInfoActivity.class);
+        
+        if (i!=null){
+			Bundle bundle = new Bundle();
+			
+			//bundle.putString("SESSION", idSession);
+			bundle.putParcelable("NETWORK_OBJ", m_networks.get(position));
+			
+			i.putExtras(bundle);
+        	//i.putExtra("NETWORK_OBJ", m_networks.get(position));
+			startActivity(i);
+		}
     }
 	
 	public class GetLocation extends AsyncTask<Void,Position,Void>
@@ -331,6 +402,7 @@ public class LSNetCloserActivity extends GDListActivity{
 		    String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
 		        
 		    txtLocation.setText(strYourLocation);
+		    currentPosition = curPosition;
 		}
 		
 		public void getCurrentLocation()
