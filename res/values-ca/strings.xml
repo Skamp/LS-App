@@ -14,12 +14,13 @@
     <!-- Messages Init -->
     <string name="msg_BadLoginPass">Login/Password incorrectes</string>
     <string name="msg_Welcome">Benvingut usuari</string>
-    <string name="msg_QRIntentError">No s\'ha trobat Intent per llegir codis QR, instal·la Google Googles al dispositiu</string>
     <string name="msg_NOLocServ">No s\'han trobat serveis de localització actius</string>
     <string name="msg_PleaseWait">Processant...</string>
     <string name="msg_retrievNetworks">Recuperant xarxes...</string>
     <string name="msg_retrievImages">Recuperant imatges...</string>
     <string name="msg_retrievSensors">Recuperant sensors...</string>
+    <string name="msg_ErrMarketAccess">Error al accedir a Android Market</string>
+    
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>
@@ -125,8 +126,13 @@
     	    
     	    
     <!-- SensorInfo Activity End  -->
-    
-    
+    <!-- QRCode Activity Init -->
+    	<string name="msg_QRIntentError">No s\'ha trobat Intent per llegir codis QR, instal·la Google Googles al dispositiu</string>
+    	<string name="msg_QRFormatError">Format incorrecte del codi llegit, ha de ser un QRCode.</string>
+    	<string name="msg_QRCorrect">Detectat sensor %1$s</string>
+    	    
+    	    
+    <!-- QRCode Activity End -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipus de mapes</string>
   		<string name="settings_summary_1">Selecciona el tipus de mapa</string>

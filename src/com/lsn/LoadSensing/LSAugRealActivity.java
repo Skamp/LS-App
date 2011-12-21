@@ -11,7 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.element.Position;
 import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.ui.CustomToast;
@@ -148,7 +147,10 @@ public class LSAugRealActivity extends Activity{
                 }
         		catch (Exception ex)
         		{
-        			ex.printStackTrace();
+        			CustomToast.showCustomToast(this,
+		                    R.string.msg_ErrMarketAccess,
+		                    CustomToast.IMG_ERROR,
+		                    CustomToast.LENGTH_LONG);
         		}
         	}
         }

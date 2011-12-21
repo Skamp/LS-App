@@ -12,12 +12,12 @@
 	<!-- Messages Init -->        
     <string name="msg_BadLoginPass">Login/Password incorrectos</string>
     <string name="msg_Welcome">Bienvenido usuario</string>
-    <string name="msg_QRIntentError">No se ha encontrado Intent para leer códigos QR, instala Google Googles en el dispositivo</string>
     <string name="msg_NOLocServ">No se han encontrado servicios de localización activos</string>
     <string name="msg_PleaseWait">Procesando...</string>
     <string name="msg_retrievNetworks">Recuperando redes...</string>
     <string name="msg_retrievImages">Recuperando imágenes...</string>
-        <string name="msg_retrievSensors">Recuperando sensores...</string>
+    <string name="msg_retrievSensors">Recuperando sensores...</string>
+        <string name="msg_ErrMarketAccess">Error al acceder al Android Market</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>
@@ -114,6 +114,11 @@
     	<string name="lblSensorLastTare">Última avería:</string>
     	<string name="lblSensorLoadChart">Cargar gráfico</string>
     <!-- SensorInfo Activity End  -->
+    <!-- QRCode Activity Init -->
+    	<string name="msg_QRIntentError">No se ha encontrado Intent para leer códigos QR, instala Google Googles en el dispositivo</string>
+    	<string name="msg_QRFormatError">Formato incorrecto del codigo leido, ha de ser un QRCode.</string>
+    	<string name="msg_QRCorrect">Detectado sensor %1$s</string>
+    <!-- QRCode Activity End -->
     <!-- Settings Activity Init -->
   		<string name="settings_title_1">Tipo de mapa</string>
   		<string name="settings_summary_1">Selecciona el tipo de mapa</string>
