@@ -44,12 +44,10 @@ public class LSHelpActivity extends GDActivity {
 	 @Override
 		public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
 			
-	    	
-	    	
 	    	switch (item.getItemId()) {
 	    	
 	    	case BACK:
-	    		Toast.makeText(getApplicationContext(), "Has pulsado el boton BACK", Toast.LENGTH_SHORT).show();
+	    		onBackPressed();
 	    	
 	    		break;
 	    	

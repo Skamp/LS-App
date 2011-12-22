@@ -108,22 +108,26 @@ public class LSFunctions {
 		HttpResponse response = null;
 		
 		response=urlRequest(url,params);
-		entity = response.getEntity();
 		
 		JSONObject retJSON = null;
-		try {
-			retJSON = new JSONObject(EntityUtils.toString(entity,HTTP.UTF_8));
-		} catch (ParseException e) {
-
-			e.printStackTrace();
-		} catch (JSONException e) {
-
-			e.printStackTrace();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
 		
+		if (response != null)
+		{
+			entity = response.getEntity();
+			
+			try {
+				retJSON = new JSONObject(EntityUtils.toString(entity,HTTP.UTF_8));
+			} catch (ParseException e) {
+	
+				e.printStackTrace();
+			} catch (JSONException e) {
+	
+				e.printStackTrace();
+			} catch (IOException e) {
+	
+				e.printStackTrace();
+			}
+		}
 		return retJSON;
 		
 	}

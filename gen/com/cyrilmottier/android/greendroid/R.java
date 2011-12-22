@@ -1098,9 +1098,12 @@ containing a value of this type.
         public static final int googleMaps_API_key_debug=0x7f06001e;
         public static final int gps_last_fix=0x7f06004a;
         public static final int hello=0x7f060000;
-        public static final int help_homAugReal=0x7f0600d1;
-        public static final int help_homFaves=0x7f0600d0;
-        public static final int help_homNetCloser=0x7f0600d2;
+        public static final int help_homAugReal=0x7f0600d2;
+        public static final int help_homFaves=0x7f0600d1;
+        public static final int help_homNetCloser=0x7f0600d3;
+        public static final int help_homNetList=0x7f0600ce;
+        public static final int help_homNetMaps=0x7f0600cf;
+        public static final int help_homQRCode=0x7f0600d0;
         /**  SD Error Messages End
  Help Init 
  SD Error Messages End
@@ -1108,9 +1111,7 @@ containing a value of this type.
  SD Error Messages End
  Help Init 
          */
-        public static final int help_homNetList=0x7f0600cd;
-        public static final int help_homNetMaps=0x7f0600ce;
-        public static final int help_homQRCode=0x7f0600cf;
+        public static final int help_message=0x7f0600cd;
         public static final int infoTabAbout=0x7f060064;
         public static final int infoTabLicense=0x7f060065;
         public static final int info_LoadSensing=0x7f060061;
