@@ -54,6 +54,8 @@ public class LSNetCloserActivity extends GDListActivity{
 	private Integer maxDistance = 0;
 	private Integer waitTime = 0;
 	
+	private static boolean running;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,10 @@ public class LSNetCloserActivity extends GDListActivity{
         this.m_adapter = new LSNetworkAdapter(this,R.layout.row_list_network,m_networks);
         setListAdapter(this.m_adapter);
         
+        //Allow the execution of async tasks
+        running= true;
+        //Retrieve configuration preferences
+        retrievePreferences();
         
         if (locManager == null)
 		{
@@ -93,6 +99,10 @@ public class LSNetCloserActivity extends GDListActivity{
         	getLocation = new GetLocation();
         	getLocation.execute();
         
+        	
+        	updateNetworks = new UpdateNetworks();
+	        updateNetworks.execute();
+	        
         	//Feed list with closer networks
 	        viewNetworks = new Runnable()
 	        {
@@ -108,21 +118,26 @@ public class LSNetCloserActivity extends GDListActivity{
 	        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
 	        thread.start();
 	        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
-	        
-	        updateNetworks = new UpdateNetworks();
-	        updateNetworks.execute();
         }
     }
 	
 	@Override
     public void onResume() {
         super.onResume();
+        //Allow the execution of async tasks
+        running= true;
         //Retrieve configuration preferences
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        retrievePreferences();
+    }    
+	
+	private void retrievePreferences()
+	{
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         typeUnit=settings.getString("netcloserunit", "km");
         maxDistance=settings.getInt("netcloserdist", 10);
         waitTime=settings.getInt("netclosertime",10);
-    }    
+        
+	}
 	
 	private void checkNETStatus() {
 		
@@ -169,6 +184,19 @@ public class LSNetCloserActivity extends GDListActivity{
     	}
     };
 
+    private Runnable returnErr = new Runnable() {
+
+    	@Override
+    	public void run() {
+    
+		    TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
+			txtLocation.setBackgroundColor(Color.RED);
+			txtLocation.setText(R.string.msg_NOLocServ);
+    
+    	}
+    };
+    
+    
 	private void getNetworks() {
 
 		try{
@@ -179,37 +207,50 @@ public class LSNetCloserActivity extends GDListActivity{
           params.put("session", LSHomeActivity.idSession);
           JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
 
-          for (int i = 0; i<jArray.length(); i++)
+          if (jArray != null)
           {
-        	  JSONObject jsonData = jArray.getJSONObject(i);
-        	  LSNetwork network = new LSNetwork();
-        	  network.setNetworkName(jsonData.getString("Nom"));
-        	  network.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
-        	  network.setNetworkNumSensors(jsonData.getString("Sensors"));
-        	  network.setNetworkId(jsonData.getString("IdXarxa"));
-        	  network.setNetworkSituation(jsonData.getString("Poblacio"));
-        	  
-        	  //Check distance unit configured
-        	  if (typeUnit.equals("mi")) //miles
-        	  {
-        		  //Check if current network is closer than maxDistance configured in miles
-	        	  if (network.getNetworkPosition().milesDistanceTo(currentPosition) < maxDistance)
+	          for (int i = 0; i<jArray.length(); i++)
+	          {
+	        	  JSONObject jsonData = jArray.getJSONObject(i);
+	        	  LSNetwork network = new LSNetwork();
+	        	  network.setNetworkName(jsonData.getString("Nom"));
+	        	  network.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+	        	  network.setNetworkNumSensors(jsonData.getString("Sensors"));
+	        	  network.setNetworkId(jsonData.getString("IdXarxa"));
+	        	  network.setNetworkSituation(jsonData.getString("Poblacio"));
+	        	  
+	        	  if (currentPosition!=null)
 	        	  {
-	        		  m_networks.add(network);
-	        	  }
-        	  }
-        	  else //kilometers or not configured
-        	  {
-        		  //Check if current network is closer than maxDistance configured in kilometers
-        		  if ((network.getNetworkPosition().metersDistanceTo(currentPosition)/1000) < maxDistance)
+	        		  //Check distance unit configured
+		        	  if (typeUnit.equals("mi")) //miles
+		        	  {
+		        		  //Check if current network is closer than maxDistance configured in miles
+			        	  if (network.getNetworkPosition().milesDistanceTo(currentPosition) < maxDistance)
+			        	  {
+			        		  m_networks.add(network);
+			        	  }
+		        	  }
+		        	  else //kilometers or not configured
+		        	  {
+		        		  //Check if current network is closer than maxDistance configured in kilometers
+		        		  if ((network.getNetworkPosition().metersDistanceTo(currentPosition)/1000) < maxDistance)
+			        	  {
+			        		  m_networks.add(network);
+			        	  }
+		        	  }
+	          	  }
+	        	  else
 	        	  {
-	        		  m_networks.add(network);
+	        		  runOnUiThread(returnErr); 
 	        	  }
-        	  }
+	          }
+			
+	          // Server Request End  
           }
-		
-          // Server Request End  
-          
+          else
+          {
+        	  runOnUiThread(returnErr); 
+          }
 //          LSNetwork o1 = new LSNetwork();
 //          o1.setNetworkName("Network 1");
 //          o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
@@ -265,10 +306,9 @@ public class LSNetCloserActivity extends GDListActivity{
 //          Thread.sleep(500);
           Log.i("ARRAY", ""+ m_networks.size());
         } catch (Exception e) { 
-        	TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
-        	txtLocation.setBackgroundColor(Color.RED);
-        	txtLocation.setText(R.string.msg_NOLocServ);
-          //Log.e("BACKGROUND_PROC", e.getMessage());
+        	Log.e("BACKGROUND_PROC", e.getMessage());
+        	
+        	runOnUiThread(returnErr);
         }
         runOnUiThread(returnRes);		
 	}
@@ -276,6 +316,8 @@ public class LSNetCloserActivity extends GDListActivity{
 	@Override
 	public void onBackPressed() {
 		
+		//Disable execution of Async Tasks
+		running= false;
 		//Disable updates of location when user goes out of the activity
 		if (gpsStatus || netStatus)
 		{
@@ -315,7 +357,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	public class GetLocation extends AsyncTask<Void,Position,Void>
 	{
 		private Position curPosition;
-		private boolean running = true;
+		//private boolean running = true;
 		private boolean displayInfo = true;
 		
 		@Override
@@ -476,7 +518,6 @@ public class LSNetCloserActivity extends GDListActivity{
 	public class UpdateNetworks extends AsyncTask<Void,ArrayList<LSNetwork>,Void>
 	{
 		
-		private boolean running = true;
 		private Position lastPosition;
 		//private ArrayList<LSNetwork> m_networks = null;
 		
