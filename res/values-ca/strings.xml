@@ -21,6 +21,8 @@
     <string name="msg_retrievImages">Recuperant imatges...</string>
     <string name="msg_retrievSensors">Recuperant sensors...</string>
     <string name="msg_ErrMarketAccess">Error al accedir a Android Market</string>
+    <string name="msg_ActionCancelled">Acció cancel·lada</string>
+    
     
     <!-- Messages End -->
     <!-- Activity Labels Init -->

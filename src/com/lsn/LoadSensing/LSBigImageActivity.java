@@ -1,7 +1,5 @@
 package com.lsn.LoadSensing;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -21,6 +19,7 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 	private Integer position;
 	
 	private GestureDetector gestureScanner;
+	private boolean moveLeft;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,25 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
-		return false;
+		 	
+		if (moveLeft)
+		{
+			if (position<LSNetImagesActivity.m_images.size()-1)
+			{
+				++position;
+			}
+		}
+		else
+		{
+			if (position>0)
+			{
+				--position;
+			}
+		}
+		
+		updateTitle();
+	    updateImage();
+		return true;
 	}
 
 	@Override
@@ -82,24 +99,15 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
 
-		if (distanceX > 0) //Scroll right
+		if (distanceX > 0) //Scroll left
 		{
-			if (position<LSNetImagesActivity.m_images.size()-1)
-			{
-				++position;
-			}
+			moveLeft = true;
 		}
 		else //Scroll right
 		{
-			if (position>0)
-			{
-				--position;
-			}
+			moveLeft = false;
 		}
-		
-        updateTitle();
-        updateImage();
-        
+		 
 		return true;
 	}
 

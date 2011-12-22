@@ -1,5 +1,8 @@
 package com.lsn.LoadSensing;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,27 +12,36 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore.Images.Media;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lsn.LoadSensing.adapter.LSGalleryAdapter;
 import com.lsn.LoadSensing.element.LSImage;
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
 import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
+import greendroid.widget.ActionBarItem;
+import greendroid.widget.ActionBarItem.Type;
 
 public class LSNetImagesActivity extends GDActivity {
 
+	private final int PHOTO = 0;
+	private static final int CAMERA_PIC_REQUEST = 1; 
+	
 	private ProgressDialog       m_ProgressDialog = null;
 	protected static ArrayList<LSImage>	 m_images = null;
 	private LSGalleryAdapter     m_adapter;
@@ -46,6 +58,7 @@ public class LSNetImagesActivity extends GDActivity {
         GridView imagegrid = (GridView) findViewById(R.id.gridView);
 
         
+        initActionBar();
         
         Bundle bundle = getIntent().getExtras();
         
@@ -157,6 +170,12 @@ public class LSNetImagesActivity extends GDActivity {
 				i1.setImageName(jsonData.getString("Nom"));
 				i1.setImageNetwork(jsonData.getString("Nom"));
 				m_images.add(i1);
+				m_images.add(i1);
+				m_images.add(i1);
+				m_images.add(i1);
+				m_images.add(i1);
+				
+
 			}
 			
 			// Server Request End  
@@ -192,5 +211,93 @@ public class LSNetImagesActivity extends GDActivity {
         runOnUiThread(returnRes);		
 	 }
 	
+	 @Override
+		public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+			
+	    	
+	    	
+	    	switch (item.getItemId()) {
+	    	
+	    	case PHOTO:
+	    		Intent photoCamera = null;
+	    		photoCamera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+	    		photoCamera.putExtra(android.provider.MediaStore.EXTRA_OUTPUT,Uri.fromFile(getTempFile(this)));
+	    		startActivityForResult(photoCamera,CAMERA_PIC_REQUEST);
+	    		break;
+	    	
+	    	default:
+	    		return super.onHandleActionBarItemClick(item, position);
+	    	}
+//	    	if (i!=null){
+//				startActivity(i);
+//			}
+			return true;
+		}
+
+	 	private File getTempFile(Context context){
+		  //it will return /sdcard/image.tmp
+	 		String folder   = "LSN";
+	 		final File path = new File( Environment.getExternalStorageDirectory(), folder );
+	 		if(!path.exists()){
+	 			path.mkdir();
+	 		}
+	 		return new File(path, "image.tmp");
+		}
 	 
+		private void initActionBar() {
+
+			//Define ActionBar items
+			addActionBarItem(Type.TakePhoto,PHOTO);
+	    	
+		}
+		
+		@Override  
+	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
+
+			super.onActivityResult(requestCode, resultCode, data);  
+	  
+			if (requestCode == CAMERA_PIC_REQUEST) {  
+				if (resultCode == RESULT_OK)
+				{
+					final File file = getTempFile(this);
+					
+					//Bitmap photoTaken = (Bitmap) data.getExtras().get("data");
+					try {
+				        Bitmap photoTaken = Media.getBitmap(getContentResolver(), Uri.fromFile(file) );
+				        
+				        LSImage i1 = new LSImage();
+						i1.setImageId("3");
+		              
+						i1.setImageBitmap(photoTaken);
+						i1.setImageSituation("Barcelona");
+						i1.setImageName("Test photo");
+						i1.setImageNetwork("La meva casa");
+						m_images.add(i1);
+		              
+						m_adapter.notifyDataSetChanged();
+						m_adapter.clear();
+		                for(int i=0;i<m_images.size();i++)
+		                	m_adapter.add(m_images.get(i));
+		                m_adapter.notifyDataSetChanged();
+					} catch (FileNotFoundException e) {
+			          e.printStackTrace();
+			        } catch (IOException e) {
+			          e.printStackTrace();
+			        }
+				}
+				else if (resultCode == RESULT_CANCELED)
+				{
+					//Display error if code is not QRCode 
+					CustomToast.showCustomToast(this,
+		                    R.string.msg_ActionCancelled,
+		                    CustomToast.IMG_EXCLAMATION,
+		                    CustomToast.LENGTH_LONG);
+				}
+
+	                
+	          }  
+	          
+	          	          
+	    }  
+		
 }

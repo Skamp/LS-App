@@ -18,6 +18,7 @@
     <string name="msg_retrievImages">Retrieveing images...</string>
     <string name="msg_retrievSensors">Retrieveing sensors...</string>
     <string name="msg_ErrMarketAccess">Error accessing Android Market</string>
+    <string name="msg_ActionCancelled">Action canceled</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>

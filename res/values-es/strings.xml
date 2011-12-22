@@ -17,7 +17,8 @@
     <string name="msg_retrievNetworks">Recuperando redes...</string>
     <string name="msg_retrievImages">Recuperando imágenes...</string>
     <string name="msg_retrievSensors">Recuperando sensores...</string>
-        <string name="msg_ErrMarketAccess">Error al acceder al Android Market</string>
+    <string name="msg_ErrMarketAccess">Error al acceder al Android Market</string>
+    <string name="msg_ActionCancelled">Acción cancelada</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>
