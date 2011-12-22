@@ -42,7 +42,7 @@
 	    <string name="act_lbl_netinfo">Informació de xarxa</string>
 	    <string name="act_lbl_SensorList">Llistat de sensors</string>
 	    <string name="act_lbl_NetImages">Imatges de xarxa</string>
-	    <string name="act_lbl_BigImage">Imatge %1$d</string>
+	    <string name="act_lbl_BigImage">Imatge %1$d de %2$d</string>
 		<string name="act_lbl_sensorinfo">Informació de sensor</string>
 		<string name="act_lbl_sensorchart">Gràfic de sensor</string>
 	        
@@ -89,7 +89,7 @@
    		<string name="strGetLocation">Obtenint ubicació...</string>
    		<string name="strYourLocation">La teva ubicació - (lat: %1$s,lon: %2$s)</string>
    		<string name="strErrorLocation">No es pot obtenir la teva ubicació</string>
-  		
+  		<string name="strDisplayInfo">Radi: %1$s - Xarxes trobades: %2$d</string>
    	<!-- NetCloser Activity End -->
    	<!-- FavesSensors Activity Init -->   
    		<string name="strNetName">Xarxa:</string>
@@ -144,7 +144,8 @@
    		<string name="settingDistanceUnit">Unitat de distància</string>
    		<string name="settingSelectDistanceUnit">Selecciona la unitat de distància</string>
    		<string name="settingDistanceUnitDialog">Selecciona unitat:</string>
-   		    
+   		<string name="settingDistanceRangeTitle">Radi d\'acció</string>
+   		<string name="settingDistanceRange">Selecciona el radi d\'acció a utilitzar</string>    
    		    
    		    
    	<!-- Settings End -->

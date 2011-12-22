@@ -38,7 +38,7 @@
 	    <string name="act_lbl_netinfo">Información de red</string>
 	    <string name="act_lbl_SensorList">Listado de sensores</string>
 	    <string name="act_lbl_NetImages">Imagenes de red</string>
-	    <string name="act_lbl_BigImage">Imagen %1$d</string>
+	    <string name="act_lbl_BigImage">Imagen %1$d de %2$d</string>
 	    <string name="act_lbl_sensorinfo">Información del sensor</string>
 	    <string name="act_lbl_sensorchart">Gráfico del sensor</string>
     <!-- Activity Labels End -->
@@ -81,7 +81,7 @@
    		<string name="strGetLocation">Obteniendo ubicación...</string>
    		<string name="strYourLocation">Tu ubicación - (lat: %1$s,lon: %2$s)</string>
   		<string name="strErrorLocation">Tu ubicación no puede ser obtenida</string>
-  		
+  		<string name="strDisplayInfo">Radio: %1$s - Redes encontradas: %2$d</string>
    	<!-- NetCloser Activity End -->
    	<!-- FavesSensors Activity Init -->   
    		<string name="strNetName">Red:</string>
@@ -107,6 +107,7 @@
     	<string name="lblSensorName">Sensor:</string>
     	<string name="lblSensorDescription">Descripción:</string>
     	<string name="lblSensorValues">Valores:</string>
+    	<string name="lblSensorMeasure">Medida:</string>
     	<string name="lblSensorMaxLoad">Máximo:</string>
     	<string name="lblSensorSensitivity">Sensitividad:</string>
    		<string name="lblSensorOffset">Compensación:</string>
@@ -129,6 +130,8 @@
    		<string name="settingDistanceUnit">Unidad de distancia</string>
    		<string name="settingSelectDistanceUnit">Selecciona la unidad de distancia</string>
    		<string name="settingDistanceUnitDialog">Selecciona unidad:</string>
+   		<string name="settingDistanceRangeTitle">Radio de acción</string>
+   		<string name="settingDistanceRange">Selecciona el radio de acción a utilitzar</string> 
    	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Situada en %1$s con %2$d sensores</string>

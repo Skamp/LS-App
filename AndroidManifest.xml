@@ -156,7 +156,6 @@
         </activity>
         
         <activity 
-
             android:name=".LSBigImageActivity">
         </activity>
         

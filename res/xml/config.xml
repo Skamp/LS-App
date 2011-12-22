@@ -21,10 +21,10 @@
             android:entryValues="@array/DistanceUnitValues" />
         <com.lsn.LoadSensing.ui.SeekBarPreference
             android:key="netcloserdist"
-            android:title="Speech speed"
-            android:summary="Adjust reading speed"
-            android:defaultValue="4000"
-            android:max="5000"
+            android:title="@string/settingDistanceRangeTitle"
+            android:summary="@string/settingDistanceRange"
+            android:defaultValue="10"
+            android:max="25"
             loadsensing:min="1"
 
             />

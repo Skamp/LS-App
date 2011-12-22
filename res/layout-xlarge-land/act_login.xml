@@ -85,6 +85,8 @@
 		            android:text="@string/strLogin" 
 		            android:textAppearance="?android:attr/textAppearanceLarge"
 		            android:textColor="#FFF"
+		            android:textStyle="bold"
+	            	android:textSize="35dip"
 		            android:background="@drawable/custom_button"
 		            />
 	

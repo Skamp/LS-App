@@ -54,6 +54,24 @@
 			        android:paddingBottom="5dp"/>
 			   <!-- android:textSize="15dp" android:background="#000000" android:textColor="#ffffff"-->
 		   </LinearLayout>
+		   <LinearLayout 
+			   android:orientation="horizontal"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:paddingTop="1dip"
+			   >
+			   <TextView
+			        android:id="@+id/txtDisplayInfo"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:text="@string/strDisplayInfo"
+			        android:background="#75b0e4"
+			        android:textColor="#FFF"
+			        android:gravity="center_horizontal"
+			        android:paddingTop="5dp"
+			        android:paddingBottom="5dp"/>
+		   </LinearLayout>
 		   <ListView
 			    android:id="@+id/android:list"
 			    android:layout_width="fill_parent"

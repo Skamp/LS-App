@@ -132,30 +132,53 @@ public class LSSensorInfoActivity extends GDActivity {
         TextView txtSensorDesc = (TextView) findViewById(R.id.sensorDescription);
         txtSensorDesc.setText(sensorObj.getSensorDesc());
         
+        String value = null;
+        String unit = null;
+        
+        value = sensorObj.getSensorMeasure().toString();
+        unit = sensorObj.getSensorMeasureUnit();
+        if ((unit != null)&&(unit != "null"))
+        {
+        	value += " " + unit;
+        }
         TextView txtSensorMeasure = (TextView) findViewById(R.id.sensorMeasure);
-        txtSensorMeasure.setText(sensorObj.getSensorMeasure().toString());
-        TextView txtSensorMeasureUnit = (TextView) findViewById(R.id.sensorMeasureUnit);
-        txtSensorMeasureUnit.setText(sensorObj.getSensorMeasureUnit());
+        txtSensorMeasure.setText(value);
         
+        value = sensorObj.getSensorMaxLoad().toString();
+        unit = sensorObj.getSensorMaxLoadUnit();
+        if ((unit != null)&&(unit != "null"))
+        {
+        	value += " " + unit;
+        }
         TextView txtSensorMaxLoad = (TextView) findViewById(R.id.sensorMaxLoad);
-        txtSensorMaxLoad.setText(sensorObj.getSensorMaxLoad().toString());
-        TextView txtSensorMaxLoadUnit = (TextView) findViewById(R.id.sensorMaxLoadUnit);
-        txtSensorMaxLoadUnit.setText(sensorObj.getSensorMaxLoadUnit());
-        
+        txtSensorMaxLoad.setText(value);
+
+        value = sensorObj.getSensorSensitivity().toString();
+        unit = sensorObj.getSensorSensitivityUnit();
+        if ((unit != null)&&(unit != "null"))
+        {
+        	value += " " + unit;
+        }        
         TextView txtSensorSensitivity = (TextView) findViewById(R.id.sensorSensitivity);
-        txtSensorSensitivity.setText(sensorObj.getSensorSensitivity().toString());
-        TextView txtSensorSensitivityUnit = (TextView) findViewById(R.id.sensorSensitivityUnit);
-        txtSensorSensitivityUnit.setText(sensorObj.getSensorSensitivityUnit());
+        txtSensorSensitivity.setText(value);
         
+        value = sensorObj.getSensorOffset().toString();
+        unit = sensorObj.getSensorOffsetUnit();
+        if ((unit != null)&&(unit != "null"))
+        {
+        	value += " " + unit;
+        }
         TextView txtSensorOffset = (TextView) findViewById(R.id.sensorOffset);
-        txtSensorOffset.setText(sensorObj.getSensorOffset().toString());
-        TextView txtSensorOffsetUnit = (TextView) findViewById(R.id.sensorOffsetUnit);
-        txtSensorOffsetUnit.setText(sensorObj.getSensorOffsetUnit());
+        txtSensorOffset.setText(value);
         
+        value = sensorObj.getSensorAlarmAt().toString();
+        unit = sensorObj.getSensorAlarmAtUnit();
+        if ((unit != null)&&(unit != "null"))
+        {
+        	value += " " + unit;
+        }
         TextView txtSensorAlarmAt = (TextView) findViewById(R.id.sensorAlarmAt);
-        txtSensorAlarmAt.setText(sensorObj.getSensorAlarmAt().toString());
-        TextView txtSensorAlarmAtUnit = (TextView) findViewById(R.id.sensorAlarmAtUnit);
-        txtSensorAlarmAtUnit.setText(sensorObj.getSensorAlarmAtUnit());
+        txtSensorAlarmAt.setText(value);
         
         TextView txtSensorLastTare = (TextView) findViewById(R.id.sensorLastTare);
         txtSensorLastTare.setText(sensorObj.getSensorLastTare().toString());

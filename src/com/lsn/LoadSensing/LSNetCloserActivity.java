@@ -111,8 +111,8 @@ public class LSNetCloserActivity extends GDListActivity{
         super.onResume();
         //Retrieve configuration preferences
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        typeUnit=settings.getString("netcloserunit", "");
-        maxDistance=settings.getInt("netcloserdist", 4000);
+        typeUnit=settings.getString("netcloserunit", "km");
+        maxDistance=settings.getInt("netcloserdist", 10);
     }    
 	
 	private void checkNETStatus() {
@@ -185,7 +185,7 @@ public class LSNetCloserActivity extends GDListActivity{
         	  else //kilometers or not configured
         	  {
         		  //Check if current network is closer than maxDistance configured in kilometers
-        		  if (network.getNetworkPosition().metersDistanceTo(currentPosition) < maxDistance)
+        		  if ((network.getNetworkPosition().metersDistanceTo(currentPosition)/1000) < maxDistance)
 	        	  {
 	        		  m_networks.add(network);
 	        	  }
@@ -249,7 +249,10 @@ public class LSNetCloserActivity extends GDListActivity{
 //          Thread.sleep(500);
           Log.i("ARRAY", ""+ m_networks.size());
         } catch (Exception e) { 
-          Log.e("BACKGROUND_PROC", e.getMessage());
+        	TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
+        	txtLocation.setBackgroundColor(Color.RED);
+        	txtLocation.setText(R.string.msg_NOLocServ);
+          //Log.e("BACKGROUND_PROC", e.getMessage());
         }
         runOnUiThread(returnRes);		
 	}
@@ -305,7 +308,7 @@ public class LSNetCloserActivity extends GDListActivity{
 			{
 					getCurrentLocation();
 					publishProgress(curPosition);
-					SystemClock.sleep(5000);
+					//SystemClock.sleep(5000);
 			}
 			return null;
 		}
@@ -402,6 +405,14 @@ public class LSNetCloserActivity extends GDListActivity{
 		    String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
 		        
 		    txtLocation.setText(strYourLocation);
+		    
+		    String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+	        
+		    String strRadius = maxDistance + " " + typeUnit;
+			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+			txtDisplayInfo.setText(strDisplayInfo);
+		    
 		    currentPosition = curPosition;
 		}
 		

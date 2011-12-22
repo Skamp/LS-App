@@ -38,7 +38,7 @@
 	    <string name="act_lbl_netinfo">Network information</string>
 	    <string name="act_lbl_SensorList">Sensors list</string>
 	    <string name="act_lbl_NetImages">Network images</string>
-	    <string name="act_lbl_BigImage">Image %1$d</string>
+	    <string name="act_lbl_BigImage">Image %1$d of %2$d</string>
 	    <string name="act_lbl_sensorinfo">Sensor information</string>
 	    <string name="act_lbl_sensorchart">Sensor chart</string>
     <!-- Activity Labels End -->
@@ -81,7 +81,7 @@
    		<string name="strGetLocation">Getting location...</string> 
    		<string name="strYourLocation">Your location - (lat: %1$s,lon: %2$s)</string>
    		<string name="strErrorLocation">Your location cannot be obtained</string>
-  		
+  		<string name="strDisplayInfo">Radius: %1$s - Found networks: %2$d</string>
    	<!-- NetCloser Activity End -->
    	<!-- FavesSensors Activity Init -->   
    		<string name="strNetName">Network:</string>
@@ -107,6 +107,7 @@
     	<string name="lblSensorName">Sensor:</string>
     	<string name="lblSensorDescription">Description:</string>
     	<string name="lblSensorValues">Values:</string>
+    	<string name="lblSensorMeasure">Measure:</string>
     	<string name="lblSensorMaxLoad">Max load:</string>
     	<string name="lblSensorSensitivity">Sensitivity:</string>
     	<string name="lblSensorOffset">Offset:</string>
@@ -130,6 +131,8 @@
    		<string name="settingDistanceUnit">Distance unit</string>
    		<string name="settingSelectDistanceUnit">Select distance unit</string>
    		<string name="settingDistanceUnitDialog">Select unit:</string>
+   		<string name="settingDistanceRangeTitle">Operational range</string>
+   		<string name="settingDistanceRange">Select the operational range</string> 
    	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>
