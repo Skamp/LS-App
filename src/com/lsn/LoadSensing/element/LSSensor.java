@@ -17,6 +17,7 @@ public class LSSensor implements Parcelable {
 	private String sensorType;
 	private Bitmap sensorImage;
 	private String sensorDesc;
+	private String sensorImageName;
 
 	public LSSensor() {
 
@@ -31,6 +32,7 @@ public class LSSensor implements Parcelable {
 		sensorType = "";
 		sensorImage = null;
 		sensorDesc = "";
+		sensorImageName = "";
 	}
 	
 	public LSSensor(Parcel in) {
@@ -218,6 +220,14 @@ public class LSSensor implements Parcelable {
 		this.sensorSerial = sensorSerial;
 	}
 	
+	public String getSensorImageName() {
+		return sensorImageName;
+	}
+
+	public void setSensorImageName(String sensorImageName) {
+		this.sensorImageName = sensorImageName;
+	}
+	
 	@Override
 	public int describeContents() {
 
@@ -238,6 +248,7 @@ public class LSSensor implements Parcelable {
 		dest.writeString(sensorType);
 		dest.writeParcelable(sensorImage,flags);
 		dest.writeString(sensorDesc);
+		dest.writeString(sensorImageName);
 	}
 
 	private void readFromParcel(Parcel in) {
@@ -253,6 +264,7 @@ public class LSSensor implements Parcelable {
 		sensorType = in.readString();
 		sensorImage = in.readParcelable(Bitmap.class.getClassLoader());
 		sensorDesc = in.readString();
+		sensorImageName = in.readString();
 	}
 	
 	

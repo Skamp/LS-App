@@ -10,20 +10,29 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lsn.LoadSensing.SQLite.LSNSQLiteHelper;
 import com.lsn.LoadSensing.adapter.LSGalleryAdapter;
 import com.lsn.LoadSensing.element.LSImage;
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
 import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
@@ -110,6 +119,8 @@ public class LSNetImagesActivity extends GDActivity {
         Thread thread = new Thread(null,viewImages,"ViewNetworks");
         thread.start();
         m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievImages), true);
+        
+        registerForContextMenu(imagegrid);
 	 }
 	
 	 private Runnable returnRes = new Runnable() {
@@ -156,6 +167,7 @@ public class LSNetImagesActivity extends GDActivity {
 				i1.setImageSituation(jsonData.getString("Poblacio"));
 				i1.setImageName(jsonData.getString("Nom"));
 				i1.setImageNetwork(jsonData.getString("Nom"));
+				i1.setImageNameFile(image);
 				m_images.add(i1);
 			}
 			
@@ -192,5 +204,58 @@ public class LSNetImagesActivity extends GDActivity {
         runOnUiThread(returnRes);		
 	 }
 	
-	 
+	 @Override
+		public void onCreateContextMenu(ContextMenu menu, View v,
+				ContextMenuInfo menuInfo) {
+			super.onCreateContextMenu(menu, v, menuInfo);
+			MenuInflater inflater = getMenuInflater();
+			inflater.inflate(R.menu.context_menu_add, menu);
+		}
+
+		@Override
+		public boolean onContextItemSelected(MenuItem item) {
+			LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+			SQLiteDatabase db = lsndbh.getWritableDatabase();
+			SQLiteDatabase db1 = lsndbh.getReadableDatabase();
+
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+					.getMenuInfo();
+			switch (item.getItemId()) {
+			case R.id.add_faves:
+				LSImage ima1 = new LSImage();
+				ima1 = m_images.get(info.position);
+				if (db != null) {
+					Cursor c = db1.rawQuery(
+							"SELECT * FROM Image WHERE idImage = '"
+									+ ima1.getImageId() + "';", null);
+					if (c.getCount() == 0) {
+						db.execSQL("INSERT INTO Image (name,idImage,idNetwork,poblacio,imageFile) " +
+								"VALUES ('"
+								+ ima1.getImageName()
+								+ "','"
+								+ ima1.getImageId()
+								+ "','"
+								+ ima1.getImageNetwork()
+								+ "','"
+								+ ima1.getImageSituation()
+								+ "','"
+								+ ima1.getImageNameFile()
+								+ "');");
+
+						CustomToast.showCustomToast(this,
+								R.string.message_add_image,
+								CustomToast.IMG_CORRECT, CustomToast.LENGTH_SHORT);
+					} else
+						CustomToast.showCustomToast(this,
+								R.string.message_error_image,
+								CustomToast.IMG_EXCLAMATION,
+								CustomToast.LENGTH_SHORT);
+					db.close();
+				}
+
+				return true;
+			default:
+				return super.onContextItemSelected(item);
+			}
+		}
 }

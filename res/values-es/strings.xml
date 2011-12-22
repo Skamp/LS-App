@@ -68,6 +68,13 @@
    		<string name="tab_fav_networks">Redes</string>
     	<string name="tab_fav_sensors">Sensores</string>
    		<string name="tab_fav_images">Imágenes</string>
+   		
+		<string name="message_error_network">La red ya está en favoritos</string>
+	    <string name="message_error_sensor">El sensor ya está en favoritos</string>
+ 	 	<string name="message_error_image">La imagen ya está en favoritos</string>
+	    <string name="message_add_network">Red añadida a favoritos</string> 
+	    <string name="message_add_sensor">Sensor añadido a favoritos</string>
+	    <string name="message_add_image">Imagen añadida a favoritos</string>       		   
     <!-- Faves Activity End --> 
     <!-- NetList Activity Init -->   
    		<string name="strSituation">Situación:</string>
@@ -160,5 +167,9 @@
 	    <string name="help_homAugReal">Realidad Augmentada: Estando in situ en la misma zona donde se encuentra la red a analizar, se puede geoposicionar cada nodo de la red observando en tiempo real la posición del nodo.</string>
 	    <string name="help_homNetCloser">Redes cercanas: Permite, mediante el GPS del dispositivo, detectar las redes cercanas a la ubicación en la que se encuentra.</string>
 	<!-- Help End -->
-
+	<!-- Context Menu Init -->
+	
+    	<string name="add_faves">Añadir a favoritos</string>
+    	<string name="del_faves">Quitar de favoritos</string>
+  	<!-- Context Menu End -->
 </resources>

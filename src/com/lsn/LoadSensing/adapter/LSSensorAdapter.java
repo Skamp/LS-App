@@ -41,11 +41,13 @@ public class LSSensorAdapter extends ArrayAdapter<LSSensor>{
 			TextView txtSenName = (TextView) v.findViewById(R.id.sensorName);
 			TextView txtSenType = (TextView) v.findViewById(R.id.sensorType);
             TextView txtSenChannel = (TextView) v.findViewById(R.id.sensorChannel);
+            //TextView txtSenNetwork = (TextView) v.findViewById(R.id.strNetwork);
             
             imgSensor.setImageBitmap(o.getSensorImage());
             txtSenName.setText(o.getSensorName()); 
             txtSenType.setText(o.getSensorType());
             txtSenChannel.setText(o.getSensorChannel());
+            //txtSenNetwork.setText(o.getSensorNetwork());
     
 		}
 		return v;

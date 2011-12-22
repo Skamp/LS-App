@@ -181,7 +181,11 @@ public class LSHomeActivity extends GDActivity {
 				i = new Intent(LSHomeActivity.this,LSQRCodeActivity.class);
 				break;
 			case R.id.dsh_btn_Faves:
+				Bundle bundle = new Bundle();
+				bundle.putInt("par", 0);
+
 				i = new Intent(LSHomeActivity.this,LSFavesActivity.class);
+				i.putExtras(bundle);
 				break;
 			case R.id.dsh_btn_AR:
 				i = new Intent(LSHomeActivity.this,LSAugRealActivity.class);

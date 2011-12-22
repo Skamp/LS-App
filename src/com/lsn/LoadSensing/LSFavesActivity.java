@@ -38,7 +38,10 @@ public class LSFavesActivity extends GDTabActivity {
 		addTab(imageText, imageText, imageIntent);
               
         
-        
+		Bundle bundle = this.getIntent().getExtras();
+		int i = bundle.getInt("par");
+
+    	this.getTabHost().setCurrentTab(i);
         
     }
 	
