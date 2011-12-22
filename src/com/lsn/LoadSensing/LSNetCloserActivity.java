@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
@@ -39,6 +40,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	private LocationListener locationListenerGPS;
 	private LocationListener locationListenerNetwork;
 	private GetLocation      getLocation;
+	private UpdateNetworks   updateNetworks;
 	private boolean gpsStatus;
 	private boolean netStatus;
 	
@@ -103,6 +105,9 @@ public class LSNetCloserActivity extends GDListActivity{
 	        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
 	        thread.start();
 	        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
+	        
+	        updateNetworks = new UpdateNetworks();
+	        updateNetworks.execute();
         }
     }
 	
@@ -452,4 +457,121 @@ public class LSNetCloserActivity extends GDListActivity{
 			}
 		}
 	}
+	
+	public class UpdateNetworks extends AsyncTask<Void,ArrayList<LSNetwork>,Void>
+	{
+		
+		private boolean running = true;
+		//private ArrayList<LSNetwork> m_networks = null;
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		protected Void doInBackground(Void... arg0) {
+		
+			while (running)
+			{
+				SystemClock.sleep(10000);
+				m_networks = new ArrayList<LSNetwork>();
+		          
+				// Server Request Ini
+		        Map<String, String> params = new HashMap<String, String>();
+		        params.put("session", LSHomeActivity.idSession);
+		        JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+		        Log.i("INFO", "Call to server");
+		        JSONObject jsonData;
+				try {
+			        for (int i = 0; i<jArray.length(); i++)
+			        {
+						jsonData = jArray.getJSONObject(i);
+			         	LSNetwork network = new LSNetwork();
+			        	network.setNetworkName(jsonData.getString("Nom"));
+			        	network.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+			        	network.setNetworkNumSensors(jsonData.getString("Sensors"));
+			        	network.setNetworkId(jsonData.getString("IdXarxa"));
+			        	network.setNetworkSituation(jsonData.getString("Poblacio"));
+			        	  
+			        	//Check distance unit configured
+			        	if (typeUnit.equals("mi")) //miles
+			        	{
+			        		//Check if current network is closer than maxDistance configured in miles
+			        		if (network.getNetworkPosition().milesDistanceTo(currentPosition) < maxDistance)
+				        	{
+			        			m_networks.add(network);
+				        	}
+			        	}
+			        	else //kilometers or not configured
+			        	{
+			        		//Check if current network is closer than maxDistance configured in kilometers
+			        		if ((network.getNetworkPosition().metersDistanceTo(currentPosition)/1000) < maxDistance)
+				        	{
+			        			m_networks.add(network);
+				        	}
+			        	}
+			        }
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				publishProgress(m_networks);
+
+			}
+			return null;
+		}
+
+		
+		@Override
+		protected void onCancelled() {
+			
+			running=false;
+			super.onCancelled();
+		}
+
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			
+			m_adapter.clear();
+			m_adapter.notifyDataSetChanged();
+ 		   	for(int i=0;i<m_networks.size();i++)
+ 		   		m_adapter.add(m_networks.get(i));
+ 		   	
+ 		   	m_adapter.notifyDataSetChanged();
+ 		   	
+ 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+	        
+		    String strRadius = maxDistance + " " + typeUnit;
+			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+			txtDisplayInfo.setText(strDisplayInfo);
+		}
+
+		
+		@Override
+		protected void onPreExecute() {
+			
+			
+		}
+
+		
+		@Override
+		protected void onProgressUpdate(ArrayList<LSNetwork>... values) {
+			
+			m_adapter.clear();
+			m_adapter.notifyDataSetChanged();
+ 		   	for(int i=0;i<m_networks.size();i++)
+ 		   		m_adapter.add(m_networks.get(i));
+ 		   	
+ 		   	m_adapter.notifyDataSetChanged();
+ 		   	
+ 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+	        
+		    String strRadius = maxDistance + " " + typeUnit;
+			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+			txtDisplayInfo.setText(strDisplayInfo);
+		}
+		
+	}
+	
 }
