@@ -170,10 +170,7 @@ public class LSNetImagesActivity extends GDActivity {
 				i1.setImageName(jsonData.getString("Nom"));
 				i1.setImageNetwork(jsonData.getString("Nom"));
 				m_images.add(i1);
-				m_images.add(i1);
-				m_images.add(i1);
-				m_images.add(i1);
-				m_images.add(i1);
+
 				
 
 			}
