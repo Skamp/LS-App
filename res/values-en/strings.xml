@@ -133,6 +133,8 @@
    		<string name="settingDistanceUnitDialog">Select unit:</string>
    		<string name="settingDistanceRangeTitle">Operational range</string>
    		<string name="settingDistanceRange">Select the operational range</string> 
+   		<string name="settingTimeRangeTitle">Waiting time</string>
+   		<string name="settingTimeRange">Select waiting time</string>
    	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>

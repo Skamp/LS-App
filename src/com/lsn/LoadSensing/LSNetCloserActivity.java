@@ -52,6 +52,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	private Position currentPosition;
 	private String typeUnit = null;
 	private Integer maxDistance = 0;
+	private Integer waitTime = 0;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +103,8 @@ public class LSNetCloserActivity extends GDListActivity{
 	        		getNetworks();
 	        	}
 	        };
+	        
+	        
 	        Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
 	        thread.start();
 	        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
@@ -118,6 +121,7 @@ public class LSNetCloserActivity extends GDListActivity{
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         typeUnit=settings.getString("netcloserunit", "km");
         maxDistance=settings.getInt("netcloserdist", 10);
+        waitTime=settings.getInt("netclosertime",10);
     }    
 	
 	private void checkNETStatus() {
@@ -155,6 +159,13 @@ public class LSNetCloserActivity extends GDListActivity{
     		
     		m_ProgressDialog.dismiss();
     		m_adapter.notifyDataSetChanged();
+    		
+    		String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+	        
+		    String strRadius = maxDistance + " " + typeUnit;
+			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+			txtDisplayInfo.setText(strDisplayInfo);
     	}
     };
 
@@ -305,6 +316,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	{
 		private Position curPosition;
 		private boolean running = true;
+		private boolean displayInfo = true;
 		
 		@Override
 		protected Void doInBackground(Void... arg0) {
@@ -411,13 +423,16 @@ public class LSNetCloserActivity extends GDListActivity{
 		        
 		    txtLocation.setText(strYourLocation);
 		    
-		    String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
-	        
-		    String strRadius = maxDistance + " " + typeUnit;
-			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
-			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
-			txtDisplayInfo.setText(strDisplayInfo);
-		    
+		    if (displayInfo)
+		    {
+			    String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+		        
+			    String strRadius = maxDistance + " " + typeUnit;
+				String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+				TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+				txtDisplayInfo.setText(strDisplayInfo);
+				displayInfo = false;
+		    }
 		    currentPosition = curPosition;
 		}
 		
@@ -462,6 +477,7 @@ public class LSNetCloserActivity extends GDListActivity{
 	{
 		
 		private boolean running = true;
+		private Position lastPosition;
 		//private ArrayList<LSNetwork> m_networks = null;
 		
 		@SuppressWarnings("unchecked")
@@ -470,7 +486,7 @@ public class LSNetCloserActivity extends GDListActivity{
 		
 			while (running)
 			{
-				SystemClock.sleep(10000);
+				SystemClock.sleep(waitTime*1000);
 				m_networks = new ArrayList<LSNetwork>();
 		          
 				// Server Request Ini
@@ -509,7 +525,7 @@ public class LSNetCloserActivity extends GDListActivity{
 			        	}
 			        }
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 
@@ -531,45 +547,56 @@ public class LSNetCloserActivity extends GDListActivity{
 		@Override
 		protected void onPostExecute(Void result) {
 			
-			m_adapter.clear();
-			m_adapter.notifyDataSetChanged();
- 		   	for(int i=0;i<m_networks.size();i++)
- 		   		m_adapter.add(m_networks.get(i));
- 		   	
- 		   	m_adapter.notifyDataSetChanged();
- 		   	
- 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
-	        
-		    String strRadius = maxDistance + " " + typeUnit;
-			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
-			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
-			txtDisplayInfo.setText(strDisplayInfo);
+//			if (lastPosition != currentPosition)
+//			{
+//				m_adapter.clear();
+//				m_adapter.notifyDataSetChanged();
+//	 		   	for(int i=0;i<m_networks.size();i++)
+//	 		   		m_adapter.add(m_networks.get(i));
+//	 		   	
+//	 		   	m_adapter.notifyDataSetChanged();
+//	 		   	
+//	 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+//		        
+//			    String strRadius = maxDistance + " " + typeUnit;
+//				String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+//				TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+//				txtDisplayInfo.setText(strDisplayInfo);
+//			}
 		}
 
 		
 		@Override
 		protected void onPreExecute() {
 			
-			
+//			String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+//	        
+//		    String strRadius = maxDistance + " " + typeUnit;
+//			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+//			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+//			txtDisplayInfo.setText(strDisplayInfo);
 		}
 
 		
 		@Override
 		protected void onProgressUpdate(ArrayList<LSNetwork>... values) {
 			
-			m_adapter.clear();
-			m_adapter.notifyDataSetChanged();
- 		   	for(int i=0;i<m_networks.size();i++)
- 		   		m_adapter.add(m_networks.get(i));
- 		   	
- 		   	m_adapter.notifyDataSetChanged();
- 		   	
- 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
-	        
-		    String strRadius = maxDistance + " " + typeUnit;
-			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
-			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
-			txtDisplayInfo.setText(strDisplayInfo);
+			if (lastPosition != currentPosition)
+			{
+				m_adapter.clear();
+				m_adapter.notifyDataSetChanged();
+	 		   	for(int i=0;i<m_networks.size();i++)
+	 		   		m_adapter.add(m_networks.get(i));
+	 		   	
+	 		   	m_adapter.notifyDataSetChanged();
+	 		   	
+	 		   	String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+		        
+			    String strRadius = maxDistance + " " + typeUnit;
+				String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+				TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+				txtDisplayInfo.setText(strDisplayInfo);
+			}
 		}
 		
 	}

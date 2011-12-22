@@ -131,7 +131,9 @@
    		<string name="settingSelectDistanceUnit">Selecciona la unidad de distancia</string>
    		<string name="settingDistanceUnitDialog">Selecciona unidad:</string>
    		<string name="settingDistanceRangeTitle">Radio de acción</string>
-   		<string name="settingDistanceRange">Selecciona el radio de acción a utilitzar</string> 
+   		<string name="settingDistanceRange">Selecciona el radio de acción a utilitzar</string>
+   		<string name="settingTimeRangeTitle">Tiempo de espera</string>
+   		<string name="settingTimeRange">Selecciona el tiempo de espera</string>  
    	<!-- Settings End -->
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Situada en %1$s con %2$d sensores</string>

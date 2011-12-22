@@ -145,8 +145,10 @@
    		<string name="settingSelectDistanceUnit">Selecciona la unitat de distància</string>
    		<string name="settingDistanceUnitDialog">Selecciona unitat:</string>
    		<string name="settingDistanceRangeTitle">Radi d\'acció</string>
-   		<string name="settingDistanceRange">Selecciona el radi d\'acció a utilitzar</string>    
-   		    
+   		<string name="settingDistanceRange">Selecciona el radi d\'acció</string>    
+   		<string name="settingTimeRangeTitle">Temps d\'espera</string>
+   		<string name="settingTimeRange">Selecciona el temps d\'espera</string>      
+
    		    
    	<!-- Settings End -->
     <!-- Maps Activity Init -->

@@ -1098,9 +1098,9 @@ containing a value of this type.
         public static final int googleMaps_API_key_debug=0x7f06001e;
         public static final int gps_last_fix=0x7f06004a;
         public static final int hello=0x7f060000;
-        public static final int help_homAugReal=0x7f0600cf;
-        public static final int help_homFaves=0x7f0600ce;
-        public static final int help_homNetCloser=0x7f0600d0;
+        public static final int help_homAugReal=0x7f0600d1;
+        public static final int help_homFaves=0x7f0600d0;
+        public static final int help_homNetCloser=0x7f0600d2;
         /**  SD Error Messages End
  Help Init 
  SD Error Messages End
@@ -1108,9 +1108,9 @@ containing a value of this type.
  SD Error Messages End
  Help Init 
          */
-        public static final int help_homNetList=0x7f0600cb;
-        public static final int help_homNetMaps=0x7f0600cc;
-        public static final int help_homQRCode=0x7f0600cd;
+        public static final int help_homNetList=0x7f0600cd;
+        public static final int help_homNetMaps=0x7f0600ce;
+        public static final int help_homQRCode=0x7f0600cf;
         public static final int infoTabAbout=0x7f060064;
         public static final int infoTabLicense=0x7f060065;
         public static final int info_LoadSensing=0x7f060061;
@@ -1167,8 +1167,8 @@ containing a value of this type.
         public static final int menu_item_5=0x7f060033;
         public static final int menu_item_6=0x7f060034;
         public static final int menu_item_7=0x7f060035;
-        public static final int msgSDBadFormat=0x7f0600c6;
-        public static final int msgSDNotFound=0x7f0600c7;
+        public static final int msgSDBadFormat=0x7f0600c8;
+        public static final int msgSDNotFound=0x7f0600c9;
         /**  Menu End 
  SD Error Messages Init
  Menu End 
@@ -1176,10 +1176,10 @@ containing a value of this type.
  Menu End 
  SD Error Messages Init
          */
-        public static final int msgSDReadOnly=0x7f0600c5;
-        public static final int msgSDShared=0x7f0600c8;
-        public static final int msgSDUnmountable=0x7f0600c9;
-        public static final int msgSDUnmounted=0x7f0600ca;
+        public static final int msgSDReadOnly=0x7f0600c7;
+        public static final int msgSDShared=0x7f0600ca;
+        public static final int msgSDUnmountable=0x7f0600cb;
+        public static final int msgSDUnmounted=0x7f0600cc;
         /**  Messages Init 
  Messages Init 
  Messages Init 
@@ -1228,12 +1228,14 @@ containing a value of this type.
         public static final int settingSelectDistanceUnit=0x7f0600bd;
         public static final int settingSelectMap=0x7f0600b9;
         public static final int settingSelectMapDialog=0x7f0600ba;
+        public static final int settingTimeRange=0x7f0600c2;
+        public static final int settingTimeRangeTitle=0x7f0600c1;
         public static final int source_openstreetmap=0x7f060057;
         public static final int speed=0x7f060048;
         public static final int strDisplayInfo=0x7f06009b;
         public static final int strErrorLocation=0x7f06009a;
         public static final int strExit=0x7f060086;
-        public static final int strFilter=0x7f0600c3;
+        public static final int strFilter=0x7f0600c5;
         /**  SensorList Activity End 
  NetCloser Activity Init 
  SensorList Activity End 
@@ -1243,7 +1245,7 @@ containing a value of this type.
          */
         public static final int strGetLocation=0x7f060098;
         public static final int strLogin=0x7f060085;
-        public static final int strMapMode=0x7f0600c4;
+        public static final int strMapMode=0x7f0600c6;
         /**  Settings End 
  Maps Activity Init 
  Settings End 
@@ -1251,7 +1253,7 @@ containing a value of this type.
  Settings End 
  Maps Activity Init 
          */
-        public static final int strNetDescrip=0x7f0600c1;
+        public static final int strNetDescrip=0x7f0600c3;
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1269,7 +1271,7 @@ containing a value of this type.
  Maps Activity End 
  Menu Init 
          */
-        public static final int strSearch=0x7f0600c2;
+        public static final int strSearch=0x7f0600c4;
         public static final int strSensorChannel=0x7f060097;
         /**  NetList Activity End 
  SensorList Activity Init 

@@ -26,7 +26,15 @@
             android:defaultValue="10"
             android:max="25"
             loadsensing:min="1"
-
+             />
+        <com.lsn.LoadSensing.ui.SeekBarPreference
+            android:key="netclosertime"
+            android:title="@string/settingTimeRangeTitle"
+            android:summary="@string/settingTimeRange"
+            android:defaultValue="10"
+            android:max="25"
+            loadsensing:min="5"
+            loadsensing:unitsRight=" s."
             />
         <!--                 loadsensing:min="1" -->
 <!--             	loadsensing:unitsLeft="" -->
