@@ -115,6 +115,10 @@
     	<string name="lblSensorAlarmAt">Alarm at:</string>
    		<string name="lblSensorLastTare">Last tare:</string>
    		<string name="lblSensorLoadChart">Load chart</string>
+   		<string name="lblSensorChartType">Chart type:</string>
+   		<string name="lblSensorChartStrain">Strain chart</string>
+    	<string name="lblSensorChartPower">Power chart</string>
+ 		<string name="lblSensorChartCounter">Counter chart</string>
     <!-- SensorInfo Activity End  -->
     <!-- QRCode Activity Init -->
     	<string name="msg_QRIntentError">QRCode reader Intent not found, install Google Googles on device</string>

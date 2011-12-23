@@ -20,7 +20,7 @@
             android:padding="5dip"
             android:text="@string/lblNetName"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -50,7 +50,7 @@
             android:paddingRight="5dip"
             android:text="@string/lblSensorName"
             android:textColor="#174a76"
-            android:textSize="20dip"
+            android:textSize="40dip"
             android:textStyle="bold" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:gravity="left"
             android:text="TextView"
             android:textColor="#000"
-            android:textSize="20dip" />
+            android:textSize="40dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textColor="#174a76"
-            android:textSize="20dip"
+            android:textSize="40dip"
             android:textStyle="bold" />
     </LinearLayout>
 

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import greendroid.app.GDActivity;
 
@@ -32,6 +33,7 @@ public class LSSensorInfoActivity extends GDActivity {
 	private static HashMap<String,Bitmap> hashImages = new HashMap<String,Bitmap>();
 	private Bitmap imgSensor;
 	private ArrayList<LSSensor>  m_sensors = null;
+	private Integer chartType = null;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -199,6 +201,25 @@ public class LSSensorInfoActivity extends GDActivity {
 			@Override
 			public void onClick(View v) {
 				
+				RadioButton chartStrain = (RadioButton)findViewById(R.id.chartStrain);
+				RadioButton chartPower = (RadioButton)findViewById(R.id.chartPower);
+				RadioButton chartCounter = (RadioButton)findViewById(R.id.chartCounter);
+				
+				Integer chartType = 0;
+				
+				if (chartStrain.isChecked())
+				{
+					chartType = 0;
+				}
+				else if (chartPower.isChecked())
+				{
+					chartType = 1;
+				}
+				else if (chartCounter.isChecked())
+				{
+					chartType = 2;
+				}
+				
 				Intent i = null;
 		        i = new Intent(LSSensorInfoActivity.this,LSSensorChartActivity.class);
 		        
@@ -206,6 +227,7 @@ public class LSSensorInfoActivity extends GDActivity {
 					Bundle bundle = new Bundle();
 					
 					bundle.putParcelable("SENSOR_OBJ", sensorObj);
+					bundle.putInt("CHART_TYPE",chartType);
 					i.putExtras(bundle);
 		        	
 					startActivity(i);

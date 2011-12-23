@@ -126,8 +126,10 @@
     	<string name="lblSensorAlarmAt">Alarma a:</string>
     	<string name="lblSensorLastTare">Última avaria:</string>
  		<string name="lblSensorLoadChart">Carregar gràfic</string>
-    	    
-    	    
+ 		<string name="lblSensorChartType">Tipus de gràfic:</string>
+ 		<string name="lblSensorChartStrain">Gràfic de tensió</string>
+    	<string name="lblSensorChartPower">Gràfic de potència</string>
+ 		<string name="lblSensorChartCounter">Gràfic de compteig</string>
     <!-- SensorInfo Activity End  -->
     <!-- QRCode Activity Init -->
     	<string name="msg_QRIntentError">No s\'ha trobat Intent per llegir codis QR, instal·la Google Googles al dispositiu</string>
