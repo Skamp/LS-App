@@ -162,4 +162,8 @@
 	    <string name="help_homNetCloser">Redes cercanas: Permite, mediante el GPS del dispositivo, detectar las redes cercanas a la ubicación en la que se encuentra.</string>
 	<!-- Help End -->
 
+	<!-- Settings Init -->
+		<string name="settingTitle">Configuración</string>
+   		<string name="settingMapType">Tipo de mapa</string>
+   	<!-- Settings End -->
 </resources>

@@ -171,6 +171,10 @@
         </activity>
         
         <uses-library android:name="com.google.android.maps"/>
+        <activity 
+            android:name=".LSNetMapsForgeActivity"
+            android:label="@string/act_lbl_homNetMaps">
+        </activity>
     </application>
 
 </manifest>

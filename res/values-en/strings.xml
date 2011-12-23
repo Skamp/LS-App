@@ -140,7 +140,7 @@
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>
     <!-- Maps Activity End -->
-   	<!-- Menu Init -->
+    <!-- Menu Init -->
    		<string name="strSearch">Find</string>
     	<string name="strFilter">Filter</string>
    		<string name="strMapMode">Switch view</string>
@@ -163,4 +163,11 @@
 	    <string name="help_homAugReal">Augmented Reality: While in situ in the same area where the network is analyzed, each node can be managed on the network in real time by observing the position of the node.</string>
 	    <string name="help_homNetCloser">Closer networks: It allows, through the GPS device to detect nearby networks to the location where you are.</string>
 	<!-- Help End -->
+	<!-- Settings Init -->
+		<string name="settingTitle">Configuration</string>
+   		<string name="settingMapType">Map type</string>
+   		<string name="settingSelectMap">Select the map type</string>
+   		<string name="settingSelectMapDialog">Select:</string>
+   	<!-- Settings End -->
+	
 </resources>

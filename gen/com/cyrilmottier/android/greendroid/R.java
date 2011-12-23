@@ -763,6 +763,7 @@ containing a value of this type.
         public static final int wikipedia=0x7f020088;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int Button=0x7f07001b;
         public static final int ImageButton01=0x7f070018;
         public static final int ScrollView01=0x7f070051;
@@ -897,11 +898,103 @@ containing a value of this type.
         public static final int urlLabel=0x7f070054;
         public static final int urlText=0x7f07001d;
         public static final int xhdpi=0x7f070006;
+=======
+        public static final int about=0x7f060015;
+        public static final int balloon_inner_layout=0x7f06001c;
+        public static final int balloon_item_snippet=0x7f06001e;
+        public static final int balloon_item_title=0x7f06001d;
+        public static final int balloon_main_layout=0x7f06001b;
+        public static final int bottom=0x7f060008;
+        public static final int botton1=0x7f060047;
+        public static final int btnLogin=0x7f06004c;
+        public static final int center=0x7f06000d;
+        public static final int center_horizontal=0x7f06000c;
+        public static final int center_vertical=0x7f06000b;
+        public static final int close_img_button=0x7f06001f;
+        public static final int content=0x7f060027;
+        public static final int dashboard=0x7f060001;
+        public static final int dsh_btn_AR=0x7f060024;
+        public static final int dsh_btn_Faves=0x7f060023;
+        public static final int dsh_btn_QRCode=0x7f060022;
+        public static final int dsh_btn_favImage=0x7f060030;
+        public static final int dsh_btn_favNetwork=0x7f06002e;
+        public static final int dsh_btn_favSensor=0x7f06002f;
+        public static final int dsh_btn_netCloser=0x7f060025;
+        public static final int dsh_btn_netList=0x7f060020;
+        public static final int dsh_btn_netMaps=0x7f060021;
+        public static final int edtLogin=0x7f06004a;
+        public static final int edtPassword=0x7f06004b;
+        public static final int empty=0x7f060002;
+        public static final int gd_action_bar=0x7f060012;
+        public static final int gd_action_bar_content_view=0x7f060014;
+        public static final int gd_action_bar_home_item=0x7f060032;
+        public static final int gd_action_bar_host=0x7f060013;
+        public static final int gd_action_bar_item=0x7f060034;
+        public static final int gd_action_bar_item_progress_bar=0x7f060035;
+        public static final int gd_action_bar_title=0x7f060033;
+        public static final int gd_description=0x7f060036;
+        public static final int gd_drawable=0x7f060037;
+        public static final int gd_progress_bar=0x7f060039;
+        public static final int gd_segmented_bar=0x7f060010;
+        public static final int gd_segmented_content_view=0x7f060011;
+        public static final int gd_separator_text=0x7f060042;
+        public static final int gd_subtext=0x7f060043;
+        public static final int gd_subtitle=0x7f060044;
+        public static final int gd_text=0x7f060038;
+        public static final int gd_thumbnail=0x7f060045;
+        public static final int gdi_arrow_down=0x7f060040;
+        public static final int gdi_arrow_up=0x7f06003b;
+        public static final int gdi_footer=0x7f06003f;
+        public static final int gdi_grid=0x7f060041;
+        public static final int gdi_header=0x7f06003a;
+        public static final int gdi_quick_action_items=0x7f06003e;
+        public static final int gdi_rack=0x7f06003d;
+        public static final int gdi_scroll=0x7f06003c;
+        public static final int hdpi=0x7f060005;
+        public static final int header=0x7f060049;
+        public static final int imageBitmap=0x7f06004f;
+        public static final int imageName=0x7f060050;
+        public static final int imageNetwork=0x7f060051;
+        public static final int imageSituation=0x7f060052;
+        public static final int imgToast=0x7f06002c;
+        public static final int layoutToast=0x7f06002b;
+        public static final int ldpi=0x7f060003;
+        public static final int left=0x7f060009;
+        public static final int license=0x7f060048;
+        public static final int mapView=0x7f060017;
+        public static final int mdpi=0x7f060004;
+        public static final int message=0x7f060028;
+        public static final int multiple=0x7f06000f;
+        public static final int negativeButton=0x7f06002a;
+        public static final int netmap=0x7f060016;
+        public static final int networkName=0x7f060053;
+        public static final int networkSensors=0x7f060055;
+        public static final int networkSituation=0x7f060054;
+        public static final int normal=0x7f060000;
+        public static final int positiveButton=0x7f060029;
+        public static final int right=0x7f06000a;
+        public static final int sensorName=0x7f060056;
+        public static final int sensorNetwork=0x7f060058;
+        public static final int sensorSituation=0x7f060057;
+        public static final int single=0x7f06000e;
+        public static final int textView=0x7f060046;
+        public static final int title=0x7f060026;
+        public static final int top=0x7f060007;
+        public static final int txtAppName=0x7f06004d;
+        public static final int txtHomeMessage=0x7f060031;
+        public static final int txtLocation=0x7f06001a;
+        public static final int txtResultFormat=0x7f060019;
+        public static final int txtResultValue=0x7f060018;
+        public static final int txtTeamName=0x7f06004e;
+        public static final int txtToast=0x7f06002d;
+        public static final int xhdpi=0x7f060006;
+>>>>>>> func-mapsforge
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int act_01_netlist=0x7f030001;
         public static final int act_02_netmap=0x7f030002;
+<<<<<<< HEAD
         public static final int act_04_faves=0x7f030003;
         public static final int act_04_favesimages=0x7f030004;
         public static final int act_04_favesnetworks=0x7f030005;
@@ -966,6 +1059,63 @@ containing a value of this type.
         public static final int row_list_network=0x7f030040;
         public static final int row_list_sensor=0x7f030041;
         public static final int seek_bar_preference=0x7f030042;
+=======
+        public static final int act_02_netmapsforge=0x7f030003;
+        public static final int act_03_qrcode=0x7f030004;
+        public static final int act_04_faves=0x7f030005;
+        public static final int act_04_favesimages=0x7f030006;
+        public static final int act_04_favesnetworks=0x7f030007;
+        public static final int act_04_favessensors=0x7f030008;
+        public static final int act_06_netcloser=0x7f030009;
+        public static final int balloon_overlay=0x7f03000a;
+        public static final int bkp_dshb_home=0x7f03000b;
+        public static final int customdialog=0x7f03000c;
+        public static final int customtoast=0x7f03000d;
+        public static final int dshb_favorites=0x7f03000e;
+        public static final int dshb_home=0x7f03000f;
+        public static final int footer_repeat=0x7f030010;
+        public static final int gd_action_bar_dashboard=0x7f030011;
+        public static final int gd_action_bar_empty=0x7f030012;
+        public static final int gd_action_bar_item_base=0x7f030013;
+        public static final int gd_action_bar_item_loader=0x7f030014;
+        public static final int gd_action_bar_normal=0x7f030015;
+        public static final int gd_content_dashboard=0x7f030016;
+        public static final int gd_content_empty=0x7f030017;
+        public static final int gd_content_normal=0x7f030018;
+        public static final int gd_description_item_view=0x7f030019;
+        public static final int gd_drawable_item_view=0x7f03001a;
+        public static final int gd_expandable_list_content_dashboard=0x7f03001b;
+        public static final int gd_expandable_list_content_empty=0x7f03001c;
+        public static final int gd_expandable_list_content_normal=0x7f03001d;
+        public static final int gd_list_content_dashboard=0x7f03001e;
+        public static final int gd_list_content_empty=0x7f03001f;
+        public static final int gd_list_content_normal=0x7f030020;
+        public static final int gd_long_text_item_view=0x7f030021;
+        public static final int gd_progress_item_view=0x7f030022;
+        public static final int gd_quick_action_bar=0x7f030023;
+        public static final int gd_quick_action_bar_item=0x7f030024;
+        public static final int gd_quick_action_grid=0x7f030025;
+        public static final int gd_quick_action_grid_item=0x7f030026;
+        public static final int gd_segment=0x7f030027;
+        public static final int gd_separator_item_view=0x7f030028;
+        public static final int gd_subtext_item_view=0x7f030029;
+        public static final int gd_subtitle_item_view=0x7f03002a;
+        public static final int gd_tab_content=0x7f03002b;
+        public static final int gd_tab_indicator=0x7f03002c;
+        public static final int gd_text_item_view=0x7f03002d;
+        public static final int gd_thumbnail_item_view=0x7f03002e;
+        public static final int header_gradient=0x7f03002f;
+        public static final int help_menu=0x7f030030;
+        public static final int help_menu_2=0x7f030031;
+        public static final int info=0x7f030032;
+        public static final int license=0x7f030033;
+        public static final int login=0x7f030034;
+        public static final int main=0x7f030035;
+        public static final int other=0x7f030036;
+        public static final int row_list_image=0x7f030037;
+        public static final int row_list_network=0x7f030038;
+        public static final int row_list_sensor=0x7f030039;
+>>>>>>> func-mapsforge
     }
     public static final class string {
         public static final int CIRCLE_MARKER=0x7f06002a;
@@ -1061,6 +1211,7 @@ containing a value of this type.
  ActionBar Text End 
  Dialog Text Init 
          */
+<<<<<<< HEAD
         public static final int dialogLogOut=0x7f06008b;
         public static final int download_error=0x7f06005a;
         public static final int download_received=0x7f06005b;
@@ -1102,12 +1253,50 @@ containing a value of this type.
         public static final int help_homFaves=0x7f0600d1;
         public static final int help_homNetCloser=0x7f0600d3;
         /**  SD Error Messages End
+=======
+        public static final int dialogLogOut=0x7f090043;
+        public static final int gd_add=0x7f09000b;
+        public static final int gd_all_friends=0x7f090017;
+        public static final int gd_compass=0x7f090010;
+        public static final int gd_compose=0x7f090003;
+        public static final int gd_edit=0x7f09000a;
+        public static final int gd_export=0x7f090004;
+        public static final int gd_eye=0x7f090016;
+        public static final int gd_gallery=0x7f090019;
+        public static final int gd_go_home=0x7f090000;
+        public static final int gd_group=0x7f090018;
+        public static final int gd_help=0x7f090011;
+        public static final int gd_info=0x7f090012;
+        public static final int gd_list=0x7f090014;
+        public static final int gd_locate=0x7f090009;
+        public static final int gd_locate_myself=0x7f09000f;
+        public static final int gd_mail=0x7f09001b;
+        public static final int gd_pick_photo=0x7f090008;
+        public static final int gd_refresh=0x7f090006;
+        public static final int gd_search=0x7f090001;
+        public static final int gd_settings=0x7f090013;
+        public static final int gd_share=0x7f090005;
+        public static final int gd_slideshow=0x7f09001a;
+        public static final int gd_sort_alpha=0x7f09000e;
+        public static final int gd_sort_by_size=0x7f09000d;
+        public static final int gd_star=0x7f09000c;
+        public static final int gd_take_photo=0x7f090007;
+        public static final int gd_talk=0x7f090002;
+        public static final int gd_trashcan=0x7f090015;
+        public static final int googleMaps_API_key_debug=0x7f09001d;
+        public static final int hello=0x7f09001e;
+        public static final int help_homAugReal=0x7f09005a;
+        public static final int help_homFaves=0x7f090059;
+        public static final int help_homNetCloser=0x7f09005b;
+        /**  Menu End 
+>>>>>>> func-mapsforge
  Help Init 
  SD Error Messages End
  Help Init 
  SD Error Messages End
  Help Init 
          */
+<<<<<<< HEAD
         public static final int help_homNetList=0x7f0600ce;
         public static final int help_homNetMaps=0x7f0600cf;
         public static final int help_homQRCode=0x7f0600d0;
@@ -1181,10 +1370,19 @@ containing a value of this type.
         public static final int msgSDUnmountable=0x7f0600cc;
         public static final int msgSDUnmounted=0x7f0600cd;
         public static final int msg_ActionCancelled=0x7f06006e;
+=======
+        public static final int help_homNetList=0x7f090056;
+        public static final int help_homNetMaps=0x7f090057;
+        public static final int help_homQRCode=0x7f090058;
+        public static final int infoTabAbout=0x7f090023;
+        public static final int infoTabLicense=0x7f090024;
+        public static final int info_LoadSensing=0x7f090020;
+>>>>>>> func-mapsforge
         /**  Messages Init 
  Messages Init 
  Messages Init 
          */
+<<<<<<< HEAD
         public static final int msg_BadLoginPass=0x7f060066;
         public static final int msg_ErrMarketAccess=0x7f06006d;
         public static final int msg_NOLocServ=0x7f060068;
@@ -1238,12 +1436,38 @@ containing a value of this type.
         public static final int strExit=0x7f060087;
         public static final int strFilter=0x7f0600c6;
         /**  SensorList Activity End 
+=======
+        public static final int msg_BadLoginPass=0x7f090025;
+        public static final int msg_NOLocServ=0x7f090028;
+        public static final int msg_PleaseWait=0x7f090029;
+        public static final int msg_QRIntentError=0x7f090027;
+        public static final int msg_Welcome=0x7f090026;
+        public static final int msg_retrievImages=0x7f09002b;
+        public static final int msg_retrievNetworks=0x7f09002a;
+        public static final int msg_retrievSensors=0x7f09002c;
+        public static final int settingMapType=0x7f09005d;
+        public static final int settingSelectMap=0x7f09005e;
+        public static final int settingSelectMapDialog=0x7f09005f;
+        /**  Help End 
+ Settings Init 
+ Help End 
+ Settings Init 
+ Help End 
+ Settings Init 
+         */
+        public static final int settingTitle=0x7f09005c;
+        public static final int strErrorLocation=0x7f090051;
+        public static final int strExit=0x7f09003f;
+        public static final int strFilter=0x7f090054;
+        /**  NetList Activity End 
+>>>>>>> func-mapsforge
  NetCloser Activity Init 
  SensorList Activity End 
  NetCloser Activity Init 
  SensorList Activity End 
  NetCloser Activity Init 
          */
+<<<<<<< HEAD
         public static final int strGetLocation=0x7f060099;
         public static final int strLogin=0x7f060086;
         public static final int strMapMode=0x7f0600c7;
@@ -1255,6 +1479,11 @@ containing a value of this type.
  Maps Activity Init 
          */
         public static final int strNetDescrip=0x7f0600c4;
+=======
+        public static final int strGetLocation=0x7f09004f;
+        public static final int strLogin=0x7f09003e;
+        public static final int strMapMode=0x7f090055;
+>>>>>>> func-mapsforge
         /**  NetCloser Activity End 
  FavesSensors Activity Init 
  NetCloser Activity End 
@@ -1262,6 +1491,7 @@ containing a value of this type.
  NetCloser Activity End 
  FavesSensors Activity Init 
          */
+<<<<<<< HEAD
         public static final int strNetName=0x7f06009d;
         public static final int strNumSensors=0x7f060096;
         public static final int strPassword=0x7f060085;
@@ -1282,6 +1512,19 @@ containing a value of this type.
  SensorList Activity Init 
          */
         public static final int strSensorType=0x7f060097;
+=======
+        public static final int strNetName=0x7f090052;
+        public static final int strNumSensors=0x7f09004e;
+        public static final int strPassword=0x7f09003d;
+        /**  FavesSensors Activity End 
+ Menu Init 
+ FavesSensors Activity End 
+ Menu Init 
+ FavesSensors Activity End 
+ Menu Init 
+         */
+        public static final int strSearch=0x7f090053;
+>>>>>>> func-mapsforge
         /**  Faves Activity End 
  NetList Activity Init 
  Faves Activity End 
@@ -1415,7 +1658,10 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int config=0x7f050000;
+<<<<<<< HEAD
         public static final int searchable=0x7f050001;
+=======
+>>>>>>> func-mapsforge
     }
     public static final class styleable {
         /**  ActionBar related attributes 

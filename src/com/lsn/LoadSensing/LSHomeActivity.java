@@ -1,6 +1,7 @@
 package com.lsn.LoadSensing;
 
 import com.lsn.LoadSensing.ui.CustomToast;
+import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBar;
@@ -83,7 +84,7 @@ public class LSHomeActivity extends GDActivity {
     public void onResume() {
         super.onResume();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        typeMaps=settings.getString("maps", "");
+        typeMaps=settings.getString("maps", "google");
     }    
     
     @Override
@@ -174,7 +175,7 @@ public class LSHomeActivity extends GDActivity {
 				 }
 				 else   
 				 {
-					 CustomToast.showCustomToast(LSHomeActivity.this,R.string.settingOSMnotDeveloped,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
+					 i = new Intent(LSHomeActivity.this,LSNetMapsForgeActivity.class);
 				 }
 				 break;
 			case R.id.dsh_btn_QRCode:
