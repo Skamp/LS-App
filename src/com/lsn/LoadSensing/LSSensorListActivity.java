@@ -269,7 +269,7 @@ public class LSSensorListActivity extends GDListActivity {
 						"SELECT * FROM Sensor WHERE idSensor = '"
 								+ sen1.getSensorId() + "';", null);
 				if (c.getCount() == 0) {
-					db.execSQL("INSERT INTO Sensor (name,idSensor,idNetwork,type,description,channel,poblacio,image) " +
+					db.execSQL("INSERT INTO Sensor (name,idSensor,idNetwork,type,description,channel,poblacio,image,faves) " +
 							"VALUES ('"
 							+ sen1.getSensorName()
 							+ "','"
@@ -285,7 +285,10 @@ public class LSSensorListActivity extends GDListActivity {
 							+ "','"
 							+ sen1.getSensorSituation()
 							+ "','"
-							+ sen1.getSensorImageName() + "');");
+							+ sen1.getSensorImageName() 
+							+ "',"
+							+ 1
+							+ ");");
 
 					CustomToast.showCustomToast(this,
 							R.string.message_add_sensor,

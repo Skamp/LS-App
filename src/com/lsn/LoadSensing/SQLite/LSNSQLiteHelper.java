@@ -13,7 +13,7 @@ public class LSNSQLiteHelper extends SQLiteOpenHelper {
 
 	String sqlCreateSensor = "CREATE TABLE Sensor (user TEXT, poblacio TEXT, name TEXT, " +
 		     "serial, idSensor TEXT, idNetwork TEXT, type TEXT, channel TEXT, " +
-		     "description TEXT, lat TEXT, lon TEXT, image TEXT);";
+		     "description TEXT, lat TEXT, lon TEXT, image TEXT, faves INTEGER);";
 
 	String sqlCreateImage = "CREATE TABLE Image (user TEXT, poblacio TEXT, name TEXT, "
 			+ "idImage TEXT, idNetwork TEXT, imageFile TEXT)";

@@ -18,6 +18,7 @@ public class LSSensor implements Parcelable {
 	private Bitmap sensorImage;
 	private String sensorDesc;
 	private String sensorImageName;
+	private int sensorFaves;
 
 	public LSSensor() {
 
@@ -33,6 +34,7 @@ public class LSSensor implements Parcelable {
 		sensorImage = null;
 		sensorDesc = "";
 		sensorImageName = "";
+		sensorFaves = 0;
 	}
 	
 	public LSSensor(Parcel in) {
@@ -228,6 +230,15 @@ public class LSSensor implements Parcelable {
 		this.sensorImageName = sensorImageName;
 	}
 	
+	
+	public int getSensorFaves() {
+		return sensorFaves;
+	}
+
+	public void setSensorFaves(int sensorFaves) {
+		this.sensorFaves = sensorFaves;
+	}
+	
 	@Override
 	public int describeContents() {
 
@@ -249,6 +260,7 @@ public class LSSensor implements Parcelable {
 		dest.writeParcelable(sensorImage,flags);
 		dest.writeString(sensorDesc);
 		dest.writeString(sensorImageName);
+		dest.writeInt(sensorFaves);
 	}
 
 	private void readFromParcel(Parcel in) {
@@ -265,10 +277,9 @@ public class LSSensor implements Parcelable {
 		sensorImage = in.readParcelable(Bitmap.class.getClassLoader());
 		sensorDesc = in.readString();
 		sensorImageName = in.readString();
+		sensorFaves = in.readInt();
 	}
 	
-	
-
 	public static final Parcelable.Creator<LSSensor> CREATOR =
 	    	new Parcelable.Creator<LSSensor>() {
 	            public LSSensor createFromParcel(Parcel in) {

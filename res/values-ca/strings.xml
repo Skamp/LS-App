@@ -192,7 +192,7 @@
 
  	<!-- Context Menu Init -->
  	 	
-    	<string name="add_faves">Afagir a favorits</string>
+    	<string name="add_faves">Afegir a favorits</string>
     	<string name="del_faves">Treure de favorits</string>
 	 <!-- Context Menu End -->
  

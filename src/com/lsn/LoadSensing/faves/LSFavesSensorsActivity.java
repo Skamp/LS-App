@@ -112,6 +112,7 @@ public class LSFavesSensorsActivity extends GDListActivity{
 					String channel = c.getString(c.getColumnIndex("channel"));
 					String city = c.getString(c.getColumnIndex("poblacio"));
 					String image = c.getString(c.getColumnIndex("image"));
+					int faves = c.getInt(c.getColumnIndex("faves"));
 
 					Log.i("INFO", "Obtaining image " + image);
 					try {
@@ -131,6 +132,7 @@ public class LSFavesSensorsActivity extends GDListActivity{
 					o1.setSensorSituation(city);
 					o1.setSensorImage(imgSensor);
 					o1.setSensorImageName(image);
+					o1.setSensorFaves(faves);
 
 					m_sensors.add(o1);
 

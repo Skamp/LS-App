@@ -768,7 +768,7 @@ containing a value of this type.
         public static final int ScrollView01=0x7f070051;
         public static final int TextView01=0x7f07001c;
         public static final int about=0x7f070015;
-        public static final int add_faves=0x7f070086;
+        public static final int add_faves=0x7f070088;
         public static final int balloon_inner_layout=0x7f07003f;
         public static final int balloon_item_snippet=0x7f070041;
         public static final int balloon_item_title=0x7f070040;
@@ -786,7 +786,7 @@ containing a value of this type.
         public static final int content=0x7f07004a;
         public static final int dashboard=0x7f070001;
         public static final int datasource_icon=0x7f07005b;
-        public static final int del_faves=0x7f070087;
+        public static final int del_faves=0x7f070089;
         public static final int description_text=0x7f07005d;
         public static final int displaytype=0x7f070059;
         public static final int displaytypeLabel=0x7f070058;
@@ -862,10 +862,10 @@ containing a value of this type.
         public static final int positiveButton=0x7f07004c;
         public static final int right=0x7f07000a;
         public static final int row_layout=0x7f07005a;
-        public static final int seekBarPrefBarContainer=0x7f070085;
-        public static final int seekBarPrefUnitsLeft=0x7f070084;
-        public static final int seekBarPrefUnitsRight=0x7f070082;
-        public static final int seekBarPrefValue=0x7f070083;
+        public static final int seekBarPrefBarContainer=0x7f070087;
+        public static final int seekBarPrefUnitsLeft=0x7f070086;
+        public static final int seekBarPrefUnitsRight=0x7f070084;
+        public static final int seekBarPrefValue=0x7f070085;
         public static final int selectorsLayout=0x7f070017;
         public static final int selectorsRow01=0x7f07001a;
         public static final int selectorsTable=0x7f070019;
@@ -882,6 +882,8 @@ containing a value of this type.
         public static final int sensorSituation=0x7f070032;
         public static final int sensorType=0x7f070034;
         public static final int single=0x7f07000e;
+        public static final int strNetwork=0x7f070083;
+        public static final int textNetwork=0x7f070082;
         public static final int textView=0x7f070077;
         public static final int thumbImage=0x7f070079;
         public static final int thumbName=0x7f07007a;
