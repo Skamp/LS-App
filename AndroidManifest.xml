@@ -170,6 +170,10 @@
             android:name=".LSSensorChartActivity">
         </activity>
         
+        <activity 
+            android:label="@string/act_lbl_homNetList"
+            android:name=".help.LSHelpListNetActivity">
+        </activity>
         <uses-library android:name="com.google.android.maps"/>
     </application>
 
