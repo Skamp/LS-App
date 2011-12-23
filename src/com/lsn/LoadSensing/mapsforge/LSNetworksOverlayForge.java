@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -29,6 +31,8 @@ import org.mapsforge.android.maps.Overlay;
 //import org.mapsforge.android.maps.Overlay.EventType;
 import org.mapsforge.android.maps.OverlayItem;
 
+import com.lsn.LoadSensing.LSNetInfoActivity;
+import com.lsn.LoadSensing.element.LSNetwork;
 import com.readystatesoftware.mapviewballoons.R;
 
 public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
@@ -46,45 +50,23 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 	private LinearLayout layout;
     private TextView title;
     private TextView snippet;
+    private ArrayList<LSNetwork> m_networks;
 	
-	public LSNetworksOverlayForge(Drawable defaultMarker, MapView mapView) {
+	public LSNetworksOverlayForge(Drawable defaultMarker, MapView mapView,ArrayList<LSNetwork> networks) {
 		super(boundCenter(defaultMarker));
 		this.c = mapView.getContext();
 		this.mc = mapView.getController();
 		this.mapView = mapView;
+		this.m_networks = networks;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.mapsforge.android.maps.ItemizedOverlay#onTap(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView)
-	 */
 //	@Override
-//	public boolean onTap(GeoPoint geoPoint, MapView mapView) {
+//	protected boolean checkItemHit(GeoPoint geoPoint, MapView mapView,
+//			EventType eventType) {
 //		// TODO Auto-generated method stub
-//		
-//		return super.onTap(geoPoint, mapView);
+//		((ViewGroup) mapView.getParent()).removeView(layout);
+//		return super.checkItemHit(geoPoint, mapView, eventType);
 //	}
-//
-//	
-//	
-//	/* (non-Javadoc)
-//	 * @see org.mapsforge.android.maps.ItemizedOverlay#onLongPress(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView)
-//	 */
-//	@Override
-//	public boolean onLongPress(GeoPoint geoPoint, MapView mapView) {
-//		// TODO Auto-generated method stub
-//		return super.onLongPress(geoPoint, mapView);
-//	}
-
-	/* (non-Javadoc)
-	 * @see org.mapsforge.android.maps.ItemizedOverlay#checkItemHit(org.mapsforge.android.maps.GeoPoint, org.mapsforge.android.maps.MapView, org.mapsforge.android.maps.Overlay.EventType)
-	 */
-	@Override
-	protected boolean checkItemHit(GeoPoint geoPoint, MapView mapView,
-			EventType eventType) {
-		// TODO Auto-generated method stub
-		((ViewGroup) mapView.getParent()).removeView(layout);
-		return super.checkItemHit(geoPoint, mapView, eventType);
-	}
 
 	public void addOverlay(OverlayItem overlay) {
 	    m_overlays.add(overlay);
@@ -103,7 +85,6 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 
 	@Override
 	protected final boolean onTap(int index) {
-		
 		
 		currentFocussedIndex = index;
 		currentFocussedItem = createItem(index);
@@ -187,7 +168,8 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 		
 		((ViewGroup) mapView.getParent()).addView(layout, params);
 		
-		//mapOverlays.add(item);
+		//mapOverlays.add(layout);
+		//this.addOverlay(currentFocussedItem);
 		
 		return true;
 	}
@@ -209,6 +191,19 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 	protected boolean onBalloonTap(int index, OverlayItem item) {
 		Toast.makeText(c, "onBalloonTap for overlay index " + index + "item is " + item.getTitle(),
 				Toast.LENGTH_LONG).show();
+		Intent i = null;
+        i = new Intent(c,LSNetInfoActivity.class);
+        
+        if (i!=null){
+			Bundle bundle = new Bundle();
+			
+			//bundle.putString("SESSION", LSHomeActivity.idSession);
+			bundle.putParcelable("NETWORK_OBJ", m_networks.get(index));
+			
+			i.putExtras(bundle);
+
+			c.startActivity(i);
+		}
 		return true;
 	}
 

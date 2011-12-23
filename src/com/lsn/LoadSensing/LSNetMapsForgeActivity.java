@@ -1,8 +1,16 @@
 package com.lsn.LoadSensing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import greendroid.widget.ActionBar;
 import greendroid.widget.ActionBar.Type;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.mapsforge.android.maps.ArrayCircleOverlay;
 import org.mapsforge.android.maps.ArrayItemizedOverlay;
 import org.mapsforge.android.maps.ArrayWayOverlay;
@@ -12,14 +20,16 @@ import org.mapsforge.android.maps.MapActivity;
 import org.mapsforge.android.maps.MapController;
 import org.mapsforge.android.maps.MapView;
 import org.mapsforge.android.maps.MapViewMode;
+import org.mapsforge.android.maps.Overlay;
 import org.mapsforge.android.maps.OverlayCircle;
 import org.mapsforge.android.maps.OverlayItem;
 import org.mapsforge.android.maps.OverlayWay;
 
+import com.lsn.LoadSensing.element.LSNetwork;
+import com.lsn.LoadSensing.func.LSFunctions;
 import com.lsn.LoadSensing.map.LSNetworksOverlay;
 import com.lsn.LoadSensing.mapsforge.LSNetworksOverlayForge;
 import com.readystatesoftware.mapviewballoons.R;
-
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -32,6 +42,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -40,10 +51,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.FrameLayout.LayoutParams;
 
 
 public class LSNetMapsForgeActivity extends MapActivity {
+	
+	private ArrayList<LSNetwork> m_networks = null;
+	private List<Overlay>     mapOverlays;
+	private MapView mapView;
+	private LSNetworksOverlayForge itemizedOverlay;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +83,52 @@ public class LSNetMapsForgeActivity extends MapActivity {
 			}
 		});
 		
-		MapView mapView = (MapView)findViewById(R.id.mapView);
+		//MapView mapView = (MapView)findViewById(R.id.mapView);
+		mapView = (MapView)findViewById(R.id.mapView);
 		mapView.setClickable(true);
 		mapView.setBuiltInZoomControls(true);
 		mapView.setMapViewMode(MapViewMode.MAPNIK_TILE_DOWNLOAD);
 		
+		
+		mapOverlays = mapView.getOverlays();
+		m_networks = new ArrayList<LSNetwork>();
+		JSONObject jsonData;
+		try {
+	        // Server Request Ini
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("session", LSHomeActivity.idSession);
+			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistatXarxes.php",params);
+		
+			for (int i = 0; i<jArray.length(); i++)
+			{
+				
+				jsonData = jArray.getJSONObject(i);
+				LSNetwork o1 = new LSNetwork();
+				o1.setNetworkName(jsonData.getString("Nom"));
+		        o1.setNetworkPosition(jsonData.getString("Lat"),jsonData.getString("Lon"));
+		        o1.setNetworkNumSensors(jsonData.getString("Sensors"));
+				o1.setNetworkId(jsonData.getString("IdXarxa"));
+				o1.setNetworkSituation(jsonData.getString("Poblacio"));
+				m_networks.add(o1);
+			}
+			
+			// Server Request End  
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
 		// create some points to be used in the different overlays
-        GeoPoint geoPoint1 = new GeoPoint(51.5174723, -0.0899537); 
-        GeoPoint geoPoint2 = new GeoPoint(51.515259, -0.086623); 
-        GeoPoint geoPoint3 = new GeoPoint(51.513329, -0.08896); 
-        GeoPoint geoPoint4 = new GeoPoint(51.51738, -0.08186); 
+//        GeoPoint geoPoint1 = new GeoPoint(51.5174723, -0.0899537); 
+//        GeoPoint geoPoint2 = new GeoPoint(51.515259, -0.086623); 
+//        GeoPoint geoPoint3 = new GeoPoint(51.513329, -0.08896); 
+//        GeoPoint geoPoint4 = new GeoPoint(51.51738, -0.08186); 
 		
      // create the default paint objects for overlay circles
 //        Paint circleDefaultPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -142,22 +195,42 @@ public class LSNetMapsForgeActivity extends MapActivity {
 
         // create the ItemizedOverlay and add the items
         //ArrayItemizedOverlay itemizedOverlay = new MyItemizedOverlay(mapView,itemDefaultMarker, this);
-        LSNetworksOverlayForge itemizedOverlay = new LSNetworksOverlayForge(itemDefaultMarker, mapView);
+        //LSNetworksOverlayForge itemizedOverlay = new LSNetworksOverlayForge(itemDefaultMarker, mapView,m_networks);
+        itemizedOverlay = new LSNetworksOverlayForge(itemDefaultMarker, mapView,m_networks);
         
-        OverlayItem item1 = new OverlayItem(geoPoint1, "Network 1",
-        		"(Network 1 description)");
-        OverlayItem item2 = new OverlayItem(geoPoint2, "Network 2",
-        		"(Network 2 description)");
-        OverlayItem item3 = new OverlayItem(geoPoint3, "Network 3",
-        		"(Network 3 description)",
-                ItemizedOverlay.boundCenterBottom(itemMarker));
-        OverlayItem item4 = new OverlayItem(geoPoint4, "Network 4",
-        		"(Network 4 description)",
-                ItemizedOverlay.boundCenterBottom(itemMarker));
-        itemizedOverlay.addOverlay(item1);
-        itemizedOverlay.addOverlay(item2);
-        itemizedOverlay.addOverlay(item3);
-        itemizedOverlay.addOverlay(item4);
+        GeoPoint point = null;
+		for (int i = 0; i<m_networks.size(); i++)
+		{
+			Integer intLat = (int) (m_networks.get(i).getNetworkPosition().getLatitude()*1e6);
+			Integer intLon = (int) (m_networks.get(i).getNetworkPosition().getLongitude()*1e6);
+			String strName = m_networks.get(i).getNetworkName();
+			String strSituation = m_networks.get(i).getNetworkSituation();
+			Integer strNumSensor = m_networks.get(i).getNetworkNumSensors();
+			String strNetDescripFormat = getResources().getString(R.string.strNetDescrip);
+		    String strNetDescrip = String.format(strNetDescripFormat, strSituation, strNumSensor);
+			
+			
+			point = new GeoPoint(intLat,intLon);
+			OverlayItem overlayItem = new OverlayItem(point, strName, strNetDescrip);
+			itemizedOverlay.addOverlay(overlayItem);
+			
+			mapOverlays.add(itemizedOverlay);
+		}
+        
+//        OverlayItem item1 = new OverlayItem(geoPoint1, "Network 1",
+//        		"(Network 1 description)");
+//        OverlayItem item2 = new OverlayItem(geoPoint2, "Network 2",
+//        		"(Network 2 description)");
+//        OverlayItem item3 = new OverlayItem(geoPoint3, "Network 3",
+//        		"(Network 3 description)",
+//                ItemizedOverlay.boundCenterBottom(itemMarker));
+//        OverlayItem item4 = new OverlayItem(geoPoint4, "Network 4",
+//        		"(Network 4 description)",
+//                ItemizedOverlay.boundCenterBottom(itemMarker));
+//        itemizedOverlay.addOverlay(item1);
+//        itemizedOverlay.addOverlay(item2);
+//        itemizedOverlay.addOverlay(item3);
+//        itemizedOverlay.addOverlay(item4);
         
         
         
@@ -181,16 +254,18 @@ public class LSNetMapsForgeActivity extends MapActivity {
         // add all overlays to the MapView
 //        mapView.getOverlays().add(wayOverlay);
 //        mapView.getOverlays().add(circleOverlay);
-        mapView.getOverlays().add(itemizedOverlay);
+        //mapView.getOverlays().add(itemizedOverlay);
         
+		point = new GeoPoint((int)(40.416369*1E6),(int)(-3.702992*1E6));
         MapController mMapController = mapView.getController();
-        mMapController.setCenter(geoPoint1);
+        mMapController.setCenter(point);
+        mMapController.setZoom(5);
         
 		//isCentered = true;
 		
 	}
 
-	private class MyItemizedOverlay extends ArrayItemizedOverlay {
+		private class MyItemizedOverlay extends ArrayItemizedOverlay {
         private final Context context;
         private final MapView mapView;
 
