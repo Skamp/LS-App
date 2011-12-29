@@ -56,48 +56,55 @@ public class LSLoginActivity extends Activity {
 				strUser = edtLogin.getText().toString();
 				strPass = edtPassword.getText().toString();
 				
-				// Server Request Ini
-				Map<String, String> params = new HashMap<String, String>();
-				params.put("user", "sergio");
-				params.put("pass", "sergio");
-				JSONObject response = LSFunctions.urlRequestJSONObject("http://viuterrassa.com/Android/login.php",params);
-				Boolean loginValue = null;
-				String sessionValue = null;
-				try {
-					loginValue = (Boolean) response.get("login");
-					sessionValue = response.get("session").toString();
-					
-				} catch (JSONException e) {
-					
-					e.printStackTrace();
-				}
-				// Server Request End
-				
-				
-				// valid user
-				//if ((strUser.equals("sergio")) && (strPass.equals("1234"))) {
-				if (loginValue) {
-					
-					Intent intent = new Intent(LSLoginActivity.this,LSHomeActivity.class);
-					
-					Bundle bundle = new Bundle();
-					bundle.putString("USER", strUser);
-					//bundle.putString("PASS", strPass);
-					bundle.putString("SESSION", sessionValue);
-					intent.putExtras(bundle);
-					
-					SharedPreferences.Editor editor = prefs.edit();
-					editor.putString("user", LSSecurity.rot13Encode(strUser));
-					editor.putString("pass", LSSecurity.rot13Encode(strPass));
-					editor.commit();
-					
-					startActivity(intent);
+				if (!LSFunctions.checkConnection(LSLoginActivity.this))
+				{
+					CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_NotConnected,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
 				}
 				else
-				{ // user don't exist
-					CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_BadLoginPass,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
-					edtLogin.setText("");
-					edtPassword.setText("");
+				{
+
+					// Server Request Ini
+					Map<String, String> params = new HashMap<String, String>();
+					params.put("user", "sergio");
+					params.put("pass", "sergio");
+					JSONObject response = LSFunctions.urlRequestJSONObject("http://viuterrassa.com/Android/login.php",params);
+					Boolean loginValue = null;
+					String sessionValue = null;
+					try {
+						loginValue = (Boolean) response.get("login");
+						sessionValue = response.get("session").toString();
+						
+					} catch (JSONException e) {
+						
+						e.printStackTrace();
+					}
+					// Server Request End
+				
+					// valid user
+					//if ((strUser.equals("sergio")) && (strPass.equals("1234"))) {
+					if (loginValue) {
+						
+						Intent intent = new Intent(LSLoginActivity.this,LSHomeActivity.class);
+						
+						Bundle bundle = new Bundle();
+						bundle.putString("USER", strUser);
+						//bundle.putString("PASS", strPass);
+						bundle.putString("SESSION", sessionValue);
+						intent.putExtras(bundle);
+						
+						SharedPreferences.Editor editor = prefs.edit();
+						editor.putString("user", LSSecurity.rot13Encode(strUser));
+						editor.putString("pass", LSSecurity.rot13Encode(strPass));
+						editor.commit();
+						
+						startActivity(intent);
+					}
+					else
+					{ // user don't exist
+						CustomToast.showCustomToast(LSLoginActivity.this,R.string.msg_BadLoginPass,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+						edtLogin.setText("");
+						edtPassword.setText("");
+					}
 				}
 			}
 		});

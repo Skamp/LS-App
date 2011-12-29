@@ -36,11 +36,27 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Log;
 
 public class LSFunctions {
 
+	public static boolean checkConnection(Context ctx)
+	{
+		ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo checkInternet = cm.getActiveNetworkInfo();
+		if (checkInternet != null &&  checkInternet.isConnected() && checkInternet.isAvailable()) {
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+		
+	}
+	
 	public static boolean isIntentAvailable(Context context, String action)
 	{
 		final PackageManager packageManager = context.getPackageManager();

@@ -40,7 +40,7 @@ public class LSAugRealActivity extends Activity{
 	private boolean netStatus;
 	
 	JSONObject mixareInfo;
-	boolean isMixareInstalled = false;
+	//boolean isMixareInstalled = false;
 	static boolean fromMixare = false;
 	
 	@Override
@@ -110,8 +110,8 @@ public class LSAugRealActivity extends Activity{
         	getLocation.execute();
         	curPosition = getLocation.getPosition();
         	
-        	if (isMixareInstalled)
-        	{
+//        	if (isMixareInstalled)
+//        	{
         		if (!fromMixare)
         		{
 						generateJSONFile();
@@ -129,30 +129,30 @@ public class LSAugRealActivity extends Activity{
         			onBackPressed();
         		}
 				
-        	}
-        	else
-        	{
-        		CustomToast.showCustomToast(this,
-                        "Install Mixare",
-                        CustomToast.IMG_ERROR,
-                        CustomToast.LENGTH_LONG);
-        		try
-        		{
-        			Intent i = new Intent();
-        			i.setAction(Intent.ACTION_VIEW);
-        			i.setData(Uri.parse("market://search?q=pname:org.mixare"));
-        			startActivity(i); 
-
-        			finish();
-                }
-        		catch (Exception ex)
-        		{
-        			CustomToast.showCustomToast(this,
-		                    R.string.msg_ErrMarketAccess,
-		                    CustomToast.IMG_ERROR,
-		                    CustomToast.LENGTH_LONG);
-        		}
-        	}
+//        	}
+//        	else
+//        	{
+//        		CustomToast.showCustomToast(this,
+//                        "Install Mixare",
+//                        CustomToast.IMG_ERROR,
+//                        CustomToast.LENGTH_LONG);
+//        		try
+//        		{
+//        			Intent i = new Intent();
+//        			i.setAction(Intent.ACTION_VIEW);
+//        			i.setData(Uri.parse("market://search?q=pname:org.mixare"));
+//        			startActivity(i); 
+//
+//        			finish();
+//                }
+//        		catch (Exception ex)
+//        		{
+//        			CustomToast.showCustomToast(this,
+//		                    R.string.msg_ErrMarketAccess,
+//		                    CustomToast.IMG_ERROR,
+//		                    CustomToast.LENGTH_LONG);
+//        		}
+//        	}
         }
 		
 	}
@@ -351,20 +351,20 @@ public class LSAugRealActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        isMixareInstalled = false;
-        try
-        {
-        	PackageInfo pi = getPackageManager().getPackageInfo("org.mixare", 0);
-        	
-        	if (pi.versionCode >= 1)
-        	{
-        		isMixareInstalled = true;
-        	}
-        }
-        catch (PackageManager.NameNotFoundException ex)
-        {
-        	ex.printStackTrace();
-        }
+//        isMixareInstalled = false;
+//        try
+//        {
+//        	PackageInfo pi = getPackageManager().getPackageInfo("org.mixare", 0);
+//        	
+//        	if (pi.versionCode >= 1)
+//        	{
+//        		isMixareInstalled = true;
+//        	}
+//        }
+//        catch (PackageManager.NameNotFoundException ex)
+//        {
+//        	ex.printStackTrace();
+//        }
         
     }
 	

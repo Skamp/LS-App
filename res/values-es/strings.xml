@@ -19,6 +19,7 @@
     <string name="msg_retrievSensors">Recuperando sensores...</string>
     <string name="msg_ErrMarketAccess">Error al acceder al Android Market</string>
     <string name="msg_ActionCancelled">Acción cancelada</string>
+    <string name="msg_NotConnected">Conexión a Internet necesaría para acceder a la aplicación</string>
     <!-- Messages End -->
     <!-- Activity Labels Init -->
     	<string name="act_lbl_homHome">LoadSensing App</string>

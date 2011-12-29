@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class LSSensor implements Parcelable {
-	
+
 	private String sensorSituation;
 	private String sensorName;
 	private String sensorId;
@@ -17,6 +17,8 @@ public class LSSensor implements Parcelable {
 	private String sensorType;
 	private Bitmap sensorImage;
 	private String sensorDesc;
+	private String sensorImageName;
+	private int sensorFaves;
 
 	public LSSensor() {
 
@@ -31,19 +33,21 @@ public class LSSensor implements Parcelable {
 		sensorType = "";
 		sensorImage = null;
 		sensorDesc = "";
+		sensorImageName = "";
+		sensorFaves = 0;
 	}
-	
+
 	public LSSensor(Parcel in) {
 
 		sensorPosition = new Position();
 		sensorMeasure = new Measure();
 		readFromParcel(in);
 	}
-	
+
 	public String getSensorName() {
 		return sensorName;
 	}
-	
+
 	public void setSensorName(String sensorName) {
 		this.sensorName = sensorName;
 	}
@@ -51,15 +55,15 @@ public class LSSensor implements Parcelable {
 	public String getSensorSituation() {
 		return sensorSituation;
 	}
-	
+
 	public void setSensorSituation(String sensorSituation) {
 		this.sensorSituation = sensorSituation;
 	}
-	
+
 	public String getSensorId() {
 		return sensorId;
 	}
-	
+
 	public void setSensorId(String sensorId) {
 		this.sensorId = sensorId;
 	}
@@ -71,7 +75,7 @@ public class LSSensor implements Parcelable {
 	public void setSensorNetwork(String sensorNetwork) {
 		this.sensorNetwork = sensorNetwork;
 	}
-	
+
 	public Position getSensorPosition() {
 		return sensorPosition;
 	}
@@ -95,11 +99,11 @@ public class LSSensor implements Parcelable {
 	public void setSensorType(String sensorType) {
 		this.sensorType = sensorType;
 	}
-	
+
 	public Double getSensorMeasure() {
 		return sensorMeasure.getMeasure();
 	}
-	
+
 	public String getSensorMeasureUnit() {
 		return sensorMeasure.getMeasureUnit();
 	}
@@ -113,11 +117,11 @@ public class LSSensor implements Parcelable {
 		this.sensorMeasure.setMeasure(Double.parseDouble(measure));
 		this.sensorMeasure.setMeasureUnit(unit);
 	}
-	
+
 	public Double getSensorMaxLoad() {
 		return sensorMeasure.getMaxLoad();
 	}
-	
+
 	public String getSensorMaxLoadUnit() {
 		return sensorMeasure.getMaxLoadUnit();
 	}
@@ -126,16 +130,16 @@ public class LSSensor implements Parcelable {
 		this.sensorMeasure.setMaxLoad(maxLoad);
 		this.sensorMeasure.setMaxLoadUnit(unit);
 	}
-	
+
 	public void setSensorMaxLoad(String maxLoad,String unit) {
 		this.sensorMeasure.setMaxLoad(Double.parseDouble(maxLoad));
 		this.sensorMeasure.setMaxLoadUnit(unit);
 	}
-	
+
 	public Double getSensorSensitivity() {
 		return sensorMeasure.getSensitivity();
 	}
-	
+
 	public String getSensorSensitivityUnit() {
 		return sensorMeasure.getSensitivityUnit();
 	}
@@ -144,16 +148,16 @@ public class LSSensor implements Parcelable {
 		this.sensorMeasure.setSensitivity(sensitivity);
 		this.sensorMeasure.setSensitivityUnit(unit);
 	}
-	
+
 	public void setSensorSensitivity(String sensitivity,String unit) {
 		this.sensorMeasure.setSensitivity(Double.parseDouble(sensitivity));
 		this.sensorMeasure.setSensitivityUnit(unit);
 	}
-	
+
 	public Double getSensorOffset() {
 		return sensorMeasure.getOffset();
 	}
-	
+
 	public String getSensorOffsetUnit() {
 		return sensorMeasure.getOffsetUnit();
 	}
@@ -162,16 +166,16 @@ public class LSSensor implements Parcelable {
 		this.sensorMeasure.setOffset(offset);
 		this.sensorMeasure.setOffsetUnit(unit);
 	}
-	
+
 	public void setSensorOffset(String offset,String unit) {
 		this.sensorMeasure.setOffset(Double.parseDouble(offset));
 		this.sensorMeasure.setOffsetUnit(unit);
 	}
-	
+
 	public Double getSensorAlarmAt() {
 		return sensorMeasure.getAlarmAt();
 	}
-	
+
 	public String getSensorAlarmAtUnit() {
 		return sensorMeasure.getAlarmAtUnit();
 	}
@@ -180,12 +184,12 @@ public class LSSensor implements Parcelable {
 		this.sensorMeasure.setAlarmAt(alarmAt);
 		this.sensorMeasure.setAlarmAtUnit(unit);
 	}
-	
+
 	public void setSensorAlarmAt(String alarmAt,String unit) {
 		this.sensorMeasure.setAlarmAt(Double.parseDouble(alarmAt));
 		this.sensorMeasure.setAlarmAtUnit(unit);
 	}
-	
+
 	public String getSensorLastTare() {
 		return sensorMeasure.getLastTare();
 	}
@@ -193,7 +197,7 @@ public class LSSensor implements Parcelable {
 	public void setSensorLastTare(String lastTare) {
 		this.sensorMeasure.setLastTare(lastTare);
 	}
-	
+
 	public Bitmap getSensorImage() {
 		return sensorImage;
 	}
@@ -217,7 +221,24 @@ public class LSSensor implements Parcelable {
 	public void setSensorSerial(String sensorSerial) {
 		this.sensorSerial = sensorSerial;
 	}
-	
+
+	public String getSensorImageName() {
+		return sensorImageName;
+	}
+
+	public void setSensorImageName(String sensorImageName) {
+		this.sensorImageName = sensorImageName;
+	}
+
+
+	public int getSensorFaves() {
+		return sensorFaves;
+	}
+
+	public void setSensorFaves(int sensorFaves) {
+		this.sensorFaves = sensorFaves;
+	}
+
 	@Override
 	public int describeContents() {
 
@@ -238,10 +259,12 @@ public class LSSensor implements Parcelable {
 		dest.writeString(sensorType);
 		dest.writeParcelable(sensorImage,flags);
 		dest.writeString(sensorDesc);
+		dest.writeString(sensorImageName);
+		dest.writeInt(sensorFaves);
 	}
 
 	private void readFromParcel(Parcel in) {
-		
+
 		sensorSituation = in.readString();
 		sensorName = in.readString();
 		sensorId = in.readString();
@@ -253,18 +276,19 @@ public class LSSensor implements Parcelable {
 		sensorType = in.readString();
 		sensorImage = in.readParcelable(Bitmap.class.getClassLoader());
 		sensorDesc = in.readString();
+		sensorImageName = in.readString();
+		sensorFaves = in.readInt();
 	}
-	
-	
 
 	public static final Parcelable.Creator<LSSensor> CREATOR =
 	    	new Parcelable.Creator<LSSensor>() {
 	            public LSSensor createFromParcel(Parcel in) {
 	                return new LSSensor(in);
 	            }
-	 
+
 	            public LSSensor[] newArray(int size) {
 	                return new LSSensor[size];
 	            }
 	        };
 }
+

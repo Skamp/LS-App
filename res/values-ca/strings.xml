@@ -22,6 +22,8 @@
     <string name="msg_retrievSensors">Recuperant sensors...</string>
     <string name="msg_ErrMarketAccess">Error al accedir a Android Market</string>
     <string name="msg_ActionCancelled">Acció cancel·lada</string>
+    <string name="msg_NotConnected">Connexió a Internet necessaria per accedir a l\'aplicació</string>
+        
     
     
     <!-- Messages End -->
