@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/settingTitle">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:loadsensing="http://loadsensing.com">
+    <PreferenceCategory android:title="@string/settingMapTitle">
         <ListPreference
             android:key="maps"
             android:title="@string/settingMapType"
@@ -10,15 +11,30 @@
             android:entries="@array/mapTypeEntries"
             android:entryValues="@array/mapTypeValues" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Categoría 1">
-        <CheckBoxPreference
-            android:key="opcion1"
-            android:title="Preferencia 1"
-            android:summary="Descripción de la preferencia 1" />
-        <EditTextPreference
-            android:key="opcion2"
-            android:title="Preferencia 2"
-            android:summary="Descripción de la preferencia 2"
-            android:dialogTitle="Introduce valor" />
+    <PreferenceCategory android:title="@string/settingNetCloserTitle">
+        <ListPreference
+            android:key="netcloserunit"
+            android:title="@string/settingDistanceUnit"
+            android:summary="@string/settingSelectDistanceUnit"
+            android:dialogTitle="@string/settingDistanceUnitDialog"
+            android:entries="@array/DistanceUnitEntries"
+            android:entryValues="@array/DistanceUnitValues" />
+        <com.lsn.LoadSensing.ui.SeekBarPreference
+            android:key="netcloserdist"
+            android:title="@string/settingDistanceRangeTitle"
+            android:summary="@string/settingDistanceRange"
+            android:defaultValue="10"
+            android:max="25"
+            loadsensing:min="1"
+             />
+        <com.lsn.LoadSensing.ui.SeekBarPreference
+            android:key="netclosertime"
+            android:title="@string/settingTimeRangeTitle"
+            android:summary="@string/settingTimeRange"
+            android:defaultValue="10"
+            android:max="25"
+            loadsensing:min="5"
+            loadsensing:unitsRight=" s."
+            />
     </PreferenceCategory>
 </PreferenceScreen>
