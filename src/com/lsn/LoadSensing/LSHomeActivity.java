@@ -101,8 +101,6 @@ public class LSHomeActivity extends GDActivity {
     	
     	case MORE:
     		quickActions.show(item.getItemView());
-    		//Toast.makeText(getApplicationContext(), "Has pulsado el boton MORE", Toast.LENGTH_SHORT).show();
-    		//i = new Intent(LSHomeActivity.this,LSConfigActivity.class);
     		break;
     	case HELP:
 

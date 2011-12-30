@@ -149,7 +149,6 @@ public class LSNetListActivity extends GDListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
-        //Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
         Intent i = null;
         i = new Intent(LSNetListActivity.this,LSNetInfoActivity.class);
         
