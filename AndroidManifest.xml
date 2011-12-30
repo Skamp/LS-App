@@ -177,5 +177,5 @@
             android:label="@string/act_lbl_homNetMaps">
         </activity>
     </application>
-
+    
 </manifest>
