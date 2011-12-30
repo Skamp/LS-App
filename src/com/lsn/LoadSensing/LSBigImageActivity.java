@@ -37,6 +37,7 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 	private Integer position;
 	
 	private GestureDetector gestureScanner;
+	private String strTitle=null;
 	private boolean moveLeft;
 	
 	Integer imgHeight = 0;
@@ -51,38 +52,50 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
         setActionBarContentView(R.layout.act_bigimage);
         
         Log.i("BIGIMAGE", "On BigImage");
-        gestureScanner = new GestureDetector(this);
+        
         
         Bundle bundle = getIntent().getExtras();
         
         if (bundle != null)
         {
-//        	strTitle = bundle.getString("TITLE");
-//        	imageObj = new LSImage();
-//        	imageObj = bundle.getParcelable("IMAGE_OBJ");
-        	
+        	imageObj = new LSImage();
+        	strTitle = bundle.getString("TITLE");
+        	imageObj = bundle.getParcelable("IMAGE_OBJ");
 //        	m_images = new ArrayList<LSImage>();
 //        	m_images = bundle.getParcelableArrayList("IMAGE_ARRAY");
         	position = bundle.getInt("POSITION");
-        	imageObj = new LSImage();
         	//imageObj = LSNetImagesActivity.m_images.get(position);
     	}  
         
-        updateTitle();
-        updateImage();
-        
+        if (strTitle!=null)
+        {
+        	this.setTitle(strTitle);
+
+        	ImageView imgNetwork = (ImageView) findViewById(R.id.imageView);
+        	imgNetwork.setImageBitmap(imageObj.getImageBitmap());
+        }
+        else
+        {
+        	
+        	gestureScanner = new GestureDetector(this);
+	        updateTitle();
+	        updateImage();
+	        
+	        //ImageView imgNetwork = (ImageView) findViewById(R.id.imageView);
+	        //imgNetwork.setImageBitmap(imageObj.getImageBitmap());
+        }
         TextView txtNetName = (TextView) findViewById(R.id.netName);
         txtNetName.setText(imageObj.getImageNetwork());
-        //ImageView imgNetwork = (ImageView) findViewById(R.id.imageView);
-        //imgNetwork.setImageBitmap(imageObj.getImageBitmap());
-        
 	}
 
 	@Override
     public boolean onTouchEvent(MotionEvent me)
     {
-		
-        return gestureScanner.onTouchEvent(me);
+		if (gestureScanner!=null)
+		{
+			return gestureScanner.onTouchEvent(me);
+		}
+		else return false;
  
     }
 	

@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import com.lsn.LoadSensing.SQLite.LSNSQLiteHelper;
 import com.lsn.LoadSensing.adapter.LSNetworkAdapter;
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.func.LSFunctions;
@@ -26,10 +27,17 @@ import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -75,6 +83,8 @@ public class LSNetListActivity extends GDListActivity {
         Thread thread = new Thread(null,viewNetworks,"ViewNetworks");
         thread.start();
         m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievNetworks), true);
+        
+        registerForContextMenu(getListView());
     }
 	
 	private Runnable returnRes = new Runnable() {
@@ -205,4 +215,59 @@ public class LSNetListActivity extends GDListActivity {
 			}
 		});
 	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.context_menu_add, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+		SQLiteDatabase db = lsndbh.getWritableDatabase();
+		SQLiteDatabase db1 = lsndbh.getReadableDatabase();
+
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		case R.id.add_faves:
+			LSNetwork net1 = new LSNetwork();
+			net1 = m_networks.get(info.position);
+			if (db != null) {
+				Cursor c = db1.rawQuery(
+						"SELECT * FROM Network WHERE idNetwork = '"
+								+ net1.getNetworkId() + "';", null);
+				if (c.getCount() == 0) {
+					db.execSQL("INSERT INTO Network (name,poblacio,idNetwork,sensors,lat,lon) VALUES ('"
+							+ net1.getNetworkName()
+							+ "','"
+							+ net1.getNetworkSituation()
+							+ "','"
+							+ net1.getNetworkId()
+							+ "',"
+							+ net1.getNetworkNumSensors()
+							+ ",'"
+							+ net1.getNetworkPosition().getLatitude()
+							+ "','"
+							+ net1.getNetworkPosition().getLongitude() + "');");
+					CustomToast.showCustomToast(this,
+							R.string.message_add_network,
+							CustomToast.IMG_CORRECT, CustomToast.LENGTH_SHORT);
+				} else
+					CustomToast.showCustomToast(this,
+							R.string.message_error_network,
+							CustomToast.IMG_EXCLAMATION,
+							CustomToast.LENGTH_SHORT);
+				db.close();
+			}
+
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
+	}
+	
 }

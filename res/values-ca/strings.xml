@@ -81,6 +81,17 @@
   		<string name="tab_fav_networks">Xarxes</string>
     	<string name="tab_fav_sensors">Sensors</string>
    		<string name="tab_fav_images">Imatges</string>
+   		<string name="message_error_network">La xarxa ja hi és a favorits</string>
+ 	 	
+	    <string name="message_error_sensor">El sensor ja hi és a favorits</string>
+	    <string name="message_error_image">La imatge ja hi és a favorits</string>
+		<string name="message_add_network">Xarxa afegida a favorits</string>
+		<string name="message_add_sensor">Sensor afegit a favorits</string>
+		<string name="message_add_image">Imatge afegida a favorits</string> 
+   		    
+   		    
+   		    
+   		    
     <!-- Faves Activity End -->
 	<!-- NetList Activity Init -->   
    		<string name="strSituation">Situació:</string>
@@ -185,5 +196,12 @@
 	    <string name="help_homAugReal">Realitat Augmentada: Estant in situ en la mateixa zona on es troba la xarxa a analitzar, es pot geoposicionar cada node de la xarxa observant en temps real la posició dels nodes.</string>
 	    <string name="help_homNetCloser">Xarxes properes: Permet, mitjan�ant el GPS del dispositiu, detectar les xarxes properes a la ubicació en la que es troba.</string>
 	<!-- Help End -->
-   		
+
+ 	<!-- Context Menu Init -->
+ 	 	
+    	<string name="add_faves">Afegir a favorits</string>
+    	<string name="del_faves">Treure de favorits</string>
+	 <!-- Context Menu End -->
+ 
+ 
 </resources>

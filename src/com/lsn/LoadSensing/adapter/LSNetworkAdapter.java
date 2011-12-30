@@ -38,11 +38,11 @@ public class LSNetworkAdapter extends ArrayAdapter<LSNetwork>{
 		{
 			TextView txtNetName = (TextView) v.findViewById(R.id.networkName);
 			TextView txtNetSituation = (TextView) v.findViewById(R.id.networkSituation);
-            TextView txtNetSensons = (TextView) v.findViewById(R.id.networkSensors);
+            TextView txtNetSensors = (TextView) v.findViewById(R.id.networkSensors);
             
             txtNetName.setText(o.getNetworkName()); 
             txtNetSituation.setText(o.getNetworkSituation());
-            txtNetSensons.setText(o.getNetworkNumSensors().toString());
+            txtNetSensors.setText(o.getNetworkNumSensors().toString());
     
 		}
 		return v;

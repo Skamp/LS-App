@@ -1,16 +1,32 @@
 package com.lsn.LoadSensing.faves;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
+import com.lsn.LoadSensing.LSBigImageActivity;
+import com.lsn.LoadSensing.LSFavesActivity;
 import com.lsn.LoadSensing.R;
+import com.lsn.LoadSensing.SQLite.LSNSQLiteHelper;
 import com.lsn.LoadSensing.adapter.LSImageAdapter;
 import com.lsn.LoadSensing.element.LSImage;
+import com.lsn.LoadSensing.func.LSFunctions;
+
 import greendroid.app.GDListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,6 +36,8 @@ public class LSFavesImagesActivity extends GDListActivity{
 	private ArrayList<LSImage> m_images = null;
 	private LSImageAdapter       m_adapter;
 	private Runnable             viewImages;
+	
+	private Bitmap imgSensor;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +72,7 @@ public class LSFavesImagesActivity extends GDListActivity{
 //		adapter.add(createTextItem(3,"Imatge 9"));
 //		adapter.add(createTextItem(4,"Imatge 10"));
 //		setListAdapter(adapter);
+        registerForContextMenu(getListView());
 	}
 	
 	private Runnable returnRes = new Runnable() {
@@ -72,32 +91,48 @@ public class LSFavesImagesActivity extends GDListActivity{
 	
 	private void getImages() {
 
-		try{
-          m_images = new ArrayList<LSImage>();
-          LSImage o1 = new LSImage();
-          o1.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
-          o1.setImageName("Image 1");
-          o1.setImageSituation("lat. XX.XX lon. YY.YY");
-          o1.setImageNetwork("Network 1");
-          LSImage o2 = new LSImage();
-          o2.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
-          o2.setImageName("Image 2");
-          o2.setImageSituation("lat. XX.XX lon. YY.YY");
-          o2.setImageNetwork("Network 2");
-          LSImage o3 = new LSImage();
-          o3.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
-          o3.setImageName("Image 3");
-          o3.setImageSituation("lat. XX.XX lon. YY.YY");
-          o3.setImageNetwork("Network 3");
-          m_images.add(o1);
-          m_images.add(o2);
-          m_images.add(o3);
-          Thread.sleep(1000);
-          Log.i("ARRAY", ""+ m_images.size());
-        } catch (Exception e) { 
-          Log.e("BACKGROUND_PROC", e.getMessage());
-        }
-        runOnUiThread(returnRes);		
+		m_images = new ArrayList<LSImage>();
+		LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+		SQLiteDatabase db = lsndbh.getReadableDatabase();
+
+		if (db != null) {
+			Cursor c = db.rawQuery("SELECT * FROM Image", null);
+			c.moveToFirst();
+			if (c != null) {
+				while (!c.isAfterLast()) {
+					String name = c.getString(c.getColumnIndex("name"));
+					String idNetwork = c.getString(c
+							.getColumnIndex("idNetwork"));
+					String city = c.getString(c.getColumnIndex("poblacio"));
+					String image = c.getString(c.getColumnIndex("imageFile"));
+					try {
+						imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+
+					LSImage i1 = new LSImage();
+					i1.setImageName(name);
+					i1.setImageNetwork(idNetwork);
+					i1.setImageSituation(city);
+					i1.setImageBitmap(imgSensor);
+					i1.setImageNameFile(image);
+
+					m_images.add(i1);
+
+					c.move(1);
+				}
+			}
+			try {
+				Thread.sleep(1000);
+				Log.i("ARRAY", "" + m_images.size());
+			} catch (Exception e) {
+				Log.e("BACKGROUND_PROC", e.getMessage());
+			}
+			c.close();
+			db.close();
+			runOnUiThread(returnRes);
+		}	
 	}
 
 	
@@ -106,9 +141,59 @@ public class LSFavesImagesActivity extends GDListActivity{
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	
         Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getImageName(position), Toast.LENGTH_LONG).show();
+        Intent i = null;
+        i = new Intent(this,LSBigImageActivity.class);
+        
+        if (i!=null){
+			Bundle bundle = new Bundle();
+
+			String strTitleFormat = getResources().getString(R.string.act_lbl_BigImage);
+		    String strTitle = String.format(strTitleFormat, position+1,position+1);
+
+			bundle.putString("TITLE", strTitle);
+			bundle.putParcelable("IMAGE_OBJ", m_images.get(position));
+			i.putExtras(bundle);
+        	
+			startActivity(i);
+        }
     }
 	
-	
+    @Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.context_menu_del, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+		SQLiteDatabase db = lsndbh.getWritableDatabase();
+
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		case R.id.del_faves:
+			LSImage ima1 = new LSImage();
+			ima1 = m_images.get(info.position);
+			if (db != null) {
+				db.execSQL("DELETE FROM Image WHERE name ='"
+						+ ima1.getImageName() + "'"); 
+				db.close();
+				Bundle bundle = new Bundle();
+				bundle.putInt("par", 2);
+				Intent i = new Intent(this, LSFavesActivity.class);
+				i.putExtras(bundle);
+				startActivity(i);
+				this.finish();
+			}
+
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
+	}
 	
 //	private TextItem createTextItem(int stringId, String strItem) {
 //		final TextItem textItem = new TextItem(strItem);

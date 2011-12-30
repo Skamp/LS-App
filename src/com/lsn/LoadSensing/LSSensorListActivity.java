@@ -10,10 +10,12 @@ import org.json.JSONObject;
 
 
 
+import com.lsn.LoadSensing.SQLite.LSNSQLiteHelper;
 import com.lsn.LoadSensing.adapter.LSSensorAdapter;
 import com.lsn.LoadSensing.element.LSNetwork;
 import com.lsn.LoadSensing.element.LSSensor;
 import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
 import com.readystatesoftware.mapviewballoons.R;
 
 import greendroid.app.GDListActivity;
@@ -26,10 +28,17 @@ import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,6 +91,8 @@ public class LSSensorListActivity extends GDListActivity {
 		Thread thread = new Thread(null,viewSensors,"ViewSensors");
 		thread.start();
 		m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievSensors), true);
+        
+        registerForContextMenu(getListView());
 	}
 
 	private Runnable returnRes = new Runnable() {
@@ -130,6 +141,7 @@ public class LSSensorListActivity extends GDListActivity {
 				s1.setSensorDesc(jsonData.getString("Descripcio"));
 				s1.setSensorSituation(jsonData.getString("Poblacio"));
 				s1.setSensorNetwork(jsonData.getString("Nom"));
+				s1.setSensorImageName(image);
 				m_sensors.add(s1);
 			}
 
@@ -215,4 +227,68 @@ public class LSSensorListActivity extends GDListActivity {
 			}
 		});
 	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.context_menu_add, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+		SQLiteDatabase db = lsndbh.getWritableDatabase();
+		SQLiteDatabase db1 = lsndbh.getReadableDatabase();
+
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		case R.id.add_faves:
+			LSSensor sen1 = new LSSensor();
+			sen1 = m_sensors.get(info.position);
+			if (db != null) {
+				Cursor c = db1.rawQuery(
+						"SELECT * FROM Sensor WHERE idSensor = '"
+								+ sen1.getSensorId() + "';", null);
+				if (c.getCount() == 0) {
+					db.execSQL("INSERT INTO Sensor (name,idSensor,idNetwork,type,description,channel,poblacio,image,faves) " +
+							"VALUES ('"
+							+ sen1.getSensorName()
+							+ "','"
+							+ sen1.getSensorId()
+							+ "','"
+							+ sen1.getSensorNetwork()
+							+ "','"
+							+ sen1.getSensorType()
+							+ "','"
+							+ sen1.getSensorDesc()
+							+ "','"
+							+ sen1.getSensorChannel()
+							+ "','"
+							+ sen1.getSensorSituation()
+							+ "','"
+							+ sen1.getSensorImageName() 
+							+ "',"
+							+ 1
+							+ ");");
+
+					CustomToast.showCustomToast(this,
+							R.string.message_add_sensor,
+							CustomToast.IMG_CORRECT, CustomToast.LENGTH_SHORT);
+				} else
+					CustomToast.showCustomToast(this,
+							R.string.message_error_sensor,
+							CustomToast.IMG_EXCLAMATION,
+							CustomToast.LENGTH_SHORT);
+				db.close();
+			}
+
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
+	}
+	
 }

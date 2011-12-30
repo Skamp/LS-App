@@ -12,6 +12,7 @@ public class LSImage implements Parcelable {
 	private String imageId;
 	private String imageNetwork;
 	private String imageSituation;
+	private String imageNameFile;
 	
 	public LSImage() {
 
@@ -19,6 +20,7 @@ public class LSImage implements Parcelable {
 		imageName = "";
 		imageNetwork = "";
 		imageSituation= "";
+		imageNameFile = "";
 	}
 	
 	public LSImage(Parcel in) {
@@ -74,6 +76,14 @@ public class LSImage implements Parcelable {
 		this.imageId = imageId;
 	}
 	
+	public String getImageNameFile() {
+		return imageNameFile;
+	}
+
+	public void setImageNameFile(String imageNameFile) {
+		this.imageNameFile = imageNameFile;
+	}
+	
 	@Override
 	public int describeContents() {
 		
@@ -88,6 +98,7 @@ public class LSImage implements Parcelable {
 		dest.writeString(imageId);
 		dest.writeString(imageNetwork);
 		dest.writeString(imageSituation);
+		dest.writeString(imageNameFile);
 	}
 	
 	private void readFromParcel(Parcel in) {
@@ -97,8 +108,11 @@ public class LSImage implements Parcelable {
 		imageId = in.readString();
 		imageNetwork = in.readString();
 		imageSituation = in.readString();
+		imageNameFile = in.readString();
 	}
 	
+
+
 	public static final Parcelable.Creator<LSImage> CREATOR =
 	    	new Parcelable.Creator<LSImage>() {
 	            public LSImage createFromParcel(Parcel in) {
