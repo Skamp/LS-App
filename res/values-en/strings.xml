@@ -153,7 +153,7 @@
     <!-- Maps Activity Init -->
     	<string name="strNetDescrip">Located in %1$s with %2$d sensors</string>
     <!-- Maps Activity End -->
-   	<!-- Menu Init -->
+    <!-- Menu Init -->
    		<string name="strSearch">Find</string>
     	<string name="strFilter">Filter</string>
    		<string name="strMapMode">Switch view</string>
@@ -182,5 +182,11 @@
 	    <string name="add_faves">Add to favorites</string>
     	<string name="del_faves">Remove from favorits</string>
   	<!-- Context Menu End --> 
+	<!-- Settings Init -->
+		<string name="settingTitle">Configuration</string>
+   		<string name="settingMapType">Map type</string>
+   		<string name="settingSelectMap">Select the map type</string>
+   		<string name="settingSelectMapDialog">Select:</string>
+   	<!-- Settings End -->
 	
 </resources>

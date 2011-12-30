@@ -179,4 +179,8 @@
     	<string name="add_faves">Añadir a favoritos</string>
     	<string name="del_faves">Quitar de favoritos</string>
   	<!-- Context Menu End -->
+	<!-- Settings Init -->
+		<string name="settingTitle">Configuración</string>
+   		<string name="settingMapType">Tipo de mapa</string>
+   	<!-- Settings End -->
 </resources>

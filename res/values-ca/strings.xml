@@ -204,4 +204,11 @@
 	 <!-- Context Menu End -->
  
  
+   	<!-- Settings Init -->
+   	
+   		<string name="settingTitle">Configuració</string>
+   		<string name="settingMapType">Tipus de mapa</string>
+   		<string name="settingSelectMap">Selecciona el tipus de mapa</string>
+   		<string name="settingSelectMapDialog">Selecciona:</string>
+   	<!-- Settings End -->
 </resources>
