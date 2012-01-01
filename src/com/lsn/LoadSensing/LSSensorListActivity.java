@@ -1,3 +1,23 @@
+//    LS App - LoadSensing Application - https://github.com/Skamp/LS-App
+//    
+//    Copyright (C) 2011-2012
+//    Authors:
+//        Sergio González Díez        [sergio.gd@gmail.com]
+//        Sergio Postigo Collado      [spostigoc@gmail.com]
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package com.lsn.LoadSensing;
 
 import java.net.URL;
@@ -57,6 +77,7 @@ public class LSSensorListActivity extends GDListActivity {
 	private LSNetwork networkObj;
 	private static HashMap<String,Bitmap> hashImages = new HashMap<String,Bitmap>();
 	private Bitmap imgSensor;
+	private Integer  errMessage;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -91,8 +112,8 @@ public class LSSensorListActivity extends GDListActivity {
 		Thread thread = new Thread(null,viewSensors,"ViewSensors");
 		thread.start();
 		m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievSensors), true);
-        
-        registerForContextMenu(getListView());
+
+		registerForContextMenu(getListView());
 	}
 
 	private Runnable returnRes = new Runnable() {
@@ -109,6 +130,17 @@ public class LSSensorListActivity extends GDListActivity {
 		}
 	};
 
+	private Runnable returnErr = new Runnable() {
+
+		@Override
+		public void run() {
+
+			CustomToast.showCustomToast(LSSensorListActivity.this,errMessage,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+
+		}
+	};
+
+
 	private void getSensors() {
 
 		try{
@@ -119,30 +151,38 @@ public class LSSensorListActivity extends GDListActivity {
 			params.put("IdXarxa", networkObj.getNetworkId());
 			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistaSensors.php",params);
 
-			for (int i = 0; i<jArray.length(); i++)
+			if (jArray != null)
 			{
-				JSONObject jsonData = jArray.getJSONObject(i);
-				LSSensor s1 = new LSSensor();
-				s1.setSensorId(jsonData.getString("id"));
-				s1.setSensorName(jsonData.getString("sensor"));
-				s1.setSensorChannel(jsonData.getString("canal"));
-				s1.setSensorType(jsonData.getString("tipus"));
-				String image = jsonData.getString("imatge");
-				if (hashImages.containsKey(image))
+				for (int i = 0; i<jArray.length(); i++)
 				{
-					imgSensor = hashImages.get(image);
+					JSONObject jsonData = jArray.getJSONObject(i);
+					LSSensor s1 = new LSSensor();
+					s1.setSensorId(jsonData.getString("id"));
+					s1.setSensorName(jsonData.getString("sensor"));
+					s1.setSensorChannel(jsonData.getString("canal"));
+					s1.setSensorType(jsonData.getString("tipus"));
+					String image = jsonData.getString("imatge");
+					if (hashImages.containsKey(image))
+					{
+						imgSensor = hashImages.get(image);
+					}
+					else
+					{
+						imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+						hashImages.put(image, imgSensor);
+					}
+					s1.setSensorImage(imgSensor);
+					s1.setSensorDesc(jsonData.getString("Descripcio"));
+					s1.setSensorSituation(jsonData.getString("Poblacio"));
+					s1.setSensorNetwork(jsonData.getString("Nom"));
+					s1.setSensorImageName(image);
+					m_sensors.add(s1);
 				}
-				else
-				{
-					imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
-					hashImages.put(image, imgSensor);
-				}
-				s1.setSensorImage(imgSensor);
-				s1.setSensorDesc(jsonData.getString("Descripcio"));
-				s1.setSensorSituation(jsonData.getString("Poblacio"));
-				s1.setSensorNetwork(jsonData.getString("Nom"));
-				s1.setSensorImageName(image);
-				m_sensors.add(s1);
+			}
+			else
+			{
+				errMessage = R.string.msg_CommError;
+				runOnUiThread(returnErr); 
 			}
 
 			//LSNetwork o1 = new LSNetwork();
@@ -164,6 +204,8 @@ public class LSSensorListActivity extends GDListActivity {
 			Log.i("ARRAY", ""+ m_sensors.size());
 		} catch (Exception e) { 
 			Log.e("BACKGROUND_PROC", e.getMessage());
+			errMessage = R.string.msg_ProcessError;
+			runOnUiThread(returnErr); 
 		}
 		runOnUiThread(returnRes);		
 	}
@@ -199,12 +241,12 @@ public class LSSensorListActivity extends GDListActivity {
 		switch (item.getItemId()) {
 
 		case OPTIONS:
-			Toast.makeText(getApplicationContext(), "Has pulsado el boton OPTIONS", Toast.LENGTH_SHORT).show();
+
 			quickActions.show(item.getItemView());
 			break;
 		case HELP:
-			Toast.makeText(getApplicationContext(), "Has pulsado el boton HELP", Toast.LENGTH_SHORT).show();
 
+			CustomToast.showCustomToast(this,R.string.msg_UnderDevelopment,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
 			break;
 		default:
 			return super.onHandleActionBarItemClick(item, position);
@@ -222,17 +264,18 @@ public class LSSensorListActivity extends GDListActivity {
 
 			@Override
 			public void onQuickActionClicked(QuickActionWidget widget, int position) {
-				Toast.makeText(LSSensorListActivity.this, "Item " + position + " pulsado", Toast.LENGTH_SHORT).show();
 
+				CustomToast.showCustomToast(LSSensorListActivity.this,R.string.msg_UnderDevelopment,CustomToast.IMG_EXCLAMATION,CustomToast.LENGTH_SHORT);
 			}
 		});
 	}
-	
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		MenuInflater inflater = getMenuInflater();
+		menu.setHeaderTitle(R.string.act_lbl_homFaves);
 		inflater.inflate(R.menu.context_menu_add, menu);
 	}
 
@@ -290,5 +333,5 @@ public class LSSensorListActivity extends GDListActivity {
 			return super.onContextItemSelected(item);
 		}
 	}
-	
+
 }

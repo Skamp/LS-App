@@ -92,11 +92,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="5dip" />
-        <!-- android:layout_centerHorizontal="true"/> -->
-        <!-- android:layout_centerVertical="true"/> -->
-        <!-- android:gravity="center_horizontal" -->
-        <!-- android:layout_gravity="center_vertical|center_horizontal"/> -->
-        <!-- android:layout_centerInParent="true"/> -->
     </LinearLayout>
 
 </LinearLayout>

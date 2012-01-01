@@ -1,3 +1,23 @@
+//    LS App - LoadSensing Application - https://github.com/Skamp/LS-App
+//    
+//    Copyright (C) 2011-2012
+//    Authors:
+//        Sergio González Díez        [sergio.gd@gmail.com]
+//        Sergio Postigo Collado      [spostigoc@gmail.com]
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package com.lsn.LoadSensing.faves;
 
 import java.net.MalformedURLException;
@@ -11,6 +31,7 @@ import com.lsn.LoadSensing.SQLite.LSNSQLiteHelper;
 import com.lsn.LoadSensing.adapter.LSSensorAdapter;
 import com.lsn.LoadSensing.element.LSSensor;
 import com.lsn.LoadSensing.func.LSFunctions;
+import com.lsn.LoadSensing.ui.CustomToast;
 
 import greendroid.app.GDListActivity;
 
@@ -28,137 +49,133 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class LSFavesSensorsActivity extends GDListActivity{
-	
+
 	private ProgressDialog       m_ProgressDialog = null;
 	private ArrayList<LSSensor> m_sensors = null;
 	private LSSensorAdapter       m_adapter;
 	private Runnable             viewSensors;
-	
+
 	private Bitmap imgSensor;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_04_favessensors);
-	  
+
 		m_sensors = new ArrayList<LSSensor>();
-        this.m_adapter = new LSSensorAdapter(this,R.layout.row_list_sensor,m_sensors);
-        setListAdapter(this.m_adapter);
-        
-        viewSensors = new Runnable()
-        {
+		this.m_adapter = new LSSensorAdapter(this,R.layout.row_list_sensor,m_sensors);
+		setListAdapter(this.m_adapter);
+
+		viewSensors = new Runnable()
+		{
 
 			@Override
 			public void run() {
 				getSensors();
 			}
-        };
-        Thread thread = new Thread(null,viewSensors,"ViewSensors");
-        thread.start();
-        m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievSensors), true);
-		
-        registerForContextMenu(getListView());
-        
-//		ItemAdapter adapter = new ItemAdapter(this);
-//		adapter.add(createTextItem(0,"Sensor 1"));
-//		adapter.add(createTextItem(1,"Sensor 2"));
-//		adapter.add(createTextItem(2,"Sensor 3"));
-//		adapter.add(createTextItem(3,"Sensor 4"));
-//		adapter.add(createTextItem(4,"Sensor 5"));
-//		adapter.add(createTextItem(0,"Sensor 6"));
-//		adapter.add(createTextItem(1,"Sensor 7"));
-//		adapter.add(createTextItem(2,"Sensor 8"));
-//		adapter.add(createTextItem(3,"Sensor 9"));
-//		adapter.add(createTextItem(4,"Sensor 10"));
-//		setListAdapter(adapter);
+		};
+		Thread thread = new Thread(null,viewSensors,"ViewSensors");
+		thread.start();
+		m_ProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.msg_PleaseWait), getResources().getString(R.string.msg_retrievSensors), true);
+
+		registerForContextMenu(getListView());
 	}
-	
+
 	private Runnable returnRes = new Runnable() {
 
-    	@Override
-    	public void run() {
-    		if(m_sensors != null && m_sensors.size() > 0){
-                m_adapter.notifyDataSetChanged();
-                for(int i=0;i<m_sensors.size();i++)
-                m_adapter.add(m_sensors.get(i));
-            }
-            m_ProgressDialog.dismiss();
-            m_adapter.notifyDataSetChanged();
-    	}
-    };
-	
+		@Override
+		public void run() {
+			if(m_sensors != null && m_sensors.size() > 0){
+				m_adapter.notifyDataSetChanged();
+				for(int i=0;i<m_sensors.size();i++)
+					m_adapter.add(m_sensors.get(i));
+			}
+			m_ProgressDialog.dismiss();
+			m_adapter.notifyDataSetChanged();
+		}
+	};
+
+	private Runnable returnErr = new Runnable() {
+
+		@Override
+		public void run() {
+
+			CustomToast.showCustomToast(LSFavesSensorsActivity.this,R.string.msg_ProcessError,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+
+		}
+	};
+
 	private void getSensors() {
 
-		m_sensors = new ArrayList<LSSensor>();
-		LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
-		SQLiteDatabase db = lsndbh.getReadableDatabase();
-		
-		Log.i("INFO", "Faves getSensors");
-		if (db != null) {
-			Cursor c = db.rawQuery("SELECT * FROM Sensor", null);
-			c.moveToFirst();
-			if (c != null) {
-				while (!c.isAfterLast()) {
-					String name = c.getString(c.getColumnIndex("name"));
-					String idSensor = c.getString(c.getColumnIndex("idSensor"));
-					String idNetwork = c.getString(c
-							.getColumnIndex("idNetwork"));
-					String type = c.getString(c.getColumnIndex("type"));
-					String description = c.getString(c
-							.getColumnIndex("description"));
-					String channel = c.getString(c.getColumnIndex("channel"));
-					String city = c.getString(c.getColumnIndex("poblacio"));
-					String image = c.getString(c.getColumnIndex("image"));
-					int faves = c.getInt(c.getColumnIndex("faves"));
+		try {
+			m_sensors = new ArrayList<LSSensor>();
+			LSNSQLiteHelper lsndbh = new LSNSQLiteHelper(this, "DBLSN", null, 1);
+			SQLiteDatabase db = lsndbh.getReadableDatabase();
 
-					Log.i("INFO", "Obtaining image " + image);
-					try {
-						Log.i("INFO", image);
-						imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
-					} catch (MalformedURLException e) {
-						e.printStackTrace();
+			Log.i("INFO", "Faves getSensors");
+			if (db != null) {
+				Cursor c = db.rawQuery("SELECT * FROM Sensor", null);
+				c.moveToFirst();
+				if (c != null) {
+					while (!c.isAfterLast()) {
+						String name = c.getString(c.getColumnIndex("name"));
+						String idSensor = c.getString(c.getColumnIndex("idSensor"));
+						String idNetwork = c.getString(c
+								.getColumnIndex("idNetwork"));
+						String type = c.getString(c.getColumnIndex("type"));
+						String description = c.getString(c
+								.getColumnIndex("description"));
+						String channel = c.getString(c.getColumnIndex("channel"));
+						String city = c.getString(c.getColumnIndex("poblacio"));
+						String image = c.getString(c.getColumnIndex("image"));
+						int faves = c.getInt(c.getColumnIndex("faves"));
+
+						Log.i("INFO", "Obtaining image " + image);
+						try {
+							Log.i("INFO", image);
+							imgSensor = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+						} catch (MalformedURLException e) {
+							e.printStackTrace();
+						}
+
+						LSSensor sensor = new LSSensor();
+						sensor.setSensorName(name);
+						sensor.setSensorId(idSensor);
+						sensor.setSensorNetwork(idNetwork);
+						sensor.setSensorType(type);
+						sensor.setSensorDesc(description);
+						sensor.setSensorChannel(channel);
+						sensor.setSensorSituation(city);
+						sensor.setSensorImage(imgSensor);
+						sensor.setSensorImageName(image);
+						sensor.setSensorFaves(faves);
+
+						m_sensors.add(sensor);
+
+						c.move(1);
 					}
-
-					LSSensor o1 = new LSSensor();
-					o1.setSensorName(name);
-					o1.setSensorId(idSensor);
-					o1.setSensorNetwork(idNetwork);
-					o1.setSensorType(type);
-					o1.setSensorDesc(description);
-					o1.setSensorChannel(channel);
-					o1.setSensorSituation(city);
-					o1.setSensorImage(imgSensor);
-					o1.setSensorImageName(image);
-					o1.setSensorFaves(faves);
-
-					m_sensors.add(o1);
-
-					c.move(1);
+					Log.i("INFO", "Close cursor");
+					c.close();
 				}
-			}
-			try {
-				Thread.sleep(1000);
+				db.close();
 				Log.i("ARRAY", "" + m_sensors.size());
-			} catch (Exception e) {
-				Log.e("BACKGROUND_PROC", e.getMessage());
-			}
-			Log.i("INFO", "Close cursor");
-			c.close();
-			db.close();
-			runOnUiThread(returnRes);
-		}		
+			}	
+		} catch (Exception e) {
+			Log.e("BACKGROUND_PROC", e.getMessage());
+			runOnUiThread(returnErr);
+		}
+
+		runOnUiThread(returnRes);
 	}
 
-	
-	
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-    	
-        Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getSensorName(position), Toast.LENGTH_LONG).show();
-        Intent i = null;
+
+
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+
+		Intent i = null;
 		i = new Intent(this, LSSensorInfoActivity.class);
 
 		if (i != null) {	
@@ -170,13 +187,14 @@ public class LSFavesSensorsActivity extends GDListActivity{
 
 			startActivity(i);
 		}
-    }
-	
-    @Override
+	}
+
+	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		MenuInflater inflater = getMenuInflater();
+		menu.setHeaderTitle(R.string.act_lbl_homFaves);
 		inflater.inflate(R.menu.context_menu_del, menu);
 	}
 
@@ -208,10 +226,4 @@ public class LSFavesSensorsActivity extends GDListActivity{
 			return super.onContextItemSelected(item);
 		}
 	}
-//	private TextItem createTextItem(int stringId, String strItem) {
-//		final TextItem textItem = new TextItem(strItem);
-//        textItem.setTag(strItem);
-//        return textItem;
-//    }
-
 }

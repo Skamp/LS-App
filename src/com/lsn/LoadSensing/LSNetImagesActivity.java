@@ -1,3 +1,23 @@
+//    LS App - LoadSensing Application - https://github.com/Skamp/LS-App
+//    
+//    Copyright (C) 2011-2012
+//    Authors:
+//        Sergio González Díez        [sergio.gd@gmail.com]
+//        Sergio Postigo Collado      [spostigoc@gmail.com]
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package com.lsn.LoadSensing;
 
 import java.io.File;
@@ -57,6 +77,7 @@ public class LSNetImagesActivity extends GDActivity {
 	private static HashMap<String,Bitmap> hashImages = new HashMap<String,Bitmap>();
 	private Bitmap imgNetwork;
 	private LSNetwork networkObj;
+	private Integer  errMessage;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +93,6 @@ public class LSNetImagesActivity extends GDActivity {
 
 		if (bundle != null)
 		{
-			//idSession = bundle.getString("SESSION");
 			networkObj = bundle.getParcelable("NETWORK_OBJ");
 		}  
 
@@ -88,23 +108,14 @@ public class LSNetImagesActivity extends GDActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-				//Toast.makeText(getApplicationContext(), "Has pulsado la imagen "+ position +" id " + id, Toast.LENGTH_SHORT).show();
 				Intent i = null;
 				i = new Intent(LSNetImagesActivity.this,LSBigImageActivity.class);
 
 				if (i!=null){
 					Bundle bundle = new Bundle();
 
-
-					//					String strTitleFormat = getResources().getString(R.string.act_lbl_BigImage);
-					//				    String strTitle = String.format(strTitleFormat, position+1);
 					try
 					{
-
-						//						bundle.putString("TITLE", strTitle);
-						//						bundle.putParcelable("IMAGE_OBJ", m_images.get(position));
-
-						//bundle.putParcelableArrayList("IMAGE_ARRAY", m_images);
 						bundle.putInt("POSITION", position);
 						i.putExtras(bundle);
 
@@ -149,6 +160,16 @@ public class LSNetImagesActivity extends GDActivity {
 		}
 	};
 
+	private Runnable returnErr = new Runnable() {
+
+		@Override
+		public void run() {
+
+			CustomToast.showCustomToast(LSNetImagesActivity.this,errMessage,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+
+		}
+	};
+
 	private void getImages() {
 
 		try{
@@ -159,43 +180,36 @@ public class LSNetImagesActivity extends GDActivity {
 			params.put("session", LSHomeActivity.idSession);
 			params.put("IdXarxa", networkObj.getNetworkId());
 			JSONArray jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getLlistaImatges.php",params);
-
-			for (int i = 0; i<jArray.length(); i++)
+			if (jArray != null)
 			{
-				JSONObject jsonData = jArray.getJSONObject(i);
-				LSImage i1 = new LSImage();
-				i1.setImageId(jsonData.getString("IdImatge"));
-				String image = jsonData.getString("imatge");
-				if (hashImages.containsKey(image))
+				for (int i = 0; i<jArray.length(); i++)
 				{
-					imgNetwork = hashImages.get(image);
+					JSONObject jsonData = jArray.getJSONObject(i);
+					LSImage i1 = new LSImage();
+					i1.setImageId(jsonData.getString("IdImatge"));
+					String image = jsonData.getString("imatge");
+					if (hashImages.containsKey(image))
+					{
+						imgNetwork = hashImages.get(image);
+					}
+					else
+					{
+						imgNetwork = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
+						hashImages.put(image, imgNetwork);
+					}
+					i1.setImageBitmap(imgNetwork);
+					i1.setImageSituation(jsonData.getString("Poblacio"));
+					i1.setImageName(jsonData.getString("Nom"));
+					i1.setImageNetwork(jsonData.getString("Nom"));
+					i1.setImageNameFile(image);
+					m_images.add(i1);
 				}
-				else
-				{
-					imgNetwork = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
-					hashImages.put(image, imgNetwork);
-				}
-				i1.setImageBitmap(imgNetwork);
-				i1.setImageSituation(jsonData.getString("Poblacio"));
-				i1.setImageName(jsonData.getString("Nom"));
-				i1.setImageNetwork(jsonData.getString("Nom"));
-				i1.setImageNameFile(image);
-				m_images.add(i1);
-
-
-
 			}
-
-			// Server Request End  
-
-
-
-
-
-
-
-
-
+			else
+			{
+				errMessage = R.string.msg_CommError;
+				runOnUiThread(returnErr); 
+			}
 			//LSNetwork o1 = new LSNetwork();
 			//o1.setNetworkName("Network 1");
 			//o1.setNetworkSituation("lat. XX.XX lon. YY.YY");
@@ -215,14 +229,14 @@ public class LSNetImagesActivity extends GDActivity {
 			Log.i("ARRAY", ""+ m_images.size());
 		} catch (Exception e) { 
 			Log.e("BACKGROUND_PROC", e.getMessage());
+			errMessage = R.string.msg_ProcessError;
+			runOnUiThread(returnErr); 
 		}
 		runOnUiThread(returnRes);		
 	}
 
 	@Override
 	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
-
-
 
 		switch (item.getItemId()) {
 
@@ -236,14 +250,11 @@ public class LSNetImagesActivity extends GDActivity {
 		default:
 			return super.onHandleActionBarItemClick(item, position);
 		}
-		//	    	if (i!=null){
-			//				startActivity(i);
-		//			}
 		return true;
 	}
 
 	private File getTempFile(Context context){
-		//it will return /sdcard/image.tmp
+
 		String folder   = "LSN";
 		final File path = new File( Environment.getExternalStorageDirectory(), folder );
 		if(!path.exists()){
@@ -269,7 +280,6 @@ public class LSNetImagesActivity extends GDActivity {
 			{
 				final File file = getTempFile(this);
 
-				//Bitmap photoTaken = (Bitmap) data.getExtras().get("data");
 				try {
 					Bitmap photoTaken = Media.getBitmap(getContentResolver(), Uri.fromFile(file) );
 
@@ -295,17 +305,13 @@ public class LSNetImagesActivity extends GDActivity {
 			}
 			else if (resultCode == RESULT_CANCELED)
 			{
-				//Display error if code is not QRCode 
+
 				CustomToast.showCustomToast(this,
 						R.string.msg_ActionCancelled,
 						CustomToast.IMG_EXCLAMATION,
 						CustomToast.LENGTH_LONG);
 			}
-
-
 		}  
-
-
 	}  
 
 	@Override
@@ -313,6 +319,8 @@ public class LSNetImagesActivity extends GDActivity {
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		MenuInflater inflater = getMenuInflater();
+		menu.setHeaderTitle(R.string.act_lbl_homFaves);
+		menu.setHeaderTitle(R.string.act_lbl_homFaves);
 		inflater.inflate(R.menu.context_menu_add, menu);
 	}
 

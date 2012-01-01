@@ -1,3 +1,23 @@
+//    LS App - LoadSensing Application - https://github.com/Skamp/LS-App
+//    
+//    Copyright (C) 2011-2012
+//    Authors:
+//        Sergio González Díez        [sergio.gd@gmail.com]
+//        Sergio Postigo Collado      [spostigoc@gmail.com]
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package com.lsn.LoadSensing.encript;
 
 import java.io.UnsupportedEncodingException;
@@ -11,7 +31,7 @@ public class LSSecurity {
 	public static final String Code_SHA_256 = "SHA-256";
 	public static final String Code_SHA_384 = "SHA-384";
 	public static final String Code_SHA_512 = "SHA-512";
-	
+
 	public static String rot13Encode(String strInput)
 	{
 		StringBuilder strOutput = new StringBuilder();
@@ -34,7 +54,7 @@ public class LSSecurity {
 		}
 		return strOutput.toString();
 	}
-	
+
 	public static String rot13Decode(String strInput)
 	{
 		StringBuilder strOutput = new StringBuilder();
@@ -55,13 +75,13 @@ public class LSSecurity {
 				strOutput.append(c);
 			}
 		}
-		
+
 		return strOutput.toString();
 	}
-	
+
 	public static String encrypt(String strInput,String code)
 	{
-		
+
 		MessageDigest md = null;
 		try {
 			md = MessageDigest.getInstance(code);
@@ -74,9 +94,9 @@ public class LSSecurity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		byte byteData[] = md.digest();
-		
+
 		//Convert the byte to hex format
 		StringBuffer hexString = new StringBuffer();
 		for (int i=0;i<byteData.length;i++) {
@@ -84,7 +104,7 @@ public class LSSecurity {
 			if (hex.length()==1) hexString.append('0');
 			hexString.append(hex);
 		}
-		
+
 		return hexString.toString();
 	}
 }
