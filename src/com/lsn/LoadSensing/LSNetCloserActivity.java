@@ -436,7 +436,7 @@ public class LSNetCloserActivity extends GDListActivity{
 			TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
 
 			String strYourLocationFormat = getResources().getString(R.string.strYourLocation);
-			String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
+			String strYourLocation = String.format(strYourLocationFormat, curPosition.getLatitudeStr(), curPosition.getLongitudeStr());  
 
 			txtLocation.setBackgroundColor(Color.parseColor("#75b0e4"));   
 			txtLocation.setText(strYourLocation);
@@ -506,7 +506,7 @@ public class LSNetCloserActivity extends GDListActivity{
 			TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
 
 			String strYourLocationFormat = getResources().getString(R.string.strYourLocation);
-			String strYourLocation = String.format(strYourLocationFormat, String.valueOf(curPosition.getLatitude()), String.valueOf(curPosition.getLongitude()));  
+			String strYourLocation = String.format(strYourLocationFormat, curPosition.getLatitudeStr(), curPosition.getLongitudeStr());  
 			txtLocation.setBackgroundColor(Color.parseColor("#75b0e4"));
 			txtLocation.setText(strYourLocation);
 

@@ -20,6 +20,9 @@
 
 package com.lsn.LoadSensing.element;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -65,13 +68,24 @@ public class Position implements Parcelable
 	}
 
 	public Double getLatitude() {
+		
 		return latitude;
 	}
+	
+	public String getLatitudeStr() {
+		NumberFormat formatter = new DecimalFormat("#0.000000");
+		return formatter.format(latitude);
+	}
+	
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 	public Double getLongitude() {
 		return longitude;
+	}
+	public String getLongitudeStr() {
+		NumberFormat formatter = new DecimalFormat("#0.000000");
+		return formatter.format(longitude);
 	}
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
@@ -79,7 +93,10 @@ public class Position implements Parcelable
 	public Double getAltitude() {
 		return altitude;
 	}
-
+	public String getAltitudeStr() {
+		NumberFormat formatter = new DecimalFormat("#0.000000");
+		return formatter.format(altitude);
+	}
 	public void setAltitude(Double altitude) {
 		this.altitude = altitude;
 	}

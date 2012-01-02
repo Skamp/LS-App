@@ -39,7 +39,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.FrameLayout.LayoutParams;
 
 import org.mapsforge.android.maps.ItemizedOverlay;
@@ -158,8 +157,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 	}
 
 	protected boolean onBalloonTap(int index, OverlayItem item) {
-		Toast.makeText(c, "onBalloonTap for overlay index " + index + "item is " + item.getTitle(),
-				Toast.LENGTH_LONG).show();
+
 		Intent i = null;
 		i = new Intent(c,LSNetInfoActivity.class);
 

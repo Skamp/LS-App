@@ -54,7 +54,6 @@ public class LSSensorInfoActivity extends GDActivity {
 	private static HashMap<String,Bitmap> hashImages = new HashMap<String,Bitmap>();
 	private Bitmap imgSensor;
 	private ArrayList<LSSensor>  m_sensors = null;
-	private Integer chartType = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

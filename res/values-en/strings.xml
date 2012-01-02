@@ -15,8 +15,8 @@
     <string name="msg_NOLocServ">There are no active location services</string>
     <string name="msg_PleaseWait">Please wait...</string>
     <string name="msg_retrievNetworks">Retrieving networks...</string>
-    <string name="msg_retrievImages">Retrieveing images...</string>
-    <string name="msg_retrievSensors">Retrieveing sensors...</string>
+    <string name="msg_retrievImages">Retrieving images...</string>
+    <string name="msg_retrievSensors">Retrieving sensors...</string>
     <string name="msg_ErrMarketAccess">Error accessing Android Market</string>
     <string name="msg_ActionCancelled">Action canceled</string>
     <string name="msg_NotConnected">Internet connection necessary to access application</string>
@@ -200,7 +200,7 @@
     <string name="aboutDeveloper1">- Sergio González Díez [sergio.gd@gmail.com]</string>
     <string name="aboutDeveloper2">- Sergio Postigo Collado [spostigoc@gmail.com]</string>
     <string name="aboutTitleDescrition">Description:</string>
-    <string name="aboutColaboration">The development has been done in collaboration with <a href="http://www.worldsensing.com">WorldSensing</a> enterprise, that is involved is the development of communication systems and provides services related with sensors networks.</string>
+    <string name="aboutColaboration">The development has been done in collaboration with <a href="http://www.worldsensing.com">WorldSensing</a> enterprise, that is involved in the development of communication systems and provides services related with sensors networks.</string>
     <string name="aboutContent">LS App is an application that allows remote access to real time and historic information of structure monitoring of LoadSensing application, information obtained of nodes that are distributed in various areas generating networks.</string>
     <string name="aboutTitleLibraries">Libraries:</string>
     <string name="aboutLibrary1">-<a href="https://github.com/cyrilmottier/GreenDroid">GreenDroid</a>: to improve User Interfaces development.</string>

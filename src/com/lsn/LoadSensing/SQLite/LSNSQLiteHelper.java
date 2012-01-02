@@ -29,14 +29,14 @@ public class LSNSQLiteHelper extends SQLiteOpenHelper {
 
 	// Sentencia SQL para crear la tabla de Usuarios
 	String sqlCreateNetwork = "CREATE TABLE Network (user TEXT, poblacio TEXT, name TEXT, "
-			+ "idNetwork TEXT, sensors INTEGER, lat TEXT, lon TEXT)";
+			+ "idNetwork TEXT, sensors INTEGER, lat TEXT, lon TEXT) DEFAULT CHARSET=utf8;";
 
 	String sqlCreateSensor = "CREATE TABLE Sensor (user TEXT, poblacio TEXT, name TEXT, " +
 			"serial, idSensor TEXT, idNetwork TEXT, type TEXT, channel TEXT, " +
-			"description TEXT, lat TEXT, lon TEXT, image TEXT, faves INTEGER);";
+			"description TEXT, lat TEXT, lon TEXT, image TEXT, faves INTEGER) DEFAULT CHARSET=utf8;";
 
 	String sqlCreateImage = "CREATE TABLE Image (user TEXT, poblacio TEXT, name TEXT, "
-			+ "idImage TEXT, idNetwork TEXT, imageFile TEXT)";
+			+ "idImage TEXT, idNetwork TEXT, imageFile TEXT) DEFAULT CHARSET=utf8;";
 
 	public LSNSQLiteHelper(Context contexto, String nombre,
 			CursorFactory factory, int version) {
@@ -53,7 +53,7 @@ public class LSNSQLiteHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
+		
 
 	}
 }

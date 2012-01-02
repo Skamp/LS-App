@@ -61,7 +61,6 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LSSensorListActivity extends GDListActivity {
 
@@ -213,7 +212,6 @@ public class LSSensorListActivity extends GDListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
-		Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getSensorName(position), Toast.LENGTH_LONG).show();
 		Intent i = null;
 		i = new Intent(LSSensorListActivity.this,LSSensorInfoActivity.class);
 
