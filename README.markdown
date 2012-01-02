@@ -13,16 +13,16 @@ The development has been done in collaboration with [WorldSensing](http://www.wo
 **Screenshots**
 ![Login](http://farm8.staticflickr.com/7175/6615903927_2614f22d7f_m.jpg "Login")&nbsp;
 ![DashBoard](http://farm8.staticflickr.com/7003/6615904429_4b22f2e716_m.jpg "Dashboard")&nbsp;
-![Augmented Reality](http://farm8.staticflickr.com/7147/6615914501_fea53fcc7a_m.jpg "Augmented Reality")
 ![OSM](http://farm8.staticflickr.com/7008/6615915709_6241ce5f53_m.jpg "OSM")
 ![Network Info](http://farm8.staticflickr.com/7030/6615916179_406fe866a7_m.jpg "Network Info")
-![QR Code](http://farm8.staticflickr.com/7170/6615924559_c31a72b53d_m.jpg "QR Code")
 ![Gallery](http://farm8.staticflickr.com/7174/6615925727_85d989ba1d_m.jpg "Gallery")
 ![Image](http://farm8.staticflickr.com/7153/6615928161_989eae39c4_m.jpg "Image")
 ![Sensor Info](http://farm8.staticflickr.com/7020/6615928621_4b892d828c_m.jpg "Sensor Info")
 ![Favorites](http://farm8.staticflickr.com/7006/6615929027_68fe73a728_m.jpg "Favorites")
 ![Closer Networks](http://farm8.staticflickr.com/7149/6615929509_da23b22f77_m.jpg "Closer Networks")
 ![Chart](http://farm8.staticflickr.com/7010/6615929919_a7148d3d6c_m.jpg "Chart")
+![QR Code](http://farm8.staticflickr.com/7170/6615924559_c31a72b53d_m.jpg "QR Code")
+![Augmented Reality](http://farm8.staticflickr.com/7147/6615914501_fea53fcc7a_m.jpg "Augmented Reality")
 
 Libraries
 ---------
