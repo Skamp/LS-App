@@ -39,7 +39,7 @@ Credits
 
 **Authors:**
 
-* Sergio Gonz&acute;lez D&icute;ez     [sergio.gd@gmail.com]
+* Sergio González Díez     [sergio.gd@gmail.com]
 * Sergio Postigo Collado   [spostigoc@gmail.com]
 
 The code in this project is licensed under [GPLv3](http://www.gnu.org/copyleft/gpl.html).
