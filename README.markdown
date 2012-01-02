@@ -25,17 +25,13 @@ The development has been done in collaboration with [WorldSensing](http://www.wo
 ![QR Code](http://farm8.staticflickr.com/7170/6615924559_c31a72b53d_m.jpg "QR Code")&nbsp;
 ![Augmented Reality](http://farm8.staticflickr.com/7147/6615914501_fea53fcc7a_m.jpg "Augmented Reality")&nbsp;
 
-Libraries
----------
+Libraries used
+--------------
 
 * [GreenDroid](https://github.com/cyrilmottier/GreenDroid): to improve User Interfaces development.
-
 * [mapviewballoons](https://github.com/jgilfelt/android-mapviewballoons): to show information balloons in maps (Android Maps and OSM).
-
 * [GraphView](http://www.jjoe64.com/p/graphview-library.html): to generate charts with the historic information of the sensors.
-
 * [Mixare](http://www.mixare.org/): to show networks locations using Augmented Reality.
-
 * [mapsforge](http://code.google.com/p/mapsforge/): to display OpenStreetMap maps.
 
 Credits
@@ -43,7 +39,7 @@ Credits
 
 **Authors:**
 
-* Sergio González Díez     [sergio.gd@gmail.com]
+* Sergio Gonz&acute;lez D&icute;ez     [sergio.gd@gmail.com]
 * Sergio Postigo Collado   [spostigoc@gmail.com]
 
 The code in this project is licensed under [GPLv3](http://www.gnu.org/copyleft/gpl.html).
