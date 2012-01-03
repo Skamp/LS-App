@@ -183,11 +183,9 @@ public class LSNetListActivity extends GDListActivity {
 		if (i!=null){
 			Bundle bundle = new Bundle();
 
-			//bundle.putString("SESSION", idSession);
 			bundle.putParcelable("NETWORK_OBJ", m_networks.get(position));
 
 			i.putExtras(bundle);
-			//i.putExtra("NETWORK_OBJ", m_networks.get(position));
 			startActivity(i);
 		}
 

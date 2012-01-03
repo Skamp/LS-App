@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="DistanceUnitEntries">
-        <item>kilometer</item>
+        <item>Kilometer</item>
         <item>Miles</item>
     </string-array>
     <string-array name="DistanceUnitValues">

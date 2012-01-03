@@ -112,6 +112,13 @@ public class LSNetCloserActivity extends GDListActivity{
 			TextView txtLocation = (TextView)findViewById(R.id.txtLocation);
 			txtLocation.setBackgroundColor(Color.RED);
 			txtLocation.setText(R.string.msg_NOLocServ);
+			
+			String strDisplayInfoFormat = getResources().getString(R.string.strDisplayInfo);
+			
+			String strRadius = maxDistance + " " + typeUnit;
+			String strDisplayInfo = String.format(strDisplayInfoFormat, strRadius, m_networks.size());  
+			TextView txtDisplayInfo = (TextView)findViewById(R.id.txtDisplayInfo);
+			txtDisplayInfo.setText(strDisplayInfo);
 		}
 		else
 		{
@@ -119,7 +126,7 @@ public class LSNetCloserActivity extends GDListActivity{
 			getLocation = new GetLocation();
 			getLocation.execute();
 
-
+			//Update list using Async Task
 			updateNetworks = new UpdateNetworks();
 			updateNetworks.execute();
 
@@ -352,6 +359,7 @@ public class LSNetCloserActivity extends GDListActivity{
 
 			Log.i("INFO", "Cancel Async Task");
 			getLocation.cancel(true);
+			updateNetworks.cancel(true);
 		}
 		super.onBackPressed();
 	}
@@ -359,6 +367,7 @@ public class LSNetCloserActivity extends GDListActivity{
 
 	@Override
 	protected void onPause() {
+		
 		//Disable execution of Async Tasks
 		running= false;
 
@@ -375,6 +384,7 @@ public class LSNetCloserActivity extends GDListActivity{
 
 			Log.i("INFO", "Cancel Async Task");
 			getLocation.cancel(true);
+			updateNetworks.cancel(true);
 		}
 		super.onPause();
 	}
@@ -382,18 +392,15 @@ public class LSNetCloserActivity extends GDListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
-		//Toast.makeText(getApplicationContext(), "Has pulsado la posición " + position +", Item " + m_adapter.getNetworkName(position), Toast.LENGTH_LONG).show();
 		Intent i = null;
 		i = new Intent(LSNetCloserActivity.this,LSNetInfoActivity.class);
 
 		if (i!=null){
 			Bundle bundle = new Bundle();
 
-			//bundle.putString("SESSION", idSession);
 			bundle.putParcelable("NETWORK_OBJ", m_networks.get(position));
-
 			i.putExtras(bundle);
-			//i.putExtra("NETWORK_OBJ", m_networks.get(position));
+
 			startActivity(i);
 		}
 	}

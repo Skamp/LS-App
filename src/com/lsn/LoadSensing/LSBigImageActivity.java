@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -56,6 +55,8 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 	private GestureDetector gestureScanner;
 	private String strTitle=null;
 	private boolean moveLeft;
+	private boolean moveRight;
+	private ImageButton[] imageButtonArray;
 
 	Integer imgHeight = 0;
 	Integer imgWidth = 0;
@@ -81,6 +82,7 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 
 			ImageView imgNetwork = (ImageView) findViewById(R.id.imageView);
 			imgNetwork.setImageBitmap(imageObj.getImageBitmap());
+			setSensors();
 		}
 		else
 		{
@@ -120,7 +122,8 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 				++position;
 			}
 		}
-		else
+		
+		if (moveRight)
 		{
 			if (position>0)
 			{
@@ -128,6 +131,7 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 			}
 		}
 
+		delSensors();
 		updateTitle();
 		updateImage();
 		return true;
@@ -144,10 +148,12 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 		if (distanceX > 0) //Scroll left
 		{
 			moveLeft = true;
+			moveRight = false;
 		}
 		else //Scroll right
 		{
 			moveLeft = false;
+			moveRight = true;
 		}
 
 		return true;
@@ -177,9 +183,9 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 		imageObj = LSNetImagesActivity.m_images.get(position);
 		final ImageView imgNetwork = (ImageView) findViewById(R.id.imageView);
 
-		Bitmap image = imageObj.getImageBitmap();
-		Integer bmpHeight = image.getHeight();
-		Integer bmpWidth = image.getWidth();
+//		Bitmap image = imageObj.getImageBitmap();
+//		Integer bmpHeight = image.getHeight();
+//		Integer bmpWidth = image.getWidth();
 
 		imgNetwork.setImageBitmap(imageObj.getImageBitmap());
 
@@ -198,8 +204,8 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 		//        });
 
 
-		CustomToast.showCustomToast(this,"BMP height:" + bmpHeight +" BMP width:" + bmpWidth + 
-				" IMG height:" + imgHeight +" IMG width:" + imgWidth,CustomToast.IMG_INFORMATION,CustomToast.LENGTH_LONG);
+//		CustomToast.showCustomToast(this,"BMP height:" + bmpHeight +" BMP width:" + bmpWidth + 
+//				" IMG height:" + imgHeight +" IMG width:" + imgWidth,CustomToast.IMG_INFORMATION,CustomToast.LENGTH_LONG);
 
 		setSensors();
 	}
@@ -218,7 +224,7 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 					params);
 			if (jArray != null)
 			{	
-				ImageButton[] imageButtonArray = new ImageButton[jArray.length()];
+				imageButtonArray = new ImageButton[jArray.length()];
 
 				for (int i = 0; i < jArray.length(); i++) {
 					JSONObject jsonData = jArray.getJSONObject(i);
@@ -268,6 +274,16 @@ public class LSBigImageActivity extends GDActivity implements OnGestureListener 
 		} catch (Exception e) {
 			Log.e("BACKGROUND_PROC", e.getMessage());
 			CustomToast.showCustomToast(this,R.string.msg_ProcessError,CustomToast.IMG_AWARE,CustomToast.LENGTH_SHORT);
+		}
+	}
+	
+	public void delSensors() {
+		
+		RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative);
+		
+		for (ImageButton imgButton : imageButtonArray) {
+		
+			rl.removeView(imgButton);
 		}
 	}
 }

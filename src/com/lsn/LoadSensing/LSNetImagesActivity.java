@@ -185,8 +185,8 @@ public class LSNetImagesActivity extends GDActivity {
 				for (int i = 0; i<jArray.length(); i++)
 				{
 					JSONObject jsonData = jArray.getJSONObject(i);
-					LSImage i1 = new LSImage();
-					i1.setImageId(jsonData.getString("IdImatge"));
+					LSImage img = new LSImage();
+					img.setImageId(jsonData.getString("IdImatge"));
 					String image = jsonData.getString("imatge");
 					if (hashImages.containsKey(image))
 					{
@@ -197,12 +197,12 @@ public class LSNetImagesActivity extends GDActivity {
 						imgNetwork = LSFunctions.getRemoteImage(new URL("http://viuterrassa.com/Android/Imatges/"+image));
 						hashImages.put(image, imgNetwork);
 					}
-					i1.setImageBitmap(imgNetwork);
-					i1.setImageSituation(jsonData.getString("Poblacio"));
-					i1.setImageName(jsonData.getString("Nom"));
-					i1.setImageNetwork(jsonData.getString("Nom"));
-					i1.setImageNameFile(image);
-					m_images.add(i1);
+					img.setImageBitmap(imgNetwork);
+					img.setImageSituation(jsonData.getString("Poblacio"));
+					img.setImageName(jsonData.getString("Nom"));
+					img.setImageNetwork(jsonData.getString("Nom"));
+					img.setImageNameFile(image);
+					m_images.add(img);
 				}
 			}
 			else
@@ -283,14 +283,14 @@ public class LSNetImagesActivity extends GDActivity {
 				try {
 					Bitmap photoTaken = Media.getBitmap(getContentResolver(), Uri.fromFile(file) );
 
-					LSImage i1 = new LSImage();
-					i1.setImageId("3");
+					LSImage img = new LSImage();
+					img.setImageId("3");
 
-					i1.setImageBitmap(photoTaken);
-					i1.setImageSituation("Barcelona");
-					i1.setImageName("Test photo");
-					i1.setImageNetwork("La meva casa");
-					m_images.add(i1);
+					img.setImageBitmap(photoTaken);
+					img.setImageSituation("Barcelona");
+					img.setImageName("Test photo");
+					img.setImageNetwork("Test Network");
+					m_images.add(img);
 
 					m_adapter.notifyDataSetChanged();
 					m_adapter.clear();

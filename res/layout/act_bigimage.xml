@@ -38,15 +38,6 @@
             android:textSize="15dip"
             android:textStyle="bold" />
     </LinearLayout>
-    <!-- <LinearLayout -->
-    <!-- android:layout_width="wrap_content" -->
-    <!-- android:layout_height="wrap_content" -->
-
-
-    <!-- android:orientation="horizontal"> -->
-    <!-- <HorizontalScrollView -->
-    <!-- android:layout_width="wrap_content" -->
-    <!-- android:layout_height="wrap_content"> -->
 
     <ImageView
         android:id="@+id/imageView"
@@ -55,10 +46,5 @@
         android:layout_below="@id/layout"
         android:padding="5dip"
         android:scaleType="matrix" />
-    <!-- android:adjustViewBounds="true" -->
-
-
-    <!-- </HorizontalScrollView> -->
-    <!-- </LinearLayout> -->
 
 </RelativeLayout>

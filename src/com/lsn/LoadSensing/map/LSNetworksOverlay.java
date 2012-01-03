@@ -26,7 +26,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
@@ -63,8 +62,7 @@ public class LSNetworksOverlay extends BalloonItemizedOverlay<OverlayItem> {
 
 	@Override
 	protected boolean onBalloonTap(int index, OverlayItem item) {
-		Toast.makeText(c, "onBalloonTap for overlay index " + index + "item is " + item.getTitle(),
-				Toast.LENGTH_LONG).show();
+		
 		Intent i = null;
 		i = new Intent(c,LSNetInfoActivity.class);
 

@@ -119,6 +119,7 @@ public class LSFavesImagesActivity extends GDListActivity{
 				if (c != null) {
 					while (!c.isAfterLast()) {
 						String name = c.getString(c.getColumnIndex("name"));
+						String imgId = c.getString(c.getColumnIndex("idImage"));
 						String idNetwork = c.getString(c
 								.getColumnIndex("idNetwork"));
 						String city = c.getString(c.getColumnIndex("poblacio"));
@@ -133,6 +134,7 @@ public class LSFavesImagesActivity extends GDListActivity{
 						imgNetwork.setImageName(name);
 						imgNetwork.setImageNetwork(idNetwork);
 						imgNetwork.setImageSituation(city);
+						imgNetwork.setImageId(imgId);
 						imgNetwork.setImageBitmap(imgSensor);
 						imgNetwork.setImageNameFile(image);
 
@@ -194,8 +196,8 @@ public class LSFavesImagesActivity extends GDListActivity{
 			LSImage ima1 = new LSImage();
 			ima1 = m_images.get(info.position);
 			if (db != null) {
-				db.execSQL("DELETE FROM Image WHERE name ='"
-						+ ima1.getImageName() + "'"); 
+				db.execSQL("DELETE FROM Image WHERE idImage ='"
+						+ ima1.getImageId() + "'");
 				db.close();
 				Bundle bundle = new Bundle();
 				bundle.putInt("par", 2);
