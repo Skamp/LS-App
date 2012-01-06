@@ -131,6 +131,7 @@
     <string name="lblSensorChartStrain">Strain chart</string>
     <string name="lblSensorChartPower">Power chart</string>
     <string name="lblSensorChartCounter">Counter chart</string>
+    <string name="msgSensorNotFound">Sensor with id %1$s not found at server</string>
     <!-- SensorInfo Activity End -->
     <!-- QRCode Activity Init -->
     <string name="msg_QRIntentError">QRCode reader Intent not found, install Google Googles on device</string>

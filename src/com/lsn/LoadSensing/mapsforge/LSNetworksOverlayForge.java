@@ -135,7 +135,7 @@ public class LSNetworksOverlayForge extends ItemizedOverlay<OverlayItem> {
 
 		layout.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
 				MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-		params.topMargin -= layout.getMeasuredHeight();
+		params.topMargin -= layout.getMeasuredHeight()-(layout.getMeasuredHeight()/2);
 
 		ImageView imgClose = (ImageView)layout.findViewById(R.id.close_img_button);
 		imgClose.setOnClickListener(new OnClickListener() {

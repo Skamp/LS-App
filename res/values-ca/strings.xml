@@ -135,12 +135,13 @@
     <string name="lblSensorChartStrain">Gràfic de tensió</string>
     <string name="lblSensorChartPower">Gràfic de potència</string>
     <string name="lblSensorChartCounter">Gràfic de compteig</string>
+    <string name="msgSensorNotFound">Sensor amb id %1$s no trobat al servidor</string>
     <!-- SensorInfo Activity End -->
     <!-- QRCode Activity Init -->
     <string name="msg_QRIntentError">No s\'ha trobat Intent per llegir codis QR, instal·la Google Googles al dispositiu</string>
     <string name="msg_QRFormatError">Format incorrecte del codi llegit, ha de ser un QRCode.</string>
     <string name="msg_QRCorrect">Detectat sensor %1$s</string>
-
+	
     <!-- QRCode Activity End -->
     <!-- Settings Init -->
     <string name="settingOSMnotDeveloped">Open Street Map no implementat</string>

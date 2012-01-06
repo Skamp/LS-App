@@ -85,7 +85,7 @@ public class LSHomeActivity extends GDActivity {
 		if (bundle != null)
 		{
 			idSession = bundle.getString("SESSION");
-			CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER")+" " + idSession,CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
+			CustomToast.showCustomToast(this,this.getString(R.string.msg_Welcome) +" " + bundle.getString("USER"),CustomToast.IMG_CORRECT,CustomToast.LENGTH_LONG);
 		}       
 
 		//Set click Listener on dashboard buttons

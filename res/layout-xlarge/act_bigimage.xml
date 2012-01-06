@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFF"
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -20,7 +22,7 @@
             android:padding="5dip"
             android:text="@string/lblNetName"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
 
         <TextView
@@ -33,21 +35,16 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="fill_parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:verticalSpacing="10px"
-    	android.gravity="center"
-        android:horizontalSpacing="10px"
-        android:numColumns="2"
-        android:padding="10px"
-         >
-    </GridView>
+        android:layout_below="@id/layout"
+        android:padding="5dip"
+        android:scaleType="matrix" />
 
-
-</LinearLayout>
+</RelativeLayout>

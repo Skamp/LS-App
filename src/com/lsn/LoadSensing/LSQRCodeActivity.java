@@ -115,14 +115,6 @@ public class LSQRCodeActivity extends GDActivity {
 
 						i.putExtras(bundle);
 
-						//Display detected sensor
-						String strQRCorrectFormat = getResources().getString(R.string.msg_QRCorrect);
-						String strQRCorrect = String.format(strQRCorrectFormat, contents);  
-						CustomToast.showCustomToast(this,
-								strQRCorrect,
-								CustomToast.IMG_CORRECT,
-								CustomToast.LENGTH_LONG);
-
 						//Start activity showing the information of the sensor detected						
 						startActivity(i);
 					}

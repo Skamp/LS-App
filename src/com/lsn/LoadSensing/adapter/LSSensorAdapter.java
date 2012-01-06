@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lsn.LoadSensing.R;
@@ -61,21 +62,20 @@ public class LSSensorAdapter extends ArrayAdapter<LSSensor>{
 			TextView txtSenName = (TextView) v.findViewById(R.id.sensorName);
 			TextView txtSenType = (TextView) v.findViewById(R.id.sensorType);
 			TextView txtSenChannel = (TextView) v.findViewById(R.id.sensorChannel);
-			TextView txtTextNetwork = (TextView) v.findViewById(R.id.textNetwork);
+			LinearLayout layNetwork = (LinearLayout)v.findViewById(R.id.layNetwork);
 			TextView txtSenNetwork = (TextView) v.findViewById(R.id.strNetwork);
 
 			imgSensor.setImageBitmap(o.getSensorImage());
 			txtSenName.setText(o.getSensorName()); 
 			txtSenType.setText(o.getSensorType());
 			txtSenChannel.setText(o.getSensorChannel());
-			//txtSenNetwork.setText(o.getSensorNetwork());
-			txtTextNetwork.setVisibility(View.GONE);
+
+			layNetwork.setVisibility(View.GONE);
 			if (o.getSensorFaves()==1)
 			{
-				txtTextNetwork.setVisibility(View.VISIBLE);
+				layNetwork.setVisibility(View.VISIBLE);
 				txtSenNetwork.setText(o.getSensorNetwork());
 			}
-
 		}
 		return v;
 	}

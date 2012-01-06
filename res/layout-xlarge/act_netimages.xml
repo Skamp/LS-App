@@ -20,7 +20,7 @@
             android:padding="5dip"
             android:text="@string/lblNetName"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:textColor="#FFF"
-            android:textSize="15dip"
+            android:textSize="30dip"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -41,13 +41,11 @@
         android:id="@+id/gridView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:verticalSpacing="10px"
-    	android.gravity="center"
+        android.gravity="center"
         android:horizontalSpacing="10px"
         android:numColumns="2"
         android:padding="10px"
-         >
+        android:verticalSpacing="10px" >
     </GridView>
-
 
 </LinearLayout>

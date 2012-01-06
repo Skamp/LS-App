@@ -131,6 +131,7 @@
     <string name="lblSensorChartStrain">Gráfico de tensión</string>
     <string name="lblSensorChartPower">Gráfico de potencia</string>
     <string name="lblSensorChartCounter">Gráfico de conteo</string>
+    <string name="msgSensorNotFound">Sensor con id %1$s no encontrado en el servidor</string>
     <!-- SensorInfo Activity End -->
     <!-- QRCode Activity Init -->
     <string name="msg_QRIntentError">No se ha encontrado Intent para leer códigos QR, instala Google Googles en el dispositivo</string>

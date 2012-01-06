@@ -80,6 +80,7 @@ public class LSSensorInfoActivity extends GDActivity {
 			params.put("session", LSHomeActivity.idSession);
 			params.put("serialNumber", sensorSerial);
 			jArray = LSFunctions.urlRequestJSONArray("http://viuterrassa.com/Android/getSensorInfo.php",params);
+			
 		}
 
 		if (sensorBundle != null)
@@ -149,6 +150,31 @@ public class LSSensorInfoActivity extends GDActivity {
 
 		if (sensorObj != null)
 		{
+			if (sensorSerial != null) // From QR Code
+			{
+				if (sensorObj.getSensorNetwork().equals("0"))
+				{
+					//Display sensor warning
+					String strSensorNotFoundFormat = getResources().getString(R.string.msgSensorNotFound);
+					String strSensorNotFound = String.format(strSensorNotFoundFormat, sensorSerial);
+					
+					CustomToast.showCustomToast(this,
+							strSensorNotFound,
+							CustomToast.IMG_ERROR,
+							CustomToast.LENGTH_LONG);
+					onBackPressed();
+				}
+				else
+				{
+					//Display detected sensor
+					String strQRCorrectFormat = getResources().getString(R.string.msg_QRCorrect);
+					String strQRCorrect = String.format(strQRCorrectFormat, sensorSerial);  
+					CustomToast.showCustomToast(this,
+							strQRCorrect,
+							CustomToast.IMG_CORRECT,
+							CustomToast.LENGTH_LONG);
+				}
+			}
 			TextView txtNetName = (TextView) findViewById(R.id.netName);
 			txtNetName.setText(sensorObj.getSensorNetwork());
 			TextView txtSensorName = (TextView) findViewById(R.id.sensorName);
